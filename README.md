@@ -14,7 +14,7 @@
 1.  Meterology: 气象模式，包括：WRF, RegCM
 2.  SurfaceWater: 地表水模拟系统，包含：河流、湖泊和海洋的动力学模式
 3.  GroundWater: 地下水模拟系统，包含：MODFLOW
-4.	Seismics: 年弹性体中的地震波传播模拟系统，包含：OpenSWPC, DGSeis3D
+4.	Seismics: 粘弹性体中的地震波传播模拟系统，包含：OpenSWPC, DGSeis3D
 5.  VirtualReality: 虚拟现实系统，目的：计算机可视化
 6.  HPC: 高性能计算基座组件，包含：OpenMP, MPI, CUDA (GPGPU), OneAPI, HPX等
 7.  ESM: 地球系统耦合模式，主要是区域性的耦合模式，包含：RegESM
