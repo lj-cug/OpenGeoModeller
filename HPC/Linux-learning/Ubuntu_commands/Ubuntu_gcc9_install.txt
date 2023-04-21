@@ -1,0 +1,12 @@
+https://zhuanlan.zhihu.com/p/163426285
+
+１．安装gcc9
+
+# Install GCC 9
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-9 g++-9
+
+有效解决 gcc is not be able to compile a test program 的问题：
+SET (CMAKE_C_COMPILER_WORKS 1)
+SET (CMAKE_CXX_COMPILER_WORKS 1)

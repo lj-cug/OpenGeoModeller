@@ -1,0 +1,19 @@
+When using Linux copying or migrating your existing system to an other harware is much easier than you might think with your Windows experience. You need a copy of your HDD or put your existing one in your new computer and you have pretty good chances that you boot in your new hardware without any problem.
+
+If you want to copy your existing system to a new HDD:
+
+Make sure your new location is as big or bigger than your existing one.
+
+Boot a live CD (any one will fit you that offers a terminal).
+
+Make sure your existing system (the drive you want to move) and your new drive are connected to your machine but they are not mounted. (cat /proc/partitions will show your available drives.)
+
+Now this will do the trick for you:
+
+sudo dd bs=4M conv=sync,noerror status=progress if=/dev/hda of=/dev/hdb 
+
+where /dev/hda is your existing system and /dev/hdb is the new drive you want to copy your existing system to. Take care not to use partition numbers because you want to copy everything (eg. MBR, partitions and all contents) to your new location.
+
+Be sure not to exchange the drive names in if=your_existing_drive and of=your_new_drive or you will destroy your existing system by overwriting it with the contents of your new drive (e.g. a bunch of pretty zeroes if that is a brand new formatted drive).
+
+If you could boot from /dev/hda in your old system chances are that your new cloned drive /dev/hdb will fit in any computer hardware and you will boot from it. After you started your new system you may finish adjusting settings that your new hardware offers or requires, and check for gparted to adjust your partition sizes if your new drive is bigger than the old one.

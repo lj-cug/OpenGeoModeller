@@ -1,0 +1,9 @@
+1、若没有安装lzip，首先应安装lzip，在终端使用命令：
+
+sudo apt-get install lzip
+
+
+2、若要解压的文件为gmp-6.1.2.tar.lz，在终端依次输入命令：
+
+lzip -d gmp-6.1.2.tar.lz
+tar -xvf gmp-6.1.2.tar

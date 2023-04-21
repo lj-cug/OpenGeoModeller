@@ -1,0 +1,36 @@
+1\查看磁盘情况
+fdisk -l
+
+2\删除分区
+fdisk /dev/sdb
+m 帮助
+d 删除分区
+n 新建分区
+w 写入分区表并退出   
+记得一定要w
+
+3、格式化分区
+
+mkfs. (format)，例如格式化为fat格式，输入如下命令：
+
+mkfs.vfat -L labelname /dev/sdb1
+# -L 是可选的，为U盘重新命名
+/dev/sdb1 是设备名
+
+WIndows下，格式是ntfs,但是Linux默认不支持ntgs，如果需要，则
+pacman -S ntfs-3g
+mkfs.ntfs -Q -F -L labelname /dev/sdb1
+现在将U盘格式化为ntfs格式了，可以在Windows下使用了。
+
+4、临时挂载
+mount /dev/sdb1
+
+5、卸载
+unmount /dev/sdb1
+
+6、blkid 查看分区的UUID（编号），记下，永久挂载要用
+
+7、永久挂载
+gedit /etc/fstab
+将上面的UUID号，填写上
+reboot

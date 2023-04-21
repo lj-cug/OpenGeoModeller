@@ -1,0 +1,20 @@
+Make sure to have a backup of your important Windows files!
+You've got a single SSD set up in RAID mode, and the Ubuntu installer won't recognize your SSD until you switch your disk setting in the BIOS from RAID to AHCI.
+
+在BIOS中，将RAID切换到 AHCI模式！
+
+Making that switch comes with some problems though, as Windows will no longer boot. Looking at this article https://samnicholls.net/2016/01/14/how-to-switch-sata-raid-to-ahci-windows-10-xps-13/ will show you how to make the change without having to reinstall Windows.
+
+Boot to Windows with your current SATA controller configuration
+Open Device Manager
+Expand Storage Controllers and identify the Intel SATA RAID Controller
+View properties of the identified controller
+On the Driver tab, click the Update driver… button
+Browse my computer…, Let me pick…
+Uncheck Show compatible hardware
+Select Microsoft as manufacturer
+Select Microsoft Storage Spaces Controller as model
+Accept that Windows cannot confirm that this driver is compatible
+Save changes, reboot to BIOS and change RAID SATA Controller to AHCI
+Save changes and reboot normally, hopefully to Windows
+Now you should be able to install Ubuntu in a dual-boot configuration.

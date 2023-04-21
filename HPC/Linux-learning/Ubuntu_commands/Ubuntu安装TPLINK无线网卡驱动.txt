@@ -1,0 +1,26 @@
+ubuntu 16.04安装TP-LINK TL-WDN5200H无线USB网卡驱动
+
+具体步骤：
+
+1、下载驱动
+
+git clone https://github.com/whitebatman2/rtl8821CU.git
+
+2、安装驱动
+
+cd ./rtl8821CU
+
+make
+
+sudo make install
+
+3、查看网卡
+
+lsusb
+
+得到的结果里应该有0bda：1a2b
+
+继续执行
+sudo usb_modeswitch -KW -v 0bda -p 1a2b
+
+4、终端输出一大段文字后，结束。。。重启进入Ubuntu即可
