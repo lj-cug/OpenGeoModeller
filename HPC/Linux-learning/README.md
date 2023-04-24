@@ -40,7 +40,7 @@ update-alternatives --config gcc
 gcc --version
 
 
-###查看ubuntu硬件信息
+### 查看ubuntu硬件信息
 
 1.查看板卡信息
 　　cat /proc/pci
@@ -56,6 +56,6 @@ gcc --version
 　　查看使用情况
 　　du -h
 
-###FTP工具
+### FTP工具
 
 Putty     WinSCP    FileZilla   Xftp
