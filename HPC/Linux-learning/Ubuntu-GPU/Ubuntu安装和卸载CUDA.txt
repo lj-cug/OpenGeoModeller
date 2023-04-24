@@ -8,20 +8,14 @@ sudo ./cuda_9.0.176_384.81_linux.run --no-opengl-libs
 make
 
 
-
 卸载CUDA
-step1
-法1
-版本号自己改
-
+方法1
 sudo apt-get remove cuda 
 sudo apt-get autoclean
 sudo apt-get remove cuda*
 cd /usr/local/
 sudo rm -r cuda-9.1
 
-我卸载8的时候没有最后那个文件夹，当然也有另一种方法
-
-法2
+方法2
 cd /usr/local/cuda-9.1/bin/
 sudo ./uninstall_cuda_9.1.pl

@@ -11,7 +11,7 @@ ubuntu_drivers autoinstall   或者   apt install nvidia-440
 
 add_apt_repository ppa:graphics_drivers/ppa
 apt-get update
-ubuntu-drivers devices            // 显示可以安装的nvidia驱动
+ubuntu-drivers devices            //  显示可以安装的nvidia驱动
 apt-get install nvidia-XXX        //  xxx  代表你想安装的nVidia驱动的版本号
 
 
@@ -88,9 +88,6 @@ dkms install -m nvidia -v 460.90.14
 注意：gcc和g++一定要用7.0版本以上的.
 
 
-
-
-
 常用的NVIDIA的命令:
 nvidia-settings
 nvidia-smi
@@ -102,9 +99,3 @@ gedit ~/.bashrc
 
 CUDA 9.2  要求Nvidia驱动版本 > 396.0
 CUDA 10.1 要求Nvidia驱动版本 > 410.0
-
-
-
-
-
-
