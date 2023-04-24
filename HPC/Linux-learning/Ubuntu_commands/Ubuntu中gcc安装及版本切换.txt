@@ -23,7 +23,7 @@ gcc --version
 
 ”¶”√g++
 update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 100
-sudo update-alternatives --config g++
+update-alternatives --config g++
 
 g++ --version
 
