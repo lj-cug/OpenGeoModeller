@@ -1,20 +1,13 @@
 PGI 19.0  编译器安装：
 
 1、单机安装  (single node)；
-
 2、默认安装路径：   /opt/pgi
-
 3、Version 3.1.3 of Opem MPI Library;
-
 4、不自动生成 license
-
 5 Quit
 
+
 安装完毕后，设置环境变量，使pgi生效.
-
-
 gedit ~/.bashrc
-
 export PATH=/opt/pgi
-
 source ~/.bashrc

@@ -1,8 +1,0 @@
-https://zhuanlan.zhihu.com/p/163426285
-
-°²×°gcc9
-# Install GCC 9
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install gcc-9 g++-9
-

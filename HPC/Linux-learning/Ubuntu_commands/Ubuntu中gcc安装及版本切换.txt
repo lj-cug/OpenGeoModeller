@@ -1,7 +1,5 @@
 apt update
-
 apt install build-essential
-
 gcc --version   # Ubuntu 18.04中显示gcc版本是 7.4.0
 
 1、安装 gcc-4.8
@@ -9,6 +7,12 @@ apt-get install gcc-4.8 g++-4.8
 
 查看是否安装好了
 ls /usr/bin/gcc*
+
+安装老版本的 gcc9
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-9 g++-9
+
 
 应用gcc
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100
@@ -20,14 +24,13 @@ gcc --version
 应用g++
 update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 100
 sudo update-alternatives --config g++
+
 g++ --version
 
 
 2、安装多个GCC版本（新版本！)
-
 在本节中，我们将提供有关如何在Ubuntu 18.04上安装和使用多个版本的GCC的说明。 较新版本的GCC编译器包括对新语言的支持，更好的性能和扩展功能。
-
-在撰写本文时，默认的Ubuntu存储库包括几个GCC版本，从5.x.x到8.x.x. 最新版本的GCC是9.1.0，可从Ubuntu Toolchain PPA获得。
+默认的Ubuntu存储库包括几个GCC版本，从5.x.x到8.x.x. 最新版本的GCC是9.1.0，可从Ubuntu Toolchain PPA获得。
 
 在以下示例中，我们将安装最新的三个版本的GCC和G++。
 
@@ -35,20 +38,19 @@ g++ --version
 apt install software-properties-common
 add-apt-repository ppa:ubuntu-toolchain-r/test
 
-键入以下命令安装所需的GCC和G ++版本：  apt install gcc-7 g++-7 gcc-8 g++-8 gcc-9 g++-9
-
+键入以下命令安装所需的GCC和G ++版本：  
+apt install gcc-7 g++-7 gcc-8 g++-8 gcc-9 g++-9
 
 以下命令将为每个版本配置替代方案并将优先级与其关联。 默认版本是具有最高优先级的版本，在我们的例子中是gcc-9。
 
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80 --slave /usr/bin/g++ g++ /usr/bin/g++-8
- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-7
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80 --slave /usr/bin/g++ g++ /usr/bin/g++-8
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-7
 
 稍后如果要更改默认版本，请使用update-alternatives命令：
 update-alternatives --config gcc
 
 输出：
-
 有 3 个候选项可用于替换 gcc (提供 /usr/bin/gcc)。
 
   选择      路径          优先级  状态
@@ -59,7 +61,5 @@ update-alternatives --config gcc
   3            /usr/bin/gcc-9  90        手动模式
 
 要维持当前值[*]请按<回车键>，或者键入选择的编号：
-
 您将看到Ubuntu系统上所有已安装GCC版本的列表。 输入要用作默认版本的版本号，然后按Enter键。
-
 该命令将创建指向GCC和G++特定版本的符号链接。
