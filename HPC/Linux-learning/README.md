@@ -41,6 +41,7 @@ gcc --version
 
 
 ###查看ubuntu硬件信息
+
 1.查看板卡信息
 　　cat /proc/pci
 2.cpu信息
@@ -56,4 +57,5 @@ gcc --version
 　　du -h
 
 ###FTP工具
+
 Putty     WinSCP    FileZilla   Xftp
