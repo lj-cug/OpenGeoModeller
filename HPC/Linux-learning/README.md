@@ -5,6 +5,18 @@
 
 ## Ubuntu 20.04基本操作
 
+### 查询系统版本等信息
+
+uname -a 
+
+uname -v 
+
+lsb_release -a 
+
+cat /etc/issue
+
+cat /proc/version
+
 ### 网络
 
 ifconfig -a   //查看所有网卡现状，看eth0是否存在，在结果列表应该找不到eth0网卡的，除了lo之外，正常应该还有一个ethX

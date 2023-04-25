@@ -1,0 +1,37 @@
+一、ubuntu下gcc/g++/gfortran的安装
+1.安装
+(1).gcc
+ubuntu下自带gcc编译器。可以通过“gcc -v”命令来查看是否安装。
+
+(2).g++
+安装g++编译器，可以通过命令“sudo apt-get install build-essential”实现。
+执行完后，就完成了gcc,g++,make的安装。build-essential是一整套工具，gcc，libc等等。
+通过“g++ -v”可以查看g++是否安装成功。
+
+注：“sudo apt-get install build-essential --fix-missing”，这个命令是修补安装build-essential，即已安装了部分build-essential，但没有安装完全，此时可以使用该命令继续安装build-essential。
+
+(3).gfortran
+输入命令：sudo apt-get install gfortran
+通过命令“gfortran -v”，可以查看gfortran是否安装成功。
+
+2.通过apt-get install安装软件后，软件的安装目录
+1.通过apt-get install 命令安装了一些软件，但这些软件的源码以及那些安装完以后的文件放在哪个文件夹下面？
+
+可以通过以下两种方式查看：
+（1）.在terminal中输入命令：dpkg -L 软件名
+eg：dpkg -L gcc
+dpkg -L gcc-4.4
+dpkg -L g++
+dpkg -L g++-4.4
+
+（2）.在新立得中搜索到你已经安装的软件包，选中点属性（或右键），点属性对话框中的“已安装的文件”即可看到。
+
+二.CentOS下gcc/g++/gfortran的安装
+1.安装
+再ubuntu下直接apt-get install gcc g++就可以了。按照类似的逻辑，再CentOS下yum install gcc g++ 报告无法找到g++包。 查了一下，原来这个包的名字叫做gcc-c++。完整的应该是yum install gcc gcc-c++
+(1)gcc
+命令：yum install gcc
+
+(2)g++/gfortran
+命令：yum install gcc-c++
+执行完该命令后，g++/gfortran都被安装上了

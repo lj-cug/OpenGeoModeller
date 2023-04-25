@@ -46,11 +46,8 @@ Would you like to run the nvidia-xconfig utility?         YES
 sudo reboot        // 重启
 
 上面三种方法结束后，需要检验是否安装好了nvidia驱动。
-
 sudo reboot       // 安装完了驱动需要重启
- 
 sudo nvidia-smi   //  检验是否安装好驱动
-
 
 个人认为，第一种方法操作最为简单，方便，第三种方法是最稳定，最常用的。
 
@@ -89,10 +86,14 @@ dkms install -m nvidia -v 460.90.14
 
 
 常用的NVIDIA的命令:
+
 nvidia-settings
 nvidia-smi
 
-安装CUDA：
+
+------------
+安装CUDA
+------------
 sh  cuda_10.1_linux.run
 gedit ~/.bashrc
 添加  export PATH=/usr/local/
