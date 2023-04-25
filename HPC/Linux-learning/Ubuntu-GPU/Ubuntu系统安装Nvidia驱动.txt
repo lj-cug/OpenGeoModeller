@@ -1,9 +1,12 @@
 安装NVIDIA驱动的三种方式：
 
 1、使用标准Ubuntu 仓库进行自动安装
+
 查看Nvidia驱动版本：
 ubuntu_driver devices
-ubuntu_drivers autoinstall   或者   apt install nvidia-440
+ubuntu_drivers autoinstall   
+或者   apt install nvidia-440
+
 完成后重启 就可完成安装NVIDIA驱动
 
 2、使用PPA仓库进行自动安装
@@ -13,6 +16,8 @@ add_apt_repository ppa:graphics_drivers/ppa
 apt-get update
 ubuntu-drivers devices            //  显示可以安装的nvidia驱动
 apt-get install nvidia-XXX        //  xxx  代表你想安装的nVidia驱动的版本号
+
+Nvidia Geforce RTX 2070显卡可能需要较低版本的驱动，建议安装：apt-get install nvidia-418
 
 
 3. 使用官方的NVIDIA驱动进行手动安装
@@ -56,11 +61,11 @@ Nouveau驱动，是Ubuntu等Linux系统默认的GPU驱动，很多功能有问题，一般需要禁用！
 很多博客进行驱动安装前都需要禁用Nouveau驱动，但是我安装驱动的时候搞了很久，最后安装好驱动就是根据第一种方式并且没禁用Nouveau驱动的情况下，我也找到了开始一直安装不成功的原因，就是我的GCC和G++降级后没有升级，所以如果可以先试试把GCC和G++升级到最高版本，然后运用第一种方式安装驱动，第一种方式下面会提到。如果有需求要禁用Nouveau驱动的，那我也给出禁用Nouveau驱动的方法。
 
 Nouveau驱动禁用方法：
+
 sudo gedit /etc/modprobe.d/blacklist.conf
  
 在最后两行添加：
- 
-blacklist nouveau
+ blacklist nouveau
 options nouveau modeset=0     // 禁用nouveau第三方驱动，之后也不需要改回来
  
 执行
