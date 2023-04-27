@@ -1,0 +1,14 @@
+安装ssh
+
+apt-get install ssh
+
+启动ssh服务
+sudo /etc/init.d/ssh start
+
+修改ssh服务配置文件
+gedit /etc/ssh/sshd_config
+
+find " PermitRootLogin yes "
+
+重启ssh服务
+service sshd restart
