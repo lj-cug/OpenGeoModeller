@@ -14,9 +14,25 @@
 	apt-get install openmpi-bin libopenmpi-dev
 
 ### 分布式文件系统(NFS) 安装
-见"9步配置Linux网络文件系统(NFS).docx"
+	见"9步配置Linux网络文件系统(NFS).docx"
 
 ### 集群调度系统 (slurm) 安装
-见"Ubuntu安装slurm.docx"
+	见"Ubuntu安装slurm.docx"
 
+### 测试节点间通信带宽
+两台电脑需要处于同样的网络，一台作为服务机，另一台作为客户机，并且二者必须都要安装 iPerf 。
+	apt install iperf
+	
+之后，我们再在服务机上启动 iperf 工具：
+	$ iperf -s
+	
+然后，我们就可以等待客户机的接入了。客户机可以使用以下命令来连上服务机：
+	$ iperf -c 192.168.1.225	
+	
+通过几秒钟的测试，它就会返回网络传输速率及带宽。
 
+### 注意事项
+
+1. 必须确保控制节点对计算节点的免密码SSH登录
+2. 关闭所有节点的防火墙: ufw disable
+3. 所有节点的openm库尽可能都使用相同版本
