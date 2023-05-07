@@ -1,0 +1,69 @@
+前言
+鉴于不断有网友将编译器 GCC 误认为 IDE（集成开发环境）
+1.	期望脱离命令行
+2.	期望能在菜单中发现其身影
+3.	期望其能有一个集编辑编译链接调试运行于一体的界面。
+故本文给大家简单罗列一些 C/C++ 编程中可用的 IDE，或许你从中可以找一个你喜欢的。
+为避免以下某个软件安装时不自动安装 build-essential 不妨先执行：
+sudo apt-get install build-essential
+anjuta
+Anjuta DevStudio 的官方地址：http://anjuta.sourceforge.net/
+Anjuta是一个C/C++ IDE，它最大的特色是灵活，同时打开多个文件，内嵌代码级的调试器(调用gdb)，应用程序向导（Application wizards）可以方便的帮助你创建GNOME程序而不需要你自己写一些与你兴趣无关的代码。
+安装方法：
+sudo apt-get install anjuta
+安装完成后，可能在新建工程（project)时会出现“找不到版本号为5的Autogen”的错误信息。这时请安装Autogen软件包。
+sudo apt-get install autogen
+参考：
+	Linux下用Anjuta写个Hello World 的C++程序竟如此简单！
+kdevelop
+KDevelop Project 的官方地址：http://www.kdevelop.org/
+KDevelop-Project诞生于1998年，其目的是为KDE提供一个易用的集成开发环境(Integrated Development Environment)。此后，KDevelop IDE采用GPL进行发布，
+它支持很多程序设计语言。C    C++    Python    PHP  JAVA
+
+安装方法：
+sudo apt-get install kdevelop
+参考：
+	KDevelop扫盲帖
+
+geany
+Geany 的官方地址：
+	http://geany.uvena.de/
+	http://sourceforge.net/projects/geany
+Geany 是一个使用 GTK2 工具包开发的快速和轻巧的集成开发环境（IDE），包括以下基本功能：语法高亮显示，代码折叠，代码自动补完，自动补完经常使用的结构（如：if、 for、while 等），自动补完 XML 和 HTML 标记（tag），调用提示，支持 C、Java、PHP、HTML、Python、Perl、Pascal 等语言，符号列表等等。
+
+安装方法：
+sudo apt-get install geany
+codeblocks
+Code::Blocks 的官方地址：
+	官方网站 http://www.codeblocks.org
+	开发者网站 http://developer.berlios.de/projects/codeblocks/
+Code::Blocks是一个开源、免费、跨平台的c++ IDE。官方网站上称其能满足最苛刻的用户的需求。虽有点夸张，但既然敢这样说，也说明它的功能肯定不差。可扩展插件，有插件向导功能，让你很方便的创建自己的插件。Code::Blocks是用c++编写的（用wxWidgets库）
+
+安装方法：
+sudo apt-get install codeblocks
+
+eclipse
+eclipse 的官方地址：http://www.eclipse.org
+Eclipse平台是IBM向开发源码社区捐赠的开发框架，它之所以出名并不是因为IBM宣称投入开发的资金总数 —4千万美元，而是因为如此巨大的投入所带来的成果：一个成熟的、精心设计的以及可扩展的体系结构。
+功能最强大的IDE！
+安装方法：
+sudo apt-get install eclipse-cdt eclipse
+
+netbeans
+netbeans 的官方地址：http://www.netbeans.org/
+NetBeans IDE 是一个开发环境 － 供程序员编写、编译、调试和部署程序的一个工具。 它是用 Java 编写的 － 但却可以支持任何编程语言。 另外也有巨大数量的模块来扩展 NetBeans IDE，它是一个免费产品，不限制其使用形式。
+
+安装方法:
+sudo apt-get install netbeans
+
+其他IDE
+	ljedit
+	官方地址:http://code.google.com/p/ljedit/
+	用c++的朋友来试试ljedit吧，开源，免费
+	vim
+	手把手教你把Vim改装成一个IDE编程环境(图文)
+	emacs
+	将Emacs配置成一个C/C++的IDE编程环境
+	kscope: KDE下的代码浏览工具
+	source insight
+如果不介意一定要用开源的IDE软件的话,毫无疑问wine了之后的source insight 是每个C/C++i开发者的必备

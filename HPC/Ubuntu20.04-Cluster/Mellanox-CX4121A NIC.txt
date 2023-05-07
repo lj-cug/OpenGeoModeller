@@ -1,0 +1,48 @@
+https://www.itinstock.com/mellanox-connectx-4-lx-10gbe-dual-port-sfp-network-adapter-mcx4121a-xcat-cx4121a-79578-p.asp
+
+CX4121A型号的Mellanox网卡，带宽：10 Gbps，Ethernet协议，支持GPUDirect
+
+Mellanox ConnectX-4 Lx 10GbE Dual Port SFP Network Adapter MCX4121A-XCAT CX4121A
+mpn: MCX4121A-XCAT
+product brand: Mellanox
+excluding vat: £190.00
+including vat: £228.00
+
+Mellanox ConnectX-4 Lx 10GbE Dual Port SFP Network Adapter
+P/N: MCX4121A-XCAT
+Model: CX4121A
+New Pull From New Server
+Tested
+1 Year Warranty
+Low Profile Card With Full Height Bracket
+
+
+Includes:
+1 x Mellanox ConnectX-4 Lx 10GbE Dual Port SFP Network Adapter MCX4121A-XCAT CX4121A
+ConnectX-4 Lx EN Ethernet Adapter Cards
+ConnectX-4 Lx EN network interface card with 10Gb/s Ethernet connectivity addresses virtualized infrastructure challenges, delivering best-in-class and highest performance to various demanding markets and applications. Providing true hardware-based I/O isolation with unmatched scalability and efficiency, achieving the most cost-effective and flexible solution for Web 2.0, Cloud, data analytics, database, and storage platforms.
+With the exponential increase in usage of data and the creation of new applications, the demand for the highest throughput, lowest latency, virtualization and sophisticated data acceleration engines continues to rise. ConnectX-4 Lx EN enables data centers to leverage the world's leading interconnect adapter for increasing their operational efficiency, improving server utilization, maximizing applications productivity, while reducing total cost of ownership (TCO).
+ConnectX-4 Lx EN adapter cards provide a combination of 1 and 10 GbE bandwidth, sub-microsecond latency and a 75 million packets per second message rate. They include native hardware support for RDMA over Converged Ethernet (RoCE), Ethernet stateless offload engines, Overlay Networks, GPUDirect technology and Multi-Host technology.
+Features
+1/10 Gb/s speeds
+Single and dual-port options
+Virtualization
+Low latency RDMA over Converged Ethernet (RoCE)
+Multi-Host technology connects up to 4 independent hosts
+CPU offloading of transport operations
+Application offloading
+PeerDirect communication acceleration
+Hardware offloads for NVGRE, VXLAN and GENEVE encapsulated traffic
+End-to-end QoS and congestion control
+Hardware-based I/O virtualization
+RoHS compliant
+ODCC compatible
+Various form factors available
+Benefits
+High performance boards for applications requiring high bandwidth, low latency and high message rate
+Industry leading throughput and latency for Web 2.0, Cloud and Big Data applications
+Smart interconnect for x86, Power, ARM, and GPU-based compute and storage platforms
+Cutting-edge performance in virtualized overlay networks
+Efficient I/O consolidation, lowering data center costs and complexity
+Virtualization acceleration
+Power efficiency

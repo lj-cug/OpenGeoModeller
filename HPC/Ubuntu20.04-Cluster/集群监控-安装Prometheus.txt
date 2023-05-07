@@ -88,7 +88,8 @@ scrape_configs:
 可以见prometheus 的 控制端口是9090
 
 在浏览器访问服务器ip和9090 端口， 如果 prometheus 页面能打开就没什么问题：
-10.0.1.155:9090/classic/graph
+
+ip address:9090/graph
 
 
 3. 在被监控节点安装node exporter
