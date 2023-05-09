@@ -1,0 +1,794 @@
+# LNet Configuration C-API
+
+- [LNet Configuration C-API](#lnet-configuration-c-api)
+  * [General API Information](#general-api-information)
+    + [API Return Code](#api-return-code)
+    + [API Common Input Parameters](#api-common-input-parameters)
+    + [API Common Output Parameters](#api-common-output-parameters)
+      - [Internal YAML Representation (cYAML)](#internal-yaml-representation-cyaml)
+      - [Error Block](#error-block)
+      - [Show Block](#show-block)
+  * [The LNet Configuration C-API](#the-lnet-configuration-c-api)
+    + [Configuring LNet](#configuring-lnet)
+    + [Enabling and Disabling Routing](#enabling-and-disabling-routing)
+    + [Adding Routes](#adding-routes)
+    + [Deleting Routes](#deleting-routes)
+    + [Showing Routes](#showing-routes)
+    + [Adding a Network Interface](#adding-a-network-interface)
+    + [Deleting a Network Interface](#deleting-a-network-interface)
+    + [Showing Network Interfaces](#showing-network-interfaces)
+    + [Adjusting Router Buffer Pools](#adjusting-router-buffer-pools)
+    + [Showing Routing information](#showing-routing-information)
+    + [Showing LNet Traffic Statistics](#showing-lnet-traffic-statistics)
+    + [Adding/Deleting/Showing Parameters through a YAML Block](#addingdeletingshowing-parameters-through-a-yaml-block)
+    + [Adding a route code example](#adding-a-route-code-example)
+
+
+This section describes the LNet Configuration C-API library. This API allows the developer to programatically configure LNet. It provides APIs to add, delete and show LNet configuration items listed below. The API utilizes IOCTL to communicate with the kernel. Changes take effect immediately and do not require restarting LNet. API calls are synchronous
+
+- [Configuring LNet](#configuring-lnet)
+- Enabling/Disabling routing](#enabling-and-disabling-routing)
+- Adding/removing/showing Routes
+- Adding/removing/showing Networks
+- Configuring Router Buffer Pools
+
+## General API Information
+
+### API Return Code
+
+```
+LUSTRE_CFG_RC_NO_ERR                 0
+LUSTRE_CFG_RC_BAD_PARAM             -1
+LUSTRE_CFG_RC_MISSING_PARAM         -2
+LUSTRE_CFG_RC_OUT_OF_RANGE_PARAM    -3
+LUSTRE_CFG_RC_OUT_OF_MEM            -4
+LUSTRE_CFG_RC_GENERIC_ERR           -5
+```
+
+------
+
+### API Common Input Parameters
+
+All APIs take as input a sequence number. This is a number that's assigned by the caller of the API, and is returned in the YAML error return block. It is used to associate the request with the response. It is especially useful when configuring via the YAML interface, since typically the YAML interface is used to configure multiple items. In the return Error block, it is desired to know which items were configured properly and which were not configured properly. The sequence number achieves this purpose.
+
+### API Common Output Parameters
+
+#### Internal YAML Representation (cYAML)
+
+Once a YAML block is parsed it needs to be stored structurally in order to facilitate passing it to different functions, querying it and printing it. Also it is required to be able to build this internal representation from data returned from the kernel and return it to the caller, which can query and print it. This structure representation is used for the Error and Show API Out parameters. For this YAML is internally represented via this structure:
+
+```
+typedef enum {
+    EN_YAML_TYPE_FALSE = 0,
+    EN_YAML_TYPE_TRUE,
+    EN_YAML_TYPE_NULL,
+    EN_YAML_TYPE_NUMBER,
+    EN_YAML_TYPE_STRING,
+    EN_YAML_TYPE_ARRAY,
+    EN_YAML_TYPE_OBJECT
+} cYAML_object_type_t;
+
+typedef struct cYAML {
+    /* next/prev allow you to walk array/object chains. */
+    struct cYAML *cy_next, *cy_prev;
+    /* An array or object item will have a child pointer pointing
+       to a chain of the items in the array/object. */
+    struct cYAML *cy_child;
+    /* The type of the item, as above. */
+    cYAML_object_type_t cy_type;
+    /* The item's string, if type==EN_YAML_TYPE_STRING */
+    char *cy_valuestring;
+    /* The item's number, if type==EN_YAML_TYPE_NUMBER */
+    int cy_valueint;
+    /* The item's number, if type==EN_YAML_TYPE_NUMBER */
+    double cy_valuedouble;
+    /* The item's name string, if this item is the child of,
+       or is in the list of subitems of an object. */
+    char *cy_string;
+    /* user data which might need to be tracked per object */
+    void *cy_user_data;
+} cYAML;
+```
+
+#### Error Block
+
+All APIs return a cYAML error block. This error block has the following format, when it's printed out. All configuration errors shall be represented in a YAML sequence
+
+```
+<cmd>:
+  - <entity>:
+    errno: <error number>
+    seqno: <sequence number>
+    descr: <error description>
+
+Example:
+add:
+  - route
+      errno: -2
+      seqno: 1
+      descr: Missing mandatory parameter(s) - network
+```
+
+#### Show Block
+
+All Show APIs return a cYAML show block. This show block represents the information requested in YAML format. Each configuration item has its own YAML syntax. The YAML syntax of all supported configuration items is described later in this document. Below is an example of a show block:
+
+```
+net:
+    - nid: 192.168.206.130@tcp4
+      status: up
+      interfaces:
+          0: eth0
+      tunables:
+          peer_timeout: 10
+          peer_credits: 8
+          peer_buffer_credits: 30
+          credits: 40
+```
+
+## The LNet Configuration C-API
+
+### Configuring LNet
+
+```
+/*
+ * lustre_lnet_config_ni_system
+ *   Initialize/Uninitialize the LNet NI system.
+ *
+ *   up - whether to init or uninit the system
+ *   load_ni_from_mod - load NI from mod params.
+ *   seq_no - sequence number of the request
+ *   err_rc - [OUT] struct cYAML tree describing the error. Freed by
+ *            caller
+ */
+int lustre_lnet_config_ni_system(bool up, bool load_ni_from_mod,
+                                 int seq_no, struct cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_CONFIGURE or IOC_LIBCFS_UNCONFIGURE
+
+**Description:**
+
+**Configuring LNet**
+
+Initialize LNet internals and load any networks specified in the module parameter if `load_ni_from_mod` is set. Otherwise do not load any network interfaces.
+
+**Unconfiguring LNet**
+
+Bring down LNet and clean up network itnerfaces, routes and all LNet internals.
+
+**Return Value**
+
+0: if success
+
+-errno: if failure
+
+### Enabling and Disabling Routing
+
+```
+/*
+ * lustre_lnet_enable_routing
+ *   Send down an IOCTL to enable or disable routing
+ *
+ *   enable - 1 to enable routing, 0 to disable routing
+ *   seq_no - sequence number of the request
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_enable_routing(int enable,
+                                      int seq_no,
+                                      cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_ENABLE_RTR
+
+**Description:**
+
+**Enabling Routing**
+
+The router buffer pools are allocated using the default values. Internally the node is then flagged as a Router node. The node can be used as a router from this point on.
+
+**Disabling Routing**
+
+The unused router buffer pools are freed. Buffers currently in use are not freed until they are returned to the unused list. Internally the node routing flag is turned off. Any subsequent messages not destined to this node are dropped.
+
+**Enabling Routing on an already enabled node, or vice versa**
+
+In both these cases the LNet Kernel module ignores this request.
+
+**Return Value**
+
+-ENOMEM: if there is no memory to allocate buffer pools
+
+0: if success
+
+### Adding Routes
+
+```
+/*
+ * lustre_lnet_config_route
+ *   Send down an IOCTL to the kernel to configure the route
+ *
+ *   nw - network
+ *   gw - gateway
+ *   hops - number of hops passed down by the user
+ *   prio - priority of the route
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_config_route(char *nw, char *gw,
+                    int hops, int prio,
+                    int seq_no,
+                    cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_ADD_ROUTE
+
+**Description:**
+
+The LNet Kernel module adds this route to the list of existing routes, if one doesn't already exist. If hop parameter is not specified (IE: -1) then the hop count is set to 1. If the priority parameter is not specified (IE: -1) then the priority is set to 0. All routes with the same hop and priority are used in round robin. Routes with lower number of hops and/or higher priority are preferred. 0 is the highest priority.
+
+If a route already exists the request to add the same route is ignored.
+
+**Return Value**
+
+-EINVAL: if the network of the route is local
+
+-ENOMEM: if there is no memory
+
+-EHOSTUNREACH: if the host is not on a local network
+
+0: if success
+
+### Deleting Routes
+
+```
+/*
+ * lustre_lnet_del_route
+ *   Send down an IOCTL to the kernel to delete a route
+ *
+ *   nw - network
+ *   gw - gateway
+ */
+extern int lustre_lnet_del_route(char *nw, char *gw,
+                 int seq_no,
+                 cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_DEL_ROUTE
+
+**Description:**
+
+LNet will remove the route which matches the network and gateway passed in. If no route matches, then the operation fails with an appropriate error number.
+
+**Return Value**
+
+-ENOENT: if the entry being deleted doesn't exist
+
+0: if success
+
+### Showing Routes
+
+```
+/*
+ * lustre_lnet_show_route
+ *   Send down an IOCTL to the kernel to show routes
+ *   This function will get one route at a time and filter according to
+ *   provided parameters. If no filter is provided then it will dump all
+ *   routes that are in the system.
+ *
+ *   nw - network.  Optional.  Used to filter output
+ *   gw - gateway. Optional. Used to filter ouptut
+ *   hops - number of hops passed down by the user
+ *          Optional.  Used to filter output.
+ *   prio - priority of the route.  Optional.  Used to filter output.
+ *   detail - flag to indicate whether detail output is required
+ *   show_rc - [OUT] The show output in YAML.  Must be freed by caller.
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_show_route(char *nw, char *gw,
+                  int hops, int prio, int detail,
+                  int seq_no,
+                  cYAML **show_rc,
+                  cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_GET_ROUTE
+
+**Description:**
+
+The routes are fetched from the kernel one by one and packed in a cYAML block, after filtering according to the parameters passed in. The cYAML block is then returned to the caller of the API.
+
+An example with the detail parameter set to 1
+
+```
+route:
+    net: tcp5
+    gateway: 192.168.205.130@tcp
+    hop: 1.000000
+    priority: 0.000000
+    state: up
+```
+
+An Example with the detail parameter set to 0
+
+```
+route:
+    net: tcp5
+    gateway: 192.168.205.130@tcp
+```
+
+**Return Value**
+
+-ENOMEM: If no memory
+
+0: if success
+
+### Adding a Network Interface
+
+```
+/*
+ * lustre_lnet_config_net
+ *   Send down an IOCTL to configure a network.
+ *
+ *   net - the network name
+ *   intf - the interface of the network of the form net_name(intf)
+ *   peer_to - peer timeout
+ *   peer_cr - peer credit
+ *   peer_buf_cr - peer buffer credits
+ *       - the above are LND tunable parameters and are optional
+ *   credits - network interface credits
+ *   smp - cpu affinity
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_config_net(char *net,
+                  char *intf,
+                  int peer_to,
+                  int peer_cr,
+                  int peer_buf_cr,
+                  int credits,
+                  char *smp,
+                  int seq_no,
+                  cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_ADD_NET
+
+**Description:**
+
+A new network is added and initialized. This has the same effect as configuring a network from the module parameters. The API allows the specification of network parameters such as the peer timeout, peer credits, peer buffer credits and credits. The CPU affinity of the network interface being added can also be specified. These parameters become network specific under Dynamic LNet Configuration (DLC), as opposed to being per LND as it was previously.
+
+If an already existing network is added the request is ignored.
+
+**Return Value**
+
+-EINVAL: if the network passed in is not recognized.
+
+-ENOMEM: if no memory
+
+0: success
+
+### Deleting a Network Interface
+
+```
+/*
+ * lustre_lnet_del_net
+ *   Send down an IOCTL to delete a network.
+ *
+ *   nw - network to delete.
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_del_net(char *nw,
+                   int seq_no,
+                   cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_DEL_NET
+
+**Description:**
+
+The network interface specified is deleted. All resources associated with this network interface are freed. All routes going over that Network Interface are cleaned up.
+
+If a non existent network is deleted then the call return -EINVAL.
+
+**Return Value**
+
+-EINVAL: if the request references a non-existent network.
+
+0: success
+
+### Showing Network Interfaces
+
+```
+/*
+ * lustre_lnet_show_net
+ *   Send down an IOCTL to show networks.
+ *   This function will use the nw paramter to filter the output.  If it's
+ *   not provided then all networks are listed.
+ *
+ *   nw - network to show.  Optional.  Used to filter output.
+ *   detail - flag to indicate if we require detail output.
+ *   show_rc - [OUT] The show output in YAML.  Must be freed by caller.
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_show_net(char *nw, int detail,
+                int seq_no,
+                cYAML **show_rc,
+                cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_GET_NET
+
+**Description:**
+
+The network interfaces are queried one at a time from the kernel and packed in a cYAML block, after filtering on the network (EX: tcp). If the detail field is set to 1, then the tunable section of the show block is included in the return.
+
+An example of the detailed output
+
+```
+net:
+    nid: 192.168.206.130@tcp4
+    status: up
+    interfaces:
+        intf-0: eth0
+    tunables:
+        peer_timeout: 10
+        peer_credits: 8
+        peer_buffer_credits: 30
+        credits: 40
+```
+
+An example of none detailed output
+
+```
+net:
+    nid: 192.168.206.130@tcp4
+    status: up
+    interfaces:
+        intf-0: eth0
+```
+
+**Return Value**
+
+-ENOMEM: if no memory to allocate the error or show blocks.
+
+0: success
+
+### Adjusting Router Buffer Pools
+
+```
+/*
+ * lustre_lnet_config_buf
+ *   Send down an IOCTL to configure buffer sizes.  A value of 0 means
+ *   default that particular buffer to default size. A value of -1 means
+ *   leave the value of the buffer unchanged.
+ *
+ *   tiny - tiny buffers
+ *   small - small buffers
+ *   large - large buffers.
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_config_buf(int tiny,
+                  int small,
+                  int large,
+                  int seq_no,
+                  cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_ADD_BUF
+
+**Description:**
+
+This API is used to configure the tiny, small and large router buffers dynamically. These buffers are used to buffer messages which are being routed to other nodes. The minimum value of these buffers per CPT are:
+
+```
+#define LNET_NRB_TINY_MIN     512
+#define LNET_NRB_SMALL_MIN    4096
+#define LNET_NRB_LARGE_MIN    256
+```
+
+The default values of these buffers are:
+
+```
+#define LNET_NRB_TINY         (LNET_NRB_TINY_MIN * 4)
+#define LNET_NRB_SMALL        (LNET_NRB_SMALL_MIN * 4)
+#define LNET_NRB_LARGE        (LNET_NRB_LARGE_MIN * 4)
+```
+
+These default value is divided evenly across all CPTs. However, each CPT can only go as low as the minimum.
+
+Multiple calls to this API with the same values has no effect
+
+**Return Value**
+
+-ENOMEM: if no memory to allocate buffer pools.
+
+0: success
+
+### Showing Routing information
+
+```
+/*
+ * lustre_lnet_show_routing
+ *   Send down an IOCTL to dump buffers and routing status
+ *   This function is used to dump buffers for all CPU partitions.
+ *
+ *   show_rc - [OUT] The show output in YAML.  Must be freed by caller.
+ *   err_rc - [OUT] struct cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_lnet_show_routing(int seq_no, struct cYAML **show_rc,
+                                    struct cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_GET_BUF
+
+**Description:**
+
+This API returns a cYAML block describing the values of each of the following per CPT:
+
+1. The number of pages per buffer. This is a constant.
+2. The number of allocated buffers. This is a constant.
+3. The number of buffer credits . This is a real-time value of the number of buffer credits currently available. If this value is negative, that indicates the number of queued messages.
+4. The lowest number of credits ever reached in the system. This is historical data.
+
+The show block also returns the status of routing, whether enabled, or disabled.
+
+An exmaple YAML block
+
+```
+routing:
+    - cpt[0]:
+          tiny:
+              npages: 0
+              nbuffers: 2048
+              credits: 2048
+              mincredits: 2048
+          small:
+              npages: 1
+              nbuffers: 16384
+              credits: 16384
+              mincredits: 16384
+          large:
+              npages: 256
+              nbuffers: 1024
+              credits: 1024
+              mincredits: 1024
+    - enable: 1
+```
+
+**Return Value**
+
+-ENOMEM: if no memory to allocate the show or error block.
+
+0: success
+
+### Showing LNet Traffic Statistics
+
+```
+/*
+ * lustre_lnet_show_stats
+ *   Shows internal LNet statistics.  This is useful to display the
+ *   current LNet activity, such as number of messages route, etc
+ *
+ *     seq_no - sequence number of the command
+ *     show_rc - YAML structure of the resultant show
+ *     err_rc - YAML strucutre of the resultant return code.
+ */
+extern int lustre_lnet_show_stats(int seq_no, cYAML **show_rc,
+                  cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+IOC_LIBCFS_GET_LNET_STATS
+
+**Description:**
+
+This API returns a cYAML block describing the LNet traffic statistics. Statistics are continuously incremented by LNet while it's alive. This API retuns the statistics at the time of the API call. The statistics include the following
+
+1. Number of messages allocated
+2. Maximum number of messages in the system
+3. Errors allocating or sending messages
+4. Cumulative number of messages sent
+5. Cumulative number of messages received
+6. Cumulative number of messages routed
+7. Cumulative number of messages dropped
+8. Cumulative number of bytes sent
+9. Cumulative number of bytes received
+10. Cumulative number of bytes routed
+11. Cumulative number of bytes dropped
+
+An exmaple YAML block
+
+```
+statistics:
+    msgs_alloc: 0
+    msgs_max: 0
+    errors: 0
+    send_count: 0
+    recv_count: 0
+    route_count: 0
+    drop_count: 0
+    send_length: 0
+    recv_length: 0
+    route_length: 0
+    drop_length: 0
+```
+
+**Return Value**
+
+-ENOMEM: if no memory to allocate the show or error block.
+
+0: success
+
+### Adding/Deleting/Showing Parameters through a YAML Block
+
+```
+/*
+ * lustre_yaml_config
+ *   Parses the provided YAML file and then calls the specific APIs
+ *   to configure the entities identified in the file
+ *
+ *   f - YAML file
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_yaml_config(char *f, cYAML **err_rc);
+
+/*
+ * lustre_yaml_del
+ *   Parses the provided YAML file and then calls the specific APIs
+ *   to delete the entities identified in the file
+ *
+ *   f - YAML file
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_yaml_del(char *f, cYAML **err_rc);
+
+/*
+ * lustre_yaml_show
+ *   Parses the provided YAML file and then calls the specific APIs
+ *   to show the entities identified in the file
+ *
+ *   f - YAML file
+ *   show_rc - [OUT] The show output in YAML.  Must be freed by caller.
+ *   err_rc - [OUT] cYAML tree describing the error. Freed by caller
+ */
+extern int lustre_yaml_show(char *f,
+                cYAML **show_rc,
+                cYAML **err_rc);
+```
+
+**IOCTL to Kernel:**
+
+Depends on the entity being configured
+
+**Description:**
+
+These APIs add/remove/show the parameters specified in the YAML file respectively. The entities don't have to be uniform. Multiple different entities can be added/removed/showed in one YAML block.
+
+An example YAML block
+
+```
+---
+net:
+    - nid: 192.168.206.132@tcp
+      status: up
+      interfaces:
+          0: eth3
+      tunables:
+          peer_timeout: 180
+          peer_credits: 8
+          peer_buffer_credits: 0
+          credits: 256
+          SMP: "[0]"
+route:
+   - net: tcp6
+     gateway: 192.168.29.1@tcp
+     hop: 4
+     detail: 1
+     seq_no: 3
+   - net: tcp7
+     gateway: 192.168.28.1@tcp
+     hop: 9
+     detail: 1
+     seq_no: 4
+buffer:
+   - tiny: 1024
+     small: 2000
+     large: 512
+...
+```
+
+**Return Value**
+
+Return value will correspond to the return value of the API that will be called to operate on the configuration item, as described in previous sections
+
+### Adding a route code example
+
+```
+int main(int argc, char **argv)
+{
+	char *network = NULL, *gateway = NULL;
+	long int hop = -1, prio = -1;
+	struct cYAML *err_rc = NULL;
+	int rc, opt;
+	optind = 0;
+
+	const char *const short_options = "n:g:c:p:h";
+	const struct option long_options[] = {
+		{ "net", 1, NULL, 'n' },
+		{ "gateway", 1, NULL, 'g' },
+		{ "hop-count", 1, NULL, 'c' },
+		{ "priority", 1, NULL, 'p' },
+		{ "help", 0, NULL, 'h' },
+		{ NULL, 0, NULL, 0 },
+	};
+
+	while ((opt = getopt_long(argc, argv, short_options,
+				   long_options, NULL)) != -1) {
+		switch (opt) {
+		case 'n':
+			network = optarg;
+			break;
+		case 'g':
+			gateway = optarg;
+			break;
+		case 'c':
+			rc = parse_long(optarg, &hop);
+			if (rc != 0) {
+				/* ignore option */
+				hop = -1;
+				continue;
+			}
+			break;
+		case 'p':
+			rc = parse_long(optarg, &prio);
+			if (rc != 0) {
+				/* ingore option */
+				prio = -1;
+				continue;
+			}
+			break;
+		case 'h':
+			print_help(route_cmds, "route", "add");
+			return 0;
+		default:
+			return 0;
+		}
+	}
+
+	rc = lustre_lnet_config_route(network, gateway, hop, prio, -1, &err_rc);
+
+	if (rc != LUSTRE_CFG_RC_NO_ERR)
+		cYAML_print_tree2file(stderr, err_rc);
+
+	cYAML_free_tree(err_rc);
+
+	return rc;
+}       
+```
+
+For other code examples refer to
+
+```
+lnet/utils/lnetctl.c
+```
+

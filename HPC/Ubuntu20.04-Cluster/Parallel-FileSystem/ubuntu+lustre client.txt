@@ -1,0 +1,51 @@
+https://developer.aliyun.com/article/425434
+
+Lustre 是一个透明的全局文件系统，客户端可以透明地访问集群文件系统中的数据，而无需知道这些数据的实际存储位置。客户端通过网络读取服务器上的数据，存储服务 器负责实际文件系统的读写操作以及存储设备的连接，元数据服务器负责文件系统目录结构、文件权限和文件的扩展属性以及维护整个文件系统的数据一致性和响应 客户端的请求。 Lustre把文件当作由元数据服务器定位的对象，元数据服务器指导实际的文件I/O请求到存储服务器，存储服务器管理在基于对象的磁盘组上的物理存储。 由于采用元数据和存储数据相分离的技术，可以充分分离计算和存储资源，使得客户端计算机可以专注于用户和应用程序的请求；存储服务器和元数据服务器专注于 读、传输和写数据。存储服务器端的数据备份和存储配置以及存储服务器扩充等操作不会影响到客户端，存储服务器和元数据服务器均不会成为性能瓶颈。
+
+Starting with kernel 5.15.0-1015-aws, Ubuntu 20.04 is supported for Lustre 2.12 clients, for both x86 and Arm based instances. Previous supported kernel versions are the Lustre 2.10 clients.
+
+You can get Lustre packages from the Ubuntu 20.04 Amazon FSx repository. To validate that the contents of the repository have not been tampered with before or during download, a GNU Privacy Guard (GPG) signature is applied to the metadata of the repository. Installing the repository fails unless you have the correct public GPG key installed on your system.
+
+Open a terminal on your client.
+
+Follow these steps to add the Amazon FSx Ubuntu repository:
+
+If you have not previously registered an Amazon FSx Ubuntu repository on your client instance, download and install the required public key. Use the following command.
+
+wget -O - https://fsx-lustre-client-repo-public-keys.s3.amazonaws.com/fsx-ubuntu-public-key.asc | gpg --dearmor | sudo tee /usr/share/keyrings/fsx-ubuntu-public-key.gpg >/dev/null
+
+
+Add the Amazon FSx package repository to your local package manager using the following command.
+
+sudo bash -c 'echo "deb [signed-by=/usr/share/keyrings/fsx-ubuntu-public-key.gpg] https://fsx-lustre-client-repo.s3.amazonaws.com/ubuntu focal main" > /etc/apt/sources.list.d/fsxlustreclientrepo.list && apt-get update'
+
+
+Determine which kernel is currently running on your client instance, and update as needed. The Lustre client on Ubuntu 20.04 requires kernel 5.4.0-1011-aws or later for x86-based EC2 instances and kernel 5.4.0-1015-aws or later for Arm-based EC2 instances powered by AWS Graviton processors.
+
+Run the following command to determine which kernel is running.
+
+uname -r
+
+Run the following command to update to the latest Ubuntu kernel and Lustre version and then reboot.
+sudo apt install -y linux-aws lustre-client-modules-aws && sudo reboot
+
+
+If your kernel version is greater than 5.4.0-1011-aws for x86-based EC2 instances, or greater than 5.4.0-1015-aws for Graviton-based EC2 instances, and you don’t want to update to the latest kernel version, you can install Lustre for the current kernel with the following command.
+
+sudo apt install -y lustre-client-modules-$(uname -r)
+
+
+The two Lustre packages that are necessary for mounting and interacting with your FSx for Lustre file system are installed. You can optionally install additional related packages such as a package containing the source code and packages containing tests that are included in the repository.
+
+List all available packages in the repository by using the following command.
+
+sudo apt-cache search ^lustre
+
+(Optional) If you want your system upgrade to also always upgrade Lustre client modules, make sure that the lustre-client-modules-aws package is installed using the following command.
+
+sudo apt install -y lustre-client-modules-aws
+
+
+
+
+
