@@ -1,0 +1,59 @@
+首先，安装Yum工具：   apt install yum
+
+然后，Steps to Install an RPM Package on Ubuntu
+
+https://phoenixnap.com/kb/install-rpm-packages-on-ubuntu
+
+(1) 将rpm安装包转换为deb包
+
+Install Alien Package
+
+To improve the stability of the installation process, we need to convert the .rpm file to a .deb file format.
+
+Alien is a useful tool that facilitates conversions between Red Hat rpm, Debian deb, Stampede slp, Slackware tsz, and Solaris pkg file formats.
+
+To install Alien follow these steps:
+
+1. Check the status of the Universe distribution component:
+
+sudo add-apt-repository universe
+
+2. Make sure that your repositories are up-to-date:
+
+sudo apt-get update
+
+3. The following command installs the Alien conversion tool:
+
+sudo apt-get install alien
+
+Convert .rpm Files to .deb Format
+Now that Alien has been installed, it’s time to convert the files to the .deb format to complete the installation. Go to the folder where the .rpm file is located and enter the following command:
+
+sudo alien packagename.rpm
+
+This command instructs the Alien tool to initiate the conversion process of the .rpm file to a .deb file.
+
+Install the converted .rpm package on Ubuntu
+Once the conversion has run its course, enter the following command to start the installation:
+
+sudo dpkg –i packagename.deb
+
+You have successfully installed a converted .rpm file on Ubuntu.
+
+(2)直接安装rpm包（Ubuntu）
+
+The command we’ll use below installs a .rpm package in Ubuntu without previously converting it to a .deb file format.
+
+This command can lead to serious compatibility issues if you attempt to run it with important system packages. RPM was not developed initially for Debian based distributions. As we have already installed Alien, we can use the tool to install RPM packages without the need to convert them first.
+
+To complete this action, enter this command:
+
+sudo alien –i packagename.rpm
+
+You have now directly installed an RPM package on Ubuntu. Keep in mind that installing packages in formats that are not native to Ubuntu can pose a significant risk.
+
+Conclusion
+
+By following the tutorial, you have installed an RPM package on Ubuntu. Understanding the installation processes and the available options significantly reduce the likelihood of something going wrong. Check out our article on how to use the RPM command in Linux.
+
+If you were planning to update essential system packages, a better option would be to use Ubuntu repositories and find adequate alternative packages.
