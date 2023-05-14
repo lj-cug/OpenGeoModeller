@@ -1,34 +1,37 @@
-假设主机名是 manager，计算节点机器主机名是 worker
+## SSH免密码登录设置
 
-Step 1: Configure your hosts file
+控制节点主机名：  lijian-cug
+3个计算节点的主机名：lijian-1   lijian-2   lijian-3
+
+Step 1: 配置host文件（控制节点）
 $ cat /etc/hosts
 
 127.0.0.1       localhost
-172.50.88.34    worker
+192.168.1.86    lijian-cug
+192.168.1.150   lijian-1
+192.168.1.80    lijian-2
+192.168.1.246   lijian-3
 
-Step 2: Create a new user  （非必须）
-$ sudo adduser lijian
+Step 2: 设置SSH
+$ sudo apt-get install openssh-server    # 控制节点上安装ssh服务器
 
-Step 3: Setting up SSH
-$ sudo apt--get install openssh-server    # 控制节点
-
+##测试ssh登录
 ssh username@hostname   # 此时登录，需要输入username的密码，
 
-# To enable more easier login, we generate keys and copy them to other machines’ list of authorized_keys.
+##为了免密码登录ssh，需要生成keys，然后复制到计算节点机器的authorized_keys列表中
 $ ssh-keygen -t dsa
-$ ssh-copy-id worker   #ip-address may also be used
+$ ssh-copy-id 192.168.1.150      # 第一次copy，需要输入密码 
+$ ssh-copy-id 192.168.1.80
+$ ssh-copy-id 192.168.1.246
 
-# Do the above step for each of the worker machines and your own user (localhost).
-
-# 现在，启动密码ssh登录：
-$ eval `ssh-agent`
+##启动密码ssh登录
+$ eval 'ssh-agent'
 $ ssh-add ~/.ssh/id_dsa
 
-# ssh登录
-$ ssh worker
+##ssh免密码登录测试
+$ ssh lijian-1    # lijian-2  lijain-3
 
-Step 4: Setting up NFS
-
+Step 4: 设置 NFS
 # NFS-server
 $ sudo apt-get install nfs-kernel-server   # 控制节点
 
@@ -41,35 +44,35 @@ $  cat /etc/exports
 
 $ exportfs -a
 
-# 重启NFS服务端
+# 重启NFS控制节点
 $ sudo service nfs-kernel-server restart
 
-# NFS-worker
+# NFS计算节点
 $ sudo apt-get install nfs-common
-$ mkdir nfs
+$ mkdir /home/lijian/nfs -p
 
 # 挂载共享文件夹
-$ sudo mount -t nfs manager:/home/lijian/nfs /home/lijian/nfs
+$ sudo mount -t nfs 192.168.1.86:/home/lijian/nfs /home/lijian/nfs
 
 # 检查挂载的路径
 $ df -h
 Filesystem      		    Size  Used Avail Use% Mounted on
 manager:/home/lijian/nfs  49G   15G   32G  32% /home/lijian/nfs
 
-# 使挂载永久生效
+# 使计算节点上的nfs挂载永久生效
 $ cat /etc/fstab
-#MPI CLUSTER SETUP
-manager:/home/lijian/nfs /home/lijian/nfs nfs
 
-Step 5: Running MPI programs
+192.168.1.86:/home/lijian/nfs /home/lijian/nfs nfs
+
+Step 5: 测试运行MPI可执行程序
 $ mpicc -o mpi_sample mpi_sample.c    # 编译测试用mpi程序
 
-# 将可执行程序拷贝到manager的共享文件夹下
+# 将可执行程序拷贝到lijian-cug的共享文件夹nfs下
 $ cd nfs/
 $ pwd
 /home/lijian/nfs
 
-# 在manager主机上运行
+# 在控制节点上运行
 $ mpirun -np 2 ./cpi     # No. of processes = 2
 
 # 在集群上运行
