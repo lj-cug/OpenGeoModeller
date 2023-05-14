@@ -19,7 +19,7 @@ $ sudo apt-get install openssh-server    # 控制节点上安装ssh服务器
 ssh username@hostname   # 此时登录，需要输入username的密码，
 
 ##为了免密码登录ssh，需要生成keys，然后复制到计算节点机器的authorized_keys列表中
-$ ssh-keygen -t dsa
+$ ssh-keygen -t rsa
 $ ssh-copy-id 192.168.1.150      # 第一次copy，需要输入密码 
 $ ssh-copy-id 192.168.1.80
 $ ssh-copy-id 192.168.1.246
@@ -61,8 +61,7 @@ manager:/home/lijian/nfs  49G   15G   32G  32% /home/lijian/nfs
 
 # 使计算节点上的nfs挂载永久生效
 $ cat /etc/fstab
-
-192.168.1.86:/home/lijian/nfs /home/lijian/nfs nfs
+192.168.1.86:/home/lijian/nfs /home/lijian/nfs nfs defaults,_netdev 0 0 
 
 Step 5: 测试运行MPI可执行程序
 $ mpicc -o mpi_sample mpi_sample.c    # 编译测试用mpi程序
