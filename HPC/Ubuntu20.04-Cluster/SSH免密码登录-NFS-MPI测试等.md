@@ -20,19 +20,21 @@ ssh username@hostname   # 此时登录，需要输入username的密码，
 
 ##为了免密码登录ssh，需要生成keys，然后复制到计算节点机器的authorized_keys列表中
 $ ssh-keygen -t rsa
-$ ssh-copy-id 192.168.1.150      # 第一次copy，需要输入密码 
-$ ssh-copy-id 192.168.1.80
-$ ssh-copy-id 192.168.1.246
+~./ssh 路径下会生成rsa公钥和私钥，接着：
+scp rsa.pub lijian@lijian-1:/home/lijian
+mv /home/lijian/rsa.pub ~/.ssh
+cd ~/.ssh
+cat rsa.pub >> authorized_keys    # ok!
 
-##启动密码ssh登录
-$ eval 'ssh-agent'
-$ ssh-add ~/.ssh/id_dsa
+或者
+
+# 第一次copy，需要输入密码 
+$ ssh-copy-id 192.168.1.150       # copy到哪去了呢?
 
 ##ssh免密码登录测试
-$ ssh lijian-1    # lijian-2  lijain-3
+$ ssh 192.168.1.150    # 现在不需要输入密码了
 
-Step 4: 设置 NFS
-# NFS-server
+Step 4: 控制节点上设置 NFS
 $ sudo apt-get install nfs-kernel-server   # 控制节点
 
 $ mkdir nfs   # 创建网络共享文件夹
@@ -41,13 +43,14 @@ $ mkdir nfs   # 创建网络共享文件夹
 $  cat /etc/exports
 /home/lijian/nfs 192.168.1.150(rw,sync,no_root_squash,no_subtree_check)
 /home/lijian/nfs 192.168.1.225(rw,sync,no_root_squash,no_subtree_check)
+/home/lijian/nfs 192.168.1.80(rw,sync,no_root_squash,no_subtree_check)
 
 $ exportfs -a
 
 # 重启NFS控制节点
 $ sudo service nfs-kernel-server restart
 
-# NFS计算节点
+# 计算节点安装NFS
 $ sudo apt-get install nfs-common
 $ mkdir /home/lijian/nfs -p
 
@@ -92,9 +95,6 @@ $ cat /etc/hosts
 172.50.88.22	manager
 172.50.88.56 	worker1
 172.50.88.34 	worker2
-172.50.88.54	worker3
-172.50.88.60 	worker4
-172.50.88.46	worker5
 
 各worker节点，需要manager入口的IP地址和对应的worker节点的IP地址，例如：
 $ cat /etc/hosts
@@ -126,5 +126,3 @@ n1 slots=1
 n2 slots=2
 n3 slots=2
 n4 slots=4
-
-(5) --hostfile ?   --machinefile ?
