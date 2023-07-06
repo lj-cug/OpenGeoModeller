@@ -1,0 +1,25 @@
+安装桌面组件，需要一些时间
+echo "y"|sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager
+
+配置dbus避免出现错误
+dpkg-reconfigure dbus && service dbus restart
+
+四、配置桌面
+
+
+
+五、安装中文支持并配置profile文件
+在WSL上另外打开一个终端，执行以下命令安装中文支持（如当前用户不是root，则命令前加上sudo）
+apt-get -y install language-pack-zh-hans
+
+将以下环境变量添加到/etc/profile 文件中
+export DISPLAY=localhost:0
+export LANG=zh_CN.UTF-8 
+export LANGUAGE=zh_CN.UTF-8 
+export LC_ALL=zh_CN.UTF-8
+
+重新加载profile
+source /etc/profile
+
+重新完成locale
+sudo locale-gen

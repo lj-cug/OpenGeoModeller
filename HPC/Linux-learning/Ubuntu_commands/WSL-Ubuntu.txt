@@ -1,0 +1,53 @@
+wsl --install -d Ubuntu
+
+wsl --install
+# or, if already installed
+wsl --update
+# confirm 1.0.0 or later via:
+wsl --version
+
+apt install gedit 
+gedit
+(1)
+错误：(gedit:8798): Gtk-WARNING **: 19:51:33.161: cannot open display:
+问题：Opening Ubuntu 20.04 Desktop on WSL2
+解决：https://askubuntu.com/questions/1252007/opening-ubuntu-20-04-desktop-on-wsl2/1365455#1365455
+Xfce
+sudo apt install xrdp xfce4
+# If asked, select lightdm, although it probably doesn't matter
+
+# Optionally, back up the default config
+sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
+
+# Windows Pro and higher are often already running RDP on 3389
+# Prevent conflicts:
+sudo sed -i 's/3389/3390/g' /etc/xrdp/xrdp.ini
+
+# Prevent Wayland from being used in Xrdp
+echo "export WAYLAND_DISPLAY=" > ~/.xsessionrc
+
+# Optional, if you only have one desktop environment installed
+echo startxfce4 > ~/.xsession 
+
+sudo service xrdp start
+
+And that's it -- You should be able to connect to your WSL Desktop using the built-in Remote Desktop Connection app. The computer to connect to will be localhost:3390. Make sure Xorg is selected as the Session type.
+
+下载Xwing:  https://sourceforge.net/projects/xming/files/latest/download
+运行Xlaunch 或 Xwing
+
+(2) WSL2 Ubuntu使用清华源TUNA更新
+http://www.taodudu.cc/news/show-5117642.html?action=onClick
+
+gedit /etc/apt/sources.list
+
+# Ubuntu 20.04 清华源
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+WSL 的存储路径：  file://wsl%24/Ubuntu/home/lijian/
+
+
+
