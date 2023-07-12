@@ -11,7 +11,7 @@
 3.  GroundWater: 地下水及多孔介质流动模拟，包含：MODFLOW, MPLBM-UT
 4.	Seismics: 地震数据处理与解释，OpendTect-6.6, Dave's JTK (Java)
 5.  VirtualReality: 虚拟现实(VR)，在线可视化(In-situ)
-6.  HPC: 高性能计算集群，包含：软硬件安装, OpenMP, MPI, CUDA (GPGPU), OneAPI, HPX等
+6.  HPC-Base: 高性能计算基座，包含：软硬件安装, OpenMP, MPI, CUDA (GPGPU), OneAPI, HPX等
 7.  ESM-Coupler: 地球系统模式+耦合器，包含：RegESM, ESMF, BMI等
 8.  Reservoir: 油气藏模拟，黑油模式(OMP),水力压裂(GEOSX, VPFHF),地热模拟waiwera, THMC模拟OpenGeosys
 9.  Geophysics: 地球物理正演及反演，OpenSWPC, Seissol, 层析成像TOMO3D, 全波形反演Devito,JUDI
@@ -35,7 +35,7 @@
 
 ## 合作与共赢
 
-	有对这个项目感兴趣的同仁，一块研究，提高地球科学数值模拟的研究。
+有对这个项目感兴趣的同仁，一块研究，提高地球科学数值模拟的研究。
 
-作者简介：李健，QQ: 94207625   	email: jianli@cug.edu.cn   
+作者简介：李健，QQ: 94207625        	email: jianli@cug.edu.cn   
 		  [微信QR](./Author/QR-code.jpg)

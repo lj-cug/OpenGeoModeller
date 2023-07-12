@@ -8,4 +8,42 @@
 
 基于Python脚本的网格快速生成，以及不同格式网格文件之间的转换
 
+## meshio
+
+## GMSH
+
+## JIGSAW
+
+## OCSMesh
+
+非结构网格快速生成工具，针对SCHISM模型的网格文件格式(.gr3)
+
+OCSMesh: a data-driven automated unstructured mesh generation software for coastal ocean modeling. NOAA Technical Memorandum NOS CS 47, 2021
+
+## mesher
+
+可根据地形变化、植被类型及其他网格优化要求（包括物理过程的特点），生成非结构化网格，针对分布式水文模型的三角网格生成
+
+Christopher B. Marsh, et al. Multi-objective unstructured triangular mesh generation for use in hydrological and land surface models. Computers and Geosciences 119 (2018) 49–67
+
+
+## 非结构网格编辑工具
+### ACE Tools
+
+SCHISM模拟自带的gr3格式的非结构网格的编辑工具，包括：设置边界条件等
+
+### ADMESH
+
+### BatTri
+
+MATLAB GUI编程的三角形网格编辑工具，包括：区域切割、合并等操作
+
+### CutMesh
+
+### LaGridT
+
+### 我自己编程的网格处理工具
+
+包括：地形插值、初始条件及边界条件设置、Gambit软件生成的中间网格文件格式转换、时间序列文件生成等
+
 
