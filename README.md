@@ -12,7 +12,7 @@
 4.	Seismics: 地震数据处理与解释，OpendTect-6.6, Dave's JTK (Java)
 5.  VirtualReality: 虚拟现实(VR)，在线可视化(In-situ)
 6.  HPC: 高性能计算集群，包含：软硬件安装, OpenMP, MPI, CUDA (GPGPU), OneAPI, HPX等
-7.  ESM: 地球系统耦合模式，区域性地球耦合模拟系统RegESM
+7.  ESM-Coupler: 地球系统模式+耦合器，包含：RegESM, ESMF, BMI等
 8.  Reservoir: 油气藏模拟，黑油模式(OMP),水力压裂(GEOSX, VPFHF),地热模拟waiwera, THMC模拟OpenGeosys
 9.  Geophysics: 地球物理正演及反演，OpenSWPC, Seissol, 层析成像TOMO3D, 全波形反演Devito,JUDI
 10. ShallowWater: 浅水方程相关的模拟, Titan2d (滑坡), OP2-Volna(海啸-DSL), Triton (GPU-Flood), LISFLOOD-FP-8.0 (DG2-Flood)
