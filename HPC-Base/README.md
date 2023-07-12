@@ -18,5 +18,17 @@
 	
 	基于Nvidia GPU的通用异构并行环境搭建手册
 	
+## Solver
+
+    线性方程组(Ax=b)的高效求解器
+	
+### Amgx
+	
+	Nvidia公司开源的GPU集群并行求解器
+	
+	PETSc-Amgx
+	
+### AmgCL
+
 	
 	
