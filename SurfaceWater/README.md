@@ -12,4 +12,7 @@
    5.  openTELEMAC模式：平面二维，线性有限元，法国电力公司,EDF
    6.  DGSWE模式：平面二维，间断Galerkin法，高阶
    7.  WaveWatch-III: 波浪模型
+   8.  CROCO：AMR技术的海洋动力学模型
+   9.  NEMO-4.0：欧洲开发的3D海洋动力学模型
+   10.
 
