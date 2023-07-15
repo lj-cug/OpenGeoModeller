@@ -14,6 +14,13 @@
 
 而隐式地质建模，仅需要地质体的梯度或dip-azimuth等地震属性数据的势场插值，就能得到地质建模文件，无需手工介入，但由于对计算机内存和计算性能要求较高，近5年来才有可用的计算机程序供使用
 
-当前的隐式建模Python工具主要是： GemPy和LoopStructural
+当前的隐式建模Python工具主要是：GemPy和LoopStructural
 
+## Gempy
+
+德国亚琛工业大学开发的隐式地质建模Python程序
+
+## LoopStructural
+
+澳大利亚开发的隐式地质建模Python程序
 
