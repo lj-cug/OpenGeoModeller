@@ -9,7 +9,7 @@
 1.  Meterology: 气象模式，WRF, RegCM
 2.  SurfaceWater: 地表水模拟系统，SCHISM, telemac, shyfem, SUNTANS, DGSWE
 3.  GroundWater: 地下水及多孔介质流动模拟，包含：MODFLOW, MPLBM-UT
-4.	Seismics: 地震数据处理与解释，OpendTect-6.6, Dave's JTK (Java)
+4.	Seismics-Interpretation: 地震数据处理与解释，OpendTect-6.6, Dave's JTK (Java)
 5.  VirtualReality: 虚拟现实(VR)，在线可视化(In-situ)
 6.  HPC-Base: 高性能计算基座，包含：软硬件安装, OpenMP, MPI, CUDA (GPGPU), OneAPI, HPX等
 7.  ESM-Coupler: 地球系统模式+耦合器，包含：RegESM, ESMF, BMI等

@@ -1,4 +1,4 @@
-# Seismics
+# Seismics-Interpretation
 
 ## Opendtect-6.6
 
