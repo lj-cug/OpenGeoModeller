@@ -6,17 +6,17 @@
 
 ## 仓库内容
 
-1.  Meterology: 气象模式，WRF, RegCM
-2.  SurfaceWater: 地表水模拟系统，SCHISM, telemac, shyfem, SUNTANS, DGSWE
-3.  GroundWater: 地下水及多孔介质流动模拟，包含：MODFLOW, MPLBM-UT
+1.  Meterology: 数值气象预报(NWP)，WRF, RegCM
+2.  SurfaceWater: 地表水(河流, 海洋)模拟及网格生成，SCHISM, telemac, shyfem, SUNTANS, DGSWE, dgswemv2, ADCIRC, WW3, CROCO, NEMO, firedrake, ...
+3.  GroundWater: 地下水及多孔介质流动模拟，MODFLOW, MPLBM-UT, ...
 4.	Seismics-Interpretation: 地震数据处理与解释，OpendTect-6.6, Dave's JTK (Java)
-5.  VirtualReality: 虚拟现实(VR)，在线可视化(In-situ)
-6.  HPC-Base: 高性能计算基座，包含：软硬件安装, OpenMP, MPI, CUDA (GPGPU), OneAPI, HPX等
-7.  ESM-Coupler: 地球系统模式+耦合器，包含：RegESM, ESMF, BMI等
-8.  Reservoir: 油气藏模拟，黑油模式(OMP),水力压裂(GEOSX, VPFHF),地热模拟waiwera, THMC模拟OpenGeosys
-9.  Geophysics: 地球物理正演及反演，OpenSWPC, Seissol, 层析成像TOMO3D, 全波形反演Devito,JUDI
-10. ShallowWater: 浅水方程相关的模拟, Titan2d (滑坡), OP2-Volna(海啸-DSL), Triton (GPU-Flood), LISFLOOD-FP-8.0 (DG2-Flood)
-11. Hydrology：基于物理机制的分布式水文模拟及其耦合模拟
+5.  VirtualReality: 虚拟现实(VR), 在线可视化(In-situ), 集群图形渲染, ...
+6.  HPC-Base: 高性能计算基座，包含：OpenMP, MPI, CUDA (GPGPU), OneAPI, HPX, ...
+7.  ESM-Coupler: 地球系统模式+耦合器，包含：RegESM, ESMF, BMI, ...
+8.  Reservoir: 黑油模式(OMP),水力压裂(GEOSX, VPFHF),地热模拟(waiwera), THMC模拟(OpenGeosys), ...
+9.  Geophysics: 地球物理正反演，OpenSWPC, Seissol, 层析成像TOMO3D, 全波形反演Devito, JUDI
+10. ShallowWater: 浅水方程求解, Titan2d (滑坡), OP2-Volna(海啸-DSL), Triton (GPU-Flood), LISFLOOD-FP-8.0 (DG2-Flood)
+11. Hydrology：基于物理机制的分布式水文模拟及其耦合模拟, PIHM, CHM, ParFLOW, GSFLOW, ...
 
 ## 仓库建设目的
 
