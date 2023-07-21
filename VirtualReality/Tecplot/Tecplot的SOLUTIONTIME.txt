@@ -1,0 +1,22 @@
+
+tecplot 在使用dynamic text 时 &（solutiontime）如何保留有效数字？
+
+To display the message "Maximum contour value is: xxxxxx" where xxxxxx only has two digits to the right of the decimal place. You would use:
+
+"Maximum contour value is: &(MAXC%.2f)"
+
+If |MAXC| currently has a value of 356.84206 then the dialog would show:
+
+"Maximum contour value is: 356.84"
+
+
+
+
+所以这样引用 &(SOLUTIONTIME%.2f)即可，与C语言格式化字符串类似。 
+STRANDID一定要>=1
+使用TEC360的格式风格:
+VARIABLES = "x", "y", "a","b"
+ZONE T="test"
+DATAPACKING=POINT
+Nodes=5, Elements=4, ZONETYPE=FETriangle
+STRANDID =1, SOLUTIONTIME = 10.5

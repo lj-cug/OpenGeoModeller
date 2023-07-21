@@ -1,0 +1,96 @@
+implicit double precision (a-h,o-z)
+implicit integer (i-k)
+character*80 files
+integer ver
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!parameter(kNode=11730,kMesh=12659,Mesh=12159,ncheck=32,files='case2.neu') 
+!parameter(incount=14,outcount=7)
+
+parameter(kNode=121,kMesh=100,Mesh=100,ncheck=32) 
+parameter(incount=14,outcount=14)
+
+
+logical Zero_Turbluent_Model_Method1,Zero_Turbluent_Model_Method2,Zero_Turbluent_Model_Method3,Zero_Turbluent_Model_Method4,K_E_Turbluent_Model,Algebraic_Turbluent_Model
+
+logical Quick_normal,Quick_no_normal,two_order_normal,quick_boundary_given
+
+logical UD,CD,CD_no_delay,Hybrid,Power,Exponent,QUICK_delay1,QUICK_delay2,QUICK_no_delay1,QUICK_no_delay2,Helmit
+
+logical UD1,CD1,CD_aid,Hybrid1,Power1,Exponent1,QUICK1,QUICK2,Helmit1,Gradnormal1
+
+logical PUD1,PCD1,PCD_aid,PHybrid1,PPower1,PExponent1,PQUICK1,PQUICK2,PHelmit1,PGradnormal1 
+
+logical Grad1,Gereen2,Grad_normal3,aid4,correction5,correction6,correction7
+
+
+common/logical5/ Zero_Turbluent_Model_Method1,Zero_Turbluent_Model_Method2,Zero_Turbluent_Model_Method3,Zero_Turbluent_Model_Method4,K_E_Turbluent_Model,Algebraic_Turbluent_Model
+
+common/logical4/ Quick_normal,Quick_no_normal,two_order_normal,quick_boundary_given
+
+common/logical0/ Grad1,Gereen2,Grad_normal3,aid4,correction5,correction6,correction7
+
+common/logical1/   UD,CD,CD_no_delay,Hybrid,Power,Exponent,QUICK_delay1,QUICK_delay2,QUICK_no_delay1,QUICK_no_delay2,Helmit
+
+common/logical2/   UD1,CD1,CD_aid,Hybrid1,Power1,Exponent1,QUICK1,QUICK2,Helmit1,Gradnormal1
+
+common/logical3/   PUD1,PCD1,PCD_aid,PHybrid1,PPower1,PExponent1,PQUICK1,PQUICK2,PHelmit1,PGradnormal1
+
+common /coeff0/ iMaxIterate,N_CalPP
+
+common /coeff1/ fRelaxU,fRelaxV,fRelaxW,fRelaxK,fRelaxE,fRelaxC,fRelaxP,fRelaxPP, &
+			    fCu,C1,C2,fSigmaU1,fSigmaK,fSigmaE,fSigmaC,fC1eps,fC2eps,fC3eps,fPat,fa1,fa2,fa3,fError 
+                      
+common/coeff2/ iMType,iMaxi,iMaxMatVec,iActMatVeU,iActMatVeV,iActMatVeW,iActMatVeP,iActMatVeK,iActMatVeE,iActMatVeT
+common/coeff3/ fTolerance,fActErrorU,fActErrorV,fActErrorW,fActErrorP,fActErrorK,fActErrorE,fActErrorT
+               
+common /Nodes/ fNodeX(kNode),fNodeY(kNode),fNodeU(kNode),fNodeV(kNode),fNodeH1(kNode),fNodeH(kNode),fNodeK(kNode),fNodeE(kNode),fNodeC(kNode)
+
+common /Meshes/ iMeshNode(kMesh,4),fMeshVol(kMesh),fMeshCenX(kMesh),fMeshCenY(kMesh),&
+                iMeshNei(kMesh,4),fMeshtoNei(kMesh,4),fRatio(kMesh,4),fFaceNorX(kMesh,4), &
+				fFaceNorY(kMesh,4),fFaceArea(kMesh,4),fFaceArea0(kMesh,4),iMeshNei0(kMesh,4),iMeshNei1(kMesh,4),iMeshNei2(kMesh,4)
+
+common /vector/ tx(kMesh,4),ty(kMesh,4),rifx(kMesh,4),rify(kMesh,4), &
+                rpqx(kMesh,4),rpqy(kMesh,4),reqx(kMesh,4),reqy(kMesh,4) !,rx(kMesh,4),ry(kMesh,4)
+
+common /vector1/ dx(kMesh,4),dy(kMesh,4),fkx(kMesh,4),fky(kMesh,4),delx(kMesh,4),dely(kMesh,4)
+			      
+common /Variables/ fU(kMesh),fV(kMesh),fH(kMesh),fK(kMesh),fE(kMesh),fvotex(kMesh),fUpre(kMesh),fVpre(kMesh),fHpre(kMesh),fKpre(kMesh),fEpre(kMesh),fCpre(kMesh), &                                  				                                                             
+                   fRo(kmesh),fFaceRo(kmesh,4),fC(kmesh,1),    &         
+                   fapU(kMesh),fapV(kMesh),fapS(kMesh),fapK(kMesh),fapE(kMesh),fpx(kMesh),fpy(kMesh),            &
+                   fapU0(kMesh),fapV0(kMesh),fFaceH1(kmesh,4),fZ(kMesh),fDep(kMesh)
+
+common /FaceVariables/ fFaceU(kMesh,4),fFaceV(kMesh,4),fFaceH(kMesh,4),fFaceK(kMesh,4),fFaceE(kMesh,4),fFaceC(kmesh,4),fHprime(kmesh),fFaceDep(kMesh,4)
+
+common /grads/ fCgradsX(kMesh),fCgradsY(kMesh),fH1gradsX(kMesh),fH1gradsY(kMesh),fHgradsX(kMesh),fDepgradsX(kMesh),fDepgradsY(kMesh),fHgradsY(kMesh),fUgradsX(kMesh),fUgradsY(kMesh),fVgradsX(kMesh),fVgradsY(kMesh),fKgradsX(kMesh),fKgradsY(kMesh),fEgradsX(kMesh),fEgradsY(kMesh)
+
+
+common /Fluid/ fT_0,fG,fKappa,fCE,fMu(kMesh),fFaceMu(kMesh,4),fMut(kMesh),fFaceMut(kMesh,4),fN(kMesh)
+
+common /Flag/ iInput(kMesh),iOutput(kMesh),iWall(kMesh),&
+              iInputM,iOutputM,iWallM,iInputF(kMesh),iOutputF(kMesh),iWallF(kMesh)
+             
+common/node_used_by_element/ node_nei_ele(kNode,10),node_nei_ele_count(kNode),nside(kMesh)
+
+
+common/coeff4/ fUpUp1(kMesh,4),fUpUp2(kMesh,4),fUpUp3(kMesh,4),fUpUp4(kMesh,4)
+
+common/ff1/ff,iIterate,ntype,ffu0,ffv0,ffp0,ffpp0,ffK0,ffE0,iend0
+
+common /vector2/ rp1px(kMesh,4),rp1py(kMesh,4),ra1ax(kMesh,4),ra1ay(kMesh,4), &
+                 rp1fx(kMesh,4),rp1fy(kMesh,4),ra1fx(kMesh,4),ra1fy(kMesh,4)
+
+
+common/fua/ ua(ncheck),ua0(ncheck),xua(ncheck),yua(ncheck),iua(ncheck),L_VER,VER(5*kmesh,3)
+common/fva/ va(ncheck),va0(ncheck),xva(ncheck),yva(ncheck),cta,cta0,iva(ncheck)
+
+
+common /add1/npaside(kMesh,4,2),fRatio0(kMesh,4,2),xt(kMesh,4,2),yt(kMesh,4,2),rifx0(kMesh,4),rify0(kMesh,4),rifx1(kMesh,4),rify1(kMesh,4),fbp0(kMesh),afa
+
+common /add2/ IPISO,ischeme,iterpolationU,iterpolationP
+
+common /time/t,dt
+
+
+common/flows/fin,fout,fQ,fHup,fHdown

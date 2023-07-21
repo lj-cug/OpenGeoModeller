@@ -14,6 +14,8 @@
 
 ## JIGSAW
 
+DARREN ENGWIRDA. Locally Optimal Delaunay-refinement and Optimisation-based Mesh Generation
+
 ## OCSMesh
 
 非结构网格快速生成工具，针对SCHISM模型的网格文件格式(.gr3)
@@ -26,15 +28,23 @@ OCSMesh: a data-driven automated unstructured mesh generation software for coast
 
 Christopher B. Marsh, et al. Multi-objective unstructured triangular mesh generation for use in hydrological and land surface models. Computers and Geosciences 119 (2018) 49–67
 
+## OceanMesh2D
+
+Keith J. Roberts, et al. OceanMesh2D 1.0: MATLAB-based software for two-dimensional unstructured mesh generation in coastal ocean modeling. Geosci. Model Dev., 12, 1847–1868, 2019
 
 ## 非结构网格编辑工具
+
 ### ACE Tools
 
 SCHISM模拟自带的gr3格式的非结构网格的编辑工具，包括：设置边界条件等
 
 ### ADMESH
 
+Colton J. Conroy, Ethan J. Kubatko, Dustin W. West, ADMESH: An advanced unstructured mesh generator for shallow water models, Ocean Dynamics, December 2012, Volume 62, Issue 10-12, pp 1503-1517
+
 ### BatTri
+
+Ata Bilgili, et al. BatTri: A two-dimensional bathymetry-based unstructured triangular grid generator for finite element circulation modeling. Computers & Geosciences 32 (2006) 632–642
 
 MATLAB GUI编程的三角形网格编辑工具，包括：区域切割、合并等操作
 
@@ -42,7 +52,7 @@ MATLAB GUI编程的三角形网格编辑工具，包括：区域切割、合并等操作
 
 ### LaGridT
 
-### 我自己编程的网格处理工具
+### 我自己编程的网格处理工具 (MyCode)
 
 包括：地形插值、初始条件及边界条件设置、Gambit软件生成的中间网格文件格式转换、时间序列文件生成等
 
