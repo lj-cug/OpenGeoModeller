@@ -7,7 +7,7 @@
 **仓库架构如图，基于应用数学与HPC技术，将地球科学模拟统一在一个框架下**
 ![仓库架构](./HPC-Base/仓库架构.png)
 
-## 仓库内容
+## 仓库建设内容
 
 1.  Meterology: 数值气象预报(NWP)，WRF, RegCM
 2.  SurfaceWater: 地表水(河流, 海洋)模拟及网格生成，SCHISM, telemac, shyfem, SUNTANS, DGSWE, dgswemv2, ADCIRC, WW3, CROCO, NEMO, firedrake, ...
@@ -21,7 +21,7 @@
 10. ShallowWater: 浅水方程求解, Titan2d (滑坡), OP2-Volna(海啸-DSL), Triton (GPU-Flood), LISFLOOD-FP-8.0 (DG2-Flood)
 11. Hydrology：基于物理机制的分布式水文模拟及其耦合模拟, PIHM, CHM, ParFLOW, GSFLOW, ...
 
-## 仓库建设目的
+## 仓库建设目标
 
 1.  开源：摆脱商业软件的制约，解决"卡脖子"问题
 2.  高效：Python脚本自动化建模工作流，提高建模效率和可重复

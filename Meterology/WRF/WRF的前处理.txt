@@ -1,0 +1,26 @@
+Katrina案例下载：
+https://www2.mmm.ucar.edu/wrf/TUTORIAL_DATA/Katrina.tar.gz
+
+【1】下载WPS V4 静态地理数据
+WRF数据所需要的外部数据分为两种：静态地理数据，grib格式的气象数据（NAM、GFS、RUC、AGRMET等）。静态地理数据可以从WRF官网获得，比较简单，这里不做介绍。所以这篇日志重点介绍的是气象数据的获取。
+
+提前说明，WRF官网不提供气象数据，但WRF官网提供各类气象数据的下载网址链接，所以我们下载一般还是从WRF官网开始。首先进入WRF官网，然后点击WRF ARW Uusres’ Page。然后后面的步骤如图所示（图片来源于WRF官方教程）：
+
+静态地理数据下载网址：https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html#mandatory
+
+这里需要说明：①不同的数据有不同的分辨率以及可用频率，所以需要根据自己的需求选择；②注册账号时，邮件大概得等一天左右，需要有心理准备；③选择下载方式有两种：一种是手动单个下载（直接点击文件名字即可开始下载该数据）；一种是批量下载（选择多个数据，然后选择csh/python脚本下载）。这里比较推荐批量下载，稳定高效方便，需要系统有wget来运行csh脚，需要有python来运行cpython脚本（比较推荐这两种脚本）。一般来说，直接将脚本传输到Linux系统运行更为方便，运行方式为：./脚本名字 你的账号密码。
+
+【2】气象数据下载之FNL数据下载（https://jingyan.baidu.com/article/acf728fd4d1a9bf8e510a3b6.html）
+GFS数据下载地址：  https://www.emc.ncep.noaa.gov/index.php?branch=GFS
+FNL数据下载地址：  https://www2.mmm.ucar.edu/wrf/OnLineTutorial/DATA/FNL/index.php
+
+
+（1） FNL资料网站网址为rda.ucar.edu/，下载数据需要登陆账号，所以首先要注册一个账号或者登陆已有的账号。
+（2） 往下拖可以看见图2 所示 “1-degree FNLs”，点开链接。
+（3） 点开上一步连接后进如页面如下，拖到最下面，点击 Data Access。
+（4） 点开上一步链接后，可以选择Grib1和Grib2两种数据下载。其中Grib1的数据是从1999.07.30--2007.12.06，而Grib2的数据集则是从2007.12.07--至今。个人根据需要选择。
+（5） 点击”web file listing“
+（6） 如果你要选择某些要素下载，点击“Faceted Browse”，选择你需要的时间及要素。点击“Continue”
+（7） 选择你需要的气压层，如果不选默认为全部层。
+（8） 选择你想要的文件，点击“Downoad”，或者点击“Creat”生成下载脚本文件，用于Linux系统终端下载。下载文件OK！至于FNL文件的处理，下回分解！
+

@@ -1,0 +1,93 @@
+# main program
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+
+# CUDA 9.0 library
+export PATH=/usr/local/cuda-9.0/include:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
+
+# PGI compiler
+export PGI=/opt/pgi
+export PATH=/opt/pgi/linux86-64/19.4/bin:$PATH
+export MANPATH=$MANPATH:/opt/pgi/license.dat
+export PGI_ACC_TIME=1
+export PGI_ACC_NOTIFY=1
+
+# intel compiler
+export PATH=/opt/intel/bin/:$PATH
+
+##PALM LES atmosphere model configuration##
+export PALM_BIN=/root/palm/current_version/trunk/SCRIPTS
+export PATH=$PALM_BIN:$PATH
+
+# Tecplot 2018
+export PATH="/usr/local/tecplot/360ex_2018r1/bin:$PATH"
+
+# set MPICH2-3.3 or openmpi-3.1
+export PATH=/home/lijian/mpich-3.3/bin:$PATH
+
+
+#------------config for ESMF-8.0---------------------------------------------------
+## Set the path for MPI and NETCDF
+export NETCDF_DIR="/usr/local/"
+export PNETCDF_DIR="/usr/local/"
+export MPI_DIR="/home/lijian/mpich-3.3"
+
+## Set ESMF code path
+export ESMF_DIR="/home/lijian/esmf-8.0.1"
+export ESMF_LIB=$ESMF_DIR/lib/libO3/Linux.gfortran.64.mpich2.default/
+export ESMF_INSTALL_PREFIX="/usr/local/esmf/"
+export ESMFMKFILE=$ESMF_LIB/esmf.mk
+
+############################
+export ESMF_OS=Linux
+export ESMF_COMM=mpich2
+export ESMF_NETCDF="local"
+export ESMF_OPENMP=OFF
+export ESMF_LAPACK=internal
+export ESMF_BOPT=O3
+export ESMF_ABI=64
+export ESMF_COMPILER=gfortran
+#export ESMF_F90COMPILER=gfortran
+#export ESMF_CXXCOMPILER=g++
+
+export ESMF_YAMLCPP=OFF
+export ESMF_TESTEXHAUSTIVE=ON
+export ESMF_TESTMPMD=OFF
+export ESMF_TESTSHAREDOBJ=ON
+export ESMF_TESTWITHTHREADS=OFF
+
+## Add the path of NetCDF, PNetCDF
+export ESMF_NETCDF_INCLUDE="/usr/local/include/"
+export ESMF_NETCDF_LIBPATH="/usr/local/lib/"
+export ESMF_NETCDF_LIBS="-lnetcdf -lnetcdff"
+
+export ESMF_PNETCDF=OFF
+export ESMF_PNETCDF_INCLUDE="/usr/local/include/"
+export ESMF_PNETCDF_LIBPATH="/usr/local/lib/"
+export ESMF_PNETCDF_LIBS="-lpnetcdf"
+
+export ESMF_PIO=OFF
+
+### Add the path of libraries as environmental variables
+export LD_LIBRARY_PATH=$NETCDF_DIR/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=$PNETCDF_DIR/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=$MPI_DIR/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=$MPI_DIR/bin/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=$ESMF_LIB/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+#---------------end of ESMF-8.0 configuration-----------------------------------
+
+# CMAKE-3.17 or CMAKE-3.8
+export PATH=/home/lijian/Downloads/cmake-3.17.5/bin:$PATH
+#export PATH=/home/lijian/Downloads/cmake-3.8.0/bin:$PATH
+
+# KeckCAVE
+export PATH=$PATH:/home/lijian/KeckCAVE/3DVisualizer-1.15/bin
+export PATH=$PATH:/home/lijian/KeckCAVE/LiDARViewer-2.13/bin
+
+# AMGX-wrapper and PETSc library for shyFEM
+export PETSC_DIR=//home/lijian/AMG/petsc-3.8.4/arch-linux2-c-opt
+export LD_LIBRARY_PATH=/home/lijian/AMG/amgx-c-wrapper-master/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/lijian/AMG/AmgXWrapper-master/build/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/lijian/AMG/petsc-3.8.4/arch-linux2-c-opt/lib:$LD_LIBRARY_PATH
+

@@ -1,0 +1,46 @@
+Makefile         最上层的Makefile
+
+README       关于WRF/ARW的一些信息(版本信息，编译安装信息等等)
+
+README_test_cases   理想化试验说明
+
+
+README.NMM    关于WRF/NMM的一些信息(版本信息，编译安装信息等等)
+
+README.rsl_output      针对 NMM
+
+Registry/          Directory for WRF Registry files
+
+arch/               编译配置选项文件目录
+
+clean              清理创建可执行文件的脚本
+
+compile              编译WRF源码的脚本
+
+configure            创建configure.wrf 文件脚本
+
+chem/             化学模块目录
+
+dyn_em/           WRF动力部分程序
+
+dyn_exp/           Directory for a 'toy' dynamic core
+
+dyn_nmm/        Directory for NMM dynamics and numerics,
+
+external/       扩展包目录（ for IO, time keeping and MPI）
+
+frame/              WRF框架模块
+
+inc/               include files
+
+main/              主程序
+
+phys/             物理模块目录
+
+run/          运行WRF的地方
+
+share/               WRF中间层的WRF I/O模块
+
+test/                  test case directories
+
+tools/             工具目录
