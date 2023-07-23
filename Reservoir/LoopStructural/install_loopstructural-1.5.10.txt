@@ -1,0 +1,61 @@
+
+Build LoopStructural-1.5.10 from source:
+
+1 install surfe
+
+# git clone --recursive https://github.com/MichaelHillier/surfe   # 原始仓库
+git clone --recursive https://github.com/Loop3D/surfe             # We should use this repo.
+
+cd surfe
+pip install .
+
+
+Difficulties installing surfe on linux #7 
+https://github.com/MichaelHillier/surfe/issues/7
+
+
+I Have to use Python <=3.7  (I cannot use Python 3.8 to build surfe!) 
+
+
+2 install Lavavu
+
+On Ubuntu 20.04. LavaVu-1.8.45 has problem of "Segment Fault"when using Python 3.7.7
+
+so I use  "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple lavavu-osmesa"
+This will be ok!
+
+
+When install LavaVu-1.8.45:     python setup.py install or pip install lavavu
+
+problem1:  ModuleNotFoundError: No module named '_LavaVuPython'
+
+pip uninstall lavavu, then pip install -i https://pypi.tuna.tsinghua.edu.cn/simple lavavu-osmesa
+solved: we have to use Python 3.8, but then SurfE cannot be used in Ubuntu, it's sucked!
+
+
+---------------------------------------
+conda activate loopstructural-1.5.10,   I use python 3.8
+
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple lavavu   # import lavavu we has no problem.
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tqdm
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple scikit-build
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple matplotlib
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple meshio
+
+总结
+
+在我的Ubuuntu 20.04的电脑上，安装LoopStructural:
+(1) Python 3.7.7 (m2l) 安装lavavu-osmesa，可以使用LoopStructural, 但不能正常使用surfe插值功能
+(2) Python 3.8 (loopstructural-1.5.10) 可以安装lavavu，但也不能使用surfe，运行LoopStructural出现Seg Fault错误！
+(3)更高版本的python环境下的安装和使用，尚未测试。
+总之，Lavavu与Surfe的pip install程序都是Dockerfile下编译的库，很容易有问题！
+建议使用Windows 10 环境。
+
+
+
+pip_search lavavu
+
+pip install surfepy.whl
+
+

@@ -1,12 +1,18 @@
 ## OPM
 
-Open Porous Flow model
+**Open Porous Flow model**
+
+![OPM-Flow](./doc/OPM-Flow.png)
 
 黑油模型(Black Oil model)
 
 基于DUNE库、Zoltan库
 
 MPI并行化
+
+开源的后处理软件Resight 
+
+![ResInsight](./doc/ResInsightUIMediumSize.png)
 
 ### 参考文献
 

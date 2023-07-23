@@ -1,0 +1,10 @@
+Windows OS:
+(1) 运行modflow6-6.4.1和6.2.2，测试modflow6-examples算例，不能通过，nam文件格式不行。可以运行modflow6-6.1.1
+
+(2) flopy-3.3.6生成的nam文件，modflow6-6.4.1和6.2.2不能正确读取，但modflow6-6.1.1可以。
+
+
+Linux OS:
+
+modflow6-6.4.1编译的可执行程序，可以运行modflow6-examples算例!
+
