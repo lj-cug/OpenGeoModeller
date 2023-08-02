@@ -1,0 +1,31 @@
+https://forums.developer.nvidia.com/t/about-the-nvlink-between-two-gpus/72174
+
+hi, I see the nvlink can be used on GeForce cards only RTX 2080 Ti and RTX 2080.
+which quadro and tesla card can support nvlink.
+If I want to using the nvlink data transport in cuda, which API can I use?
+Thank you.
+
+The quadro and tesla cards that support NVLink should all be identified in the respective product literature.
+
+Data will flow across nvlink between 2 GPUs if:
+
+Those 2 GPUs are in a peer capable relationship (this has implications for system design)
+The GPUs are placed into a peer relationship via CUDA api call e.g. cudaDeviceEnablePeerAccess
+Either an appropriate API call is used to transfer the data e.g. cudaMemcpyPeerAsync, or the data is mapped/shared between both devices, i.e. they have peer enabled, and the pointer to the data on one device is used in CUDA kernel code on the other device.
+There are various cuda sample codes that demonstrate peer transfer of data, such as p2pBandwidthLatencyTest.
+
+----------------------------------------------------------------------------------------------------------------
+thank you. Is the enable peer API must be working in tcc mode while not WDDM?
+
+That used to be correct. I believe with recent drivers, peer access may be possible in WDDM mode in some cases, but I have not studied that.
+
+https://devblogs.nvidia.com/cuda-10-features-revealed/ 2
+
+AFAIK this new capability requires R410 or newer drivers.
+
+Historically, TCC has been required for peer capability (on windows).
+
+In any event, the final arbiter of this in any setting or configuration is the return code from cudaDeviceEnablePeerAccess. If it returns a failure code, then peer access is not possible in that situation.
+
+Hardware purchase decisions should not be made on the assumption that P2P support is usable. For that, you must evaluate the situation. These statements are not intended to be any form of guarantee of behavior. It is necessary to test a particular configuration to be sure.
+

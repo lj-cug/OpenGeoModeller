@@ -1,0 +1,14 @@
+因此解决的方式有2个。
+
+第一是两个函数放到同一个cu文件中。
+
+第二是在cu文件属性页面选项卡中 cuda c/c++->common->Generate Relocatable Device Code 选择-rdc=true。允许重定位device代码编译。或者在整个工程的cuda c/c++项中配置这个-rdc=true.
+
+
+其他参考
+
+https://devtalk.nvidia.com/default/topic/524436/how-to-deal-with-ptxas-fatal-error-unresolved-extern-function-39-cudagetparameterbuffer-39-/
+1) View -> Property Pages
+2) Configuration Properties -> CUDA C/C++ -> Common -> Generate Relocatable Device Code -> Yes (-rdc=true)
+3) Configuration Properties -> CUDA C/C++ -> Code Generation -> compute_35,sm_35
+4) Configuration Properties -> Linker -> Input -> Additional Dependencies -> cudadevrt.lib
