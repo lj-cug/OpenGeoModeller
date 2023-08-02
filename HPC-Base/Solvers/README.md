@@ -6,6 +6,7 @@ Nvidia公司研发的GPU集群并行的多重网格求解器
 
 ## AmgCL
 
+俄国人开发的多重网格求解器，使用OpenCL实现异构并行
 
 ## paralution
 
