@@ -2,9 +2,9 @@
 
 ## 介绍
 
-地球科学模拟系统，组件包含：区域性气象模式、地表水、地下水、地震波正演等数学模式，以及相应的前后处理程序。
+地球科学模拟有很多[Awesome项目](https://gitee.com/lijian-cug/awesome-geosciences)，本仓库建立地球科学模拟的常用模式的工作流，包含：区域性气象模式、地表水、地下水、地震波正演等数学模式，以及相应的前后处理程序。
 
-**仓库架构如图，基于[CFD算法](https://gitee.com/lijian-cug/cfd-course-cug)与计算机技术，将地球科学模拟统一在一个框架下，主要就是：前处理、编译运行和后处理可视化**
+**仓库架构如图，基于[CFD算法](https://gitee.com/lijian-cug/cfd-course-cug)与计算机技术([CAD](https://gitee.com/lijian-cug/pre-surface-water),[HPC](https://gitee.com/lijian-cug/kunpeng-competition-2022)等)，将地球科学模拟统一在一个框架下，主要就是：前处理、编译运行和后处理可视化**
 ![仓库架构](./HPC-Base/仓库架构.png)
 
 ## 仓库建设内容
