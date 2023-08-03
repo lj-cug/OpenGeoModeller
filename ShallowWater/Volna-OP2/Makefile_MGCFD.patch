@@ -1,0 +1,37 @@
+37,43d36
+< ifdef KAHIP_INSTALL_PATH
+<   KAHIP_INC = -I$(KAHIP_INSTALL_PATH)/include
+<   KAHIP_LIB = -L$(KAHIP_INSTALL_PATH)/lib
+< endif
+< KAHIP_INC += -DHAVE_KAHIP
+< KAHIP_LIB += -lparhip_interface
+< 
+106,107c99,100
+<   MPICC += -cc=clang
+<   MPICPP += -cxx=clang++
+---
+>   MPICC +=  #-cc=clang  # Bisheng Compiler
+>   MPICPP += #-cxx=clang++
+365,366c358,359
+< all: seq openmp mpi mpi_vec mpi_openmp cuda mpi_cuda sycl
+< # all: seq openmp mpi mpi_vec mpi_openmp cuda mpi_cuda openacc openmp4
+---
+> all: seq openmp mpi mpi_vec mpi_openmp cuda mpi_cuda
+> # all: seq openmp mpi mpi_vec mpi_openmp cuda mpi_cuda openacc openmp4 sycl
+520c513
+< 		-lm $(OP2_LIB) -lop2_mpi $(PARMETIS_LIB) $(KAHIP_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \
+---
+> 		-lm $(OP2_LIB) -lop2_mpi $(PARMETIS_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \
+536c529
+<         -lm $(OP2_LIB) -lop2_mpi $(PARMETIS_LIB) $(KAHIP_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \
+---
+>         -lm $(OP2_LIB) -lop2_mpi $(PARMETIS_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \
+552c545
+< 		-lm $(OP2_LIB) -lop2_mpi $(PARMETIS_LIB) $(KAHIP_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \
+---
+> 		-lm $(OP2_LIB) -lop2_mpi $(PARMETIS_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \
+584,585c577
+< 	    $(CUDA_LIB) -lcudart $(OP2_LIB) -lop2_mpi_cuda \
+<       $(PARMETIS_LIB) $(KAHIP_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \
+---
+> 	    $(CUDA_LIB) -lcudart $(OP2_LIB) -lop2_mpi_cuda $(PARMETIS_LIB) $(PTSCOTCH_LIB) $(HDF5_LIB) \

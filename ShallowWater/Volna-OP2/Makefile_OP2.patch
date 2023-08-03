@@ -1,0 +1,18 @@
+136,137c136,137
+<   NVCCFLAGS = -ccbin=$(NVCC_HOST_COMPILER)
+<   OMP4FLAGS = -fopenmp=libomp -fopenmp-targets=nvptx64-nvidia-cuda
+---
+> #  NVCCFLAGS = -ccbin=$(NVCC_HOST_COMPILER)
+> #  OMP4FLAGS = -fopenmp=libomp -fopenmp-targets=nvptx64-nvidia-cuda
+159c159
+<   NV_ARCH=Kepler
+---
+>   NV_ARCH=Ampere
+177c177
+<   CODE_GEN_CUDA=-gencode arch=compute_80,code=sm_80
+---
+>   CODE_GEN_CUDA=-gencode  arch=compute_80,code=sm_80
+210c210
+<   HDF5_INC = -I$(HDF5_INSTALL_PATH)/include -I$(HDF5_INSTALL_PATH)/gnu/9.1/include
+---
+>   HDF5_INC = -I$(HDF5_INSTALL_PATH)/include
