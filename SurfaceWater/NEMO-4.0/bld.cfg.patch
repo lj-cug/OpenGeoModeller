@@ -1,0 +1,11 @@
+--- bld.cfg	2022-06-07 20:33:33.100288299 +0800
++++ bld_new.cfg	2022-06-07 20:37:22.188893002 +0800
+@@ -46,7 +46,7 @@
+ bld::tool::fc        %FCOMPILER
+ bld::tool::fpp       %FPP
+ bld::tool::cpp       %CPP
+-bld::tool::cppflags  %CBASE_INC -I${PWD}/extern/src_netcdf -I${PWD}/extern/boost/include -I${PWD}/extern/rapidxml/include -I${PWD}/extern/blitz/include 
++bld::tool::cppflags  %CBASE_INC -I${PWD}/extern/src_netcdf4 -I${PWD}/extern/boost/include -I${PWD}/extern/rapidxml/include -I${PWD}/extern/blitz/include 
+ bld::tool::fppflags  %BASE_INC -I${PWD}/extern/boost/include -I${PWD}/extern/rapidxml/include 
+ bld::tool::ld        %LINKER
+ bld::tool::ldflags   %LD_FLAGS 

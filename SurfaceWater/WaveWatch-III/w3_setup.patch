@@ -1,0 +1,38 @@
+202,203c202,203
+<   comp_fc=gfortran
+<   comp_cc=gcc
+---
+>   comp_fc=flang
+>   comp_cc=clang
+233c233
+<     read OK
+---
+>     OK='y'
+256c256
+<     instr="$NULL" ; read instr
+---
+>     instr="$NULL" ; instr='printer'
+263c263
+<     instr="$NULL" ; read instr
+---
+>     instr="$NULL" ; instr='flang'
+270c270
+<     instr="$NULL" ; read instr
+---
+>     instr="$NULL" ; instr='clang'
+280c280
+<       instr="$NULL" ; read instr
+---
+>       instr="$NULL" ; instr=$temp_dir
+301c301
+<     instr="$NULL" ; read instr
+---
+>     instr="$NULL" ; instr='yes'
+313c313
+<     instr="$NULL" ; read instr
+---
+>     instr="$NULL" ; instr='yes'
+333c333
+<     read OK
+---
+>     OK='y'

@@ -1,0 +1,22 @@
+153c153
+<     <NODENAME_REGEX>regex.expression.matching.your.machine</NODENAME_REGEX>
+---
+>     <NODENAME_REGEX>openEuler</NODENAME_REGEX>
+170,171c170,171
+<     <MAX_TASKS_PER_NODE>8</MAX_TASKS_PER_NODE>
+<     <MAX_MPITASKS_PER_NODE>8</MAX_MPITASKS_PER_NODE>
+---
+>     <MAX_TASKS_PER_NODE>16</MAX_TASKS_PER_NODE>
+>     <MAX_MPITASKS_PER_NODE>16</MAX_MPITASKS_PER_NODE>
+176c176
+< 	<arg name="ntasks"> -np {{ total_tasks }} </arg>
+---
+> 	<arg name="ntasks">--allow-run-as-root --mca btl ^openib -np {{ total_tasks }} </arg>
+192,194c192,194
+< 	<command name="load">compiler/gnu/8.2.0</command>
+< 	<command name="load">mpi/3.3/gcc-8.2.0</command>
+< 	<command name="load">tool/netcdf/4.6.1/gcc-8.1.0</command>
+---
+> 	<command name="load">$ENV{compile_tools_path}/bisheng-compiler-2.1.0/bisheng_modulefiles</command>
+> 	<command name="load">$ENV{compile_tools_path}/hmpi-1.1.1/hmpi_modulefiles</command>
+> 	<command name="load">$ENV{compile_tools_path}/netcdf/netcdf_modulefiles</command>

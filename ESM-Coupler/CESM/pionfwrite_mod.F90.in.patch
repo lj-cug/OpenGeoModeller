@@ -1,0 +1,10 @@
+43,45d42
+< #ifdef _NETCDF4
+<     use netcdf, only : nf90_var_par_access, nf90_collective
+< #endif
+116,120d112
+< #ifdef _NETCDF4
+<        case(PIO_iotype_netcdf4p)
+<           ierr=nf90_var_par_access(File%fh, vardesc%varid, NF90_COLLECTIVE)
+<           ierr=nf90_put_var(File%fh, vardesc%varid, iobuf,start=int(start),count=int(count))
+< #endif

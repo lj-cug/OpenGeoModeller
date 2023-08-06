@@ -1,0 +1,85 @@
+65,107d64
+< #ifdef _NETCDF4
+<        case(PIO_iotype_netcdf4p)
+< !         The 64 bit options are not compatable with hdf5 format files
+< 
+<           if(iand(PIO_64BIT_OFFSET,amode)==PIO_64BIT_OFFSET) then
+<              nmode = ieor(amode,PIO_64BIT_OFFSET)
+<           else if(iand(PIO_64BIT_DATA,amode)==PIO_64BIT_DATA) then
+<              nmode = ieor(amode,PIO_64BIT_DATA)
+<           else
+<              nmode=amode
+<           end if
+< 
+<           nmode = ior(nmode,NF90_NETCDF4)
+< #ifdef _MPISERIAL
+<           ierr = nf90_create(fname, nmode , File%fh)
+< #else
+<           nmode = ior(nmode,NF90_MPIIO)
+<           ierr = nf90_create(fname, nmode, File%fh, &
+<                comm=File%iosystem%io_comm, info=File%iosystem%info)
+< #endif
+< ! Set default to NOFILL for performance.
+< !          if(ierr==PIO_NOERR) ierr = nf90_set_fill(File%fh, NF90_NOFILL, nmode)
+<        case(PIO_iotype_netcdf4c)
+<           if(iand(PIO_64BIT_OFFSET,amode)==PIO_64BIT_OFFSET) then
+<              nmode = ieor(amode,PIO_64BIT_OFFSET)
+<           else if(iand(PIO_64BIT_DATA,amode)==PIO_64BIT_DATA) then
+<              nmode = ieor(amode,PIO_64BIT_DATA)
+<           else
+<              nmode=amode
+<           end if
+< 
+<           nmode = ior(nmode,NF90_NETCDF4)
+< 
+<           ! Only io proc 0 will do writing
+<           if (File%iosystem%io_rank == 0) then
+<              ! Stores the ncid in File%fh
+<              ierr = nf90_create(fname, nmode, File%fh, &
+<                   info=File%iosystem%info )
+< ! Set default to NOFILL for performance.
+<              if(ierr==PIO_NOERR) &
+<                   ierr = nf90_set_fill(File%fh, NF90_NOFILL, nmode)
+<           endif
+< #endif
+183,191d139
+< #ifdef _NETCDF
+< #ifdef _NETCDF4
+<           if(ierr /= PIO_NOERR) then    ! try hdf5 format
+<              if(Debug) print *, 'try netcdf4 format'
+<              File%iotype = pio_iotype_netcdf4p
+<              iotype = pio_iotype_netcdf4p
+<           end if
+< #endif
+< #endif
+196,213d143
+< #ifdef _NETCDF4
+<         if(iotype==PIO_iotype_netcdf4p) then
+< ! we need to go through some contortions to make sure a file we are opening is okay for parallel access
+<            ierr = nf90_open(fname,amode,File%fh)
+< 	   ierr = nf90_inquire(File%fh,formatnum=format)
+< #ifndef MPI_SERIAL
+<            if(format == nf90_format_netcdf4) then
+<               ierr = nf90_close(File%fh)
+<               ierr = nf90_open(fname,  ior(amode,ior(NF90_NETCDF4,NF90_MPIIO)), File%fh, &
+<                    comm=File%iosystem%io_comm, info=File%iosystem%info)
+<               if(ierr==nf90_enotnc4 .or. ierr==nf90_einval) then
+<                  ierr = nf90_open(fname, amode, File%fh,info=File%iosystem%info)
+<               end if
+<            end if
+< #endif
+<         end if
+< #endif
+< 
+344,350d273
+< #ifdef _NETCDF4
+<              if(File%iotype /= PIO_IOTYPE_NETCDF4C .and. &
+<                   File%iotype /= PIO_IOTYPE_NETCDF4P) then
+<                 print *,'Changing file type to netcdf4p'
+<                 File%iotype=pio_iotype_netcdf4c
+<              end if
+< #else
+353c276
+< #endif
+---
+> 

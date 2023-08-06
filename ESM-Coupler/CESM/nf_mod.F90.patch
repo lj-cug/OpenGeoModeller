@@ -1,0 +1,8 @@
+1758,1764d1757
+< #ifdef _NETCDF4
+<              if(iotype==pio_iotype_netcdf4c) then
+<                 if(vardesc%ndims>0 .and. ierr==PIO_NOERR) then
+<                    ierr = nf90_def_var_deflate(File%fh,vardesc%varid,0,1,1)
+<                 end if
+<              endif
+< #endif

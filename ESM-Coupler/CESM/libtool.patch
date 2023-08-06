@@ -1,0 +1,20 @@
+--- libtool	2022-06-02 11:40:47.571912526 +0800
++++ libtool_new	2022-06-02 11:41:27.383581653 +0800
+@@ -10115,7 +10115,7 @@
+ pic_flag=""
+ 
+ # How to pass a linker flag through the compiler.
+-wl=""
++wl="-Wl,"
+ 
+ # Compiler flag to prevent dynamic linking.
+ link_static_flag=""
+@@ -10267,7 +10267,7 @@
+ pic_flag=""
+ 
+ # How to pass a linker flag through the compiler.
+-wl=""
++wl="-Wl,"
+ 
+ # Compiler flag to prevent dynamic linking.
+ link_static_flag=""

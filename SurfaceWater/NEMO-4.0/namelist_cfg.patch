@@ -1,0 +1,31 @@
+--- namelist_cfg	2022-06-09 08:36:23.262617941 +0800
++++ namelist_cfg_new	2022-06-09 08:28:04.907940421 +0800
+@@ -148,6 +148,7 @@
+ !-----------------------------------------------------------------------
+ &namberg       !   iceberg parameters
+ !-----------------------------------------------------------------------
++ln_icebergs              = .false.
+ /
+ !-----------------------------------------------------------------------
+ &namlbc        !   lateral momentum boundary condition
+@@ -378,3 +379,20 @@
+ !-----------------------------------------------------------------------
+    ln_neptramp       = .false.  ! ramp down Neptune velocity in shallow water
+ /
++
++!-----------------------------------------------------------------------
++&namsto       ! Stochastic parametrization of EOS
++!-----------------------------------------------------------------------
++   ln_rststo = .false.           ! start from mean parameter (F) or from restart file (T)
++   ln_rstseed = .true.           ! read seed of RNG from restart file
++   cn_storst_in  = "restart_sto" !  suffix of stochastic parameter restart file (input)
++   cn_storst_out = "restart_sto" !  suffix of stochastic parameter restart file (output)
++   ln_sto_eos = .false.          ! stochastic equation of state
++   nn_sto_eos = 1                ! number of independent random walks
++   rn_eos_stdxy = 1.4            ! random walk horz. standard deviation (in grid points)
++   rn_eos_stdz  = 0.7            ! random walk vert. standard deviation (in grid points)
++   rn_eos_tcor  = 1440.0         ! random walk time correlation (in timesteps)
++   nn_eos_ord  = 1               ! order of autoregressive processes
++   nn_eos_flt  = 0               ! passes of Laplacian filter
++   rn_eos_lim  = 2.0             ! limitation factor (default = 3.0)
++/

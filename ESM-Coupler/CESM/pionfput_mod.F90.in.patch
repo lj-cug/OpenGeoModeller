@@ -1,0 +1,24 @@
+143,147d142
+< #ifdef _NETCDF4
+<        case (pio_iotype_netcdf4p)
+<           ierr=nf90_var_par_access(File%fh, varid, NF90_COLLECTIVE)
+<           ierr = nf90_put_var(File%fh, varid, ival, start=index)
+< #endif
+240,244d234
+< #ifdef _NETCDF4
+<        case (pio_iotype_netcdf4p)
+<           ierr=nf90_var_par_access(File%fh, varid, NF90_COLLECTIVE)
+<           ierr = nf90_put_var(File%fh, varid, ival, start=index)
+< #endif
+699,703d688
+< #ifdef _NETCDF4
+<        case(pio_iotype_netcdf4p)
+<           ierr=nf90_var_par_access(File%fh, varid, NF90_COLLECTIVE)
+<           ierr = nf90_put_var(File%fh, varid, ival, start=int(pstart), count=int(pcount))
+< #endif
+820,824d804
+< #ifdef _NETCDF4
+<        case(pio_iotype_netcdf4p)
+<           ierr=nf90_var_par_access(File%fh, varid, NF90_COLLECTIVE)
+<           ierr = nf90_put_var(File%fh, varid, ival, start=start, count=count)
+< #endif

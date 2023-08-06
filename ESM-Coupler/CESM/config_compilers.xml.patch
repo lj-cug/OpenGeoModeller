@@ -1,0 +1,20 @@
+109c109
+<     <base> -std=gnu99 </base>
+---
+>     <base> -std=gnu99 -march=armv8.2-a -fsigned-char -ffp-contract=off </base>
+125c125
+<     <base>  -fconvert=big-endian -ffree-line-length-none -ffixed-line-length-none </base>
+---
+>     <base>  -fconvert=big-endian -ffree-form -ffree-line-length-none -march=armv8.2-a -mtune=tsv110 -std=legacy </base>
+146c146
+<     <append compile_threaded="true"> -fopenmp </append>
+---
+>     <append compile_threaded="true"> -fopenmp -mabi=lp64 -fconvert=big-endian </append>
+151,153c151,153
+<   <SCC> gcc </SCC>
+<   <SCXX> g++ </SCXX>
+<   <SFC> gfortran </SFC>
+---
+>   <SCC> clang </SCC>
+>   <SCXX> clang++ </SCXX>
+>   <SFC> flang </SFC>

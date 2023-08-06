@@ -1,0 +1,8 @@
+91c91
+<    rcode = system(str)
+---
+>    call system(str)
+135c135
+<    rcode=chdir(path(1:lenpath))
+---
+>    call chdir(path(1:lenpath))

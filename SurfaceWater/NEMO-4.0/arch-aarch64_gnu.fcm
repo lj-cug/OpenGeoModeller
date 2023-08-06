@@ -1,0 +1,48 @@
+#generic gfortran compiler options for linux 
+#NCDF_INC    netcdf include file 
+#NCDF_LIB    netcdf library 
+#FC          Fortran compiler command 
+#FCFLAGS     Fortran compiler flags 
+#FFLAGS      Fortran 77 compiler flags 
+#LD          linker 
+#LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a 
+#FPPFLAGS    pre-processing flags 
+#AR          assembler 
+#ARFLAGS     assembler flags 
+#MK          make 
+#USER_INC    additional include files for the compiler,  e.g. -I<include dir> 
+#USER_LIB    additional libraries to pass to the linker, e.g. -l<library> 
+#CC          C compiler used to compile conv for AGRIF 
+#CFLAGS      compiler flags used with CC 
+# 
+#Note that: 
+# - unix variables "$..." are accpeted and will be evaluated before calling fcm. 
+# - fcm variables are starting with a % (and not a $) 
+%NCDF_HOME           $NETCDF_DIR
+%XIOS_HOME           $XIOS_DIR
+
+%NCDF_INC            -I%NCDF_HOME/include 
+%NCDF_LIB            -L%NCDF_HOME/lib -lnetcdff -lnetcdf -lstdc++
+%XIOS_INC            -I%XIOS_HOME/inc
+%XIOS_LIB            -L%XIOS_HOME/lib -lxios
+
+%CPP                 cpp
+%CPPFLAGS            -P -traditional -march=armv8.2-a -ffp-contract=off
+
+%FC                  mpif90 -c -cpp
+
+%FCFLAGS            -mcpu=native -fdefault-real-8 -O3 -funroll-loops -g
+%FFLAGS              %FCFLAGS
+%LD                  mpif90
+%LDFLAGS             -lstdc++
+%FPPFLAGS            -P -C -traditional
+%AR                  ar
+%ARFLAGS             rs
+%MK                  make
+%USER_INC            %XIOS_INC %NCDF_INC
+%USER_LIB            %XIOS_LIB %NCDF_LIB
+
+%CC                  cc
+%CFLAGS              -O2
+
+

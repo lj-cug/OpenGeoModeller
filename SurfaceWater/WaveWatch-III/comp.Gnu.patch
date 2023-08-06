@@ -1,0 +1,4 @@
+93c93
+<     comp=gfortran
+---
+>     comp=flang

@@ -1,0 +1,19 @@
+NETCDF_INCDIR="-I ${NETCDF}/include"
+NETCDF_LIBDIR="-Wl,'--allow-multiple-definition' -L ${NETCDF}/lib"
+NETCDF_LIB="-lnetcdff -lnetcdf"
+ 
+MPI_INCDIR="-I ${HMPI}/include"
+MPI_LIBDIR="-L ${HMPI}/lib"
+MPI_LIB="-lmpi"
+ 
+HDF5_INCDIR="-I ${HDF5}/include"
+HDF5_LIBDIR="-L ${HDF5}/lib"
+HDF5_LIB="-lhdf5_hl -lhdf5  -lz"
+ 
+BOOST_INCDIR="-I /usr/include/boost/"
+BOOST_LIBDIR="-L /usr/lib64/"
+BOOST_LIB=""
+ 
+BLITZ_INCDIR="-I ${BLITZ}/include"  
+BLITZ_LIBDIR="-L ${BLITZ}/lib"
+BLITZ_LIB="-lblitz"
