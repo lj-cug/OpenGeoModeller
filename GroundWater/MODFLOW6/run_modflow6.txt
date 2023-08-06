@@ -1,10 +1,19 @@
 Windows OS:
-(1) 运行modflow6-6.4.1和6.2.2，测试modflow6-examples算例，不能通过，nam文件格式不行。可以运行modflow6-6.1.1
 
-(2) flopy-3.3.6生成的nam文件，modflow6-6.4.1和6.2.2不能正确读取，但modflow6-6.1.1可以。
+(1) 运行modflow6-6.4.1和6.2.2，modflow6-examples算例不能通过，nam文件格式不对。
+可以运行modflow6-6.1.1
+
+(2) flopy-3.3.6生成的nam文件，modflow6-6.4.1和6.2.2不能正确读取，但modflow6-6.1.1可以
+
+(3) flopy-3.4.1 包含了model-splitter功能，可作为modflow6-parale-verkaik的前处理
 
 
 Linux OS:
 
 modflow6-6.4.1编译的可执行程序，可以运行modflow6-examples算例!
+
+modflow6-6.4.2 发布了Win, Mac, Linux版本的可执行程序。该版本实施了调用PETSc库的求解器集群并行，可以实现GWF和GWT模型的集群并行
+
+modflow6-parale-verkaik仅实现了GWF模型的粗粒度并行，即model-model耦合
+
 
