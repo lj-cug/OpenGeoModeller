@@ -1,0 +1,72 @@
+https://developer.amd.com/amd-aocc/
+
+AMD Optimizing C/C++ Compiler
+
+AOCC Compiler suite
+
+The AOCC compiler system is a high performance, production quality code generation tool. The AOCC environment provides various options to developers when building and optimizing C, C++, and Fortran applications targeting 32-bit and 64-bit Linux? platforms. The AOCC compiler system offers a high level of advanced optimizations, multi-threading and processor support that includes global optimization, vectorization, inter-procedural analyses, loop transformations, and code generation. AMD also provides highly optimized libraries, which extract the optimal performance from each x86 processor core when utilized. The AOCC Compiler Suite simplifies and accelerates development and tuning for x86 applications.
+
+
+AOCC v2.1:
+
+Tuned for AMD Family 17h processors	Based on LLVM 9.0 release (llvm.org, 19th Sep 2019) with bug fixes
+Machine dependent optimizations for better performance in AMD EPYC 7xx2-series architectures	Optimized libraries including AMDLibM (libM math library v3.3)
+Enhanced high-level optimizations towards AMD EPYC 7xx2-series of architectures	LLVM linker (lld) as the default linker
+Improved Flang ¨C as default Fortran front-end with added F2008 features	Tested on RHEL 7.4, SLES 12 sp3, Ubuntu 18.04 LTS, Ubuntu 19.04
+ 
+
+Note: AOCC compiler binaries are suitable for Linux systems having glibC version 2.17 and above only.
+
+Resources and Technical Support
+Resources
+Documentation
+AOCC Install Guide
+
+AOCC User Guide
+
+Clang ¨C the C, C++ Compiler
+
+Flang ¨C the Fortran compiler
+
+Compiler quick reference document
+
+Technical Support
+AOCC is a well-supported compiler suite.  You can get help from the AOCC user community from the AMD compiler support as mentioned below.
+
+1¡Á1 Ticketing system for NDA customers : A dedicated expert can provide you a 1¡Á1 support, advice or help debug an issue over the private web based ticketing . You need NDA with AMD and AMD-SSO login.
+Email based support: You can also opt for 1¡Á1 support, report issues or seek expert help by emailing toolchainsupport@amd.com . This channel is open to all customers.
+Please read the AOCC Technical Support Agreement before submitting a support case.
+
+Ask the Connected Community
+
+If you have a general question or need help from the community, you can post them here or search for existing posts. This helps build the knowledge base which is useful to all users.
+
+Download:
+Refer here for older versions.
+
+Please read the README for install steps.
+
+Tags: AMD C compiler, AMD Clang, AMD compiler, AMD Fortran compiler, AMD LLVM, AOCC, C++ compiler, Clang, compiler, Fortran compiler, LLVM
+
+File Name	Version	Size	Launch Date	OS	Bitness	Description
+aocc-compiler-2.1.0.tar
+2.1
+105 MB
+11/22/2019
+Linux
+32/ 64-bit
+AOCC¡¯s Compiler package MD5 Checksum: 8f0349c1138949c511a15bfa5850af10
+aocc-compiler-2.1.0_1_amd64.deb
+2.1
+104 MB
+11/22/2019
+Linux
+32/64-bit
+AOCC¡¯s Compiler package MD5 Checksum: 2f1b8a5bce44b95f88d58189b2432e17
+aocc-compiler-2.1.0-1.x86_64.rpm
+2.1
+120 MB
+11/22/2019
+Linux
+32/64-bit
+AOCC¡¯s Compiler package MD5 Checksum: f8d2bc9ff1144243737352d0a081be89

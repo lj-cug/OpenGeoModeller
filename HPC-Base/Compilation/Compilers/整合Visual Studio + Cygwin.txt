@@ -1,0 +1,26 @@
+If you want a more fully integrated solution, you're going to need to do two things. 
+
+整合Visual Studio 和 Cygwin开发环境，只需要两步设置：
+
+第一步：
+First of all, you're going to need to change out all of your include/library paths to avoid 
+the Microsoft ones and go after the Cygwin ones instead. 
+You can do this by selecting "Tools->Options" from the menu, 
+then choosing "Projects and Solutions->VC++ Directories" from the tree on the left hand side of 
+the window that comes up. You'll have options to change the search directories for executables, 
+headers, libraries, etc. 
+For what you're trying to do, I'd suggest removing everything and adding in just 
+the cygwin directories.
+
+第二步：
+Second, you'll have to tell Visual Studio to use the gcc/g++ compiler. 
+This is a bit trickier. VS supports custom build rules for custom file types... 
+but it seems to have C++ hardwired in for the Microsoft compiler. 
+I don't really know a great way around that except to use your own custom file extension. 
+You can try the standard unix extensions of .c (C files) and .cc (C++ files), 
+but I suspect Visual Studio will automatically pick up on those. 
+You may have to go with something totally foreign.
+
+If you right click on your project in the Solution Explorer and select "Custom Build Rules" 
+you'll be given an interface that will let you create your custom build rules for the file extension 
+you've chosen. The interface is relatively straightforward from there.
