@@ -1,0 +1,76 @@
+使用F3 Data
+首先，使用sgydat.py 将segy文件转换为大端序的dat文件
+然后，根据地震数据参数（可在OpendTect软件中查看，包括：n,d,f，在mhe/utils.py中设置好
+
+查看Sampling的作用，查看jtk库的Sampling.java代码：
+
+/**
+ * Sampling of one variable.
+ * <p>
+ * Samplings are often used to represent independent variables for sampled 
+ * functions. They describe the values at which a function is sampled. For 
+ * efficiency, and to guarantee a unique mapping from sample value to 
+ * function value, we restrict samplings to be strictly increasing. In other
+ * words, no two samples have equal value, and sample values increase with 
+ * increasing sample index.
+ * <p>
+ * Samplings are either uniform or non-uniform. Uniform samplings are
+ * represented by a sample count n, a sampling interval d, and a first
+ * sample value f. Non-uniform samplings are represented by an array of 
+ * sample values.
+ * <p>
+ * All sample values are computed and stored in <em>double precision</em>. 
+ * This double precision can be especially important in uniform samplings, 
+ * where the sampling interval d and first sample value f may be used to
+ * compute values for thousands of samples, in loops like this one:
+ * <pre><code>
+ *   int n = sampling.getCount();
+ *   double d = sampling.getDelta();
+ *   double f = sampling.getFirst();
+ *   double v = f;
+ *   for (int i=0; i<n; ++i,v+=d) {
+ *     // some calculation that uses the sample value v
+ *   }
+ * </code></pre>
+ * In each iteration of the loop above, the sample value v is computed by 
+ * accumulating the sampling interval d. This computation is fast, but it 
+ * also yields rounding error that can grow quadratically with the number 
+ * of samples n. If v were computed in single (float) precision, then this 
+ * rounding error could exceed the sampling interval d for as few as 
+ * n=10,000 samples.
+ * <p>
+ * If accumulating in double precision is insufficient, a more accurate 
+ * and more costly way to compute sample values is as follows:
+ * <pre><code>
+ *   // ...
+ *   double v = f;
+ *   for (int i=0; i<n; ++i,v=f+i*d) {
+ *     // some calculation that uses the sample value v
+ *   }
+ * </code></pre>
+ * With this computation of sample values, rounding errors can grow only 
+ * linearly with the number of samples n.
+ * <p>
+ * Two samplings are considered equivalent if their sample values differ
+ * by no more than the <em>sampling tolerance</em>. This tolerance may be
+ * specified, as a fraction of the sampling interval, when a sampling is
+ * constructed. Alternatively, a default tolerance may be used. When
+ * comparing two samplings, the smaller of their tolerances is used.
+ * <p>
+ * A sampling is immutable. New samplings can be constructed by applying
+ * various transformations (e.g., shifting) to an existing sampling, but
+ * an existing sampling cannot be changed. Therefore, multiple sampled
+ * functions can safely share the same sampling.
+ *
+ * @author Dave Hale, Colorado School of Mines
+ * @version 2005.03.11
+ */
+
+
+  /**
+   * Constructs a uniform sampling with specified parameters.
+   * @param n the number (count) of samples; must be positive.
+   * @param d the sampling interval (delta); must be positive.
+   * @param f the first sample value.
+   */
+

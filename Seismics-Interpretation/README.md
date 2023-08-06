@@ -1,5 +1,9 @@
 # Seismics-Interpretation (地震解释)
 
+## Principles
+
+测井解释和地震解释的基本原理学习记录
+
 ## Opendtect-6.6
 
 地震解释的开源软件的教学课件。OpendTect-6.6在持续开发中，其特色是地震数据解释的并行计算和批处理。OpendTect-6.6使用C++语言开发
@@ -8,6 +12,16 @@
 ## Opendtect6.6-Practices
 
 OpendTect软件的实战操作
+
+## GMT
+
+地球科学领域常用的作图的程序，可在Opendtect中使用
+
+## Madagascar
+
+可重复的开源的地震数据处理程序，最新版本 V4.1 
+
+可在Opendtect中，基于GUI使用Madagascar
 
 ## JTK (Java ToolKits)
 
@@ -24,5 +38,9 @@ OpendTect软件的实战操作
 ### HPC开发
 
 可使用java-cuda和java-MPI针对地震属性解释中的核函数，开展提高解释效率的开发
+
+## AVO
+
+AVO技术及程序说明
 
 
