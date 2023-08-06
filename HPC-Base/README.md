@@ -11,9 +11,9 @@
 	我自己搭建的集群的硬件和软件配置和操作。
 	按照其中的文档说明，你也可以快速地搭建一个属于你自己的“超级计算机"
 	
-## Compilation	
+## Programming&Compilation	
 
-	源码编译方法
+	编程与编译方法
 		
 ## Nvidia-GPGPU
 	
