@@ -32,13 +32,19 @@
 
 ### Makefile
 
-	可参考"陈皓. 跟我一起写 Makefile"
+	最基本的编译系统；Makefile语法可参考"陈皓. 跟我一起写 Makefile"
 
 ### CMAKE
-
+	
+	跨平台编译系统
+	
 ### SCons
 
+	基于Python的编译系统
+	
 ### Meson
+	
+	基于Python和ninja的编译系统
 	
 ## Docker容器
 

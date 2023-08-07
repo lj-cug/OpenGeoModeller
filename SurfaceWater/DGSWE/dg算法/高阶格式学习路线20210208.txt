@@ -1,0 +1,22 @@
+低阶格式，包括：Roe, HLLC, Kinematics (1和2阶)， WAF(空间2阶），已通过Telemac2d-FVM得到了实施。
+
+高阶格式，包括：WENO(FVM)，ADER(算法复杂），Flux Reconstruction，RDM， DG，谱方法与FDM,FVM, FEM的结合(SDM, SVM, SEM)等
+目前，通过文献调查，发现已比较成功用于浅水方程求解的高阶格式有：WENO, ADER, DG，谱方法等。
+FR格式用于高阶湍流的模拟（特别是ILES）,但尚未见到用于SWE的求解。
+
+初步制定的学习路线如下（F - Finished; U-- Underway; N - Not yet)：
+（1）低阶格式，将telemac2d-fvm在schism的并行非结构网格上实施： F
+（2）学习ADER算法及编程实施，参考 ExaHyPE：    N
+（3）WENO是基于扩展的模板格子(extended stencil)的FVM，并行通信的overhead很大：  N
+（4）DG是个大坑，参考DGSWE程序和ADCIRC    U
+（5）RDM是法国人搞的一套算法，应用较少，可参考Astrix，一个基于RDM的天文学专业开发的，是C++语言编程和CUDA并行，可在此基础上开发求解SWE的求解器。Astrix中已有求解Euler方程的模块。   N
+（6）FR尚未见到求解浅水方程的模块，但PyFR中已有求解Euler方程的模块；而 NASA Glenn中心开发的NFS(非结构网格)程序，是求解精细紊流的程序，可基于此开SWE求解器。        N
+（7）谱方法，难度较大，常与FDM, FVM , FEM 结合。
+
+主要研究人和研究组：
+ADER：德国人Munz, Dumbser等
+RDM： 法国人Abgall, Ricchiuto等
+WENO,RKDG： 美国人：Cockburn; 华人：舒其望
+FR: 美国人：Huynh, Wang Z J  Vincent, Witherden
+Spectral method：华人：王志坚
+
