@@ -1,7 +1,7 @@
 Ubuntu默认安装:   
+
 apt-get install libopenmpi-dev openmpi-bin openmpi-doc   (V_2.1.1)
 
-------------------------------------------
 显示configure的可配置选项
 ./configure --help| less
 
@@ -16,8 +16,10 @@ CC=icc CXX=icpc FC=ifort ./configure --prefix=/opt/openmpi/2.0.2/intel/2017.0.09
 
 编译
 make -j8
+
 安装（如--prefix指定的目录非当前用户可写，那么需要root权限将其安装在那个目录）
 make install
+
 设定环境变量
 
 可以设置在自己的环境变量中自己使用，也可以设置到系统环境中供全部用户使用
@@ -30,6 +32,7 @@ make install
         个人用户：~/.cshrc 
 
 Bash或Csh的环境设置内容：
+
 (1) Bash环境设置：
     OPENMPI=/opt/openmpi/2.0.2/intel/2017.0.098
     PATH=$OPENMPI/bin:$PATH
@@ -49,12 +52,12 @@ Bash或Csh的环境设置内容：
 设置后重新登录即可生效，或者手动使其生效
 source 设置所在文件
 查看是否设置正确
+
 which mpirun
 如果显示/opt/openmpi/2.0.2/intel/2017.0.098/bin/mpirun，则表明正确
 
 
 基本用法:
+
 设置使用16个进程运行MPI程序/path/mpiapp
 mpirun -n 16 /path/mpiapp
-
-
