@@ -36,7 +36,7 @@
 
 ### CMAKE
 	
-	跨平台编译系统
+	跨平台编译系统；有cmake-gui
 	
 ### SCons
 
@@ -44,7 +44,7 @@
 	
 ### Meson
 	
-	基于Python和ninja的编译系统
+	基于Python和ninja的编译系统；有GUI界面的meson-gui
 	
 ## Docker容器
 
