@@ -51,10 +51,6 @@
 ## HPX
 
     异步并行运行时系统
-
-## OpenGL
-
-    计算机图形库
 	
 ## Domain-Decomposition
 
