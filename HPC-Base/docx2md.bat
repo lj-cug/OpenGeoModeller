@@ -1,0 +1,1 @@
+pandoc -s "MVAPICH2-GDR 2.3.7用户指南20221024.docx" -t markdown -o "MVAPICH2-GDR 2.3.7用户指南20221024.md"
