@@ -6,8 +6,10 @@
 
 ## 特色
 
-快速有限差分离散声波方程
+快速实施有限差法(FDM)离散声波方程
+
+有限单元法(FEM)离散PDE的DSL库可使用firedrake
 
 ## 参考文献
 
-
+Mathias Louboutin, et al. Devito (v3.1.0): an embedded domain-specific language for finite differences and geophysical exploration.  Geosci. Model Dev., 12, 1165-1187, 2019
