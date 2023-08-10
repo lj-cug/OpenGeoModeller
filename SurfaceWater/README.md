@@ -9,12 +9,13 @@
    2.  shyfem：三维，半隐格式，有限单元法，高性能求解器，意大利
    3.  ADCIRC：平面二维，风暴潮，美国圣母大学
    4.  SUNTANS：三维，有限体积法，质量守恒，美国斯坦福大学
-   5.  TELEMAC：平面二维，线性有限元，法国电力公司,EDF
-   6.  DGSWE：平面二维，间断Galerkin法，高阶
+   5.  TELEMAC：平面二维，线性有限元，法国电力公司(EDF)
+   6.  DGSWE：平面二维，间断Galerkin法，美国
    7.  WaveWatch-III: 波浪模型
-   8.  CROCO：AMR技术的海洋动力学模型
-   9.  NEMO-4.0：欧洲开发的3D海洋动力学模型
-   10. firedrake: 基于DSL的CFD开发库，特色是DG有限单元法
-   11. MITGcm: 比较简单的GCM模式，常在ESM中使用
+   8.  CROCO：AMR技术的海洋动力学模型，法国
+   9.  NEMO-4.0：欧洲开发的3D海洋动力学模型，法国
+   10. firedrake: 基于DSL的DG有限单元法开发库，英国帝国理工大学
+   11. SLIM3D：DG法的3D海洋动力学模式，比利时
+   12. MITGcm: 比较简单的GCM模式，常在ESM中使用,美国
 
 
