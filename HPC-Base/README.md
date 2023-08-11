@@ -56,4 +56,8 @@
 
 	非结构网格的区域分解库，常用的有：METIS, SCOTCH, Zoltan等
    
+## HPC-IO
+
+IO是HPC环境下的一个瓶颈，MPI-IO，GDS等技术可用于解决此类问题
+
 	
