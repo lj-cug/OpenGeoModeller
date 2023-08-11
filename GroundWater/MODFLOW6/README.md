@@ -10,5 +10,11 @@ MPI并行
 
 快速建模工具Python脚本： modflow-setup以及flopy
 
+## usg
+
+非结构网格版本的MODFLOW，现在已经统一到MODFLOW6的框架下了
+
+
+
 ## 参考文献
 

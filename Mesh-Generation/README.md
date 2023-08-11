@@ -1,14 +1,12 @@
 # Mesh-Generation
 
-地表水模型的前处理，即网格生成
+地表水、水文模型及地球物理模型的网格生成，包括：
 
-商业软件Gambit等的非结构网格生成
+1. 商业软件Gambit等的非结构网格生成
 
-开源软件，如GMSH等，的非结构网格生成
+2. 开源软件，如GMSH等，的非结构网格生成
 
-基于Python脚本的网格快速生成，以及不同格式网格文件之间的转换
-
-## meshio
+3. 基于Python脚本的网格快速生成，以及不同格式网格文件之间的转换
 
 ## GMSH
 
@@ -32,31 +30,43 @@ Christopher B. Marsh, et al. Multi-objective unstructured triangular mesh genera
 
 Keith J. Roberts, et al. OceanMesh2D 1.0: MATLAB-based software for two-dimensional unstructured mesh generation in coastal ocean modeling. Geosci. Model Dev., 12, 1847–1868, 2019
 
-## 非结构网格编辑工具
+## SeismicMesh
 
-### ACE Tools
+生成用于全波形反演(FWI)使用的三角形非结构网格
+
+## MODFLOW-usg-Mesh
+
+用于MODFLOW-usg的非结构网格生成工具gridgen和后处理工具ModelMuse
+
+# 非结构网格编辑工具
+
+## ACE Tools
 
 SCHISM模拟自带的gr3格式的非结构网格的编辑工具，包括：设置边界条件等
 
-### ADMESH
+## ADMESH
 
 Colton J. Conroy, Ethan J. Kubatko, Dustin W. West, ADMESH: An advanced unstructured mesh generator for shallow water models, Ocean Dynamics, December 2012, Volume 62, Issue 10-12, pp 1503-1517
 
-### BatTri
+## BatTri
 
 Ata Bilgili, et al. BatTri: A two-dimensional bathymetry-based unstructured triangular grid generator for finite element circulation modeling. Computers & Geosciences 32 (2006) 632–642
 
 MATLAB GUI编程的三角形网格编辑工具，包括：区域切割、合并等操作
 
-### CutMesh
+## CutMesh
 
-### LaGridT
+## LaGridT
 
-### 我自己编程的网格处理工具 (MyCode)
+## 自己编程的网格处理工具 (MyCode)
 
 包括：地形插值、初始条件及边界条件设置、Gambit软件生成的中间网格文件格式转换、时间序列文件生成等
 
-## High-Order-meshing
+# High-Order-meshing
 
 高阶数值格式，如DG法，的数值模拟的网格生成技术，是CAE领域的前沿课题
+
+# meshio
+
+常见非结构网格文件之间的格式转换Python脚本
 
