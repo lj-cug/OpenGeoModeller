@@ -1,6 +1,6 @@
-#  ESM (Earth System Modelling)
+#  ESM (Earth System Modelling) - Coupler
 
-区域性地球耦合模拟系统
+区域性地球耦合模拟系统，以及耦合器（对原始代码的侵入度最低，实现不同模式组件的耦合）
 
 ## CESM
 
