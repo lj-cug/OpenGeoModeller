@@ -4,7 +4,9 @@
 
 Department of Engineering Science, University of Auckland, Private Bag 92019, Auckland, New Zealand
 
-waiwera类似TOUGH3的地热模型，但TOUGH2和TOUGH3不开源
+waiwera类似TOUGH3的地热模型，但TOUGH2和TOUGH3不开源，
+
+TOUGH模型的很多前处理Python程序是开发的，可以用于waiwera的前处理，因为waiwera可视为TOUGH模型的继承者
 
 编程语言： FORTRAN 2003
 
