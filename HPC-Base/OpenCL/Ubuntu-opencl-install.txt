@@ -141,45 +141,38 @@ ext_data = (char*)malloc(ext_size);
 
  printf("Platform %d full profile or embeded profile?: %s\n", i, profile);
 
- /* Look for ICD extension */? ?
+ /* Look for ICD extension */?
 
-//如果支持ICD这一扩展功能的platform，输出显示，本机的Intel和Nvidia都支持这一扩展功能?
+//如果支持ICD这一扩展功能的platform，输出显示，本机的Intel和Nvidia都支持这一扩展功能
 
-? ? ? ? if(strstr(ext_data, icd_ext) != NULL)?
+if(strstr(ext_data, icd_ext) != NULL)
 
-? ? ? ? ? ? platform_index = i;?
+platform_index = i;
 
-? ? ? ? //std::cout<<"Platform_index = "<<platform_index<<std::endl;?
+//std::cout<<"Platform_index = "<<platform_index<<std::endl;
 
-? ? ? ? printf("Platform_index is: %d\n", platform_index);?
+printf("Platform_index is: %d\n", platform_index);
+/* Display whether ICD extension is supported */
 
-? ? ? ? /* Display whether ICD extension is supported */?
+if(platform_index > -1)
+printf("Platform %d supports the %s extension.\n",
 
-? ? ? ? if(platform_index > -1)?
+platform_index, icd_ext);
 
-? ? ? ? ? ? printf("Platform %d supports the %s extension.\n",?
+//释放空间
+free(ext_data);
+free(name);
+free(vendor);
+free(version);
+free(profile);
 
-? ? ? ? ? ? platform_index, icd_ext);?
+}
 
-? ? ? ? //释放空间?
+ if(platform_index <= -1)?
 
-? ? ? ? free(ext_data);?
+ printf("No platforms support the %s extension.\n", icd_ext);?
 
-? ? ? ? free(name);?
-
-? ? ? ? free(vendor);?
-
-? ? ? ? free(version);?
-
-? ? ? ? free(profile);?
-
-? ? }?
-
-? ? if(platform_index <= -1)?
-
-? ? ? ? printf("No platforms support the %s extension.\n", icd_ext);?
-
-? ? /* Deallocate resources */?
+ /* Deallocate resources */?
 
  free(platforms);?
 

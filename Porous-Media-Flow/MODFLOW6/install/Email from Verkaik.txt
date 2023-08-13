@@ -1,0 +1,87 @@
+关于MODFLOW6-MPI parallel代码运行的问题咨询：
+jarno.verkaik@deltares.nl    (Jarno Verkaik)
+globgm.info@gmail.com
+
+Hi Li,
+
+I think you are using my prototyping code:
+
+https://github.com/verkaik/modflow6-parallel
+
+No, this code is not in heavy development and quite stable though. See e.g. https://gmd.copernicus.org/preprints/gmd-2022-226/ for its most recent application.
+
+Did you pre-compile the code with preprocessor definition MPI_PARALLEL? How did you modify your input? In the mfsim.nam you should add the keyword DOMAIN_DECOMPOSITION in the options block:
+
+BEGIN OPTIONS
+MEMORY_PRINT_OPTION SUMMARY
+DOMAIN_DECOMPOSITION 2
+END OPTIONS
+
+DOMAIN_DECOMPOSITION should be equal to the number of MPI processes you are using, hence np. 
+In the models block you should assign each GWF model to a MPI process rank ID, starting from 1, something like:
+
+BEGIN MODELS
+GWF6 .\m1_1\m1_1.nam m1_1 1
+GWF6 .\m1_2\m1_2.nam m1_2 2
+END MODELS
+
+Best, Jarno
+
+Dear Jarno,
+    Thanks for your suggestion to run the MPI parallelized modflow6. Because I submit my issue in github in the main repo of modflow6, J.D. Hughes will close the issue and I'm afraid you cannot see my question, and I send you this email of private address.
+I have compiled modflow6-parallel-6.2.1 with -MPI_PARALLEL option, and modified the mfsim.nam file as you suggested:
+
+BEGIN OPTIONS
+MEMORY_PRINT_OPTION SUMMARY
+DOMAIN_DECOMPOSITION 2
+END OPTIONS
+
+BEGIN MODELS
+GWF6 ./m1_1/m1_1.nam m1_1 1
+GWF6 ./m1_2/m1_2.nam m1_2 2
+END MODELS
+
+But when I run the test like "mpirun -np 2 mf6", the error happened as "1. ****ERROR. Model was not assigned to a solution: GWF_2"
+
+I have read your EMS(J. Verkaik, et al. 2021) and  GMD-2022 papers, I got the information about the pre-processing for parallelized modflow6 running. Should I use iMOD-python or iMOD-5.4 tools to conduct domain decomposition firstly before I run the MPI-parallelized modflow6?
+I cannot find any documentation or tutorials about running parallelized mopdflow6, so could you please give me the consise learning ways (learning curve) to guide me studying the parallelized modflow6, which is really powerful tool to study the groundwater problem in China continent with much observation data and huge area.
+Thanks!
+Best Regards,
+Li Jian
+China University of Geosciences
+
+
+Thanks for your timly and patient reply. The test model you supplied is very helpful to run the parallelized modflow6. At present I just run the parallelized modflow6 on my personal computer, the real case study will be conducted on HPC cluster after I get familiar with the whole workflow to configure modflow6-parallel model. But I still have some questions about the model setup workflow right now.
+(1) The already setup test model you supplied has been domain decompositioned into 9 sub-domains and can be run in parallel mode with coasrse grained parallelization. If many processes should be used, for example 1000 subdomains, how can I implement the domaim decomposition？ Still do it manually? It's unpractical. How I can implement the domain decomposition for the modflow6 input files obtained from Flopy tool? If there's any Python scripts, the workflow will be smooth.
+(2) I found the iMOD and iMOD-Python tools were supplied in PCR-GLOBWB 2 project, which is a hydrology-groundwater coupled system. The Python script can implement the domain decomposition pre-processing using METIS. But the input data file is huge and the computational scale is big, I have no computational resource and storage to conduct the global scaled simulation. I just want to run the stand-alone parallelized modflow6. If there's Python scripts to pre-process the modflow6-parallel, it's better. But the Python script was for the coupled system modeling, I only want to conduct the regional grounwater simulation.
+(3) It's noticed that the input and output files are read and writen in parallel using iMOD or iMOD-python tools in your paper EMS(J. Verkaik, et al. 2021), different format files can be processed including raster and IDF files. The output files from parallel running should be merged after completion for the visualization post-processing. I don't know the workflow for the pre- and post-processing right now, could you please give some hints?
+At last, the parallelized modflow model is a powerful tool! Thank you for your great contribution.
+Thanks!
+Best Regards,
+Li Jian
+China University of Geosciences
+
+-------------------------------
+Dear Li Jian,
+
+Sorry for the late response. Good to hear that the code now runs on your machine! :) To comment on your questions:
+
+(1) Yes, you still need to do everything manually similar to standard MODFLOW 6 using multi-models. Unfortunately. You can use a graph partitioner, like METIS to balance the grid cells. I don't think FloPy already supports settting up coupled multi-models yet, or automatic partitioning using METIS.
+
+(2) I don't understand: do you also want tu use PCR-GLOBWB model data for your regional model?
+
+(3) If you are planning to use parallel MODFLOW 6, there is no standard workflow you can use at the moment. At some point effort will be made to support this with for FloPy and iMOD-Python, but at the time being there is nothing for you can use out of the box. Can you perhaps tell me a little more about the application you have in mind? Resolution and number of cells, number of cores, etc.?
+
+Best, Jarno
+
+Reply:
+
+Dear Jarno:
+     Thank you very much for your reply.
+As for the three questions, I think about them these days and get some hints from Langevin-usgs.
+(1) The splitter model is developing in Flopy told by Langevin-usgs, which will be release in a couple of monthes. The splitter model can split the whole domain into several smaller domains used in modflow6-parallel. Before this, I have to create GWF-GWF exchange models manually, which is in flopy-3.3.6/examples/Tutorials/modflow6data/tutorial09_data.py, this tutorial creates two GWF models can be exchanged with each other. But I don't know how to create more than 2 models, such as 3x3 models domain.
+Meanwhile, METIS partitioning library was used in PCR-GLOBWB, this confused me, because METIS is for unstructured mesh model and the GWF-GWF exchanged coarse-grained parallelizetion was used in modflow6-parallel as I know.
+(2) Actually I don't run PCR-GLOBWB model (it's huge!), I just want to know the running mechanism of parallel-modflow6 in the coupled system. I want to use parallel modflow6 to simulate my regional model - Tarim Basin in China.
+(3) The Tarim Basin has great groundwater resource in China, which is the region (0.4 million squared meters) I want to study.  The cell size is about 500 meters. Firstly, I want to run modflow6-parallel in my workstation (CPU has 16 cores).
+
+
