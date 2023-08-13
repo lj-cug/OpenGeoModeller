@@ -1,9 +1,11 @@
 # Linux操作系统安装
 
   Linux系统推荐使用 Ubuntu 20.04
-  在Windowx系统的笔记本上，可以使用VMware workstation (商业软件，有破解版），或者使用VirtualBox(免费软件，体积较小)
+  在Windowx系统的笔记本上，可以使用VMware workstation (商业软件，有破解版），或者使用[VirtualBox](https://www.virtualbox.org/)
   
 # Ubuntu 20.04使用方法
+  
+  [下载并安装Ubuntu 22.04](http://releases.ubuntu.com/22.04/ubuntu-22.04.3-desktop-amd64.iso)
   
 ## 第一次使用su (超级用户权限)
    `sudo passwd root`
