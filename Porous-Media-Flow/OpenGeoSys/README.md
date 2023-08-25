@@ -1,6 +1,6 @@
 # OpenGeoSys
 
-Thermo-hydro-mechanical/chemical (THMC)模拟
+Thermo-hydro-mechanical/chemical (THMC)模型，由德国亥姆霍兹研究所研发
 
 OpenGeoSys-5  最常用, 前后处理工具： https://www.hifis.net/spotlights/geostat
 

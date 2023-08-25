@@ -1,6 +1,7 @@
 linux安装软件的几种方法
 
 一、rpm包安装方式步骤：
+
 1、找到相应的软件包，比如soft.version.rpm，下载到本机某个目录；
 
 2、打开一个终端，su -成root用户；
@@ -32,7 +33,9 @@ rpm –ivh software-1.2.3-1.i386.rpm
 rpm –e software。
 另外，在Linux中还提供了象GnoRPM、kpackage等图形化的RPM工具，使得整个过程会更加简单。
 
+
 二、deb包安装方式步骤：
+
 1、找到相应的软件包，比如soft.version.deb，下载到本机某个目录；
 
 2、打开一个终端，su -成root用户；
@@ -47,9 +50,11 @@ rpm –e software。
 但由于RPM出现得更早，所以在各种版本的Linux都常见到。
 
 而debian的包管理器dpkg则只出现在Debina Linux中，其它Linux版本一般都没有。
+
 1. 安装
 dpkg –i deb的软件包名
 如：dpkg –i software-1.2.3-1.deb
+
 2. 卸载
 dpkg –e 软件名
 如：dpkg –e software
@@ -62,19 +67,12 @@ dpkg –l ‘软件包名’
 
 三、tar.gz源代码包安装方式：
 1、找到相应的软件包，比如soft.tar.gz，下载到本机某个目录；
-
 2、打开一个终端，su -成root用户；
-
 3、cd soft.tar.gz所在的目录；
-
 4、tar -xzvf soft.tar.gz //一般会生成一个soft目录
-
 5、cd soft
-
 6、./configure
-
 7、make
-
 8、make install
 
 详细介绍：
