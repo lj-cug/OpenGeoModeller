@@ -2,8 +2,7 @@
 
 如图1，搭建一个采用Server-Client架构的Linux计算集群，Server是一台提交并行计算任务的PC，Client是称为计算节点的若干台PC。
 
-![](./media/image1.emf){width="3.5040430883639546in"
-height="2.3221380139982504in"}
+![](./media/image1.emf)
 
 图1 Ubuntu Linux集群示意图
 
@@ -25,11 +24,10 @@ Setting-\>NetWork
 
 可能有有线和无线的IP
 
-10.0.0.1 on mini system （Server）
+10.0.0.1 on mini system (Server)
 
-10.0.0.2 in Xeon system （Client）
+10.0.0.2 in Xeon system (Client)
 
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 可以使用Ubuntu的NetworkManager的nmcli查看网络连接情况：
 
@@ -44,13 +42,13 @@ con-name cluster
 
 以上操作增加了防火墙准则来管理cluster网络内的数据通信，启动DHCP服务器
 
-ifconfig，出现10.42.0.1和cluster网络中的另一台电脑的动态IP：10.42.0.1、24
+ifconfig，出现10.42.0.1和cluster网络中的另一台电脑的动态IP：10.42.0.1 24
 
 ## 第4步：安装SSH
 
-在[每台电脑]{.mark}上都安装SSH：apt-get install openssh-server
+在每台电脑上都安装SSH：apt-get install openssh-server
 
-SSH配置的细节...?
+SSH配置的细节...
 
 查看SSH和SSHD(服务器Deamon)的配置选项：
 
@@ -58,7 +56,7 @@ gedit /etc/ssh/ssh_config
 
 gedit /etc/ssh/sshd_config
 
-确保[每个计算节点]{.mark}运行SSHD，命令：systemctl status sshd
+确保每个计算节点运行SSHD，命令：systemctl status sshd
 
 ## 第5步：设置无密码访问
 
@@ -110,13 +108,13 @@ more /etc/hosts
 
 mpic++
 
-mpirun --np 2 hostname \# 确保能在主机上运行mpirun
+mpirun --np 2 hostname \  # 确保能在主机上运行mpirun
 
-mpirun --np 2 --host 10.0.0.2:2 hostname \# 确保可以通过网络接口启动进程
+mpirun --np 2 --host 10.0.0.2:2 hostname \  # 确保可以通过网络接口启动进程
 
 (上述是openmpi的语法，MPICH使用不同的参数，要查看手册)
 
-在主机上运行hostname，使用IP地址10.0.0.2，该系统有2个计算插槽(:2)：2核？
+在主机上运行hostname，使用IP地址10.0.0.2，该系统有2个计算插槽(:2)：2核
 
 还可以在xeon计算节点上启动2份hostname，运行：
 
@@ -125,9 +123,7 @@ mpirun -np 3 -host 10.0.0.2:2 -host 10.0.0.1 **hostname**
 输出：
 
 mini
-
 xeon
-
 xeon
 
 表示：可以在多个系统上启动MPI作业，现在有了基本的集群能力。
@@ -141,45 +137,33 @@ mpirun -np 3 -host xeon:2 -host mini **hostname**
 more \~/hosts
 
 10.0.0.2 slots=10
-
 10.0.0.1 slots=6
 
 这样就表明：Xeon系统有10个CPU核心，个人工作站有6个CPU核心。这样，模拟进程在移到\"mini\"系统之前，首先利用新的Xeon系统。
 
 mpirun -np 11 -hostfile \~**/**hosts **hostname**
 
-[输出：]{.mark}
+
+输出：
 
 mini
-
+xeon
+xeon
+xeon
+xeon
+xeon
+xeon
+xeon
+xeon
+xeon
 xeon
 
-xeon
-
-xeon
-
-xeon
-
-xeon
-
-xeon
-
-xeon
-
-xeon
-
-xeon
-
-xeon
 
 对于openmpi如果启动的进程数大于设置的16个，会报错：
 
 mpirun -np 20 -hostfile \~**/**hosts **hostname**
 
-There are not enough slots available **in** the system to satisfy the 20
-slots
-
-that were requested by the application:
+There are not enough slots available **in** the system to satisfy the 20 slots that were requested by the application:
 
 **hostname**
 
@@ -197,31 +181,31 @@ mpirun -np 20 -hostfile \~**/**hosts -oversubscribe **hostname**
 
 但是，远程运行测试程序，会出错！
 
-mpirun -np 3 -host xeon:3 .**/**mpi_test \# 出错！
+mpirun -np 3 -host xeon:3 .**/**mpi_test \  # 出错！
 
 因为在Xeon的home路径下没有mpi_test可执行程序！可以使用scp或rsync拷贝：
 
 rsync -rtv .**/**mpi_test xeon:
 
-mpirun -np 3 -host xeon:3 .**/**mpi_test \# 没问题了！
+mpirun -np 3 -host xeon:3 .**/**mpi_test \  # 没问题了！
 
-[这很不方便！]{.mark}
+这很不方便！
 
-解决办法就是：[设置一个网络驱动！]{.mark}这在Linux系统上很方便，参考：
+解决办法就是：设置一个网络驱动，这在Linux系统上很方便，参考：
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
 
-[首先]{.mark}，需要安装NFS核心和通用程序：
+首先，需要安装NFS核心和通用程序：
 
 apt **install** nfs-kernel-server nfs-common
 
-[然后]{.mark}，创建共享路径的挂载点，共享/home/lijian
+然后，创建共享路径的挂载点，共享/home/lijian
 
 在mini上创建软连接到上述路径：**ln** -s **/**nfs **/**home**/**user
 
 ls --la /nfs
 
-[然后]{.mark}，添加如下连接到/etc/exports
+然后，添加如下连接到/etc/exports
 
 **more /**etc**/**exports
 
@@ -229,7 +213,7 @@ ls --la /nfs
 
 该命令允许xeon可以read-write访问某指定文件夹。
 
-[然后]{.mark}，在远程Client端(xeon)上创建/nfs挂载点。更新/etc/fsatb包含：
+然后，在远程Client端(xeon)上创建/nfs挂载点。更新/etc/fsatb包含：
 
 user@xeon:\~\$ **sudo mkdir /**nfs
 
@@ -249,7 +233,7 @@ user**@**xeon:**/**nfs\$ **ls** -la
 
 total 60084
 
-。。。
+...
 
 在/etc/passwd中设置User ID，然后更新/etc/group
 
@@ -281,7 +265,6 @@ Ubuntu使用ufw命令控制防火墙。默认防火墙是关闭的。
 user**@**mini:**/**nfs\$ mpirun -np 3 -host xeon:2 -host mini:1
 .**/**mpi_test
 
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 A process or daemon was unable to **complete** a TCP connection
 
@@ -297,7 +280,6 @@ check that any firewall **(**e.g., iptables**)** has been disabled and
 
 try again.
 
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 可以对防火墙打开一个洞，允许任何系统位于10.0.xxx.xxx的子网络，使用：
 
@@ -307,9 +289,7 @@ user**@**mini:**/**nfs\$ mpirun -np 3 -host xeon:2 -host mini:1
 .**/**mpi_test
 
 I am 2 of 3 on mini
-
 I am 0 of 3 on xeon
-
 I am 1 of 3 on xeon
 
 ## 第10步：执行计算

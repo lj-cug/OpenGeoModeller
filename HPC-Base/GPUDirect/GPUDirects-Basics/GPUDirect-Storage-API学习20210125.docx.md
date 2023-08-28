@@ -251,12 +251,12 @@ state and there are no other side effects.
 
 ## 2 cuFile API定义
 
-### 2.1数据类型 {#数据类型 .标题3}
+### 2.1数据类型
 
 首先，cuFile
 API使用数据类型，然后typedef使用数据类型，最后枚举也使用数据类型。
 
-### 2.2 cuFile驱动API {#cufile驱动api .标题3}
+### 2.2 cuFile驱动API
 
 用来初始化、终止、查询和调整设置cuFile系统的API：
 
@@ -295,7 +295,7 @@ cuFileBufRegister \*/
 CUfileError_t cuFileDriverSetMaxPinnedMemSize(size_t
 max_pinned_memory_size);
 
-### 2.3 cuFile IO APIs {#cufile-io-apis .标题3}
+### 2.3 cuFile IO APIs
 
 The core of the cuFile IO APIs are the read and write functions.
 
@@ -330,7 +330,7 @@ to the disk before the call is complete.
 The buffer on the device has both a base (devPtr_base) and offset
 (devPtr_offset). This offset is distinct from the offset in the file.
 
-### 2.4 cuFile File Handle APIs {#cufile-file-handle-apis .标题3}
+### 2.4 cuFile File Handle APIs
 
 The cuFileHandleRegister API makes a file descriptor or handle that is
 known to the cuFile subsystem by using an OS-agnostic interface. The API
@@ -347,7 +347,7 @@ in the cuFile context will occur at cuFileDriverClose.
 
 [void cuFileHandleDeregister(CUFileHandle_t fh);]{.mark}
 
-### 2.5 cuFile buffer APIs {#cufile-buffer-apis .标题3}
+### 2.5 cuFile buffer APIs
 
 The cuFileBufRegister API incurs a significant performance cost, so
 registration costs should be amortized where possible. Developers must
@@ -372,13 +372,13 @@ int flags);]{.mark}
 
 ## 3 cuFile API Functional Specification
 
-### 3.1 cuFile 驱动 API Functional Specification {#cufile-驱动-api-functional-specification .标题3}
+### 3.1 cuFile 驱动 API Functional Specification
 
-### 3.2 cuFile IO API Functional Specification {#cufile-io-api-functional-specification .标题3}
+### 3.2 cuFile IO API Functional Specification
 
-### 3.3 cuFile内存管理Functional Specification {#cufile内存管理functional-specification .标题3}
+### 3.3 cuFile内存管理Functional Specification
 
-### 3.4 cuFile流API Functional Specification {#cufile流api-functional-specification .标题3}
+### 3.4 cuFile流API Functional Specification
 
 The stream APIs are similar to Read and Write, but they take a stream
 parameter to support asynchronous operations and execute in the CUDA

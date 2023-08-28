@@ -72,8 +72,7 @@ stack)处理正常的通信，例如Mellanox user-space
 
 ## 2相关研究
 
-![](./media/image1.emf){width="5.306783683289589in"
-height="1.081933508311461in"}
+![](./media/image1.emf)
 
 Ohio State University团队在MVAPICH2 (MPI-GDS)中引入GPUDirect
 Async，特点是在探讨GPUDirect Async功能的同时，不修改MPI
@@ -83,11 +82,9 @@ API。本文探讨了one-sided通信原语和CUDA核函数初始化的通信，�
 
 如图1，显示了使用GPUDirect RDMA-enabled的Infiniband HCA：
 
-![](./media/image2.emf){width="4.8393580489938754in"
-height="1.7657797462817149in"}
+![](./media/image2.emf)
 
-![](./media/image3.emf){width="3.355424321959755in"
-height="2.101398731408574in"}
+![](./media/image3.emf)
 
 图1 GPUDirect RDMA的计算和发送流程图
 
@@ -99,11 +96,9 @@ HCA与解锁的CUDA任务的通信，消除了对CPU的依赖.CPU
 仅需要准备和排队计算和通信任务。GPUDirect
 Async的计算和发送工作流程见图2：
 
-![](./media/image4.emf){width="5.052417979002625in"
-height="1.5817968066491688in"}
+![](./media/image4.emf)
 
-![](./media/image5.emf){width="3.3018219597550305in"
-height="2.2341371391076117in"}
+![](./media/image5.emf)
 
 图2 GPUDirect Async的计算和发送流程图
 
@@ -116,21 +111,19 @@ RDMA计算效率严重依赖于PCIe结构，即PCIe桥连的类型和数目(。�
 message size)时，管线阶段[使用发送侧(on sender
 side)的主机内存]{.mark}比使用GPUDirect RDMA效率更高。
 
-### 3.1动机 {#动机 .标题3}
+### 3.1动机
 
 对比下面没有和使用GPUDirect Async技术后，CPU的荷载变化。
 
-![](./media/image6.emf){width="5.768055555555556in"
-height="1.313419728783902in"}
+![](./media/image6.emf)
 
 图3 MPI多GPU应用程序时间线上的通信阶段
 
-![](./media/image7.emf){width="5.768055555555556in"
-height="1.4614479440069992in"}
+![](./media/image7.emf)
 
 图4 多GPU应用程序时间线上的通信阶段（使用GPUDirect Async技术）
 
-### 3.2实施 {#实施 .标题3}
+### 3.2实施
 
 目前支持GPUDirect Async需要包含在MKNX OFED 4.0内的扩展的IB Verbs
 API，以及最新版本的Mellanox Infiniband
@@ -149,8 +142,7 @@ BAR寄存的锁定页的uncached memory-mapped IO
 Queue (CQ)，分别添加一个新的CQE(Completion Queue
 Entry)。应用程序需要投票(poll)相应的CQ，以检测是否完成了request，见图5。
 
-![](./media/image8.emf){width="5.3299475065616795in"
-height="2.382292213473316in"}
+![](./media/image8.emf)
 
 图5 Infiniband HCA的发送/接收要求的处理流程
 
@@ -171,24 +163,21 @@ kernel threads. We refer to the former as the Stream Asynchronous (SA)
 communication model and to the latter as the Kernel-Initiated (KI)
 communication model.
 
-[复杂！！！！！！！！！！！！！！！！]{.mark}
-
-### 3.3软件支持 {#软件支持 .标题3}
+### 3.3软件支持
 
 为实施GPUDirect Async技术，需要在不同软件层级上实施和修改程序库，见图7。
 
-![](./media/image9.emf){width="5.768055555555556in"
-height="3.5603248031496064in"}
+![](./media/image9.emf)
 
 图7 GPUDirect Async软件层级
 
-#### 3.3.1 libibverbs {#libibverbs .标题4}
+#### 3.3.1 libibverbs
 
 **libibverbs**实施OpenFabrics Infiniband Verbs
 API。在4.0版本，Mellanox引入新的Peer-Direct
 API（见peer_ops.h），服务NVIDIA GPUDirect Async技术。
 
-#### 3.3.2 libmlx5 {#libmlx5 .标题4}
+#### 3.3.2 libmlx5
 
 **libmlx5**是生产商提供的底层驱动，用于管理最新的Mellanox Infiniband
 HCA。允许用户编写程序[低延迟(low latency)、低成本(low overhead)
@@ -202,7 +191,7 @@ Verbs非常相似，对CUDA流操作。LibGDSync负责创建Verbs对象，即QPs
 Async约束条件的结构体、注册需要的主机内存、附上发送指令和等待GPU流完成。函数像gds_stream_queue_send、gds_stream_wait_cq，内部使用CUDA流MemOp
 API。
 
-#### 3.3.4 LibMP {#libmp .标题4}
+#### 3.3.4 LibMP
 
 本文作者开发，是构建在LibGDSync
 API基础上的消息库，用于在应用程序中部署GPUDirect Async技术。
@@ -212,17 +201,15 @@ etc.），可以用[LibMP]{.mark}
 [API]{.mark}代替[标准的MPI通信]{.mark}原语，例如：用mp_isend_on_stream(
 )代替MPI_Isend( )、用mp_wait_on_stream( )代替MPI_Wait( )等等。
 
-![](./media/image10.emf){width="4.575204505686789in"
-height="0.6193077427821523in"}
+![](./media/image10.emf)
 
-![](./media/image11.emf){width="4.557342519685039in"
-height="0.7986111111111112in"}
+![](./media/image11.emf)
 
 当CPU post WQE，在收集descriptors以及将他们转换为CUDA
 API调用，使用通信原语的参数（destination/source peer ranks, message
 size, buffer pointers）。
 
-[具体编程看来还要看示例代码。]{.mark}
+具体编程看来还要看示例代码。
 
 3.3.5系统要求
 
@@ -243,13 +230,12 @@ Async要求：
 
 -   The nvidia_peer_memory kernel module
 
--   The [GDRcopy]{.mark} library
+-   The [GDRcopy] library
 
 [算法1]{.mark}展示了典型的GPUDirect
 Async应用程序结构，使用LibMP函数，其中2个过程交换数据，使用SA模型，混合[通信和计算]{.mark}任务。
 
-![](./media/image12.emf){width="4.472267060367454in"
-height="8.368055555555555in"}
+![](./media/image12.emf)
 
 ## 4 GPUDirect Async模型
 
@@ -259,7 +245,7 @@ LibMP包含2种不同的执行模型：[SA模型和KI模型]{.mark}。SA模型�
 rank与其他peer (GPU)交替执行计算和通信。第6节将探讨GPUDirect
 Async改进MPI模型效率的[条件]{.mark}。
 
-### 4.1 CPU同步模型 {#cpu同步模型 .标题3}
+### 4.1 CPU同步模型
 
 [常规的多GPU
 MPI应用]{.mark}，考虑D维迭代末班计算并行化的核函数，采用区域分解方法。需要3个独立的阶段：
@@ -288,7 +274,7 @@ height="2.1342125984251967in"}
 
 下面将考察LibMP的通信模型。
 
-### 4.2 Stream asynchronous, SA模型 {#stream-asynchronous-sa模型 .标题3}
+### 4.2 Stream asynchronous, SA模型
 
 SA模型中，[通信与其他CUDA任务]{.mark}是一起排队进入CUDA流，像核函数、内存转移等。通常SA模型相对容易使用，因为只需要修改很少的MPI应用程序代码（即用mp_isend_on_stream修改MPI_Isend，忽略CUDA同步原语）。相对主机代码，计算和通信任务是[异步执行]{.mark}的，但与CUDA流是[同步的]{.mark}。
 
@@ -300,27 +286,25 @@ SA模型中，[通信与其他CUDA任务]{.mark}是一起排队进入CUDA流，�
 
 SA模型中，由于异步行为，可以忽略![](./media/image22.wmf)耗时，CPU排队很多在CUDA流上顺序执行的任务，无需等待他们完成。
 
-为确保[异步行为]{.mark}，在[通信]{.mark}期间要求：
+为确保异步行为，在通信期间要求：
 
 （1）必须删除所有的CUDA同步原语；
 
 （2）必须使用对应的CUDA异步原语替代所有非异步的CUDA原语；
 
-（3）在posting时刻（如发送和接收buffer size, 目标rank,
-指针等），必须已知通信参数；
+（3）在posting时刻（如发送和接收buffer size, 目标rank,指针等），必须已知通信参数；
 
 （4）所有的MPI函数必须用LibMP函数代替。
 
-![](./media/image23.emf){width="5.457206911636045in"
-height="2.196336395450569in"}
+![](./media/image23.emf)
 
 图9 多GPU的SA模型的一般通信模式，式（2）表征
 
 一个明显的副作用就是：[CPU做更少的工作，]{.mark}因为主机代码即不做同步操作，也不执行通信，因此在异步的上下文环境下没有相关工作。因此，在式（2）中忽略TH参数。
 
-与式（2）相符的算法表示在[异步模式]{.mark}下效率改善[需要符合以下3种条件]{.mark}：
+与式（2）相符的算法表示在[异步模式]下效率改善[需要符合以下3种条件]
 
-#### 4.2.1 C1条件：异步(Asynchronous) {#c1条件异步asynchronous .标题4}
+#### 4.2.1 C1条件：异步(Asynchronous)
 
 式（2）中，总执行时间等于GPU时间，如果：
 
@@ -362,7 +346,7 @@ SA模型（式2）比同步模型（式1）快，如果：
 
 ![](./media/image32.wmf)
 
-### 4.3 Kernel-Initiated, KI模型 {#kernel-initiated-ki模型 .标题3}
+### 4.3 Kernel-Initiated, KI模型
 
 Streaming Multiprocessor
 (SM)负责执行CUDA核函数，可直接使用通信原语发送消息或等待接收消息完成。GPU中有HCA门铃注册和CQ映射，一个CUDA线程可使用简单的值分配(value
@@ -434,21 +418,19 @@ in)]{.mark}GPU上可获取的CUDA线程块的逻辑个数和大部分执行任�
 
 ping-pong延迟测试，3种模型：标准MPI，SA，KI，基于点对点(send-receive)通信。
 
-### 5.1 ping-pong延迟测试 {#ping-pong延迟测试 .标题3}
+### 5.1 ping-pong延迟测试
 
 不考虑GPU核函数计算，仅评估通信耗时。
 
 算法2描述了2个MPI进程（rank0和rank1）之间的简单ping-pong测试，交换位于主机上的内存，选择性地执行常数时间的CUDA核函数。
 
-![](./media/image45.emf){width="4.690242782152231in"
-height="4.546340769903762in"}
+![](./media/image45.emf)
 
 如图13，小的通信信息大小时，标准MPI更快，因为GPU通信路径的overhead。随着信息大小增加，延迟线性增长，但SA模型的延迟比MPI和KI模型的更不规则，[SA模型的延迟Piece-wise
 constant periods interleaved with sudden
 peaks]{.mark}，这需要解释CUDA流是如何执行通信的。
 
-![](./media/image46.emf){width="4.427145669291338in"
-height="2.4431167979002626in"}
+![](./media/image46.emf)
 
 图13 标准MPI，SA和KI模型ping-pong测试（仅考虑通信），Kepler架构
 
@@ -458,12 +440,11 @@ front-end unit]{.mark}。
 
 并在更新的Maxwell架构（延迟相似）和Pascal架构（Tesla卡，延迟更好）的GPU上执行。
 
-### 5.3 带GPU计算的ping-pong延迟 {#带gpu计算的ping-pong延迟 .标题3}
+### 5.3 带GPU计算的ping-pong延迟
 
 图18中绘制了双程(Round-trip---数据在主机和设备间的拷贝)延迟，此时启动了\~5微秒的CUDA核函数计算。整体计算效率与计算和通信都有关系：
 
-![](./media/image47.emf){width="4.774985783027121in"
-height="2.581266404199475in"}
+![](./media/image47.emf)
 
 图18标准MPI，SA和KI模型ping-pong测试（通信+计算）
 
@@ -480,7 +461,7 @@ interleaved with sudden peaks]{.mark}的现象。
 
 ## 6 应用程序测试
 
-### 6.1 HPGMG-FV CUDA {#hpgmg-fv-cuda .标题3}
+### 6.1 HPGMG-FV CUDA
 
 HPGMG-FV CUDA的主要通信函数在GPU层级上[服从2D
 Stencil模式]{.mark}，与4.1节的CPU同步模式类似：
@@ -497,37 +478,32 @@ Stencil模式]{.mark}，与4.1节的CPU同步模式类似：
 
 算法3是以上通信函数的MPI伪代码。
 
-![](./media/image48.emf){width="4.586669947506562in"
-height="3.1332436570428697in"}
+![](./media/image48.emf)
 
 通信模式示意图见图21，CUDA Visual
 Profiler分析见图22：在CUDA核函数之间，GPU为加载，一直等待从CPU的新任务（绿色IDLE区域）。
 
-![](./media/image49.emf){width="5.29859908136483in"
-height="1.0028532370953631in"}
+![](./media/image49.emf)
 
 图21 HPGMG-FV的通信函数时间线，MPI版本
 
-![](./media/image50.emf){width="5.768055555555556in"
-height="1.3743383639545057in"}
+![](./media/image50.emf)
 
 图22 CUDA Visual Profiler上的HPGMG-FV通信函数，MPI版本
 
 下面应用SA和KI模型修改HPGMG-FV CUDA算法。
 
-#### 6.1.1 SA(Stream Asynchronous)模型 {#sastream-asynchronous模型 .标题4}
+#### 6.1.1 SA(Stream Asynchronous)模型
 
 CUDA核函数与通信之间的主机代码是在Pack核函数之后，简单的cudaDeviceSynchronize()组成，可删去（忽略TH）。另外，通信参数在启动通信时已知，因此可实施SA模型。
 
 修改算法3中的[exchangeLevelBoundariesMPI]{.mark}为算法4中的[exchangeLevelBoundariesSA]{.mark}。在Infiniband通信的情况下，如果启动send，但对应的receive尚未准备好，则通信将存在延迟。为此，我们使用one-sided异步调用[mp_iput_on_stream]{.mark}，来确保各[异步send]{.mark}有相应的其他peer进程发出的receive缓冲。
 
-![](./media/image51.emf){width="4.909722222222222in"
-height="3.8750885826771655in"}
+![](./media/image51.emf)
 
 如图25，Y轴显示了SA模型下，GPU层级相对标准MPI版本的效率增加。
 
-![](./media/image52.emf){width="4.118055555555555in"
-height="2.637036307961505in"}
+![](./media/image52.emf)
 
 图25
 相对MPI版本，实施SA模式的HPGMG-FV的时间收益，仅比较GPU层，直到16个进程，weak-scaling
@@ -538,7 +514,7 @@ height="2.637036307961505in"}
 
 （2）增加计算规模，增加CUDA核函数计算负荷（即计算时间），降低了GPU闲置时间。因此，用CUDA流上的通信代替短暂的GPU闲置时间，不能显著改善计算效率（C2条件）。并且，如果[通信时间超过GPU闲置时间]{.mark}还会降低计算效率。
 
-#### **[我的理解]{.mark}** {#我的理解 .标题4}
+#### **我的理解**
 
 对第1点：通信信息量随着计算规模增大而增大，通信成本反而变的不重要？？？（计算部分的比重提高了，使通信比例下降）。通信量比重较大时，实施异步通信模式是很有益的！
 
@@ -546,12 +522,11 @@ height="2.637036307961505in"}
 
 看来要是Async促进效率，要平衡通信量与计算量：低阶格式的通信量相对计算量较小，当计算量很大时，如果降低了通信所占的比例，Async通信提高计算效率的效果会降低。同等计算规模下，高阶格式的通信量更大；而高阶格式一般在相对粗网格上执行，GPU的计算量较低阶格式要低，即GPU闲置时间期望得到延长，可对付通信时间增长的问题（但也要将通信时间控制在GPU闲置时间以内）。因此，Async通信模式对解决高阶格式的通信overhead问题期望有缓解的作用。
 
-#### 6.1.2 KI(Kernel-Initiated)模型 {#kikernel-initiated模型 .标题4}
+#### 6.1.2 KI(Kernel-Initiated)模型
 
 根据之前的观察，Pack核函数是A类型任务，Unpack核函数是C类型任务，Interior核函数是B类型任务。因此，使用如图26所示的组织CUDA线程块的单独核函数，修改各通信阶段。
 
-![](./media/image53.emf){width="4.763888888888889in"
-height="3.1598698600174977in"}
+![](./media/image53.emf)
 
 图26 HPGMG-FV通信模式，KI版本
 
@@ -563,28 +538,26 @@ K20 GPU拥有13
 SMs，各SM最多有2048线程，这意味着所有的193个逻辑CUDA线程块可以并发执行，所有任务在大部分时间可重叠，这是最佳的KI方案（4.3节）。观察KI模型的Visual
 Profiler，得到减少的TCPU~KI~和TGPU~KI~时间，见表2.
 
-![](./media/image54.emf){width="4.967791994750656in"
-height="1.060650699912511in"}
+![](./media/image54.emf)
 
 启动2个进程时获得最佳计算收益，约26%，KI模型的计算效率比SA模型更好。
 
-### 6.2 CoMD-CUDA {#comd-cuda .标题3}
+### 6.2 CoMD-CUDA 
 
 分子动力学模型，SA模型与KI模型的计算效率收益[类似]{.mark}，Async都有积极作用。
 
-### 6.3 BFS {#bfs .标题3}
+### 6.3 BFS
 
 SA模型没有改善计算效率。
 
-### 6.4 LULESH2-CUDA {#lulesh2-cuda .标题3}
+### 6.4 LULESH2-CUDA
 
 Livermore Unstructured Lagrange Explicit Shock Hydrodynamics (LULESH)
 proxy application at Lawrence Livermore National Laboratory (LLNL).
 
 LULESH2是将结构网格转换为非结构网格编号实施计算的。在E2环境下，使用27个计算节点，采用60^3^规模的结构网格，增加循环次数，加强GPU计算荷载。只实施了SA模型。SA模型相对MPI模型的时间收益见下图。
 
-![](./media/image55.emf){width="3.886111111111111in"
-height="2.0623818897637793in"}
+![](./media/image55.emf)
 
 图 LULESH2-CUDA时间收益，SA模型，27个进程（MPI）
 
@@ -596,11 +569,11 @@ height="2.0623818897637793in"}
 
 顶层：LibMP
 
-（1）GPUDirect Async构建了多GPU加速应用的[新的通信]{.mark}模型；
+（1）GPUDirect Async构建了多GPU加速应用的[新的通信]}模型；
 
-（2）[GPUDirect Async不一定更快]{.mark}；
+（2）[GPUDirect Async不一定更快]
 
-（3）CPU能启动更多[若干连续的异步]{.mark}通信周期（MPI_barrier()），获得的加速效果越好。
+（3）CPU能启动更多[若干连续的异步]通信周期（MPI_barrier()），获得的加速效果越好。
 
 GPUDirect Async的主要缺陷：
 

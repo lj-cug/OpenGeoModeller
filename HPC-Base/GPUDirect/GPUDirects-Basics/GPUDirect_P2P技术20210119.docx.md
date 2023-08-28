@@ -167,11 +167,11 @@ stream_in));]{.mark}
 
 [checkCudaErrors(cudaStreamSynchronize(stream_in));]{.mark}
 
-### [exchange2d_cudaPeerAsync]{.mark}（non-UVA通信方式） {#exchange2d_cudapeerasyncnon-uva通信方式 .标题3}
+### [exchange2d_cudaPeerAsync]{.mark}（non-UVA通信方式）
 
 [跟exchange2d_cudaPeer的代码一样。得仔细研究一下。]{.mark}
 
-### [exchange3d_cudaUVA（当前使用的UVA通信方式）]{.mark} {#exchange3d_cudauva当前使用的uva通信方式 .标题3}
+### [exchange3d_cudaUVA（当前使用的UVA通信方式）]{.mark}
 
 **[UVA: Unified Virtual Adress]{.mark}**
 
@@ -193,7 +193,7 @@ stream_in));]{.mark}
 
 [(5) MPI_Barrier(pom_comm);]{.mark}
 
-### 多GPU的P2P复制和访问 {#多gpu的p2p复制和访问 .标题3}
+### 多GPU的P2P复制和访问
 
 Peer-to-peer memcpy，GPU A上的指针A直接数据复制到GPU B上的指针B
 
@@ -287,7 +287,7 @@ cudaMemcpyAsync：不同Stream之间传输数据使用的API，该函数在主�
 
 cudaMemcpypeerAsync：cuda提供[cudaMemcpyPeerAsync]{.mark}实现显卡间的数据复制，但是该函数需要硬件支持。可以使用cuda安装程序提供的p2pBandwidthLatencyTest测试当前硬件是否支持直接在显卡间实现数据复制。
 
-### 总结 {#总结 .标题3}
+### 总结
 
 -   带Async的API函数，都涉及多流之间的数据交换。
 

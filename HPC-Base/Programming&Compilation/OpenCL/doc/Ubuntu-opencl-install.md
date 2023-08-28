@@ -1,15 +1,17 @@
-ubuntu opencl 环境 搭建
+# ubuntu下opencl环境搭建
 
-下载 OpenCl? SDKhttps://software.intel.com/content/www/us/en/develop/tools/opencl-sdk/choose-download.html，选择linux平台，解压。
+## 下载 OpenCl SDK
+
+https://software.intel.com/content/www/us/en/develop/tools/opencl-sdk/choose-download.html，选择linux平台，解压。
 
 sudo ./install.sh
 
-安装 clinfo
+## 安装 clinfo
+
 sudo apt install clinfo
-查看结果:
 
+## 安装开发包
 
-安装开发包
 sudo apt install ocl-icd-opencl-dev
 
 cmake 配置
@@ -173,11 +175,8 @@ free(profile);
  printf("No platforms support the %s extension.\n", icd_ext);?
 
  /* Deallocate resources */?
-
  free(platforms);?
 
  return 0;
 
 }
-
-

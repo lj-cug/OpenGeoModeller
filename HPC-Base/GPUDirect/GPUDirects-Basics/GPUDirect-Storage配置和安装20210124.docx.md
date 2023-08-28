@@ -16,8 +16,7 @@ buffer。直接路径增加系统带宽，减小延迟，CPU与GPU利用率，�
 通过cuFile
 API实施GDS特性，已添加到CUDA中。单独的软件包，初步分为：[用户层程序库---libcufile.so，和一个内核驱动nvidia-fs.so]{.mark}。用户层程序库将合并入CUDA用户层运行时。内核驱动需要单独安装，随同NVIDIA驱动程序一次性整合安装。
 
-![https://docs.nvidia.com/gpudirect-storage/design-guide/graphics/comparing-gds-storage-paths2.png](./media/image1.png){width="5.378885608048994in"
-height="2.689443350831146in"}
+![https://docs.nvidia.com/gpudirect-storage/design-guide/graphics/comparing-gds-storage-paths2.png](./media/image1.png)
 
 图1 比较GPUDirect Storage的路径
 
@@ -62,8 +61,7 @@ Sockets，每个有4个PCIe，各PCIe有2层switch。Each second level switch ha
 a connection to the first level switch, a PCIe slot that can be
 populated with an NIC or RAID card, and two GPUs.
 
-![https://docs.nvidia.com/gpudirect-storage/design-guide/graphics/sample-topology-for-half-a-system2.png](./media/image2.png){width="5.107857611548557in"
-height="2.553928258967629in"}
+![https://docs.nvidia.com/gpudirect-storage/design-guide/graphics/sample-topology-for-half-a-system2.png](./media/image2.png)
 
 图2 系统拓扑结构示意图
 
@@ -82,23 +80,23 @@ height="2.553928258967629in"}
 （5）必须连同可使用GPUDirect的NVIDIA
 GPU（仅Quadro和Tesla），使用CUDA和cuFile API。
 
-### 4.1 读写GPU的数据转移 {#读写gpu的数据转移 .标题3}
+### 4.1 读写GPU的数据转移
 
 必须数据是在GPU与存储器之间的转移，如果是CPU与存储器之间的数据转移则GDS没有益处。
 
-### 4.2 IO瓶颈 {#io瓶颈 .标题3}
+### 4.2 IO瓶颈
 
 如果计算时间远大于IO时间，则GDS无益处。如果IO时间完全与计算重叠，即使用异步IO，则IO不是瓶颈。流处理大量数据的工作负荷以及在各数据单元上执行少量计算的情况，则倾向于IO约束。
 
-### 4.3显式的 {#显式的 .标题3}
+### 4.3显式的
 
 GDS提供的API是显式的，如Linux的pread和pwrite。这需要修改一些应用程序的代码，例如模型从mmap内存切换到直接访问GPU需要的内存。直接访问模型的效率更高。
 
-### 4.4锁定内存 {#锁定内存 .标题3}
+### 4.4锁定内存
 
 为了启动DMA转移，GPU内存必须是锁定的。这要求GPU内存是cudaMalloc分配的，而不是cudaMallocManaged或malloc。显然，各转移数据的大小必须符合分配的缓冲量。
 
-### 4.5 cuFile APIs {#cufile-apis .标题3}
+### 4.5 cuFile APIs
 
 用户直接使用cuFile的安装程序，直接使用cuFileRead和cuFIleWrite
 APIs，这些API启动读写，类似与POSIX的pread和pwrite（带O_DIRECT），驱动初始化和终止，缓冲寄存等。cuFileRead和cuFIleWrite转移是显式和直接的，因此效率最高。
@@ -107,7 +105,7 @@ APIs，这些API启动读写，类似与POSIX的pread和pwrite（带O_DIRECT）�
 
 ## 5系统要求
 
-### 5.1软件要求 {#软件要求 .标题3}
+### 5.1软件要求
 
 -   OS：GDS仅在Linux上得到支持，当前是Ubuntu；
 
@@ -121,7 +119,7 @@ APIs，这些API启动读写，类似与POSIX的pread和pwrite（带O_DIRECT）�
 -   SBIOS：在一些桌面和工作站主板上，SBIOS限制了GPU PCIe
     BAR1资源的大小，例如任何时间暴露给其他DMA引擎的地址窗口大小。必须使用64位窗口。
 
-### 5.2 MOFED和文件系统要求 {#mofed和文件系统要求 .标题3}
+### 5.2 MOFED和文件系统要求
 
 -   Ubuntu 18.04或20.04
 
@@ -136,7 +134,7 @@ APIs，这些API启动读写，类似与POSIX的pread和pwrite（带O_DIRECT）�
 
 3.  VAST 3.4
 
-### 5.3 硬件要求 {#硬件要求 .标题3}
+### 5.3 硬件要求
 
 -   CPU：Intel或AMD
 
@@ -150,7 +148,7 @@ APIs，这些API启动读写，类似与POSIX的pread和pwrite（带O_DIRECT）�
 
 ## 6 平台效率适应性
 
-### 6.1 读取存储器的带宽 {#读取存储器的带宽 .标题3}
+### 6.1 读取存储器的带宽
 
 For remote storage, there is benefit to a higher ratio of NICs or RAID
 cards to GPUs for remote storage, up to the limits of IO demand.
@@ -165,7 +163,7 @@ of secondary importance. NVMe drives tend to offer higher bandwidth and
 lower latency than SAS drives. Some file systems and block systems
 vendors support only NVMe drives and non SAS drives.
 
-### 6.2 从存储器到GPU的路径 {#从存储器到gpu的路径 .标题3}
+### 6.2 从存储器到GPU的路径
 
 [PCIe switches]{.mark} aren't required to achieve some of the
 performance benefits, since a direct path between PCIe endpoints may
@@ -174,7 +172,7 @@ pass through the CPU without using a bounce buffer.
 The use of [PCIe switches]{.mark} can increase the peak bandwidth
 between NICs or RAID cards or local drives and GPUs.
 
-### 6.3 GPU BAR1大小 {#gpu-bar1大小 .标题3}
+### 6.3 GPU BAR1大小
 
 GPUDirect Storage enables DMA engines to move data through the GPU BAR1
 aperture into or out of GPU memory. The transfer size might exceed the
@@ -630,7 +628,7 @@ MLNX_OFED_LINUX-5.1-2.3.7.1:
 
 NVIDIA-SMI 418.100 Driver Version: 418.100 CUDA Version: 10.1
 
-### 4.2安装GDS库和工具 {#安装gds库和工具 .标题3}
+### 4.2安装GDS库和工具
 
 GPUDirect Storage软件包安装在：/usr/local/cuda-X.Y/gds
 
@@ -640,7 +638,7 @@ ls -1 /usr/local/cuda-X.Y/targets/x86_64-linux/lib/\*cufile\*
 
 GDS工具和示例位于：/usr/local/cuda-X.Y/gds
 
-### 4.3检验GDS是够安装成功 {#检验gds是够安装成功 .标题3}
+### 4.3检验GDS是够安装成功
 
 运行gdscheck:
 
@@ -744,7 +742,7 @@ GPU index 7 A100-SXM4-40GB bar:1 bar size (MiB):65536 supports GDS
 
 Platform verification succeeded.
 
-### 4.4检查安装的GDS的版本 {#检查安装的gds的版本 .标题3}
+### 4.4检查安装的GDS的版本
 
 gdscheck -v
 
@@ -754,7 +752,7 @@ GDS release version (beta): 0.9.0.16
 
 nvidia_fs version: 2.3 libcufile version: 2.3
 
-### 4.5安装和卸载debian程序包 {#安装和卸载debian程序包 .标题3}
+### 4.5安装和卸载debian程序包
 
 安装：
 

@@ -1,23 +1,21 @@
 ## CUDA并行的CG求解器
 
-[Oyarzun et al.
-(2014)文中]{.mark}采用GPU并行的PCG求解CFD中的压力泊松方程。MPI并行的数据首先收集到主节点，然后传输到GPU，进行PCG求解，求解完成后，再把解的向量发送到各计算节点。
+Oyarzun et al. (2014)文中采用GPU并行的PCG求解CFD中的压力泊松方程。
+MPI并行的数据首先收集到主节点，然后传输到GPU，进行PCG求解，求解完成后，再把解的向量发送到各计算节点。
 
 MPI通信量少于求解耗时的1%，所占比例很低。
 
-![](./media/image1.emf){width="4.0254604111986in"
-height="2.1391688538932634in"}
+![](./media/image1.emf)
 
 图1 两层分区和数据传输
 
 PCG求解器中的SpMV操作，使用多GPU并行，通信如下图。
 
-![](./media/image2.emf){width="2.37077646544182in"
-height="1.5135662729658792in"}
+![](./media/image2.emf)
 
 图2 PCG中SpMV的多GPU并行
 
-### Paralution {#paralution .标题3}
+### Paralution
 
 PARALUTION is library for sparse iterative methods with special focus on
 multi-core and accelerator technology such as GPUs, it comes with dual
@@ -29,7 +27,7 @@ software packages.
 
 [http://www.paralution.com](http://www.paralution.com/)
 
-### AmgX {#amgx .标题3}
+### AmgX
 
 AmgX: Multi-Grid Accelerated Linear Solvers for Industrial Applications
 
@@ -59,8 +57,7 @@ highly tuned multi-threaded and/or distributed CPU implementations can
 outperform them in many cases. Industrial CFD users had few options for
 GPU acceleration, so NVIDIA decided to do something about it.
 
-![Fluent](./media/image3.png){width="3.930622265966754in"
-height="1.9571227034120735in"}
+![Fluent](./media/image3.png)
 
 NVIDIA partnered with [ANSYS](http://www.ansys.com/), provider of the
 leading CFD
@@ -139,10 +136,9 @@ without being locked into a fixed, arbitrary ratio by AmgX. If you
 already have working code, we don't want to make you change anything
 beyond what is needed to connect to AmgX.
 
-![SC13_AmgX-Final_158](./media/image5.png){width="5.131576990376203in"
-height="2.884867672790901in"}
+![SC13_AmgX-Final_158](./media/image5.png)
 
-**[Author]{.mark}**
+**[Author]
 
 **About Joe Eaton** \
 Joe Eaton holds a Ph.D. in Computational and Applied Mathematics from
@@ -154,7 +150,7 @@ simulation problems, mixed with high performance chemistry simulation
 and parallel computing. He joined NVIDIA in 2013 to lead the AmgX
 product team.
 
-### LAMA {#lama .标题3}
+### LAMA
 
 [https://www.libama.org/en/overview.html]{.mark}
 

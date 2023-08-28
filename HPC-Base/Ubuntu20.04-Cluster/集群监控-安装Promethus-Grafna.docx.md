@@ -27,7 +27,7 @@ No hostname ip cpu数 memory os comment
 
 ## 2. 在监控端安装Prometheus
 
-### 2.1 安装 {#安装 .标题3}
+### 2.1 安装
 
 个人觉得不用下载安装包这么复杂， 直接从ubuntu源安装
 
@@ -60,7 +60,7 @@ CGroup: /system.slice/prometheus.service
 
 └─23080 /usr/bin/prometheus
 
-### 2.2 检查配置文件 {#检查配置文件 .标题3}
+### 2.2 检查配置文件
 
 gateman@amdeuc-vm0:/etc/prometheus\$ cat prometheus.yml
 
@@ -181,7 +181,7 @@ sudo systemctl restart prometheus
 
 ![在这里插入图片描述](./media/image1.png)
 
-## 5.在[监控端]{.mark}安装Grafana
+## 5.在监控端安装Grafana
 
 没想到grafana居然不在ubuntu的默认仓库...
 
@@ -218,7 +218,7 @@ grafana 的默认端口是3000
 
 登录后马上要求你改密码的
 
-### 6.1 添加数据源 {#添加数据源 .标题3}
+### 6.1 添加数据源
 
 Configuration -\> Data Sources -\>add data source -\> Prometheus
 

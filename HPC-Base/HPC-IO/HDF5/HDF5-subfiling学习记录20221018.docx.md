@@ -12,8 +12,7 @@ Subfiling，收集在拓扑上相互紧邻的计算rank到一个group，每个gr
 
 并行文件格式库，如PnetCDF和ADIOS，都实施了subfiling技术。
 
-![](./media/image1.emf){width="4.464722222222222in"
-height="2.864316491688539in"}
+![](./media/image1.emf)
 
 图1
 典型的HPC存储层级：短期的节点存储和数据的快速存储，以及全局的用于长期存储的并行文件系统(PFS)
@@ -55,8 +54,7 @@ datasets）存储分片的数据集，但从master文件的角度视为一个单
 
 目前，只能串行访问VDS数据，VDS可以使用h5repack命令工具再封装到一个HDF5数据集（传统的连续或chunked存储）。
 
-![](./media/image2.emf){width="3.854041994750656in"
-height="6.380650699912511in"}
+![](./media/image2.emf)
 
 ## 3 实施Subfiling
 
@@ -64,8 +62,7 @@ height="6.380650699912511in"}
 
 图3显示了进程分组使用subfiling写出到一个单个共享的数据集。
 
-![](./media/image3.emf){width="4.294492563429571in"
-height="2.4074048556430445in"}
+![](./media/image3.emf)
 
 ### 3.1 HDF5 Subfiling编程模型 {#hdf5-subfiling编程模型 .标题3}
 
@@ -81,7 +78,7 @@ height="2.4074048556430445in"}
 
 ## 5 结果
 
-### 5.2 调试subfiling {#调试subfiling .标题3}
+### 5.2 调试subfiling
 
 1）Number of subfiles
 
@@ -92,9 +89,9 @@ subfiles，测试从4K进程写出32个subfiles
 
 ## 6结论
 
-### 6.1建议 {#建议 .标题3}
+### 6.1建议
 
-### 6.2局限 {#局限 .标题3}
+### 6.2局限
 
 ## 参考文献
 

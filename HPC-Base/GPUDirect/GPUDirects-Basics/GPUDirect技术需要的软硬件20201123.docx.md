@@ -17,14 +17,14 @@
 
 ## 硬件
 
-### mellanox网卡（必须的） {#mellanox网卡必须的 .标题3}
+### mellanox网卡（必须的）
 
 https://www.mellanox.com/files/doc-2020/ib-adapter-card-brochure.pdf
 
 ![](./media/image1.png){width="3.2842650918635172in"
 height="2.0313713910761155in"}
 
-### NVIDIA显卡 {#nvidia显卡 .标题3}
+### NVIDIA显卡
 
 NVIDIA® Tesla™ / Quadro K系列或Tesla™ / Quadro™ P系列GPU
 
@@ -51,7 +51,7 @@ NVIDIA® Tesla™ / Quadro K系列或Tesla™ / Quadro™ P系列GPU
 -   [Tesla C2075 and
     M2070Q](http://www.nvidia.com/object/tesla-servers.html)
 
-### 数据交换机 {#数据交换机 .标题3}
+### 数据交换机
 
 Mellanox数据交换机
 

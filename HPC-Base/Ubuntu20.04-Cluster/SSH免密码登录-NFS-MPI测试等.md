@@ -16,9 +16,11 @@ Step 2: 设置SSH
 $ sudo apt-get install openssh-server    # 控制节点上安装ssh服务器
 
 ##测试ssh登录
+
 ssh username@hostname   # 此时登录，需要输入username的密码，
 
 ##为了免密码登录ssh，需要生成keys，然后复制到计算节点机器的authorized_keys列表中
+
 $ ssh-keygen -t rsa
 ~./ssh 路径下会生成rsa公钥和私钥，接着：
 scp rsa.pub lijian@lijian-1:/home/lijian

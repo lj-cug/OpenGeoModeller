@@ -15,12 +15,11 @@ GPUDirect RDMA技术是Kepler级GPU和CUDA
 
 需要修改设备驱动程序来启动该功能。
 
-![C:\\Users\\Administrator\\Desktop\\gpudirect-rdma-within-linux-device-driver-model.png](./media/image1.png){width="3.734027777777778in"
-height="2.532638888888889in"}
+![C:\\Users\\Administrator\\Desktop\\gpudirect-rdma-within-linux-device-driver-model.png](./media/image1.png)
 
 图1 Linux设备驱动模型下的GPUDirect RDMA
 
-### 1.1 GPUDirect RDMA如何工作 {#gpudirect-rdma如何工作 .标题3}
+### 1.1 GPUDirect RDMA如何工作
 
 当设置两个对等设备间GPUDirect
 RDMA通信时，从PCIe设备的角度来看，所有的物理地址是相同的。在该物理地址空间内，是线性窗口，称为PCI
@@ -33,7 +32,7 @@ RDMA对设备驱动的支持，必须要修改内核驱动程序内的少量地�
 
 GPUDirect RDMA的API和控制流与标准的DMA转移中使用的API非常相似。
 
-### 1.2 标准的DMA转移 {#标准的dma转移 .标题3}
+### 1.2 标准的DMA转移
 
 首先，大致介绍在用户层面初始化DMA转移。该过程中，存在如下部分：
 
@@ -58,7 +57,7 @@ or from)。我们称该操作为[锁定（pinning）]{.mark}内存。
 
 6、转移完成后，通信库最终清理所有用于锁定内存的资源。我们称为[解锁（unpinning）]{.mark}内存。
 
-### 1.3 GPUDirect RDMA转移 {#gpudirect-rdma转移 .标题3}
+### 1.3 GPUDirect RDMA转移
 
 为支持GPUDirect
 RDMA转移的通信，需要对上述步骤做修改。首先，需要2个新的部分：
@@ -75,7 +74,7 @@ GPU memory和Unpinning GPU memory。
 
 ## 2 设计的考虑
 
-### 2.1 Lazy Unpinning优化 {#lazy-unpinning优化 .标题3}
+### 2.1 Lazy Unpinning优化
 
 在BAR中锁定GPU设备内存是成本很高的操作，占用数ms。因此，应用程序应设计最小化[overhead]{.mark}。
 
@@ -88,22 +87,22 @@ unpinning接收了锁定/解锁操作的成本。
 
 当BAR空间消耗完了，锁定新的区域将失败。
 
-### 2.2注册缓冲 {#注册缓冲 .标题3}
+### 2.2注册缓冲
 
 见7_CUDALibraries/cuHook，展示如何调用CUDA
 API，用来诊断GPU内存的de/allocations。
 
-### 2.3 解锁callback {#解锁callback .标题3}
+### 2.3 解锁callback
 
-### 2.4支持的系统 {#支持的系统 .标题3}
+### 2.4支持的系统
 
 用lspci检查PCI拓扑：lspci -t
 
-### 2.5 PCI BAR大小 {#pci-bar大小 .标题3}
+### 2.5 PCI BAR大小
 
 ## 3 如何实施具体任务
 
-### 3.1 显示GPU BAR空间 {#显示gpu-bar空间 .标题3}
+### 3.1 显示GPU BAR空间
 
 查询被GPUDirect RDMA映射消耗的主要资源：
 
@@ -117,17 +116,17 @@ Used : 2 MiB
 
 Free : 254 MiB
 
-### 3.2锁定GPU内存 {#锁定gpu内存 .标题3}
+### 3.2锁定GPU内存
 
 cuPointerSetAttribute()
 
-### 3.3解锁GPU内存 {#解锁gpu内存 .标题3}
+### 3.3解锁GPU内存
 
 nvidia_p2p_put_pages()
 
 ## 4 参考
 
-### 4.1 UVA CUDA内存管理的基础知识 {#uva-cuda内存管理的基础知识 .标题3}
+### 4.1 UVA CUDA内存管理的基础知识
 
 [Unified virtual addressing (UVA)]{.mark}是在CUDA
 4.0中启用的内存地址管理系统，运行于64位进程的Fermi和Kepler
@@ -135,8 +134,7 @@ GPU。UVA内存管理提供了GPUDirect
 RDMA操作的基础。在支持UVA的配置中，当CUDA运行时初始化，应用程序的虚拟地址（VA）范围分解为2个部分：CUDA管理的VA范围和OS还礼的VA范围。所有的CUDA管理的指针都位于该VA范围内，范围将一直位于进程的VA空间的头40个字节。
 
 ![CUDA VA Space
-Addressing.](./media/image2.png){width="5.251400918635171in"
-height="1.7790594925634295in"}
+Addressing.](./media/image2.png)
 
 图2 CUDA VA空间地址
 

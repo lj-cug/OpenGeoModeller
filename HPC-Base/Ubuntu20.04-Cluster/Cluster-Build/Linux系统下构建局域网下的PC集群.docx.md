@@ -1,8 +1,8 @@
 # Linux系统下构建局域网下的PC集群
 
-## 4两台PC的"集群"
+## 4 两台PC的"集群"
 
-## 4.1硬件
+## 4.1 硬件
 
 两台节点：intel i7
 4核，6g内存，1T硬盘，独立显卡（gpu太弱，不用它来计算，只用于连接显示器）intel
@@ -10,11 +10,11 @@ Gigabit以太网卡。
 
 网络连接：gigabit以太网switch hub（L2交换机），网线，需要连接互联网。
 
-## 4.2安装操作系统
+## 4.2 安装操作系统
 
-安装ubuntu，具体的安装步骤就很简单，略。但是要注意的是尽量采用[同样的用户名和密码]{.mark}，并将计算机名称编号，最后记得把用户设成管理员。
+安装ubuntu，具体的安装步骤就很简单，略。但是要注意的是尽量采用同样的用户名和密码，并将计算机名称编号，最后记得把用户设成管理员。
 
-## 4.3配置环境，安装软件
+## 4.3 配置环境，安装软件
 
 sudo apt-get -y update
 
@@ -25,7 +25,7 @@ sudo apt-get -y upgrade
 sudo apt -y install openssh-server openssh-client nfs-common libgomp1
 openmpi-bin libopenmpi-dev openmpi-common update-manager-core
 
-然后安装这些软件。。。
+然后安装这些软件...
 
 openssh-server openssh-client: openssh 的服务和客户端
 
@@ -37,12 +37,12 @@ update-manager-core: 更新用
 
 sudo apt-get -y dist-upgrade
 
-然后更新一下软件的依赖，防止出现依赖的遗漏。
+然后，更新一下软件的依赖，防止出现依赖的遗漏。
 
-## 4.4网络配置
+## 4.4 网络配置
 
 a）网络连接，使用交换机集线器连接，连接方式多种多样，由于我们的组装的规模很小，所以，低于交换机的接口数的时候就把交换机作为行星网络的中心，如果需要多个交换机，就采用层状交换机结构。出于简单考虑，IP没有设成静态，直接采用路由器的hdcp功能，动态分配ip，如果要长期使用，请设置成静态ip。那么自动分配的ip分别是[XXX.65.121.82和
-XXX.65.121.102]{.mark}，分别对应的名称是[server01和server02]{.mark}。[更改静态ip需要更改]{.mark}
+XXX.65.121.102]{.mark}，分别对应的名称是[server01和server02]。[更改静态ip需要更改]
 ／etc／network／interface
 文件（Ubuntu18的这部分设置被更新了，需要采取其他方法）。
 
@@ -85,7 +85,6 @@ scp \~/a.out XXX.65.121.102:\~/a.out
 然后编辑machinefile
 
 server018 cpu=4
-
 server156 cpu=4
 
 然后在这个目录下运行a.out（确保a.out也在这个文件夹下）
@@ -93,19 +92,12 @@ server156 cpu=4
 %mpirun \--machinefile machinefile -np 8 a.out
 
 Hello world from processor server018, rank 3 out of 8 processors
-
 Hello world from processor server018, rank 0 out of 8 processors
-
 Hello world from processor server018, rank 1 out of 8 processors
-
 Hello world from processor server018, rank 2 out of 8 processors
-
 Hello world from processor server156, rank 6 out of 8 processors
-
 Hello world from processor server156, rank 5 out of 8 processors
-
 Hello world from processor server156, rank 4 out of 8 processors
-
 Hello world from processor server156, rank 7 out of 8 processors
 
 这样就是十分初级的集群的雏形，可以进行多机并列计算。

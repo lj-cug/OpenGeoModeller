@@ -24,6 +24,10 @@
 
 	Nvidia公司的CUDA编程基础知识，使用nvcc编译器编译cu源码文件
 	
+## OpenCL
+
+	Compute Language, 支持CPU和GPU的多线程并行
+	
 ## 编译系统
 
 	可使用GNU编译器，如: gcc, g++, gfortran；也可使用一些厂商研发的编译器
