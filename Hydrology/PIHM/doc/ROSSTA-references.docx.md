@@ -10,8 +10,7 @@
    
 
   ![Equation 1: the van Genuchten water retention
-  function](./media/image1.gif){width="2.272222222222222in"
-  height="0.5756944444444444in"}
+  function](./media/image1.gif)
 
    
 
@@ -24,8 +23,7 @@
 
    
 
-  ![Equation 2](./media/image2.gif){width="2.8243055555555556in"
-  height="0.5756944444444444in"}
+  ![Equation 2](./media/image2.gif)
 
    
 
@@ -36,8 +34,7 @@
    
 
   ![Equation 3: the van Genuchten-Mualem
-  model](./media/image3.gif){width="3.0479166666666666in"
-  height="0.32013888888888886in"}
+  model](./media/image3.gif)
 
    
 
