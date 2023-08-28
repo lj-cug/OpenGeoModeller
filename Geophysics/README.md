@@ -22,10 +22,6 @@
 
 GPR(穿地雷达)的电磁波传播正演模型
 
-## RiDG + OCCA
-
-采用间断Galerkin法的逆时偏移成像(RTM)，基于OCCA的特定域语言库
-
 ## spyro + firedrake
 
 采用间断Galerkin法和波形自适应非结构网格技术的全波形反演模拟

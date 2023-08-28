@@ -68,8 +68,7 @@ cmake ./
 
 make
 
-![https://img-blog.csdnimg.cn/20190108105955303.png](./media/image1.png){width="5.768055555555556in"
-height="0.5265223097112861in"}
+![https://img-blog.csdnimg.cn/20190108105955303.png](./media/image1.png)
 
 ## so 共享库的使用
 
@@ -164,5 +163,4 @@ make
 
 ./test
 
-![https://img-blog.csdnimg.cn/20190108110223237.png](./media/image2.png){width="5.272876202974628in"
-height="1.3006955380577427in"}
+![https://img-blog.csdnimg.cn/20190108110223237.png](./media/image2.png)

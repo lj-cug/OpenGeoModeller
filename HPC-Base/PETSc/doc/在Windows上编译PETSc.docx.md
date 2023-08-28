@@ -1,47 +1,30 @@
-在Windows上编译PETSc
+# 在Windows上编译PETSc
 
-以下为在Windows系统上编译PETSc的一种途径：
+以下为在Windows系统上编译PETSc的一种途径
 
-编译准备：
+## 编译准备：
 
-1、PETSc的一个版本 同上述Linus下安装文件一样，从
-上免费下载petsc-3.2-p6.tar.gz 。
+1、PETSc的一个版本 同上述Linus下安装文件一样，从上免费下载petsc-3.2-p6.tar.gz 。
 
-2、MPI的实现
-作为PETSc的底层结构之一，用户系统需要安装MPICH的一个版本（只使用PETSc串行功能的除外），一般从http://www.mcs.anl.gov/mpi/mpich
-上可以下载其Windows下安装文件mpich2-1.3-win-ia32.msi，直接点击安装即可。安装完毕后需要将用户注册至MPICH2。
+2、MPI的实现作为PETSc的底层结构之一，用户系统需要安装MPICH的一个版本（只使用PETSc串行功能的除外），一般从http://www.mcs.anl.gov/mpi/mpich上可以下载其Windows下安装文件mpich2-1.3-win-ia32.msi，直接点击安装即可。安装完毕后需要将用户注册至MPICH2。
 
-3、MS编译器，由于最终需要将PETSc编译成Windows系统下的库文件，故需要Windows的C编译器和Fortran编译器，本文安装使用Visual
-Studio
-2005中的cl.exe编译器和IntelFortranCompiler10.1中的ifort.exe编译器，安装时注意需要将Inter的Fortran编译器集成到Visual
-Studio中去(Intel的Fortran能自动集成)。
+3、MS编译器，由于最终需要将PETSc编译成Windows系统下的库文件，故需要Windows的C编译器和Fortran编译器，本文安装使用VisualStudio2005中的cl.exe编译器和IntelFortranCompiler10.1中的ifort.exe编译器，安装时注意需要将Inter的Fortran编译器集成到VisualStudio中去(Intel的Fortran能自动集成)。
 
 4、Linux环境的模拟
-为了得到Linux风格的环境，PETSc推荐使用Cygwin。Cygwin是一个用于 Windows
-环境下的模拟 UNIX shell 环境，它由两个组件组成：一个 UNIX API库，它模拟
-UNIX 操作系统提供的许多特性。另一部分为 Bash shell 的改写版本和许多 UNIX
-实用程序，它们提供大家熟悉的 UNIX 命令行界面。前一个组件是一个 Windows
-动态链接库 (DLL)。后一个组件是一组基于 Cygwin DLL
-的程序，其中许多是用未经修改的 UNIX
-源代码编译的。它们合在一起提供大家熟悉的 UNIX 环境。Cygwin具体操作如下：
 
-Ⅰ 用户可以到主页http://www.cygwin.com
-上下载Cygwin的安装向导setup.exe。该setup.exe文件可以用于安装软件，添加、修改或升级
-Cygwin 配置的组件。
+为了得到Linux风格的环境，PETSc推荐使用Cygwin。Cygwin是一个用于 Windows环境下的模拟 UNIX shell 环境，它由两个组件组成：一个 UNIX API库，它模拟UNIX 操作系统提供的许多特性。另一部分为 Bash shell 的改写版本和许多 UNIX实用程序，它们提供大家熟悉的 UNIX 命令行界面。前一个组件是一个 Windows动态链接库 (DLL)。后一个组件是一组基于 Cygwin DLL的程序，其中许多是用未经修改的 UNIX源代码编译的。它们合在一起提供大家熟悉的 UNIX 环境。
 
-Ⅱ
-运行setup.exe引导安装，由于Cygwin的完整安装版本很大，往往先将其下载至本地再安装，然后指定下载目录和下载链接。国内也有网站能提供镜像下载。
+Cygwin具体操作如下：
 
-Ⅲ
-下载完毕后再运行setup.exe，选择上本地安装，指定安装文件目录和安装目录后即可安装，建议完整版本的安装。整个安装过程将会持续1-2个小时。
+Ⅰ用户可以到主页http://www.cygwin.com上下载Cygwin的安装向导setup.exe。该setup.exe文件可以用于安装软件，添加、修改或升级Cygwin 配置的组件。
 
-编译阶段
+Ⅱ运行setup.exe引导安装，由于Cygwin的完整安装版本很大，往往先将其下载至本地再安装，然后指定下载目录和下载链接。国内也有网站能提供镜像下载。
 
-1、从编译器的命令提示符中登录Cygwin
-此步骤的目的是为了能在Cygwin的窗口中直接使用MS编译器。具体做法：在Start
--\> Programs -\> Intel Software Development Tools -\> Intel Fortran
-Compiler 10 -\> Visual Fortran Build Enviornment
-中打开命令提示符（cmd），登录cygwin：
+Ⅲ下载完毕后再运行setup.exe，选择上本地安装，指定安装文件目录和安装目录后即可安装，建议完整版本的安装。整个安装过程将会持续1-2个小时。
+
+## 编译阶段
+
+1、从编译器的命令提示符中登录Cygwin此步骤的目的是为了能在Cygwin的窗口中直接使用MS编译器。具体做法：在Start-\> Programs -\> Intel Software Development Tools -\> Intel Fortran Compiler 10 -\> Visual Fortran Build Enviornment 中打开命令提示符（cmd），登录cygwin：
 
 C:\\Documents and Settings\\Administrator\>\$ G:\\cygwin\\bin\\bash.exe
 --login
@@ -52,8 +35,7 @@ Administrator@ZFy \~
 
 \$ which cl
 
-结果显示 /cygdrive/d/Program Files/Microsoft Visual Studio
-8/VC/BIN/cl即能找到cl.exe。**对ifort，python，make，tar都运行一遍**。
+结果显示 /cygdrive/d/Program Files/Microsoft Visual Studio 8/VC/BIN/cl即能找到cl.exe。**对ifort，python，make，tar都运行一遍**。
 
 2、解压文件
 

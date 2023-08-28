@@ -4,6 +4,10 @@ Python语言开发的自动差分库
 
 基于firedrake库开发了很多地球科学领域的CFD应用程序
 
+## 可视化
+
+paraview
+
 ## thetis
 
 近海岸环境的水流及泥沙输移模拟
@@ -37,10 +41,3 @@ D. Rhodri Davies, et al. Towards automatic finite-element methods for geodynamic
 
 
 Thomas H. Gibson, Andrew T. T. McRae, Colin J. Cotter, Lawrence Mitchell, David A. Ham. Compatible Finite Element Methods for Geophysical Flows Automation and Implementation Using Firedrake. SpringerBriefs in Mathematics of Planet Earth  Weather, Climate, Oceans
-
-
-
-
-
-
-

@@ -1,1 +1,0 @@
-/usr/bin/c++   -g   CMakeFiles/useHello.dir/useHello.cpp.o  -o ../../bin/useHello -rdynamic ../../lib/libhello.so -Wl,-rpath,/home/qy/software/slambook/2018-11-19-exercise/lib: 

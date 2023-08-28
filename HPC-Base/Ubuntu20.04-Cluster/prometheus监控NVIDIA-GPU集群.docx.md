@@ -27,8 +27,7 @@ https://github.com/utkuozdemir/nvidia_gpu_exporter/releases/download/v\${VERSION
 
 执行 ./nvidia_gpu_exporter \--help 后显示如下：
 
-![](./media/image1.png){width="5.4222222222222225in"
-height="1.0693832020997376in"}
+![](./media/image1.png)
 
 则安装成功。
 
@@ -76,8 +75,7 @@ instance: node2
 
 然后重启prometheus从targets页面查看新添加的job：
 
-![](./media/image2.png){width="5.816666666666666in"
-height="1.276434820647419in"}
+![](./media/image2.png)
 
 如图所示，则配置成功。接下来就是研究怎么出图了。
 
@@ -90,16 +88,13 @@ grafana dashboard官方有开源适用于nvidia_gpu_exporter面板ID:14574
 via [grafana.com](https://link.zhihu.com/?target=http%3A//grafana.com/) 下输入
 面板ID - \> 点击load - \> 配置面板详情如图所示：
 
-![](./media/image3.png){width="5.438210848643919in"
-height="4.645138888888889in"}
+![](./media/image3.png)
 
-![](./media/image4.png){width="5.4222222222222225in"
-height="3.584691601049869in"}
+![](./media/image4.png)
 
 配置完成后点击import，结果如下：
 
-![](./media/image5.png){width="5.4222222222222225in"
-height="1.626667760279965in"}
+![](./media/image5.png)
 
 ## nvidia_gpu_exporter指标
 
@@ -167,8 +162,7 @@ A: count(nvidia_smi_pstate{uuid=\~\".\*\"})
 
 效果：
 
-![](./media/image6.png){width="5.527777777777778in"
-height="2.295563210848644in"}
+![](./media/image6.png)
 
 2\. 需要知道所有卡的平均使用率（实时）；
 
@@ -182,8 +176,7 @@ Unit：Percent(0.0-1.0)
 
 效果：
 
-![](./media/image7.png){width="5.288888888888889in"
-height="2.2477766841644793in"}
+![](./media/image7.png)
 
 3\. 需要知道所有卡的平均温度（实时）；
 
@@ -197,8 +190,7 @@ Unit：Celsius(℃)
 
 效果：
 
-![](./media/image8.png){width="5.9487182852143485in"
-height="2.577777777777778in"}
+![](./media/image8.png)
 
 4\. 要计算所有卡的上周上上周的平均使用率；
 
@@ -227,13 +219,11 @@ Value #A : 上周平均使用率
 
 Value #B : 上上周平均使用率
 
-![](./media/image9.png){width="5.527777777777778in"
-height="0.7600699912510936in"}
+![](./media/image9.png)
 
 效果：
 
-![](./media/image10.png){width="5.627777777777778in"
-height="2.6653783902012247in"}
+![](./media/image10.png)
 
 5\. 要计算所有卡的平均温度上周和上上周的数值；
 
@@ -260,8 +250,7 @@ Value #A : 上周平均温度
 
 Value #B : 上上周平均温度
 
-![](./media/image11.png){width="5.272222222222222in"
-height="2.4676924759405074in"}
+![](./media/image11.png)
 
 6\. gpu服务器划分给项目的使用情况，分为几个维度 1/3/7
 天使用率，上周和上上周的使用率以及卡的数量；
@@ -290,8 +279,7 @@ attribution: 束金 \# 新打标签
 
 因为涉及多个项目/人所以我们在grafana dashboard上创建变量
 
-![](./media/image12.png){width="5.716666666666667in"
-height="1.5165048118985127in"}
+![](./media/image12.png)
 
 变量设置完成后在dashboard左上方显示下拉框，如图：
 
@@ -323,13 +311,11 @@ Unit：Percent(0.0-1.0)
 
 效果：
 
-![](./media/image13.png){width="5.661111111111111in"
-height="3.215825678040245in"}
+![](./media/image13.png)
 
 最终效果：
 
-![](./media/image14.png){width="5.538888888888889in"
-height="2.615586176727909in"}
+![](./media/image14.png)
 
 ## 告警
 
@@ -385,8 +371,7 @@ description: \"{{ \$labels.instance }} : {{ \$labels.job }} 无可使用卡
 
 告警示例：
 
-![](./media/image15.png){width="5.138888888888889in"
-height="3.0904702537182853in"}
+![](./media/image15.png)
 
 创建up_nodes.yml文件
 
@@ -419,20 +404,17 @@ summary: \"{{ \$labels.instance }} down,up=={{ \$value }}\"
 
 告警示例：
 
-![](./media/image16.png){width="5.5055555555555555in"
-height="3.5250853018372705in"}
+![](./media/image16.png)
 
 编辑完成yml文件后保存重启prometheus生效。然后通过web查看：
 
-![](./media/image17.png){width="5.3277777777777775in"
-height="2.0275153105861765in"}
+![](./media/image17.png)
 
 主要的告警规则这俩个就够了，可以根据不同的需求，在以上的规则基础上修改指标，新增不同的告警规则。
 
 示例：
 
-![](./media/image18.png){width="5.938888888888889in"
-height="2.7054943132108487in"}
+![](./media/image18.png)
 
 单卡故障告警规则；
 

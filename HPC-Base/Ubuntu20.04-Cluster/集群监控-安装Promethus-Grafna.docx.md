@@ -179,8 +179,7 @@ sudo systemctl restart prometheus
 再打开 prometheus 的监控列表， 发现 已经有4个节点被监控了，
 包括监控机本身：
 
-![在这里插入图片描述](./media/image1.png){width="5.416666666666667in"
-height="2.251836176727909in"}
+![在这里插入图片描述](./media/image1.png)
 
 ## 5.在[监控端]{.mark}安装Grafana
 
@@ -211,8 +210,7 @@ grafana 的默认端口是3000
 
 再浏览器打开ip:3000， 如果见到grafana页面就代表安装好了
 
-![在这里插入图片描述](./media/image2.png){width="3.454607392825897in"
-height="3.6222222222222222in"}
+![在这里插入图片描述](./media/image2.png)
 
 ## 6.配置grafana
 
@@ -224,16 +222,13 @@ height="3.6222222222222222in"}
 
 Configuration -\> Data Sources -\>add data source -\> Prometheus
 
-![在这里插入图片描述](./media/image3.png){width="5.1722222222222225in"
-height="1.9521937882764655in"}
+![在这里插入图片描述](./media/image3.png)
 
-![在这里插入图片描述](./media/image4.png){width="5.183333333333334in"
-height="1.7704199475065616in"}
+![在这里插入图片描述](./media/image4.png)
 
-![在这里插入图片描述](./media/image5.png){width="5.188888888888889in"
-height="5.967909011373578in"}
+![在这里插入图片描述](./media/image5.png)
 
-### 6.2 添加Dashboard {#添加dashboard .标题3}
+### 6.2 添加Dashboard
 
 接下来我们先去下载一个模板
 
@@ -247,13 +242,11 @@ New Dashboard -\> Import Json
 
 就得到1个比较完善的linux主机详情模板了
 
-![在这里插入图片描述](./media/image6.png){width="5.137175196850394in"
-height="4.75in"}
+![在这里插入图片描述](./media/image6.png)
 
 看着dashboard 效果， 各台服务器的状态一目了然。
 
-![在这里插入图片描述](./media/image7.png){width="5.322222222222222in"
-height="4.921101268591426in"}
+![在这里插入图片描述](./media/image7.png)
 
 如何你的服务器太多， 想分组看?
 
@@ -301,5 +294,4 @@ group: \'PHY Group\'
 
 在grafana中就可以分组查看了。
 
-![在这里插入图片描述](./media/image8.png){width="5.588888888888889in"
-height="1.9109612860892389in"}
+![在这里插入图片描述](./media/image8.png)

@@ -1,9 +1,0 @@
-/home/qy/2018-11-20-install/1119exercise/share/doc/cmake/t2/COPYRIGHT
-/home/qy/2018-11-20-install/1119exercise/share/doc/cmake/t2/README.md
-/home/qy/2018-11-20-install/1119exercise/bin/runhello.sh
-/home/qy/2018-11-20-install/1119exercise/share/doc/cmake/t2/hello.txt
-/home/qy/2018-11-20-install/1119exercise/share/doc/cmake/t2/cmake-practice.pdf
-/home/qy/2018-11-20-install/1119exercise/bin/useHello
-/home/qy/2018-11-20-install/1119exercise/lib/libhello.so
-/home/qy/2018-11-20-install/1119exercise/libstatic/libhello.a
-/home/qy/2018-11-20-install/1119exercise/include/libHelloSLAM.h

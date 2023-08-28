@@ -1,0 +1,13 @@
+1. 安装firedrake库
+
+2. 入门tutorial
+Firedrake User Manual PDF, 2023
+
+3. Introductory Jupyter notebooks
+https://www.firedrakeproject.org/notebooks.html
+
+4 Manual
+
+5 Advanced tutorials
+
+6 Thetis项目

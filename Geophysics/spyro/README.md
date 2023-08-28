@@ -6,7 +6,11 @@
 
 基于firedrake库，采用Python语言编程
 
-地震速度网格模型生成使用 SeismicMesh 脚本程序
+## 工作流程
+
+1. 使用SeismicMesh，生成地震速度模型的有限单元非结构网格
+
+2. 使用spyro执行2D/3D的全波形反演
 
 ## 参考文献
 

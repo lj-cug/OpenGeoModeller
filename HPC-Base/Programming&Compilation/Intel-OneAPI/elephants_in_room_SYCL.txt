@@ -1,6 +1,11 @@
-https://www.hpcwire.com/2022/02/03/why-sycl-elephants-in-the-sycl-room/
-Why SYCL: Elephants in the SYCL Room
+# Why SYCL: Elephants in the SYCL Room
+
+[原文链接](https://www.hpcwire.com/2022/02/03/why-sycl-elephants-in-the-sycl-room/)
+
+[SYCL编译系统](./media/SYCL.png)
+
 By James Reinders and Michael Wong
+
 February 3, 2022
 
 Commentary — In the second of a series of guest posts on heterogeneous computing, James Reinders, who returned to Intel last year after a short “retirement,” follows up on his piece about how SYCL will contribute to a heterogeneous future for C++. He is joined by Michael Wong, of Codeplay Software Ltd., who is also the current SYCL committee chair. Together, they offer their responses to what might be called the ‘Elephants in the SYCL Room.’ 

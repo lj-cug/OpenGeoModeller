@@ -56,8 +56,7 @@ Many of these providers are leveraging Docker for their container-native
 IaaS offerings. Additionally, the leading open source serverless
 frameworks utilize Docker container technology.
 
-![C:\\Users\\Administrator\\Desktop\\Docker-Website-2018-Diagrams-071918-V5_26_Docker-today.png](./media/image2.png){width="3.79200021872266in"
-height="1.9623972003499563in"}
+![C:\\Users\\Administrator\\Desktop\\Docker-Website-2018-Diagrams-071918-V5_26_Docker-today.png](./media/image2.png)
 
 # Comparing Containers and Virtual Machines
 
@@ -75,8 +74,7 @@ processes in user space. Containers take up less space than VMs
 (container images are typically tens of MBs in size), can handle more
 applications and require fewer VMs and Operating systems.
 
-![C:\\Users\\Administrator\\Desktop\\container-what-is-container.png](./media/image3.png){width="2.882726377952756in"
-height="2.46213801399825in"}
+![C:\\Users\\Administrator\\Desktop\\container-what-is-container.png](./media/image3.png)
 
 ## VIRTUAL MACHINES
 
@@ -86,8 +84,7 @@ on a single machine. Each VM includes a full copy of an operating
 system, the application, necessary binaries and libraries - taking up
 tens of GBs. VMs can also be slow to boot.
 
-![C:\\Users\\Administrator\\Desktop\\container-vm-whatcontainer_2.png](./media/image4.png){width="2.8749617235345584in"
-height="2.496575896762905in"}
+![C:\\Users\\Administrator\\Desktop\\container-vm-whatcontainer_2.png](./media/image4.png)
 
 # 如何在Ubuntu 18.04上安装Docker
 

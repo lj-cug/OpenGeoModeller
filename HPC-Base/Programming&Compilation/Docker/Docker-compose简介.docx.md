@@ -1,6 +1,6 @@
 # Docker-compose简介
 
-## 1，Docker-compose简介
+## 1 Docker-compose简介
 
 Docker-Compose项目是Docker官方的开源项目，负责实现对[Docker容器集群的快速编排]{.mark}。Docker-Compose将所管理的容器分为三层，分别是：
 
@@ -19,12 +19,12 @@ Compose允许用户通过一个单独的docker-compose.yml模板文件（YAML
 Docker-Compose项目由Python编写，调用Docker服务提供的API来对容器进行管理。因此，只要所操作的平台支持Docker
 API，就可以在其上利用Compose来进行编排管理。
 
-## 2，Docker-compose的安装
+## 2 Docker-compose的安装
 
 安装环境查看\
 也可以使用其他发行版本Linux系统\
-![image](./media/image1.png){width="6.236111111111111in"
-height="1.2267760279965005in"}\
+![image](./media/image1.png)
+
 安装\
 apt-get install python-pip\
 apt-get -y install docker-compose
@@ -37,7 +37,7 @@ yum -y install docker-compose
 docker-compose -v\
 docker-compose version 1.21.0, build unknown
 
-## 3，Docker-compose卸载
+## 3 Docker-compose卸载
 
 apt-get remove docker-compose
 
@@ -341,8 +341,8 @@ docker-compose unpause \[SERVICE\...\]
 
 Compose允许用户通过一个docker-compose.yml模板文件（YAML格式）来定义一组相关联的应用容器为一个项目（project）。Compose模板文件是一个定义服务、网络和卷的YAML文件。Compose模板文件默认路径是当前目录下的docker-compose.yml，可以使用.yml或.yaml作为文件扩展名。
 
-Docker-Compose标准模板文件应该包含version、services、networks
-三大部分，最关键的是services和networks两个部分。\
+Docker-Compose标准模板文件应该包含version、services、networks三大部分，最关键的是services和networks两个部分。\
+
 举例
 
 version: \'3\'
@@ -628,7 +628,7 @@ net: \"host\"
 
 ## 四，Docker-compose模板文件示例
 
-### 1，Docker-compose模板文件编写 {#docker-compose模板文件编写 .标题3}
+### 1，Docker-compose模板文件编写
 
 docker-compose.yml
 
@@ -692,13 +692,13 @@ driver: bridge
 
 docker-compose.yml文件指定了3个web服务
 
-### 2，启动应用 {#启动应用 .标题3}
+### 2，启动应用
 
 创建一个webapp目录，将docker-compose.yaml文件拷贝到webapp目录下，使用docker-compose启动应用。
 
 docker-compose up -d
 
-### 3，服务访问 {#服务访问 .标题3}
+### 3，服务访问
 
 通过浏览器访问web1，web2，web3
 
