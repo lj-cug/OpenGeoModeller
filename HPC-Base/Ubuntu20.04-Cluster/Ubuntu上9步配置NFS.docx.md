@@ -1,10 +1,10 @@
 # Ubuntu 20.04系统下9步配置NFS
 
-假设有2台电脑连接组成的集群：
+假设有4台电脑连接组成的集群：
 
 Host（lijian-cug）: 192.168.1.86
 
-Client（计算节点lijian-1; lijian-2）:
+Client（计算节点lijian-1; lijian-2；lijian-3）:
 
 lijian-1: 192.168.1.150
 
@@ -16,7 +16,7 @@ lijian-3: 192.168.1.246
 
 ## 第1步：下载和安装部件
 
-[在Host (]{.mark}lijian-cug)[上：]{.mark}
+在Host(lijian-cug)上：
 
 apt-get update
 
@@ -24,7 +24,7 @@ apt-get install nfs-kernel-server
 
 这将允许共享某路径。安装完这些程序后，切换到Client服务器。
 
-[在Client (]{.mark}lijian-1, lijian-2[)上：]{.mark}
+在Client (lijian-1, lijian-2)上
 
 apt-get update
 
@@ -36,7 +36,7 @@ apt-get install nfs-common
 
 1、创建一个通用目的的挂载(mount)---默认的NFS行为，在Client服务器上拥有su权限，但难以与host交互。
 
-在[Host上]{.mark}创建一个共享路径：
+在Host上创建一个共享路径：
 
 sudo mkdir /home/lijian/nfs -p
 
@@ -50,9 +50,9 @@ sudo chown nobody:nogroup /home/lijian/nfs
 
 该路径可用于输出。
 
-[2、]{.mark}在[Host上]{.mark}创建home路径，可以被Client服务器访问；还允许Client服务器上的信任管理员访问。
+2、在Host上创建home路径，可以被Client服务器访问；还允许Client服务器上的信任管理员访问。
 
-## 第3步：在[Host服务器]{.mark}上配置NFS输出
+## 第3步：在Host服务器上配置NFS输出
 
 gedit /etc/exports
 
@@ -78,13 +78,13 @@ directory_to_share client(share_option1,\...,share_optionN)
 
 /home/lijian 192.168.1.246(rw,sync,no_root_squash,no_subtree_check)
 
-保存，退出。[重启NFS服务器]{.mark}：
+保存，退出。重启NFS服务器：
 
 systemctl restart nfs-kernel-server
 
 在实际使用新的共享之前，需要确保访问共享路径是被防火墙准则允许的。
 
-## 第4步：调整[Host上]{.mark}的防火墙
+## 第4步：调整Host上的防火墙
 
 sudo ufw status
 
@@ -122,17 +122,17 @@ OpenSSH ALLOW Anywhere
 
 OpenSSH (v6) ALLOW Anywhere (v6)
 
-## 第5步：在[Client上]{.mark}创建挂载点
+## 第5步：在Client上创建挂载点
 
 现在Host服务器的配置和共享已完成，开始准备Client。
 
 将Host的共享路径，挂载到一个Client上的空路径。注意：如果挂载路径下有文件，挂载后将隐藏，确保挂载路径是空的。
 
-在[Client上]{.mark}创建空路径：
+在Client上创建空路径：
 
 sudo mkdir -p /home/lijian/nfs
 
-## 第6步：在[Client服务器]{.mark}上挂载路径
+## 第6步：在Client服务器上挂载路径
 
 192.168.1.86是Host端的IP地址。
 
@@ -192,7 +192,7 @@ df -h
 
 完成！
 
-# 9步配置NFS（英文）
+# 9步配置NFS（英文版）
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
 
@@ -230,17 +230,16 @@ as the **client**. In order to keep them straight, we'll use the
 following IP addresses as stand-ins for the host and client values:
 
 -   **Host**: 203.0.113.0
-
 -   **Client**: 203.0.113.256
 
 You should replace these values with your own host and client ip
 addresses.
 
-### Step 1 --- Downloading and Installing the Components {#step-1-downloading-and-installing-the-components .标题3}
+### Step 1 --- Downloading and Installing the Components
 
 We'll begin by installing the necessary components on each server.
 
-[On the Host]{.mark}
+On the Host
 
 On the host server, we will install the nfs-kernel-server package, which
 will allow us to share our directories. Since this is the first
@@ -253,7 +252,7 @@ our local package index before the installation:
 
 Once these packages are installed, switch to the client server.
 
-[On the Client]{.mark}
+On the Client
 
 On the client server, we need to install a package called nfs-common,
 which provides NFS functionality without including unneeded server
@@ -269,7 +268,7 @@ installation to ensure that we have up-to-date information:
 Now that both servers have the necessary packages, we can start
 configuring them.
 
-### Step 2 --- Creating the Share Directories on the Host {#step-2-creating-the-share-directories-on-the-host .标题3}
+### Step 2 --- Creating the Share Directories on the Host
 
 We're going to share two separate directories, with different
 configuration settings, in order to illustrate two key ways that NFS
@@ -303,16 +302,11 @@ First, make a share directory called nfs:
 
 -   
 
- 
-
 Since we're creating it with sudo, the directory is owned by root here
 on the host.
 
 -   ls -la /var/nfs/general
-
 -   
-
- 
 
 Output
 
@@ -323,10 +317,7 @@ the nobody:nogroup credentials as a security measure. Therefore, we need
 to change the directory ownership to match those credentials.
 
 -   sudo chown nobody:nogroup /var/nfs/general
-
 -   
-
- 
 
 This directory is now ready for export.
 
@@ -353,16 +344,12 @@ Open the /etc/exports file in your text editor with root privileges:
 
 -   
 
- 
-
 The file has comments showing the general structure of each
 configuration line. The syntax is basically:
 
 /etc/exports
 
 directory_to_share client(share_option1,\...,share_optionN)
-
- 
 
 We'll need to create a line for each of the directories that we plan to
 share. Since our example client has an IP of 203.0.113.256, our lines
@@ -374,8 +361,6 @@ client:
 /var/nfs/general 203.0.113.256(rw,sync,no_subtree_check)
 
 /home 203.0.113.256(rw,sync,no_root_squash,no_subtree_check)
-
- 
 
 We're using the same configuration options for both directories with the
 exception of no_root_squash. Let's take a look at what each one means.
@@ -406,10 +391,7 @@ Then, to make the shares available to the clients that you configured,
 restart the NFS server with the following command:
 
 -   sudo systemctl restart nfs-kernel-server
-
 -   
-
- 
 
 Before you can actually use the new shares, however, you'll need to be
 sure that traffic to the shares is permitted by firewall rules
@@ -420,10 +402,7 @@ First, let's check the firewall status to see if it's enabled and if so,
 to see what's currently permitted:
 
 -   sudo ufw status
-
 -   
-
- 
 
 Output
 
@@ -451,18 +430,12 @@ Use the following command to open port 2049 on the host, being sure to
 substitute your client's ip address:
 
 -   sudo ufw allow from 203.0.113.256 to any port nfs
-
 -   
-
- 
 
 You can verify the change by typing:
 
 -   sudo ufw status
-
 -   
-
- 
 
 You should see traffic allowed from port 2049 in the output:
 
@@ -498,14 +471,10 @@ in a directory that already exists that the directory is empty.
 We'll create two directories for our mounts:
 
 -   sudo mkdir -p /nfs/general
-
 -   
 
 -   sudo mkdir -p /nfs/home
-
 -   
-
- 
 
 Step 6 --- Mounting the Directories on the Client
 
@@ -514,14 +483,10 @@ the firewall, we can mount the shares by addressing our host server,
 which in this guide is 203.0.113.0, like this:
 
 -   sudo mount 203.0.113.0:/var/nfs/general /nfs/general
-
 -   
 
 -   sudo mount 203.0.113.0:/home /nfs/home
-
 -   
-
- 
 
 These commands should mount the shares from the host computer onto the
 client machine. You can double-check that they mounted successfully in
@@ -530,10 +495,7 @@ but df -h will give you more human readable output illustrates how disk
 usage is displayed differently for the nfs shares:
 
 -   df -h
-
 -   
-
- 
 
 Output
 
@@ -567,10 +529,7 @@ file. The -h will print human readable output.
 For example:
 
 -   du -sh /nfs/home
-
 -   
-
- 
 
 Output
 
@@ -589,18 +548,12 @@ Example 1: The General Purpose Share
 First, write a test file to the /var/nfs/general share.
 
 -   sudo touch /nfs/general/general.test
-
 -   
-
- 
 
 Then, check its ownership:
 
 -   ls -l /nfs/general/general.test
-
 -   
-
- 
 
 Output
 
@@ -619,18 +572,12 @@ To compare the permissions of the General Purpose share with the Home
 Directory share, create a file Home Directory the same way:
 
 -   sudo touch /nfs/home/home.test
-
 -   
-
- 
 
 Then look at the ownership of the file:
 
 -   ls -l /nfs/home/home.test
-
 -   
-
- 
 
 Output
 
@@ -652,16 +599,12 @@ to /etc/fstab file on the client.
 Open this file with root privileges in your text editor:
 
 -   sudo nano /etc/fstab
-
 -   
-
- 
 
 At the bottom of the file, we're going to add a line for each of our
 shares. They will look like this:
 
 /etc/fstab
-
 . . .
 
 203.0.113.0:/var/nfs/general /nfs/general nfs
@@ -669,8 +612,6 @@ auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 
 203.0.113.0:/home /nfs/home nfs
 auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
-
- 
 
 **Note:** More information about the options we are specifying here can
 be found in the man page that describes NFS mounting in the fstab with
@@ -687,15 +628,12 @@ you can unmount it by moving out of the share's directory structure and
 unmounting, like this:
 
 -   cd \~
-
 -   
 
 -   sudo umount /nfs/home
-
 -   
 
 -   sudo umount /nfs/general
-
 -   
 
  
@@ -704,10 +642,7 @@ This will remove the remote shares, leaving only your local storage
 accessible:
 
 -   df -h
-
 -   
-
- 
 
 Output
 
