@@ -27,28 +27,23 @@ END
 
 本报告的举例样式：
 
-![](./media/image1.emf){width="2.3925382764654417in"
-height="0.8307578740157481in"}
+![](./media/image1.emf)
 
 一个有效输入格式：
 
-![](./media/image2.emf){width="2.636804461942257in"
-height="0.9024015748031496in"}
+![](./media/image2.emf)
 
 另一个有效输入格式：
 
-![](./media/image3.emf){width="3.020120297462817in"
-height="0.3627646544181977in"}
+![](./media/image3.emf)
 
-![](./media/image4.emf){width="2.5422911198600175in"
-height="1.337182852143482in"}
+![](./media/image4.emf)
 
 ### 在OPEN/CLOSE文件中定义块信息 {#在openclose文件中定义块信息 .标题3}
 
 大部分的块信息可以从单独的文本文件读取，但有的块不支持OPEN/CLOSE功能。
 
-![](./media/image5.emf){width="3.1578619860017496in"
-height="0.7805304024496937in"}
+![](./media/image5.emf)
 
 附录A Blocks列表（OPEN/CLOSE表示块信息是否能在单独的文件定义）
 
@@ -64,15 +59,13 @@ mfsim.nam
 
 **块的结构**
 
-![](./media/image6.emf){width="3.061639326334208in"
-height="4.422465004374454in"}
+![](./media/image6.emf)
 
 **变量解释**
 
 **输入文件举例**
 
-![](./media/image7.emf){width="3.598708442694663in"
-height="3.8806332020997374in"}
+![](./media/image7.emf)
 
 ## 时间离散（TDIS）软件包
 
@@ -96,7 +89,7 @@ GWF模型在模拟名称文件的MODELS块的GWF入口加入模拟（主程序�
 
 MODFLOW6的GWF模型有3种空间离散方法：DIS, DISV, DISU
 
-### 给MODFLOW用户的建议 {#给modflow用户的建议 .标题3}
+### 给MODFLOW用户的建议
 
 MODFLOW6包含了MOFLOW-2005, MODFLOW-NWT,
 MODFLOW-USG和MODFLOW-LGR的大部分功能，但MODFLOW6的一些软件包分解、改名和删除了，一些功能由于内存限制不再使用了，如GWF模型的quasi-3d
@@ -107,30 +100,26 @@ confining units。
 
 输入输出文件和用户与计算机交互方面也有一些不同，见P19\~20，共9条。
 
-### 数组输入(READARRAY) {#数组输入readarray .标题3}
+### 数组输入(READARRAY)
 
 DATA块的输入指令：
 
-![](./media/image8.emf){width="2.5111843832021in"
-height="0.7547703412073491in"}
+![](./media/image8.emf)
 
 **READARRAY控制行**
 
-![](./media/image9.emf){width="5.768055555555556in"
-height="1.5269870953630795in"}
+![](./media/image9.emf)
 
 **READARRAY变量描述**
 
-![](./media/image10.emf){width="5.6892508748906385in"
-height="2.8344444444444443in"}
+![](./media/image10.emf)
 
 表4
 IPRN代码及对应的数组读取格式，这些编码决定了用户提供的数组是如何写到列表文件的
 
 **READARRAY举例**
 
-![](./media/image11.emf){width="5.500285433070866in"
-height="1.3483180227471565in"}
+![](./media/image11.emf)
 
 IC软件的GRIDDATA块
 
@@ -150,16 +139,16 @@ IC软件的GRIDDATA块
 
 -   Cell-by-cell流动
 
-### GWF模型名称文件 {#gwf模型名称文件 .标题3}
+### GWF模型名称文件
 
 表5 Ftype值，Pname列表示软件包名称是否以名称文件提供
 
-### 结构网格离散(DIS)输入 {#结构网格离散dis输入 .标题3}
+### 结构网格离散(DIS)输入
 
 结构网格的离散信息从定义为DIS6的文件读取，一个模型仅可以定义一种离散输入文件(DISU6,
 DISV6或者DIS6)。
 
-### 节点的离散（DISV）输入 {#节点的离散disv输入 .标题3}
+### 节点的离散（DISV）输入
 
 结构网格的离散信息从定义为DISV6的文件读取，一个模型仅可以定义一种离散输入文件(DISU6,
 DISV6或者DIS6)。
@@ -168,7 +157,7 @@ DISV软件包的单元和单元节点的编号如图1。单元的节点列表必
 
 图1 使用节点离散软件包定义的节点和单元的编号示意图
 
-### 非结构离散（DISU）输入 {#非结构离散disu输入 .标题3}
+### 非结构离散（DISU）输入
 
 结构网格的离散信息从定义为DISU6的文件读取，一个模型仅可以定义一种离散输入文件(DISU6,
 DISV6或者DIS6)。
@@ -180,11 +169,11 @@ DISU软件不支持分层的概念，与MODFLOW-USG的DISU不同。在MODFLOW6�
 所有模型都不需要DISU
 VERTICES和CELL2D块。如果在NPF软件包中定义了SAVE_SPECIFIC_DISCHARGE或者使用XT3D，则需要这些块。通常建议包括VERTICES和CELL2D块。
 
-### 初始条件(IC)软件包 {#初始条件ic软件包 .标题3}
+### 初始条件(IC)软件包
 
 使用IC6定义的文件类型读取IC软件包信息。一个GWF模型仅定义一个IC软件。
 
-### Output Control (OC)选项 {#output-control-oc选项 .标题3}
+### Output Control (OC)选项
 
 类型OC6的名称文件定义输出控制选项。如果没有OC6文件，使用默认输出控制。输出控制决定如何以及何时将水头输出到列表文件或写到单独的二进制输出文件。
 
@@ -194,15 +183,15 @@ VERTICES和CELL2D块。如果在NPF软件包中定义了SAVE_SPECIFIC_DISCHARGE�
 
 GWF模型观测值包括：模拟的地下水头(head)，计算的节点上的drawdown以及两个连接节点之间的流动(flow-ja-face)。各GWF模型观测类型需要的数据列于表6。对于flow-ja-face观测类型，负值和正值分别代表对ID定义的cellid的损失和收益。
 
-### Node Property Flow (NPF) Package {#node-property-flow-npf-package .标题3}
+### Node Property Flow (NPF) Package
 
 与XT3D有关的软件包。
 
-### Time-Varying Hydraulic Conductivity (TVK) Package {#time-varying-hydraulic-conductivity-tvk-package .标题3}
+### Time-Varying Hydraulic Conductivity (TVK) Package
 
 随时间变化的水力传导度(TVK)软件包，从NPF软件的OPTIONS块的TVK6记录定理的文件读取。
 
-### Horizontal Flow Barrier (HFB) Package {#horizontal-flow-barrier-hfb-package .标题3}
+### Horizontal Flow Barrier (HFB) Package
 
 从名称文件的HFB6类型的文件读取HFB软件包的输入。
 
@@ -214,7 +203,7 @@ GWF模型观测值包括：模拟的地下水头(head)，计算的节点上的dr
 
 在STO软件包的OPTIONS块的TVS6记录定义，读入TVS软件的输入。
 
-### Skeletal Storage, Compaction, Subsidence (CSUB)软件包 {#skeletal-storage-compaction-subsidence-csub软件包 .标题3}
+### Skeletal Storage, Compaction, Subsidence (CSUB)软件包
 
 从名称文件的CSUB6类型文件读取CSUB软件包的输入。CSUB软件包的技术细节参考Hughes
 et al.,
@@ -230,11 +219,11 @@ Methods, book 6, chap. A62, 57 p.
 SFR, LAK,
 UZF）不同。为了关闭一个驱动周期的所有驱动力，一个PERIOD块必须不能定义有入口。如果一个PERIOD块不在第一个驱动周期定义，则直到文件的第一个PERIOD块的iper值之前都不会施加驱动力。
 
-### 浮力(BUY)软件 {#浮力buy软件 .标题3}
+### 浮力(BUY)软件
 
 变密度的地下水流
 
-### 恒定水头(CHD)软件 {#恒定水头chd软件 .标题3}
+### 恒定水头(CHD)软件
 
 在名称文件中从CHD6类型文件读取CHD软件包的输入。单个GWF模型可以有任意个CHD软件。但是，当CHD软件要设置一个GWF单元为恒定水头单元时，此时该单元在CHD软件包中已经分配为恒定水位单元，会发生错误。
 
@@ -242,38 +231,38 @@ UZF）不同。为了关闭一个驱动周期的所有驱动力，一个PERIOD�
 
 在MODFLOW6中，在任何驱动周期内，任何恒定水头单元只能设定为一个水头值。必须使用时间序列功能来插值到单个时间步长上。
 
-### 井(WEL)软件 {#井wel软件 .标题3}
+### 井(WEL)软件
 
 在名称文件中的WEL6类型文件读取井(WEL)软件包的输入。单个GWF模型可以定义任意数目的WEL软件。
 
-### 排水(DRN)软件 {#排水drn软件 .标题3}
+### 排水(DRN)软件
 
 从名称文件中的DRN6类型的文件读取DRN软件的输入。一个GWF模型可以定义任意数目的DRN软件。
 
 PERIOD块中的所有驱动软件信息，将继续施加到接下来的驱动周期，直到模拟结束，或直到遇到其他的PERIOD块。
 
-### 河流(RIV)软件 {#河流riv软件 .标题3}
+### 河流(RIV)软件
 
 RIV软件包不模拟河流内的地表水流动，仅考虑河流-含水层渗流。如果河流内的流动是重要的，则使用Streamflow
 Routine软件（SFR）。因此，河段编号的顺序对RIV软件的计算结果没有影响，河道渗流对每个河段是独立计算的。
 
 从名称文件中的RIV6类型的文件读取RIV软件的输入。一个GWF模型可以定义任意数目的RIV软件。
 
-### 统一的水头边界(GHB)软件 {#统一的水头边界ghb软件 .标题3}
+### 统一的水头边界(GHB)软件
 
 从名称文件中的GHB6类型的文件读取GHB软件的输入。一个GWF模型可以定义任意数目的GHB软件。
 
-### 补水(RCH)软件---基于列表的输入 {#补水rch软件基于列表的输入 .标题3}
+### 补水(RCH)软件---基于列表的输入
 
-### 补水(RCH)软件---基于数组的输入 {#补水rch软件基于数组的输入 .标题3}
+### 补水(RCH)软件---基于数组的输入
 
-### 蒸散发(EVT)软件---基于列表的输入 {#蒸散发evt软件基于列表的输入 .标题3}
+### 蒸散发(EVT)软件---基于列表的输入
 
-### 蒸散发(EVT)软件---基于数组的输入 {#蒸散发evt软件基于数组的输入 .标题3}
+### 蒸散发(EVT)软件---基于数组的输入
 
-### 多含水层井(MAW)软件 {#多含水层井maw软件 .标题3}
+### 多含水层井(MAW)软件
 
-### 径流路径(SFR)软件 {#径流路径sfr软件 .标题3}
+### 径流路径(SFR)软件
 
 从名称文件中的SFR6类型的文件读取SFR软件的输入。一个GWF模型可以定义任意数目的SFR软件。但是，单独的软件包中的河段之间不能计算水流，除了使用MVR软件计算各软件包之间的水流传输。河段可定义为宽矩形横断面或使用测站编号-高度点的不规则横断面。不规则横断面在Streamflow
 Routing Package Cross-Section Table Input File一节讨论。
@@ -284,33 +273,33 @@ Routing Package Cross-Section Table Input File一节讨论。
 
 有3个局限性（参考原理手册）。
 
-### 径流路径软件的断面输入文件 {#径流路径软件的断面输入文件 .标题3}
+### 径流路径软件的断面输入文件
 
 不规则横断面的测站-高程数据使用xfraction和高度数据定义（图3），使用河段的底部高程（RTP）转换为使用指定河段宽度（REID）和高程的测站位置。
 
-### 湖泊(LAK)软件 {#湖泊lak软件 .标题3}
+### 湖泊(LAK)软件
 
 在名称文件中读取LAK6类型的文件，LAK软件的输入。一个GWF模型可以定义任意数目的LAK软件。
 
-### 湖泊的基于表的输入文件 {#湖泊的基于表的输入文件 .标题3}
+### 湖泊的基于表的输入文件
 
-### 不饱和区域流(UZF)软件 {#不饱和区域流uzf软件 .标题3}
+### 不饱和区域流(UZF)软件
 
-### 水流转移(MVR)软件 {#水流转移mvr软件 .标题3}
+### 水流转移(MVR)软件
 
-### Ghost-Node Correction (GNC)软件 {#ghost-node-correction-gnc软件 .标题3}
+### Ghost-Node Correction (GNC)软件
 
 从名称文件中读取类型GNC6文件，GNC软件的输入。每个GWF模型仅能定义一个GNC软件。
 
 GNC软件有2个可选项对方程系统增加修改项。隐式选项（默认），对方程的左手边和右手边增加修改项，使用默认选项时，稀疏矩阵求解器的LINEAR块中需要定义BICGSTAB加速项。当对GNC软件定义EXPLICIT选项时，对右手边增加修改项，可使用CG或BICGSTAB加速方法。
 
-### 地下水流(GWF)模型的交换 {#地下水流gwf模型的交换 .标题3}
+### 地下水流(GWF)模型的交换
 
 在模拟名称文件中，从GWF6-GWF6类型文件读取GWF-GWF Exchange的输入。
 
 使用XT3D功能改进某些类型单元连接的水流计算精度时，表征地下水流的各向异性，不能实施GWF-GWF交换。
 
-## [地下水物质输移(GWT)模型]{.mark}
+## 地下水物质输移(GWT)模型
 
 地下水溶质输移模型，。。。
 
@@ -337,7 +326,7 @@ MODFLOW6支持Observation工具，不需要输入观察的值。
 
 OBS工具生成的输出文件可以是文本或二进制格式。二进制文件后缀是.bsv
 
-### 可提供的模型观测类型 {#可提供的模型观测类型 .标题3}
+### 可提供的模型观测类型
 
 GWF模型
 
@@ -349,7 +338,7 @@ GWT模型
 
 插值方法有3种：STEPWISE, LINEAR, LINEAREND
 
-### 时间序列 {#时间序列 .标题3}
+### 时间序列
 
 时间序列文件，在软件包的OPTIONS块中的关键词TS6
 FILEIN。通常时间序列文件使用ts后缀。
@@ -358,10 +347,9 @@ FILEIN。通常时间序列文件使用ts后缀。
 
 **使用时间序列定义软件包输入的例子**
 
-![](./media/image12.emf){width="3.6437379702537185in"
-height="2.125077646544182in"}
+![](./media/image12.emf)
 
-### 时间-数组序列 {#时间-数组序列 .标题3}
+### 时间-数组序列
 
 举例：
 
@@ -376,7 +364,7 @@ MODFLOW6计算结果可输出为二进制文件，有几种不同类型的二进
 二进制文件格式如后文介绍，输出频率和类型在Output Control
 Option和各个软件包输入文件中描述。
 
-### 二进制网格文件 {#二进制网格文件 .标题3}
+### 二进制网格文件
 
 文件后缀.grb，名称是离散输入文件名字。内容与离散软件包类型有关。GWF模型输出二进制网格文件，GWT模型不会输出。
 
@@ -398,7 +386,7 @@ DISV二进制网格文件的内容如下：
 
 DISU网格的二进制网格文件包含关于节点和哪些节点组成一个单元的信息，但这与是否用户提供了DISU软件包的信息有关。除了在NPF软件包中指定了XT3D或SAVE_SPECIFIC_DISCHARGE选项以外，都不需要。存储各节点的x,y坐标，存储在VERTICES数组。组成所有单元的节点列表存储于JAVERT数组。使用IAVERT数组找到任意单元的节点列表。节点列表是"封闭的"，各单元的第1个节点等于最后一个节点编号。
 
-### 相关变量文件 {#相关变量文件 .标题3}
+### 相关变量文件
 
 MODFLOW6中，对于GWF模型TEXT值定义为HEAD，GWT模型的TEXT值定义为CONECNTRATION
 
@@ -410,8 +398,7 @@ MODFLOW6中，对于GWF模型TEXT值定义为HEAD，GWT模型的TEXT值定义为
 
 对每个驱动周期，时间步和层，数据保存为二进制输出文件，写出下面2个记录：
 
-![](./media/image13.emf){width="3.6756178915135607in"
-height="0.3686942257217848in"}
+![](./media/image13.emf)
 
 **DISV Grids**
 
@@ -422,7 +409,7 @@ height="0.3686942257217848in"}
 GWF模型的LAK, SFR和MAW软件包，GWT模型的LKT, SFT,
 MWT和UZT软件包，的相关变量可保存为二进制文件。表33显示了这些软件包的相关变量的文本识别号与描述。
 
-### 模型收支文件 {#模型收支文件 .标题3}
+### 模型收支文件
 
 MODFLOW6可选择性地输出收支文件，也称之为cell-by-cell水流文件。收支文件保存为二进制格式，可使用如ZONEBUDGET程序做后处理。GWF和GWT模型的收支文件包含单元间水流和溶质流动、由于储水变化的流动、来自驱动软件包和先进的驱动软件的流动、与其他模型的交换流动等。收支文件的内容包含所有进出单元的流动。用户必须激活Output
 Control Package和某软件包中的保存流动项开关。
@@ -437,7 +424,7 @@ Control Package和某软件包中的保存流动项开关。
 
 GWF模型的收支文件内容
 
-### 观测输出文件 {#观测输出文件 .标题3}
+### 观测输出文件
 
 当使用BINARY选项打开一个观测输出文件（见OBS工具），输出文件有如下形式。Record
 1有100 bytes长度。
