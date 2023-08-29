@@ -1,6 +1,13 @@
 # Porous-Media-Flow
 
-多孔介质流体力学模型，包括地下水和油藏储层模拟等，例如：MODFLOW, OPM, ...
+已经有很多开源的Darcy尺度的多孔介质流动和输移过程模拟程序，见文献（Bilke,
+2019）的罗列。多孔介质流体力学模型，包括地下水和油藏储层模拟等，例如：MODFLOW, OPM, ...
+
+## 参考文献
+
+L. Bilke, B. Flemisch, T. Kalbacher, O. Kolditz, R. Helmig, T. Nagel,
+Development of open-source porous media simulators: Principles and
+experiences, Transp. Porous Media (2019)
 
 ## OPM
 

@@ -7,8 +7,7 @@ first reservoir simulation using Flow. We will take a look at how we can
 simulate the  reservoir model from the 1st SPE Comparative Solution
 Project  (CSP) designed for benchmarking 3D black-oil simulators
 
-![](./media/image1.png){width="6.188754374453193in"
-height="4.130410104986876in"}
+![](./media/image1.png)
 
 The tutorial assumes that you are familiar with Linux, have Ubuntu 16.04
 or 18.04 installed, and are allowed to run the sudo command.
@@ -69,8 +68,7 @@ deck as a parameter:
 
 flow SPE1CASE1.DATA
 
-![](./media/image2.png){width="6.403568460192476in"
-height="3.8633103674540683in"}
+![](./media/image2.png)
 
 Flow will now execute and output information about the simulation case
 as it progresses. It should complete within less than a minute and give
@@ -103,8 +101,7 @@ ecl_summary \--list SPE1CASE1.DATA
 
 we get a list of the different variables that are available:
 
-![](./media/image3.png){width="6.654265091863517in"
-height="2.8490398075240595in"}
+![](./media/image3.png)
 
 Some of the more interesting ones are:
 
@@ -145,8 +142,7 @@ The result can be seen in the figures below. It is worth noting that
 since the input deck specifies FIELD units (psi for pressure, etc.), the
 output produced by Flow will use that as well.
 
-![](./media/image4.emf){width="6.419597550306212in"
-height="5.471002843394576in"}
+![](./media/image4.emf)
 
 # Running the Norne case with Flow
 
@@ -311,51 +307,43 @@ The ResInsight visualization tool can also display well curves and other
 summary data interactively. To do this, click the *Import Summary Case*
 button.
 
-![](./media/image5.png){width="6.71005905511811in"
-height="4.017877296587926in"}
+![](./media/image5.png)
 
 Navigate to the output directory and choose the SMSPEC file.
 
-![](./media/image6.png){width="6.6550656167979in"
-height="3.9829286964129484in"}
+![](./media/image6.png)
 
 By default, field production rates for gas, oil, water and liquid (oil +
 water) are shown. The gas production curve dominates the others in this
 case, as should be expected since it is a case using METRIC and
 rates are therefore shown in cubic meters per day.
 
-![](./media/image7.png){width="6.726707130358705in"
-height="3.955482283464567in"}
+![](./media/image7.png)
 
 We'd like to inspect the bottom-hole pressure of the well B-1H. Expand
 *Summary plot 1* in the *Project Tree*, delete the production curves and
 add the well BHP curve as shown below.
 
-![](./media/image8.png){width="6.591283902012249in"
-height="3.8758497375328083in"}
+![](./media/image8.png)
 
 Now we are looking at the BHP curve we wanted to.
 
-![](./media/image9.png){width="6.631860236220472in"
-height="3.8977307524059492in"}
+![](./media/image9.png)
 
 If we want to look at properties for a particular well, or a particular
 property, we can use a filter. Type the well name C-2H in the *Well
 name* field and the list of choices will be restricted to those relevant
 to that well. Choose *WBHP:C-2H* to see its BHP curve.
 
-![](./media/image10.png){width="6.645587270341207in"
-height="3.9058005249343832in"}
+![](./media/image10.png)
 
 ResInsight can export these images easily. In the *Edit* menu, choose
 *Snapshot To File* to export them to files. You can see a few examples
 below.
 
-![](./media/image11.png){width="6.641070647419073in"
-height="4.324794400699912in"}
+![](./media/image11.png)
 
-![](./media/image12.png){width="6.517104111986002in"
-height="4.24406605424322in"}
+![](./media/image12.png)
 
 ### Running Flow in parallel
 
