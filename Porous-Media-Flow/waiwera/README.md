@@ -4,7 +4,7 @@
 
 Department of Engineering Science, University of Auckland, Private Bag 92019, Auckland, New Zealand
 
-waiwera类似TOUGH3的地热模型，但TOUGH2和TOUGH3不开源，
+waiwera类似TOUGH3的地热模型，但TOUGH2和TOUGH3不开源，TOUGH是商业软件。
 
 TOUGH模型的很多前处理Python程序是开发的，可以用于waiwera的前处理，因为waiwera可视为TOUGH模型的继承者
 
@@ -17,6 +17,3 @@ Adrian Croucher, et al. 2020. Waiwera: A parallel open-source geothermal flow si
 John O’Sullivan, Adrian Croucher, Angus Yeh, Mike O’Sullivan. Experiments with Waiwera, a new geothermal simulator. Proceedings 39th New Zealand Geothermal Workshop. 21-25 November 2017, Rotorua, New Zealand
 
 Michael J. O’Sullivan, Karsten Pruess, Marcelo J. Lippmann. 2001. State of the art of geothermal reservoir simulation. Geothermics, 30: 395–429.
-
-
-

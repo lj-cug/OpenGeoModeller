@@ -5,17 +5,19 @@
 
 ## 参考文献
 
-L. Bilke, B. Flemisch, T. Kalbacher, O. Kolditz, R. Helmig, T. Nagel,
-Development of open-source porous media simulators: Principles and
-experiences, Transp. Porous Media (2019)
+L. Bilke, B. Flemisch, T. Kalbacher, O. Kolditz, R. Helmig, T. Nagel, Development of open-source porous media simulators: Principles and experiences, Transp. Porous Media (2019)
+
+## MODFLOW6
+
+美国USGS开发的地下水模拟系统，基于PETSc，MPI并行化MODFLOW6
 
 ## OPM
 
-基于DUNE库、Zoltan库开发的黑油模型(Black Oil model)
+基于DUNE、Zoltan库开发的黑油模型(Black Oil model)，有开源的后处理程序ReInsight。用于替代商业软件ECLIPSE
 
 ## DuMux
 
-基于DUNE库的多孔介质流体模拟程序
+基于DUNE库的多孔介质流体模拟程序，是OPM模拟系统的基础
 
 ## GEOSX
 
@@ -23,11 +25,15 @@ experiences, Transp. Porous Media (2019)
 
 ## OpenGeoSys
 
-Thermo-hydro-mechanical/chemical (THMC)模拟
+Thermo-hydro-mechanical/chemical (THMC)模拟系统，有ogs5和ogs6两个版本
 
-## MODFLOW6
+## waiwera
 
-美国USGS开发的地下水模拟系统，基于PETSc，MPI并行化MODFLOW6
+基于MPI和PETSc开发的地热及CO2封存模拟系统
+
+## golem
+
+基于MPI并行的地热模拟系统
 
 ## MPLBM-UT
 
@@ -37,26 +43,8 @@ Thermo-hydro-mechanical/chemical (THMC)模拟
 
 格子Boltzmann方法求解库Palabos与离散元模型LIGGGHTS耦合，可模拟床面泥沙颗粒的起动，以及水沙两相流的介观模型
 
-# 地质建模
+# Corner-Point-Mesh
 
-使用近年来开源的隐式地质建模Python脚本工具，实现地质建模（即多孔介质流动模型的前处理）
+一类地质模型，尤其是油气藏模拟器中，常用的网格模式：角点网格(Corner-Point Mesh)
 
-## Implicit-GeoModeling (隐式地质建模与显式地质建模)
-
-目前多数的地质建模软件，如Petrel和SKUA-GOCAD，都是使用显式地质建模，也就是建模过程必须显式地构建出地质体，如断层，需要大量的手工工作量
-
-而隐式地质建模，仅需要地质体的梯度或dip-azimuth等地震属性数据的势场插值，就能得到地质建模文件，无需手工介入，但由于对计算机内存和计算性能要求较高，近5年来才有可用的计算机程序供使用
-
-当前的隐式建模Python工具主要是：GemPy和LoopStructural
-
-## Gempy
-
-德国亚琛工业大学开发的隐式地质建模Python程序
-
-## LoopStructural
-
-澳大利亚开发的隐式地质建模Python程序
-
-## CPM
-
-角点网格的数据结构及格式转换
+Petrel软件可生成CPM网格，是油气藏模拟的前处理程序
