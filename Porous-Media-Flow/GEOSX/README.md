@@ -1,5 +1,7 @@
 # GEOSX
 
+处于重度开发过程中...
+
 美国Lawrence Livermore National Laboratory (LLNL), Stanford University, TotalEnergies, Chevron 开发的新一代地质碳封存及其他地下能源系统的模拟程序，包括：
 
 1. 利用高性能硬件，可实现数量级性能改善效果
