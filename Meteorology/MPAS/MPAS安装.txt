@@ -1,4 +1,0 @@
-使用 gcc/gfortran  V7.5成功编译和安装了MPAS v4.0和v7.0，但是修改了v7.0中的mpas_io.F 的两处参数值，因为我安装的PIO和PIO2中没有这几个参数，奇怪？
-
-在Makefile中的gfortran 编译参数部分，添加了 -fPIC  参数，解决我的Ubuntu 的gcc编译后，ld链接的问题。
-"CFLAGS_OPT = -O3 -m64 -fPIC" \
