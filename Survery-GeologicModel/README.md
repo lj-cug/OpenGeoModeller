@@ -1,4 +1,4 @@
-# Seismics-Interpretation (µØÕğ½âÊÍ)
+# Survery-GeologicalModel
 
 ## Principles
 
