@@ -28,6 +28,21 @@ paraview
 
 地幔动力学模拟
 
+## 学习路线
+
+1. 安装firedrake库
+
+2. 入门tutorial
+Firedrake User Manual PDF, 2023
+
+3. Introductory Jupyter notebooks
+https://www.firedrakeproject.org/notebooks.html
+
+4 Manual
+
+5 Advanced tutorials
+
+6 Thetis项目
 
 ## 参考文献
 

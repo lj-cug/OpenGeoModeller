@@ -76,9 +76,9 @@ KENUE生成，也可以由TELEMAC2D模型自带的*STBTEL*生成（还没用过�
 
 -   点源文件：T2DVEF，ASCII格式
 
--   。。。。。。
+-   ......
 
-### 2、输出文件 {#输出文件 .标题3}
+### 2、输出文件
 
 在T2DCAS中设置需要输出的变量，名称如下：
 
@@ -210,32 +210,27 @@ gretel
 有一个Python语言编写的小程序，可以按照规定的傻瓜步骤(Workflow
 Interface)，逐步骤地建立Telemac2d模拟项目。
 
-![](./media/image1.png){width="2.669265091863517in"
-height="2.0405675853018375in"}
+![](./media/image1.png)
 
 图1 经典模式和工作流模式
 
 ### 1、经典模式的操作界面 {#经典模式的操作界面 .标题3}
 
-![](./media/image2.png){width="3.001649168853893in"
-height="4.823919510061242in"}
+![](./media/image2.png)
 
 图2 经典模式的主界面
 
-![](./media/image3.png){width="4.477109580052494in"
-height="2.2053379265091864in"}
+![](./media/image3.png)
 
 图3 整体设置（主要是选择serafin文件的语言和CSV的分隔符号）
 
-![](./media/image4.png){width="5.768055555555556in"
-height="4.895066710411198in"}
+![](./media/image4.png)
 
 图4 提取变量值的界面（Extract variables）
 
 如图4，例如打开HTH算例的计算结果serafin文件。summary中显示了文件中的类型（2D）、变量的个数（3个）、节点数和单元数以及时间序列个数。
 
-![](./media/image5.png){width="5.4492388451443565in"
-height="2.1488156167979002in"}
+![](./media/image5.png)
 
 图5 选择时间序列的起始范围
 
@@ -243,15 +238,13 @@ height="2.1488156167979002in"}
 
 ### 2、工作流界面（傻瓜操作） {#工作流界面傻瓜操作 .标题3}
 
-![](./media/image6.png){width="3.2998840769903763in"
-height="1.5782053805774279in"}
+![](./media/image6.png)
 
 图6 工作流界面的主界面
 
 包括：创建新工程项目和打开已建工程项目。
 
-![](./media/image7.png){width="5.768055555555556in"
-height="3.437108486439195in"}
+![](./media/image7.png)
 
 图7 可以选择要进行的操作，并可视化操作流程本身
 

@@ -134,22 +134,20 @@ SELFE和SCHISM模型可计算非静水（动水）压力（压力-流速耦合�
 
 时间步长限制条件：
 
-（1）外模重力波限制（动量方程，CFL条件）：![](./media/image1.wmf)
+（1）外模重力波限制（动量方程，CFL条件）：![](./media/image1.png)
 
-（2）内模重力波限制（标量方程）：![](./media/image2.wmf)，![](./media/image3.wmf)
+（2）内模重力波限制（标量方程）：![](./media/image2.png)，![](./media/image3.png)
 
-（3）水平粘性项限制：![](./media/image4.wmf)
+（3）水平粘性项限制：![](./media/image4.png)
 
-![](./media/image5.wmf)\--SELFE模型；
+![](./media/image5.png)\--SELFE模型；
 
 FVCOM模型(Smagorinsky涡参数法，1963)：
 
-动量方程中的水平扩散系数：![](./media/image6.emf){width="2.8048173665791776in"
-height="0.5636056430446195in"}
+动量方程中的水平扩散系数：![](./media/image6.png)
 
-物质输移方程中的水平扩散系数：![](./media/image7.emf){width="2.6167694663167103in"
-height="0.5208333333333334in"}
+物质输移方程中的水平扩散系数：![](./media/image7.png)
 
 垂向扩散系数使用湍流模型计算（Mellor-Yamada, GOTM）
 
-（2）和（3）限制条件比（1）要小很多。（1）限制条件通过半隐格式因子![](./media/image8.wmf)来缓解。当标量方程使用TVD格式时要减小时间步长。
+（2）和（3）限制条件比（1）要小很多。（1）限制条件通过半隐格式因子![](./media/image8.png)来缓解。当标量方程使用TVD格式时要减小时间步长。
