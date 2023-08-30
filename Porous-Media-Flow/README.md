@@ -42,9 +42,3 @@ Thermo-hydro-mechanical/chemical (THMC)模拟系统，有ogs5和ogs6两个版本
 ## LBDEMcoupling
 
 格子Boltzmann方法求解库Palabos与离散元模型LIGGGHTS耦合，可模拟床面泥沙颗粒的起动，以及水沙两相流的介观模型
-
-# Corner-Point-Mesh
-
-一类地质模型，尤其是油气藏模拟器中，常用的网格模式：角点网格(Corner-Point Mesh)
-
-Petrel软件可生成CPM网格，是油气藏模拟的前处理程序

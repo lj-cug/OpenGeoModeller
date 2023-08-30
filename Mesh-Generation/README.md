@@ -132,3 +132,9 @@ André F的nicegrid2:
 
 Aron Roland的polymesh:
 基于Triangle，大部分为FORTRAN代码，以及与Triangle的接口程序，且具有误差预估和自适应网格的功能。
+
+# Corner-Point-Mesh
+
+一类地质模型，尤其是油气藏模拟器中，常用的网格模式：角点网格(Corner-Point Mesh)
+
+Petrel软件可生成CPM网格，是油气藏模拟的前处理程序
