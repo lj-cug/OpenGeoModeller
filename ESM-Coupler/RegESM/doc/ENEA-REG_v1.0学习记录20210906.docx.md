@@ -20,8 +20,7 @@ ENEA-REG的气象模式有2个：RegCM和WRF，还有HD，一个海洋模式MITg
 
 ## 2.1RegESM耦合器
 
-![](./media/image1.emf){width="4.108417541557305in"
-height="4.112110673665792in"}
+![](./media/image1.jpeg)
 
 图1 ENEA-REG区域耦合模型的组件示意图
 
@@ -30,8 +29,7 @@ height="4.112110673665792in"}
 WRF模式V3.8.1_cpl，ARW；RegCM_v4.5 (Giorgi et al.,
 2012)：[尚未实施非静水压力动力核心]{.mark}。2个大气模式使用的主要物理参数化方案如下：
 
-![](./media/image2.emf){width="5.065878171478565in"
-height="2.9801181102362206in"}
+![](./media/image2.jpeg)
 
 ## 2.3海洋模式组件：MITgcm
 
@@ -48,7 +46,7 @@ and Sannino,
 模型[校核(validation)]{.mark}时间段：1982\~2013，使用前2年的spin-up模拟，初始化耦合系统中不同组件的初始场。耦合模型主要校核的场有：海洋模式的海表温度、海表盐度和海洋的混合层深度，以及大气模式的2m气温、风速、淡水和热通量。HD：比较Po
 River的河道径流模拟结果。
 
-[校核：]{.mark}
+校核：
 
 （1）模拟的SST结果与NOAA研发和发布的数据比较Objectively Interpolated Sea
 Surface Temperatures (OISST v2, Reynolds et al., 2002 and 2007), The
@@ -90,7 +88,7 @@ Rivas and Stoffelen, 2019)。
 
 ## 4.2海洋模式的评价
 
-### 4.2.1海表过程 {#海表过程 .标题3}
+### 4.2.1海表过程
 
 海表温度（SST）和海表盐度（SSS）
 
@@ -104,13 +102,13 @@ Rivas and Stoffelen, 2019)。
 
 如图13，海表盐度的月平均值异常和季节平均值异常的计算与观测对比。
 
-### 4.2.2海表高度及循环 {#海表高度及循环 .标题3}
+### 4.2.2海表高度及循环
 
 如图14，WRF-MITgcm与RegCM-MITgcm分别模拟的海面高度与水下30m处水动力场
 
-### 4.2.3热量和盐度 {#热量和盐度 .标题3}
+### 4.2.3热量和盐度
 
-### 4.2.4深水形态 {#深水形态 .标题3}
+### 4.2.4深水形态
 
 如图18，
 

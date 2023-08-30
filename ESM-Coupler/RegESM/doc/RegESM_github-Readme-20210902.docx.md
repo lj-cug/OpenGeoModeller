@@ -2,27 +2,27 @@
 
 ## 1支持的组件
 
-### 气象(ATM):  {#气象atm .标题3}
+### 气象(ATM): 
 
 RegCM (\>v_4.5), 使用co-processing时，需要补丁代码
 
 WRF_v3.8.1
 
-### 海洋(OCN): {#海洋ocn .标题3}
+### 海洋(OCN): 
 
 ROMS_r809
 
 MITgcm_ver_c63s
 
-### 河流(RTM): {#河流rtm .标题3}
+### 河流(RTM): 
 
 HD_v1.0.2
 
-### 波浪(WAV): {#波浪wav .标题3}
+### 波浪(WAV):
 
 WAM (version: Cycle_4.5.3_MPI)
 
-### [co-processing (COP):]{.mark} {#co-processing-cop .标题3}
+### co-processing (COP):
 
 Paraview_v5.4.1: 需要Catalyst模块以及带图形模型的GPU
 
@@ -54,8 +54,7 @@ Prediction Capability
 
 主要模型组件的交互见图1.
 
-![C:\\Users\\Administrator\\Desktop\\ch01_fig01.png](./media/image1.png){width="5.076388888888889in"
-height="3.329861111111111in"}
+![C:\\Users\\Administrator\\Desktop\\ch01_fig01.png](./media/image1.png)
 
 图1 RegESM模拟系统的设计：a, 组件；b 目前支持的耦合方向
 
@@ -68,8 +67,7 @@ height="3.329861111111111in"}
 注意：目前的耦合模型，不允许在ATM-OCN, OCN-ATM, ATM-WAV,
 WAV-ATM耦合方向上设置不同的耦合时间步。WAV组件必须使用与ATM和OCN组件相同的耦合时间间隔。
 
-![C:\\Users\\Administrator\\Desktop\\ch01_fig02.png](./media/image2.png){width="5.35625in"
-height="2.4444444444444446in"}
+![C:\\Users\\Administrator\\Desktop\\ch01_fig02.png](./media/image2.png)
 
 图2 四个模型组件串行运行方式的耦合
 
@@ -79,15 +77,13 @@ height="2.4444444444444446in"}
 
 串行执行方式中，所有模型组件和驱动程序都可访问计算资源中的变量，除了RTM组件，RTM组件与OCN组件共享最后一个核（除非在驱动程序namelist文件中定义了其他的核），因为RTM模型没有MPI并行化，仅使用1个核（计算量很小）。这种模式下，模型依次运行，其中的一个模型组件要等待其他所有模型组件都运行完毕，才能继续运行。在串行运行完模型组件后，模型之间交换数据，然后再依次继续开始运行，直到数据交换时刻。如图3所示。
 
-![C:\\Users\\Administrator\\Desktop\\ch01_fig03.png](./media/image3.png){width="5.768055555555556in"
-height="1.7006944444444445in"}
+![C:\\Users\\Administrator\\Desktop\\ch01_fig03.png](./media/image3.png)
 
 图3 串行执行模式
 
 如图4，并行执行模式下，各模型组件使用自己的计算资源(CPU/核心)和驱动程序，而[RTM模型组件]{.mark}可配置使用或不使用自己的资源，见"[使用"一节]{.mark}的namelist.rc。驱动程序使用所有可获得的核心资源交换各模型组件之间的数据、实施插值或重新分配计算资源。驱动器使用[配置文件(namelist.rc)]{.mark}为各模型组件分配不同数目的CPUs/核心。
 
-![C:\\Users\\Administrator\\Desktop\\ch01_fig04.png](./media/image4.png){width="5.385416666666667in"
-height="1.9583333333333333in"}
+![C:\\Users\\Administrator\\Desktop\\ch01_fig04.png](./media/image4.png)
 
 图4 并行执行模式
 
@@ -101,7 +97,7 @@ height="1.9583333333333333in"}
 50km；海洋模式ROMS使用1/12°(\~1
 km)分辨率的网格。模拟5天的过程。测试大气模拟区域大小对结果的影响。
 
-### 2.2 耦合模拟系统算例 {#耦合模拟系统算例 .标题3}
+### 2.2 耦合模拟系统算
 
 耦合时间间隔
 
@@ -109,7 +105,7 @@ km)分辨率的网格。模拟5天的过程。测试大气模拟区域大小对�
 
 串行执行
 
-### 2.3 Co-processing Component: ATM-OCN-COP {#co-processing-component-atm-ocn-cop .标题3}
+### 2.3 Co-processing Component: ATM-OCN-COP
 
 ## 3、安装
 
@@ -138,9 +134,9 @@ ROMS_r809，用户需要使用轻量级patch启用耦合功能。使用patch重�
 
 ## 3.1准备安装环境
 
-有一个sh程序安装RegESM的基本依赖库：[install-deps.sh]{.mark}
+有一个sh程序安装RegESM的基本依赖库：install-deps.sh
 
-### 安装Hierarchical Data Format (HDF5) {#安装hierarchical-data-format-hdf5 .标题3}
+### 安装Hierarchical Data Format (HDF5)
 
 To install zlib:
 
@@ -162,7 +158,7 @@ make
 
 make install
 
-### 安装HDF5 {#安装hdf5 .标题3}
+### 安装HDF5
 
 cd \$PROGS
 
@@ -178,7 +174,7 @@ make
 
 make install
 
-### 安装NetCDF {#安装netcdf .标题3}
+### 安装NetCDF
 
 [安装netCDF-C:]{.mark}
 
@@ -270,7 +266,7 @@ export NETCDF=\$PROGS/netcdf-4.3.0
 
 export PATH=\$NETCDF/bin:\$PATH
 
-### 安装并行化NetCFD(可选) {#安装并行化netcfd可选 .标题3}
+### 安装并行化NetCFD(可选)
 
 该选项可选的，如果要使用ESMF NetCDF
 IO功能输出交换场，需要使用[parallel-netcdf (1.3.1):]{.mark}
@@ -296,7 +292,7 @@ export PNETCDF=\$PROGS/parallel-netcdf-1.3.1
 
 如果MPI的安装路径和执行路径改变了，编译时需要给出正确的路径：[\--with-mpi]{.mark}配置参数。
 
-### 安装Apache Xerces C++ {#安装apache-xerces-c .标题3}
+### 安装Apache Xerces C++ 
 
 该程序库主要用于安装ESMF，作用是：以[XML格式]{.mark}读写网格定义和属性（场、组件和状态层）。
 
@@ -399,10 +395,9 @@ clean后重新编译安装，安装优化的和调试的ESMF库，有助于发�
 
 接下来是安装模型组件。用户可安装到文件系统中的设定位置，输出在耦合模型配置阶段的安装路径。安装方法严格按照下面的介绍，可防止安装阶段的问题并及时解决。
 
-模型组件和驱动程序的安装采用层级路径，有助于简化安装步骤。[下图]{.mark}显示了安装RegESM的示例路径结构。
+模型组件和驱动程序的安装采用层级路径，有助于简化安装步骤。下图显示了安装RegESM的示例路径结构。
 
-![C:\\Users\\Administrator\\Desktop\\ch03_fig01.png](./media/image5.png){width="5.511111111111111in"
-height="3.5833333333333335in"}
+![C:\\Users\\Administrator\\Desktop\\ch03_fig01.png](./media/image5.png)
 
 图1安装RegESM的建议路径结构
 
@@ -524,11 +519,11 @@ patch -p 3 \< roms-r809.patch
 
 安装ROMS和实际建模，请参考ROMS的使用手册。
 
-### 安装MITgcm {#安装mitgcm .标题3}
+### 安装MITgcm
 
 安装耦合支持的[MITgcm_c63s]{.mark}，首先要激活ESMF功能。已经有RegESM系统下的[MITgcm的代码]{.mark}。可以使用[官方的MITgcm文档]{.mark}安装和创建实际算例。
 
-### 安装HD {#安装hd .标题3}
+### 安装HD
 
 需要联系开发者获取修改版本的HD模型代码。用户也可以改写[自己的RTM]{.mark}组件到耦合模拟系统，修改方法与RegESM源码中的mod_esmf_rtm.F90一样。
 
@@ -544,7 +539,7 @@ make
 
 make install
 
-### 安装第3代海洋波浪模型(WAM) {#安装第3代海洋波浪模型wam .标题3}
+### 安装第3代海洋波浪模型(WAM)
 
 ECMWF的WAM版本是耦合模型Cycle_4.5.3_MPI，修改了原始的WAM模型代码使其称为耦合模拟系统中的一个组件。另外，由于license限制，用户需要联系RegESM开发者获取修改版本的WAM模型。
 
@@ -608,7 +603,7 @@ MITgcm)，编译选择的模型组件需要的文件。另外，配置脚本还�
 
 然后，用户就可运行RegESM了。上面2个配置文件必须放在与RegESM可执行程序相同路径下。
 
-### 4.1exfield.tbl {#exfield.tbl .标题3}
+### 4.1exfield.tbl
 
 定义交换场及其属性（描述、单位、网格位置等）。例子：
 
@@ -798,9 +793,9 @@ neighbour)。此时，建议启用插值支持。ESMF库将来的计划是支持
    COP   \-                     \-                        \-                        \-                       \-
   -----------------------------------------------------------------------------------------------------------------------------------
 
-### 4.2 namelist.rc {#namelist.rc .标题3}
+### 4.2 namelist.rc
 
-### 4.3运行RegESM {#运行regesm .标题3}
+### 4.3运行RegESM
 
 运行耦合模型的方式与运行独立的模型组件是一样的。耦合模拟时，[所有模型组件的配置文件必须与可执行程序放在同一个路径下]{.mark}。
 
@@ -957,7 +952,7 @@ make
 
 注意：COP组件的渲染效率在使用模拟软件的情况会受影响。初步测试表明：OSMesa的渲染效率比EGL配置的慢10倍。
 
-### 5.2使用NVIDIA EGL offscreen渲染的Paraview安装 {#使用nvidia-egl-offscreen渲染的paraview安装 .标题3}
+### 5.2使用NVIDIA EGL offscreen渲染的Paraview安装
 
 使用NVIDIA GPU offscreen渲染时，Paraview可以使用带[EGL
 (https://www.khronos.org/egl)
@@ -982,7 +977,7 @@ https://blog.kitware.com/off-screen-rendering-through-the-native-platform-interf
 
 https://devblogs.nvidia.com/parallelforall/egl-eye-opengl-visualization-without-x-server/
 
-### 5.3模型组件和COP支持 {#模型组件和cop支持 .标题3}
+### 5.3模型组件和COP支持
 
 已测试了COP与[2个组件（ATM和OCN）]{.mark}的模型配置，计划与更多组件耦合，包括RTM和WAV，这样能在高时间分辨率下分析多个组件的模拟。[（现在的耦合情况???）]{.mark}
 
@@ -1034,18 +1029,18 @@ km），可能会发生假性的插值场-artifacts（例如在目标场中产�
 
 ## 7、已知的问题
 
-### 7.1两层插值 {#两层插值 .标题3}
+### 7.1两层插值
 
 旧版的ESMF (6.3.0r)中如果一个计算进程上的源网格全部都Masked
 out，最临近插值会出错，该错误与网格大小、land-sea
 masking还有区域分解时各方向上(x和y)的tiles数目有关。该问题已经在[\>6.3.0r]{.mark}版本的ESMF中解决了。
 
-### 7.2三个模型组件耦合情况的问题 {#三个模型组件耦合情况的问题 .标题3}
+### 7.2三个模型组件耦合情况的问题
 
 ESMF
 (ver\<7.0.0b38)运行3个模型组件(ATM+OCN+RTM)不能正常运行。该问题是出在ESMF的NUOPC层，已经在7.0.0b38版本中解决了。
 
-### 7.3不平行或不匹配的组件网格 {#不平行或不匹配的组件网格 .标题3}
+### 7.3不平行或不匹配的组件网格
 
 RegESM系统中，OCN, RTM,
 WAV的网格要[完全被]{.mark}ATM网格覆盖，所有组件应使用相同约定的纬度(-90\~+90)和经度(-180\~+180)极限范围定义。由于这个限制。如果组件网格使用了不同的约定，可能会引起ESMF库在创建插值权重矩阵时的错误(ESMF术语中称为routehandle)。
@@ -1057,13 +1052,12 @@ dot, u, v)的网格信息，用Paraview或VisIT可视化。下图显示引起错
 
 如图1，2个网格使用不同的经度约定。此例中，海洋模型网格（蓝色）与大气模型网格（红色）不匹配，用其他可视化工具（如NCL）可能看起来是重叠的。
 
-![C:\\Users\\Administrator\\Desktop\\ch07_fig01.png](./media/image6.png){width="4.8493055555555555in"
-height="1.0993055555555555in"}
+![C:\\Users\\Administrator\\Desktop\\ch07_fig01.png](./media/image6.png)
 
 图1
 模型组件的网格示意图（红色是大气模式，蓝色是海洋模式），使用不同的经度约定。相同颜色的矩形显示模型组件的区域分解单元。
 
-### 7.4 Bit-to-bit Reproducibility {#bit-to-bit-reproducibility .标题3}
+### 7.4 Bit-to-bit Reproducibility
 
 [Bit-to-bit
 Reproducibility]{.mark}是地球科学模拟研究中的重要课题，数值模拟结果的可重复性（使用不同的操作系统或编译器等）。但是浮点运算和计算机中的字节保存都会引起结果的变化。[问题是由很多原因]{.mark}造成的：算法、堆栈中数据的排列、OpenMP和MPI并行中任务与线程的调度。[数值操作的顺序]{.mark}也会影响计算结果（例如MPI模式中的规约操作）。
@@ -1091,7 +1085,7 @@ fast=2来优化，但这样很危险。如果要使用Reproducibility，用户�
 fast=2[为]{.mark}-fp-model
 precise。然后，运行bootstrap.sh脚本创建新的configure脚本。
 
-### 7.5 RegCM耦合时SST更新计算的问题 {#regcm耦合时sst更新计算的问题 .标题3}
+### 7.5 RegCM耦合时SST更新计算的问题
 
 [diurnal]{.mark}循环SST格式
 (idcsst)，在于海洋模式耦合时，必须关闭（=0）。因为开启时会[重写来自海洋组件的SST数据]{.mark}，会产生奇怪结果。这个问题在RegCM_4.4.\*版本中一直存在。在[RegCM4.5]{.mark}中新增了控制，当启用**耦合模拟**时(**iocncpl=1**)，自动关闭半日循环SST格式。
@@ -1142,11 +1136,11 @@ doi:10.5194/gmd-6-283-2013
 
 ## 版本更新信息
 
-### New in Version 1.2 {#new-in-version-1.2 .标题3}
+### New in Version 1.2
 
 -   The COP component is optimized for very-high resolution applications
 
-### New in Version 1.1 {#new-in-version-1.1 .标题3}
+### New in Version 1.1
 
 -   New co-processing component is introduced to allow in situ
     visualization applications for multi-component earth system model
@@ -1183,7 +1177,7 @@ missing from command line
 
 修改automake生产的Makefile文件的第110行，添加：-lstdc++
 
-[修改后，第110行为：]{.mark}
+修改后，第110行为：
 
 am\_\_append_17 = -L\$(COPLIBPTH) -lcop -lstdc++ -L\$(PVDIR)/lib
 \`\$(PVDIR)/bin/paraview-config \--libs \\

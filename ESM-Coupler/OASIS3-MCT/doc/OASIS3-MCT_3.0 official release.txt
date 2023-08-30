@@ -1,0 +1,22 @@
+OASIS3-MCT_3.0 official release
+We are pleased to let you know that OASIS3-MCT_3.0, the third official version of OASIS3-MCT, is now ready !
+The main evolution with respect to the previous version is the support of coupling exchanges between parallel components deployed in much more diverse configurations than before, for example, within one same executable between components running concurrently on separate sets of tasks or between components running sequentially on overlapping sets of tasks.
+
+This new version also includes:
+    - memory and performance upgrades
+    - a new LUCIA tool for load balancing analysis
+    - new memory tracking tool (gilt)
+    - improved error checking and error messages
+    - doxygen documentation
+    - expanded test cases and testing automation
+    - testing at high resolution (> 1M gridpoints)
+    - testing at high processor counts (32k pes)
+    - testing with large variable counts (> 1k coupling fields)
+    - and of course many bug fixes!
+
+
+All these features are described in details in the OASIS3-MCT_3.0 User Guide.
+
+OASIS3-MCT_3.0 is the version that will now be distributed on the OASIS web site (http://oasis.enes.org) under Download (see the registration form). Only bug fixes will be included in this version until the next official release.
+To follow OASIS3-MCT developments in real-time, register to the Redmine project management site at https://inle.cerfacs.fr/project/oasis3-mct. On this site, registered users can browse the sources and consult tickets describing bug fixes and developments.
+If you have problems or questions, please check the forum or contact us at oasishelp@cerfacs.fr !

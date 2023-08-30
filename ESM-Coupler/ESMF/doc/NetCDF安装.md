@@ -1,6 +1,6 @@
-NetCDF安装摘记(包括c库和fortran库） 
+# NetCDF安装摘记(包括c库和fortran库） 
 
-1、安装环境
+## 1、安装环境
 
 (系统环境：Ubuntu 18.04+bash
 
@@ -11,8 +11,7 @@ NetCDF安装摘记(包括c库和fortran库）
 (Fortran库版本：netcdf-fortran-4.4.4.tar.gz
 
  
-
-2、C库安装(without netCDF4 and HDF5support)
+## 2、C库安装(without netCDF4 and HDF5support)
 
 (1)设定环境变量
 
@@ -41,8 +40,7 @@ sudo make check
 sudo make install
 
  
-
-3、Fortran库安装(安装至/opt/netcdf)
+## 3、Fortran库安装(安装至/opt/netcdf)
 
 tar -xzvfnetcdf-fortran-4.4.4.tar.gz
 

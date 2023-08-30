@@ -1,4 +1,5 @@
-编译MPI的记录：
+# 编译MPI的记录
+
 在电脑上分别编译和安装了openmpi-3.1和mpich2-3.4 (3.3),发现两者有区别：
 
 mpich2-3.4的lib中，有libmpi.so.12; 
@@ -6,9 +7,11 @@ mpich2-3.4的lib中，有libmpi.so.12;
 
 可见，mpich2库的开发是滞后于openmpi库的开发的。但是还没尝试使用mpich2-4.x版本的库来编译ESMF。
 
-编译ESMF-7.1的记录：
+# 编译ESMF-7.1的记录
+
 使用mpich2-3.4编译时，没有设置export ESMF_CXXCOMPILER=mpicxx;export ESMF_F90COMPILER=mpif90,出现编译错误：使用g++不能连接mpi.h
 使用mpich2-3.4编译ESMF还有不能连接有关libmpi.so等库的问题。
+
 因此，必须使用openmpi-3.1编译ESMF。
 
 gedit ~/.bashrc
@@ -22,7 +25,7 @@ export PATH=$MPI_ROOT/bin:$PATH
 export LD_LIBRARY_PATH=$MPI_ROOT/lib:$LD_LIBRARY_PATH
 export CPATH=$MPI_ROOT/lib:$CPATH
 
-#------------config for ESMF-7.1--------------------------------------------------
+#------------config for ESMF-7.1--------------------
 export ESMF_OS=Linux
 export ESMF_TESTMPMD=OFF
 export ESMF_TESTEXHAUSTIVE=OFF
@@ -54,7 +57,7 @@ export ESMF_XERCES_LIBPATH="/usr/lib/x86_64-linux-gnu"
 export ESMF_INC=$ESMF_INSTALL_PREFIX/include
 export ESMF_LIB=$ESMF_INSTALL_PREFIX/lib/libO/Linux.gfortran.64.openmpi.default
 export ESMFMKFILE=$ESMF_LIB/esmf.mk
-#---------------end of ESMF-7.1 configuration-----------------------------------
+#---------------end of ESMF-7.1 configuration----------------
 
 # Paraview 5.4.1 shared libraries
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/paraview-5.4/

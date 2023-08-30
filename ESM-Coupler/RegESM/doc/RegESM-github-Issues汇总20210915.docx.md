@@ -4,7 +4,7 @@
 
 ## 1、当大气模拟区域大于海洋模拟区域时，超过海洋模拟区域的SST部分由再分析数据补充，在海洋模拟区域边界处由于插值引起梯度的剧烈变化，可能导致不一致的问题。这需要在driver程序中实施光滑算法，使SST逐渐过渡，减小剧烈梯度变化。[rfarneti](https://github.com/rfarneti) commented [on 14 May 2015](https://github.com/uturuncoglu/RegESM/issues/12#issue-76305571)
 
-[已解决。]{.mark}
+已解决。
 
 ## 2、driver中的风向旋转仅对Lamber Conformal投影有效，但可能使用不同类型的地图投影：
 
@@ -23,7 +23,7 @@ Mercator) and NORMER (Normal Mercator) but not POLSTR.
 
 ## 3、如果2个模型组件使用[相同的变量名交换数据]{.mark}（mask变量在海洋和大气模式中均定义），则为模型出错（错误与内部场有关）。
 
-Error: [（无效形参）]{.mark}
+Error: （无效形参）
 
 20170301 231238.889 ERROR PET00 OCN-TO-COP:
 src/addon/NUOPC/src/NUOPC_Connector.F90: 745 [Invalid argument]{.mark} -

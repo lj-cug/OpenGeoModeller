@@ -1,4 +1,5 @@
-RegESM_1.2 目前耦合的模式(基于ESMF耦合器)包括：
+RegESM_1.2 目前耦合的模式(基于ESMF耦合器)包括
+
 (1)大气模式：WRF_v3.8, RegCM_v4.5
 (2)海洋模式：MITGcm, ROMS
 (3)波浪模式：WAM

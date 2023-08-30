@@ -5,7 +5,7 @@ regional modeling system RegESM 1.1
 
 # 1 引言
 
-## [常见的耦合器]{.mark}
+## 常见的耦合器
 
 Ocean Atmosphere Sea Ice Soil (OASIS3) (Valcke,
 2013)使用多个可执行方法耦合模型组件，但执行的是内部的串行算法，如模型网格插值用到的稀疏矩阵相乘，当网格分辨率增大时，成为计算瓶颈；OASIS4实施了内部并行化算法(Redler
@@ -24,7 +24,7 @@ Modular System for Shelves and Coasts (MOSSCO, Lemmen et al.,
 
 大部分的地球耦合模型都使用中央耦合器来支持数据交换、空间插值和模型组件同步。模型组件和模块之间不直接发生作用，而是采用特殊的耦合器组件管理数据交换，称为[hub-and-spoke]{.mark}方法。
 
-## [在线可视化]{.mark}
+## 在线可视化
 
 analyze the fast-moving processes such as extreme precipitation evets,
 convection turbulences and non-linear interactions among the model
@@ -51,8 +51,7 @@ cap，插入模拟系统。
 2013), Mediterranean Basin (Surenkok and Turuncoglu, 2015; Turuncoglu
 and Sannino, 2017) and Black Sea Basin (???).]{.mark}
 
-![](./media/image1.emf){width="5.3708562992125986in"
-height="3.5150054680664917in"}
+![](./media/image1.jpg)
 
 图1耦合模拟系统设计：(a)模型组件，包括co-processing组件；(b)组件间的交互（桔色代表重分布；绿色代表插值）
 
@@ -115,8 +114,7 @@ ESMF在组件内存中转换计算网格，这对co-processing环境的模拟系
 
 4个组件的耦合模拟系统的配置见如2。
 
-![](./media/image2.emf){width="5.5188396762904635in"
-height="2.485870516185477in"}
+![](./media/image2.jpg)
 
 图2 显式耦合情况下组件的运行顺序
 
@@ -132,8 +130,7 @@ RegESM在大气与海洋组件之间，使用2种不同的时间积分耦合格�
 
 （2）半隐式。
 
-![](./media/image3.emf){width="5.42751312335958in"
-height="2.041890857392826in"}
+![](./media/image3.jpg)
 
 图3 示意图：(a)显式；(b)半隐式
 
@@ -189,7 +186,7 @@ co-processing APIs.
 
 这样模型代码与Catalyst间的交互性通过ESMF得到增强和标准化。
 
-![](./media/image4.emf){width="5.063406605424322in"
+![](./media/image4.jpg){width="5.063406605424322in"
 height="5.419990157480315in"}
 
 图5 传统的(a)和ESMF-integrated (b)的in-situ Visualization的比较
@@ -204,8 +201,7 @@ ESMF也采用类似的方法（ESMF组件）将新的模型组件插入到耦合
 component)，而驱动器定义为[耦合器组件]{.mark}(Coupler
 component)。在每个耦合循环计算步中，耦合器组件根据应用regridding（除了与Co-processing组件间的耦合）的组件间的交互作用，准备交换场，实施单位转换和对场变量的一般操作（如旋转风场）。
 
-![](./media/image5.emf){width="5.412586395450568in"
-height="3.8419258530183726in"}
+![](./media/image5.jpg)
 
 图6 ESMF/NUOPC定义的驱动器与Co-processing组件(Catalyst)间的相互作用
 
@@ -225,8 +221,7 @@ cap还支持，在传递信息给Co-processing组件之前，实施3D交换场�
 
 [结束阶段]{.mark}：结束模式和Co-processing组件的子程序，停止模式运行和数据分析管线，销毁定义的数据结构，释放内存（图6的第7\~8步）。
 
-![](./media/image6.emf){width="4.599764873140858in"
-height="5.807863079615048in"}
+![](./media/image6.jpg)
 
 图7 ESMF/NOUPC接口的[网格转换和remapping]{.mark}特征的2模型组件情况
 
@@ -245,7 +240,7 @@ Infiniband FDR (56 Gbps)
 Paraview is installed with Mesa support, if there's no GPU in the
 cluster
 
-## 4.2 计算域和模型设置[(GTC-demo-2018)]{.mark}
+## 4.2 计算域和模型设置(GTC-demo-2018)
 
 RegESM_1.1耦合RegCM和ROMS以及Catalyst_5.4.1，分析Hurricane Katrina。
 
@@ -277,8 +272,6 @@ Model (NCOM) (27\~30 August, 2005)。
 h]{.mark}，与co-processing组件的单向耦合时间步长使用[6
 min]{.mark}，以很高的时间分辨率观察Katrina飓风。耦合模拟中，海洋模式为大气模式提供SST数据，其他区域上大气模式使用ERA-Interim数据集（预设SST）。
 
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
-
 图8 RegESM模拟的区域、水上地形和水下地形
 
 ## 4.3 计算效率评价
@@ -290,7 +283,7 @@ CPL: 2个模式耦合（ATM-OCN）
 
 COP：3个组件（ATM-OCN-Co-processing）
 
-COP仅能在[顺序模式]{.mark}下执行（[RegESM_1.\*]{.mark}）
+COP仅能在[顺序模式]{.mark}下执行 RegESM_1.\*
 
 # 5 展示应用
 
@@ -312,7 +305,6 @@ cap与Catalyst之间，并为各模型组件的之后分析提供2个网格定�
 co-processing脚本，用户需要使用预定义的名称[*atm_input2D*和*atm_input3D*]{.mark}，将数据源映射到输入通道。然后，适配器通过各通道，提供需要的数据到co-processing组件，来实施实时的渲染和数据分析。co-processing组件中使用的场由统一的ASCII格式的而驱动器设置文件([exfield.tbl]{.mark})定义，设置文件也用于定义其他模型组件（如大气和海洋模式）之间的交换场。图11显示了LR大气模式提供的3D相对湿度场的live
 visualization，地形信息和海洋表面涡度由模型组件提供。
 
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 图11
 大气相对湿度场(atm_input3d)的体渲染以及使用Catalyst在live模式下来自COP_LR海洋表面涡量场(ocn_input2d)
@@ -342,8 +334,6 @@ IndeX体渲染插件，Katrina飓风的流线由3D风场生成。可视化管线
 
 设计可视化管线考察飓风的垂向上升气流(updraft)、轨迹、降雨模式和海洋状态。设置20
 m/s风速阈值，[孤立展示飓风：使用ProgrammableFilter作为圆形平面（半径1.2°，绕隔离区域的质心分布0.2°间隔的点），动态定义Paraview的StreamTracerWithCustomSource过滤器的seed（即由vtkPoints定义的点集）]{.mark}。
-
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 图12
 使用Paraview的全耦合多组件（ATM-OCN-COP）的渲染。处理数据的时间间隔是6

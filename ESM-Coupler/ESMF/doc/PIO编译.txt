@@ -1,3 +1,0 @@
-PIO  使用gcc/gfortran v7.5 编译成功，并安装：  export PIO=/home/lijian/ESM_lj/pio
-
-PIO2  使用gcc/gfortran v7.5 编译成功，并安装：  export PI2O=/home/lijian/ESM_lj/pio2

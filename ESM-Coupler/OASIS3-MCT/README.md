@@ -8,7 +8,11 @@
 
 WRF-CROCO-WW3
 
-## 参考文献
+## 构建
+
+cd oasis3-mct-4.0\util\make_dir
+
+make make_ubuntu
 
 
 
