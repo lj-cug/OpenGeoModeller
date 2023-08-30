@@ -1,0 +1,27 @@
+NUMNP 网格中的节点总数 
+NELEM 网格单元总数 
+NGRPS 单元组数目 
+NBSETS  边界条件设置数目
+NDFCD   坐标方向数目（2或者3）
+NDFVL   速度份量数目（2或者3）
+
+NODAL COORDINATES 2.3.16
+编号 节点坐标(x,y)
+ENDOFSECTION
+
+ELEMENTS/CELLS 2.3.16
+NE     全局单元号码
+NTYPE  单元类型  3 4
+NDP    确定该单元的节点号码  3
+NODE   确定该单元的节点列表
+ENDOFSECTION
+
+ELEMENT GROUP 2.3.16   ! Group信息我们不需要，可手动删除，也可读取
+ENDOFSECTION
+
+BOUNDARY CONDITIONS
+Name 边界条件设定的名称
+ITYPE 数据类型（0-node  1-element/cell）
+
+
+
