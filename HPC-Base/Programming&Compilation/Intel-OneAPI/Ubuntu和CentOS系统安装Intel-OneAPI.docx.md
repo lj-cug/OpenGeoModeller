@@ -5,44 +5,33 @@ Intel® oneAPI Toolkit的版本会不断更新，安装程序可登录Intel
 
 ## 一、安装前准备
 
-### 1.1 更新系统安装必要软件 {#更新系统安装必要软件 .标题3}
+### 1.1 更新系统安装必要软件
 
 安装Intel® oneAPI HPC Toolkit之前推荐把系统更新至最新。
 
-zhy@pc:\~\$ sudo apt update
+sudo apt update
 
-zhy@pc:\~\$ sudo apt upgrade
+sudo apt upgrade
 
-zhy@pc:\~\$ sudo apt -y install openssh-server vim
+sudo apt -y install openssh-server vim
 
-### 1.2 安装依赖 {#安装依赖 .标题3}
+### 1.2 安装依赖
 
-zhy@pc:\~\$ sudo apt -y install gcc cmake pkg-config build-essential
-
-### 1.3 上传Intel® oneAPI Toolkit {#上传intel-oneapi-toolkit .标题3}
-
-zhy@pc:\~\$ ls
-
-Desktop examples.desktop Music Templates
-
-Documents l_BaseKit_p_2021.2.0.2883_offline.sh Pictures Videos
-
-Downloads l_HPCKit_p_2021.2.0.2997_offline.sh Public
+sudo apt -y install gcc cmake pkg-config build-essential
 
 ## 二、安装
 
-### 2.1 安装Intel® oneAPI Base Toolkit {#安装intel-oneapi-base-toolkit .标题3}
+### 2.1 安装Intel® oneAPI Base Toolkit
 
-zhy@pc:\~\$ bash l_BaseKit_p_2021.2.0.2883_offline.sh
+bash l_BaseKit_p_2021.2.0.2883_offline.sh
 
-![https://img-blog.csdnimg.cn/20210613183937397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2MTI4ODU1,size_16,color_FFFFFF,t_70](./media/image1.png){width="2.6943022747156604in"
-height="1.4979899387576554in"}
+![https://img-blog.csdnimg.cn/20210613183937397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2MTI4ODU1,size_16,color_FFFFFF,t_70](./media/image1.png)
 
-### 2.2 安装Intel® oneAPI HPC Toolkit {#安装intel-oneapi-hpc-toolkit .标题3}
+### 2.2 安装Intel® oneAPI HPC Toolkit
 
-zhy@pc:\~\$ bash l_HPCKit_p_2021.2.0.2997_offline.sh
+bash l_HPCKit_p_2021.2.0.2997_offline.sh
 
-### 2.3 加载环境变量 {#加载环境变量 .标题3}
+### 2.3 加载环境变量
 
 zhy@pc:\~\$ . \~/intel/oneapi/setvars.sh
 
@@ -52,21 +41,19 @@ zhy@pc:\~\$ . \~/intel/oneapi/setvars.sh
 
 vi \~/.bashrc
 
-### 2.4 简单测试 {#简单测试 .标题3}
+### 2.4 简单测试
 
 输入[mpirun和ifort -v]{.mark}能输出相应的信息就安装配置成功了。
 
-![https://img-blog.csdnimg.cn/2021061322123976.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2MTI4ODU1,size_16,color_FFFFFF,t_70](./media/image2.png){width="4.566676509186352in"
-height="2.2645395888013997in"}
+![https://img-blog.csdnimg.cn/2021061322123976.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2MTI4ODU1,size_16,color_FFFFFF,t_70](./media/image2.png)
 
-![https://img-blog.csdnimg.cn/20210613222545791.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2MTI4ODU1,size_16,color_FFFFFF,t_70](./media/image3.png){width="4.656851487314086in"
-height="2.3063353018372705in"}
+![https://img-blog.csdnimg.cn/20210613222545791.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2MTI4ODU1,size_16,color_FFFFFF,t_70](./media/image3.png)
 
 # CentOS下安装Intel® oneAPI Base Toolkit 和 Intel® oneAPI HPC Toolkit
 
 ## Intel® oneAPI Base Toolkit的安装
 
-### 工具包下载 {#工具包下载 .标题3}
+### 工具包下载
 
 工具包下载地址
 
@@ -88,13 +75,11 @@ chmod +x l_BaseKit_b_2021.1.10.2261.sh
 
 如下图所示，已经在准备安装，需要耐心等待一段时间。
 
-![在这里插入图片描述](./media/image4.png){width="5.768055555555556in"
-height="0.6965135608048993in"}
+![在这里插入图片描述](./media/image4.png)
 
 拉到最下面，回车
 
-![在这里插入图片描述](./media/image5.png){width="5.768055555555556in"
-height="1.4774267279090114in"}
+![在这里插入图片描述](./media/image5.png)
 
 拉到最下面，回车
 
@@ -112,14 +97,14 @@ Eclipse配置选项，根据自己需求选择然后Next回车即可
 
 ## Intel® oneAPI HPC Toolkit的安装
 
-### 工具包下载 {#工具包下载-1 .标题3}
+### 工具包下载
 
 这次我选择了Local Installer,输入以下命令即可下载并且开始安装
 
 wget
 https://registrationcenter-download.intel.com/akdlm/irc_nas/17229/l_HPCKit_b_2021.1.10.2477_offline.sh
 
-### 开始安装 {#开始安装-1 .标题3}
+### 开始安装
 
 直接用bash命令打开安装程序
 
@@ -127,8 +112,7 @@ sudo bash l_HPCKit_b_2021.1.10.2477_offline.sh
 
 接受、开始安装
 
-![在这里插入图片描述](./media/image6.png){width="5.421621828521435in"
-height="1.7479844706911636in"}
+![在这里插入图片描述](./media/image6.png)
 
 .......
 
@@ -138,8 +122,7 @@ height="1.7479844706911636in"}
 
 所有的根据默认都安装在/opt/intel/oneapi目录下，如下图所示：
 
-![在这里插入图片描述](./media/image7.png){width="5.635353237095363in"
-height="0.4606692913385827in"}
+![在这里插入图片描述](./media/image7.png)
 
 可以看到，免费的oneAPI工具包提供了很多Parallel Studio
 XE中的工具比如Vtune、MKL、MPI，即使不使用oneAPI也十分有用
