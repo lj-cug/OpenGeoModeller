@@ -9,7 +9,7 @@
 即：**Performance-Productivity-Portability (3P原则)**
 
 **仓库架构如图，基于[**CFD算法**](https://gitee.com/lijian-cug/cfd-course-cug)与计算机技术([CAD](https://gitee.com/lijian-cug/pre-surface-water),[**HPC**](https://gitee.com/lijian-cug/kunpeng-competition-2022)等)，将地球科学模拟统一在一个框架下，主要就是：前处理、编译运行和后处理可视化**
-![仓库架构](./HPC-Base/仓库架构.png)
+![仓库架构](./HPC-Base/仓库架构.jpg)
 
 ## 仓库建设内容
 
