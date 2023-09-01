@@ -1,5 +1,5 @@
-Windows 11 OS 安装JAVA-1.8
--------------------------------------------------
+# Windows 11 OS 安装JAVA-1.8
+
 配置环境变量    
 JAVA_HOME=C:\Program Files\Java\jdk1.8.0_331
 PATH=C:\Program Files\Java\jdk1.8.0_331\bin
