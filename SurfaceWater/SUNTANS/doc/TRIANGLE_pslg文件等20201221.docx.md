@@ -2,7 +2,7 @@
 
 Triangle输入文件（2个）：
 
-[.poly文件：]{.mark}
+poly文件：
 
 -   First line: \<# of vertices\> \<dimension (must be 2)\> \<# of
     > attributes\> \<# of boundary markers (0 or 1)\>
@@ -78,7 +78,7 @@ unconstrained by assigning it a negative maximum area.
 
 Triangle输出文件（4个）：
 
-[.node files]{.mark}
+[.node files]
 
 -   First line: \<# of vertices\> \<dimension (must be 2)\> \<# of
     attributes\> \<# of boundary markers (0 or 1)\>
@@ -107,7 +107,7 @@ to identify boundary vertices and vertices resting on
 The .node files produced by Triangle contain boundary markers in the
 last column unless they are suppressed by the -B switch.
 
-[.ele files]{.mark}
+[.ele files]
 
 -   First line: \<# of triangles\> \<nodes per triangle\> \<# of
     attributes\>
@@ -140,7 +140,7 @@ elements](https://www.cs.cmu.edu/~quake/triangle.highorder.html) with
 six nodes are generated. The fourth, fifth, and sixth nodes lie on the
 midpoints of the edges opposite the first, second, and third vertices.
 
-[.edge files]{.mark}
+[.edge files]
 
 -   First line: \<# of edges\> \<# of boundary markers (0 or 1)\>
 
@@ -167,7 +167,7 @@ endpoint. For these edges, a different format is used:
 The \`direction\' is a floating-point vector that indicates the
 direction of the infinite ray.
 
-[.neigh files]{.mark}
+[.neigh files]
 
 -   First line: \<# of triangles\> \<# of neighbors per triangle (always
     3)\>

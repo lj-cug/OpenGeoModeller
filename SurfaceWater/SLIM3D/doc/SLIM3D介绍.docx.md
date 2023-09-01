@@ -128,8 +128,7 @@ of triangular prismatic elements that are formed by extruding the 2D
 unstructured mesh in the vertical direction. The model equations are
 solved by means of the Discontinuous Galerkin finite element method.
 
-![3D mesh](./media/image1.png){width="4.049660979877515in"
-height="3.4799825021872266in"}
+![3D mesh](./media/image1.png)
 
 Sketch of the 3D mesh obtained by vertically extruding a 2D triangular
 mesh. All variables are piecewise linear and discontinuous between
@@ -141,8 +140,7 @@ which the fast propagating gravity waves are solved in an external 2D
 mode. That mode can either be discretised explicitly with a small time
 step or implicitly with a larger time step.
 
-![D:\\本科生授课\\计算流体力学\\FEM_learning\\SLIM3D\\Burdekin_3D_mesh.png](./media/image2.png){width="5.202866360454943in"
-height="3.0803062117235345in"}
+![D:\\本科生授课\\计算流体力学\\FEM_learning\\SLIM3D\\Burdekin_3D_mesh.png](./media/image2.png)
 
 3D mesh used to simulate the sediment plume dynamics of the Burdekine
 River (Australia). The bathymetry being quite shallow and smooth, sigma
