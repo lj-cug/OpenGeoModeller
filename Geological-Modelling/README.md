@@ -1,4 +1,4 @@
-# Survery-GeologicalModel
+# Geological-Modelling(地质建模)
 
 ## Principles
 
