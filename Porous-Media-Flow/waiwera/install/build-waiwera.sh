@@ -1,11 +1,10 @@
-# Install Ansible
+# Install Ansible etc. for build waiware
 apt install -y ansible
-pip install ansible   # in miniconda-base
+pip install ansible      # in miniconda-base environment
 
 apt install ninja-build  # backend of meson
-pip install meson       # in miniconda-base
-apt install meson       # install in Ubuntu-20.04
-
+pip install meson        # in miniconda-base
+apt install meson        # install in Ubuntu-20.04
 
 # Download the Waiwera source code
 git clone https://github.com/waiwera/waiwera.git
@@ -25,14 +24,11 @@ pkg-config --libs PETSc
 pkg-config --modversion PETSc
 ansible-playbook ansible/install_local.yml -e "base_dir=/home/lijian/HPC_Build/waiwera-install/"
 
-
-
-# Linking to other libraries   FSON and Zofu
+# Linking to other libraries: FSON and Zofu
 
 
 # To ensure Waiwera can be run from any directory, the Waiwera installation directory should be on the user’s PATH. 
 export PATH=/home/lijian/HPC_Build/waiwera-install/bin:$PATH
-
 
 
 # Running the unit tests
@@ -40,7 +36,7 @@ export PATH=/home/lijian/HPC_Build/waiwera-install/bin:$PATH
 python unit_tests.py
 
 
-# Installing Waiwera on your system (没有使用这种编译方式)
+# Installing Waiwera on your system
 ninja -C build install
 ninja -C build uninstall
 

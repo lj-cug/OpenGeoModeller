@@ -6,6 +6,8 @@ cd ~/projects
 git clone https://github.com/idaholab/moose.git
 cd moose
 git checkout master
+# ×¢Òâ£ºÐèÒªcmake >=3.18
+
 
 # Build PETSc and libMesh
 cd ~/projects/moose/scripts
