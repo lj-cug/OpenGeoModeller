@@ -21,8 +21,8 @@ python3 firedrake-install --doi 10.5281/zenodo.5176201
 
 source firedrake/bin/activate
 
-wget https://github.com/NDF-Poli-USP/spyro/archive/refs/tags/V0.17.0.tar.gz
+wget -C https://github.com/NDF-Poli-USP/spyro/archive/refs/tags/V0.1.0.tar.gz
 
-tar xvf V0.17.0.tar.gz
+tar xvf V0.1.0
 
 pip install -e  <path-to-spyro-repository>
