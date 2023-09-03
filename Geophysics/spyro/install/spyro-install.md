@@ -18,3 +18,11 @@ https://doi.org/10.5281/zenodo.5176201 (firedrake-zenodo, 2021)
 基于Zenodo的源码安装
 
 python3 firedrake-install --doi 10.5281/zenodo.5176201
+
+source firedrake/bin/activate
+
+wget https://github.com/NDF-Poli-USP/spyro/archive/refs/tags/V0.17.0.tar.gz
+
+tar xvf V0.17.0.tar.gz
+
+pip install -e  <path-to-spyro-repository>
