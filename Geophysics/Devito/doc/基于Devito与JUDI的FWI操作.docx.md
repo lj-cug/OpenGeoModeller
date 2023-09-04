@@ -115,7 +115,7 @@ method)-交叉相关正演和伴随波动场，并对所有时间步的贡献求
 
 ![](./media/image16.png)
 
-### 计算FWI梯度 {#计算fwi梯度 .标题3}
+### 计算FWI梯度
 
 ![](./media/image17.png)
 
