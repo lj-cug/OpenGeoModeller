@@ -27,27 +27,27 @@ END
 
 本报告的举例样式：
 
-![](./media/image1.emf)
+![](./media/image1.png)
 
 一个有效输入格式：
 
-![](./media/image2.emf)
+![](./media/image2.png)
 
 另一个有效输入格式：
 
-![](./media/image3.emf)
+![](./media/image3.png)
 
-![](./media/image4.emf)
+![](./media/image4.png)
 
-### 在OPEN/CLOSE文件中定义块信息 {#在openclose文件中定义块信息 .标题3}
+### 在OPEN/CLOSE文件中定义块信息
 
 大部分的块信息可以从单独的文本文件读取，但有的块不支持OPEN/CLOSE功能。
 
-![](./media/image5.emf)
+![](./media/image5.png)
 
 附录A Blocks列表（OPEN/CLOSE表示块信息是否能在单独的文件定义）
 
-### 文件名输入 {#文件名输入 .标题3}
+### 文件名输入
 
 Windows不区分文件名大小写，但Linux系统区分。如MODEL.DIS
 
@@ -59,13 +59,13 @@ mfsim.nam
 
 **块的结构**
 
-![](./media/image6.emf)
+![](./media/image6.png)
 
 **变量解释**
 
 **输入文件举例**
 
-![](./media/image7.emf)
+![](./media/image7.png)
 
 ## 时间离散（TDIS）软件包
 
@@ -104,22 +104,22 @@ confining units。
 
 DATA块的输入指令：
 
-![](./media/image8.emf)
+![](./media/image8.png)
 
 **READARRAY控制行**
 
-![](./media/image9.emf)
+![](./media/image9.png)
 
 **READARRAY变量描述**
 
-![](./media/image10.emf)
+![](./media/image10.png)
 
 表4
 IPRN代码及对应的数组读取格式，这些编码决定了用户提供的数组是如何写到列表文件的
 
 **READARRAY举例**
 
-![](./media/image11.emf)
+![](./media/image11.png)
 
 IC软件的GRIDDATA块
 
@@ -195,7 +195,7 @@ GWF模型观测值包括：模拟的地下水头(head)，计算的节点上的dr
 
 从名称文件的HFB6类型的文件读取HFB软件包的输入。
 
-### Storage软件包 {#storage软件包 .标题3}
+### Storage软件包
 
 从名称文件的STO6类型读取STO软件包的输入。如果模型不考虑STO软件，则不计算储水变化，模型将是恒定态。一个GWF模型仅定义一个STO软件。
 
@@ -347,7 +347,7 @@ FILEIN。通常时间序列文件使用ts后缀。
 
 **使用时间序列定义软件包输入的例子**
 
-![](./media/image12.emf)
+![](./media/image12.png)
 
 ### 时间-数组序列
 
@@ -398,7 +398,7 @@ MODFLOW6中，对于GWF模型TEXT值定义为HEAD，GWT模型的TEXT值定义为
 
 对每个驱动周期，时间步和层，数据保存为二进制输出文件，写出下面2个记录：
 
-![](./media/image13.emf)
+![](./media/image13.png)
 
 **DISV Grids**
 

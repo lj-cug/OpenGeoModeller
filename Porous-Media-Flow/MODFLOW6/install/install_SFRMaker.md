@@ -1,14 +1,19 @@
+# °²×°SFRMaker
 
-1 Install memba
+## Install memba
+
 conda install mamba -n base -c conda-forge
 
-2 install SFRMaker
+## install SFRMaker
+
 mamba env create -f requirements.yml
 
 or update SFRMaker:
+
 conda env update -f requirements.yml
 
-reinstall:
+## reinstall
+
 conda env create -f requirements.yml
 
 

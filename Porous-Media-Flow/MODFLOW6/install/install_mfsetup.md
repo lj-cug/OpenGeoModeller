@@ -38,9 +38,36 @@ we should modify it to:
 
 (10) install sfrmaker et al. libraries
 
-# Windows下安装mf-setup
+## 安装mf-setup
+
+Windows OS:
 
 手动安装GDAL等依赖库，参考：https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal
+
+Linux OS:
+
+wget http://download.osgeo.org/gdal/3.3.3/gdal-3.3.3.tar.gz
+
+tar -xvzf gdal-3.3.3.tar.gz
+
+cd gdal-3.3.3
+
+./configure --with-python='/usr/bin/python3.7'
+
+make -j8
+
+make install
+
+ldconfig 
+
+gdalinfo --version 
+
+cd swig/python/
+
+python setup.py build
+
+python setup.py install
+
 
 
 
