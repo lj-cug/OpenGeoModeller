@@ -2,7 +2,7 @@
 
 **Open Porous Flow model**
 
-![OPM-Flow](./doc/OPM-Flow.png)
+![OPM-Flow](./install/OPM-Flow.png)
 
 黑油模型(Black Oil model)
 
@@ -12,7 +12,7 @@ MPI并行化
 
 开源的后处理软件Resight 
 
-![ResInsight](./doc/ResInsightUIMediumSize.png)
+![ResInsight](./install/ResInsight-UI.png)
 
 ### 参考文献
 
