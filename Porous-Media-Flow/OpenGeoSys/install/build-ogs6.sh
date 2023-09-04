@@ -39,14 +39,10 @@ git clone --filter=blob:limit=100 https://gitlab.opengeosys.org/ogs/ogs.git
 wget https://gitlab.opengeosys.org/ogs/ogs/-/archive/master/ogs-master.tar.gz
 tar xf ogs-master.tar.gz
 
-
 cd ogs
 
-
 # build OGS
-
 # Configure manually
-
 # in ogs source-directory
 mkdir -p ../build/release
 cd ../build/release
@@ -55,22 +51,18 @@ cmake ../../ogs -G Ninja -DCMAKE_BUILD_TYPE=Release
 # or use MPI compilers
 CC=mpicc CXX=mpic++ cmake ../ogs -G Ninja -DCMAKE_BUILD_TYPE=Release -DOGS_USE_PETSC=ON
 
-
 # To compile OGS with PETSc, MPI c++ compiler wrappers like OpenMPI, MPICH ( has many derivatives, e.g intelMPI) has to be installed as prerequisite.
 
 # For CMake configuration, the option of OGS_USE_PETSC must be set to true.
-cmake -DOGS_USE_PETSC=true ..
-
--DCMAKE_INSTALL_PREFIX=???
-
+cmake -DOGS_USE_PETSC=true -DCMAKE_INSTALL_PREFIX=/to/your/path ..
 
 # Install PETSc manually
 ./configure PETSC_ARCH=linux-fast  COPTFLAGS='-O3  --prefix=/home/me/opt/petsc --with-debugging=0 -march=native -mtune=native' CXXOPTFLAGS='-O3 -march=native -mtune=native' --with-cc=mpicc --with-cxx=mpicxx --with-fc=mpif90 --download-fblaslapack --download-metis --download-parmetis --download-superlu_dist --download-scalapack --download-mumps  --download-hypre --with-c2html=0  --with-cxx-dialect=C++11 --with-cuda=0`
 
-
 # Build the project
 # With ninja
 cd ../build/release
+
 # By default, ninja uses maximum parallelism which may lead to a memory consumption exceeding the available memory (especially when compiling the processes).
 ninja -j4
 
@@ -78,11 +70,3 @@ ninja -j4
 # Now the build process is running… This can take some time because maybe there are external libraries which get automatically downloaded and compiled. This step is only done once per build directory, so subsequent builds will be much faster.
 
 # Finished 
-
-
-
-
-
-
-
-

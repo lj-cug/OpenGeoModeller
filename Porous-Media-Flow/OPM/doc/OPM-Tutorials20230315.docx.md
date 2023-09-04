@@ -92,7 +92,7 @@ dependencies.
 
 First, we will examine which variables we can view using the
 ecl_summary tool from
-[[libecl]{.underline}](https://github.com/Statoil/libecl), which should
+[libecl](https://github.com/Statoil/libecl), which should
 already be installed since libecl is needed by Flow. (Note: if you
 installed libecl from source, the program is called summary.x and will
 be located in your build directory.) By typing
