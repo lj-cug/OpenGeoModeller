@@ -24,11 +24,11 @@ visualization过程中，相机的视觉位置？通过VRPlugin的VRPN实现！
 我们知道各种程序的脚本就是解决重复操作的，可以说是非常良心的功能啦。Paraview通过Python同样提供了丰富的脚本功能，按使用方式可以分成以下几种：
 
 [1、作为paraview客户端的一部分使用（Python
-shell），可以在菜单栏的view中打开；]{.mark}
+shell），可以在菜单栏的view中打开；]
 
-[2、支持MPI的批处理应用（pvbatch），可在安装目录中找到（必须是并行版）；]{.mark}
+[2、支持MPI的批处理应用（pvbatch），可在安装目录中找到（必须是并行版）；]
 
-[3、单独作为客户端使用（pvpython），可在Windows的开始目录中找到；]{.mark}
+3、单独作为客户端使用（pvpython），可在Windows的开始目录中找到；
 
 [4、使用Python的任一种开发环境运行paraview。]{.mark}
 
@@ -67,21 +67,21 @@ Ok，后边就可以在pycharm中愉快地使用paraview的各种功能啦。对
 
 ## 1.5 Getting started with pvpython
 
-### 1.5.1 pvpython scripting interface {#pvpython-scripting-interface .标题3}
+### 1.5.1 pvpython scripting interface
 
 pvpython, pvbatch
 
-### 1.5.2 Understanding the visualization process {#understanding-the-visualization-process .标题3}
+### 1.5.2 Understanding the visualization process
 
-### 1.5.3 Updating the pipeline {#updating-the-pipeline .标题3}
+### 1.5.3 Updating the pipeline
 
 ## 1.6 Scripting in paraview
 
-### 1.6.1 The Python Shell {#the-python-shell .标题3}
+### 1.6.1 The Python Shell
 
 View -\> python shell
 
-### 1.6.2 Tracing actions for scripting {#tracing-actions-for-scripting .标题3}
+### 1.6.2 Tracing actions for scripting
 
 Tools -\> Start Trace
 
@@ -89,11 +89,11 @@ Tools -\> Stop Trace
 
 ## 2.2 Opening data files in pvpython
 
-### 2.2.1 Handling temporal file series {#handling-temporal-file-series .标题3}
+### 2.2.1 Handling temporal file series
 
-### 2.2.2 Dealing with time {#dealing-with-time .标题3}
+### 2.2.2 Dealing with time
 
-### 2.2.3 Common properties on readers {#common-properties-on-readers .标题3}
+### 2.2.3 Common properties on readers
 
 ## 2.3 Reloading files
 
@@ -101,27 +101,27 @@ Tools -\> Stop Trace
 
 ## 4.1 Multiple views
 
-### 4.1.2 Multiple views in pvpython {#multiple-views-in-pvpython .标题3}
+### 4.1.2 Multiple views in pvpython
 
 ## 4.2 View properties
 
-### 4.2.2 View properties in pvpython {#view-properties-in-pvpython .标题3}
+### 4.2.2 View properties in pvpython
 
 ## 4.3 Display properties
 
-### 4.3.2 Display properties in pvpython {#display-properties-in-pvpython .标题3}
+### 4.3.2 Display properties in pvpython
 
 ## 4.4 Render View
 
-### 4.4.3 Render View in pvpython {#render-view-in-pvpython .标题3}
+### 4.4.3 Render View in pvpython
 
 ## 4.5 Line Chart View
 
-### 4.5.3 Line Chart View in pvpython {#line-chart-view-in-pvpython .标题3}
+### 4.5.3 Line Chart View in pvpython
 
 ## 4.11 Slice View
 
-### 4.11.2 Slice View in pvpython {#slice-view-in-pvpython .标题3}
+### 4.11.2 Slice View in pvpython
 
 ## 4.12 Python View
 
@@ -131,35 +131,35 @@ display plots made in a Python script right within paraview.
 
 ## 5.3 Creating filters in pvpython
 
-### 5.3.1 Multiple input connections {#multiple-input-connections .标题3}
+### 5.3.1 Multiple input connections
 
-### 5.3.2 Multiple input ports {#multiple-input-ports .标题3}
+### 5.3.2 Multiple input ports
 
-### 5.3.3 Changing input connections {#changing-input-connections .标题3}
+### 5.3.3 Changing input connections
 
 ## 5.5 Changing filter properties in pvpython
 
 ## 5.6 Filters for sub-setting data
 
-### 5.6.1Clip in pvpython {#clip-in-pvpython .标题3}
+### 5.6.1Clip in pvpython
 
-### 5.6.4 Threshold in pvpython {#threshold-in-pvpython .标题3}
+### 5.6.4 Threshold in pvpython
 
 ## 5.7 Filters for geometric manipulation
 
-### 5.7.3 Transform in pvpython {#transform-in-pvpython .标题3}
+### 5.7.3 Transform in pvpython
 
 ## 5.8 Filters for sampling
 
-### 5.8.3 Stream Tracer {#stream-tracer .标题3}
+### 5.8.3 Stream Tracer
 
 ## 8.1 Saving datasets
 
 ## 8.2 Saving rendered results
 
-### 8.2.1 Saving screenshots {#saving-screenshots .标题3}
+### 8.2.1 Saving screenshots
 
-### 8.2.2 Exporting scenes {#exporting-scenes .标题3}
+### 8.2.2 Exporting scenes
 
 ## 8.3 Saving animation
 
@@ -177,7 +177,7 @@ can gain access to the ParaView visualization engine.
 
 ## Quick-Start
 
-### Getting Started {#getting-started .标题3}
+### Getting Started
 
 设置环境变量PYTHONPATH，定位ParaView的二进制路径和modules的路径。paraview/simple.py,
 paraview/vtk.py etc
@@ -197,7 +197,7 @@ PYTHONPATH=/Users/berk/work/paraview3-build/lib:/Users/berk/work/paraview3-build
 
 \>\>\> from paraview.simple import \*
 
-### Tab键补全代码功能 {#tab键补全代码功能 .标题3}
+### Tab键补全代码功能
 
 创建变量PYTHONSTARTUP
 
@@ -223,7 +223,7 @@ import rlcompleter
 
 readline.parse_and_bind(\"tab: complete\")
 
-### Creating a Pipeline {#creating-a-pipeline .标题3}
+### Creating a Pipeline
 
 Start by creating a Cone object:
 
@@ -237,7 +237,7 @@ Next, apply a shrink filter to the cone:
 
 \>\>\> shrinkFilter = Shrink(cone)
 
-### Rendering {#rendering .标题3}
+### Rendering
 
 Now that you've created a small pipeline, render the result. You will
 need two objects to render the output of an algorithm in a scene: [a
@@ -258,14 +258,14 @@ accomplish everything you did above using the following code:
 
 ## paraview Package
 
-### paraview Package {#paraview-package-1 .标题3}
+### paraview Package
 
 The paraview package provides modules used to script ParaView.
 Generally, users should import the modules of interest directly e.g.:
 
 from []{.mark}paraview.simple []{.mark}import []{.mark}\*
 
-### Modules {#modules .标题3}
+### Modules
 
 -   [\_backwardscompatibilityhelper
     > Module](https://kitware.github.io/paraview-docs/latest/python/paraview._backwardscompatibilityhelper.html)
@@ -336,7 +336,7 @@ from []{.mark}paraview.simple []{.mark}import []{.mark}\*
     > [vtk
     > Module](https://kitware.github.io/paraview-docs/latest/python/paraview.vtk.html)
 
-### Subpackages {#subpackages .标题3}
+### Subpackages
 
 -   [algorithms
     > Package](https://kitware.github.io/paraview-docs/latest/python/paraview.algorithms.html)

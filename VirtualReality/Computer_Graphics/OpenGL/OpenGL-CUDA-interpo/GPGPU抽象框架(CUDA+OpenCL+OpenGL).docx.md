@@ -1,6 +1,6 @@
 # GPGPU abstraction framework (CUDA/OpenCL + OpenGL)
 
-[CUDA与OpenCL的统一框架，并与OpenGL交互。]{.mark}
+CUDA与OpenCL的统一框架，并与OpenGL交互。
 
 ## Introduction
 

@@ -30,8 +30,7 @@ NVIDIA IndeX Accelerated Compute
 (XAC)接口，整合了以CUDA编程的核心表面和体采样程序，这样我们可使用IndeX提供的统一代码，无需用户自己编程。如图4,2种基于GPU的side-by-side渲染效果，GUI保证都使用了一样的颜色和透明度转移函数及采样率。ParaView的GPU
 Ray Casting图像（左边）和IndeX渲染的图像（右边），很难看出差别。
 
-![](./media/image1.emf){width="4.780982064741908in"
-height="2.600812554680665in"}
+![](./media/image1.png)
 
 ## Intel OSPRay
 
@@ -53,15 +52,13 @@ Index库的启动时间较长，由于CPU与GPU之间的数据转移。
 
 表1
 
-![](./media/image2.emf){width="3.115650699912511in"
-height="1.2249759405074365in"}
+![](./media/image2.png)
 
 ## 单计算节点上基于CPU的渲染
 
 ## 并行渲染全域
 
-![](./media/image3.emf){width="3.883270997375328in"
-height="2.49332895888014in"}
+![](./media/image3.png)
 
 图7 初始耗时与每一帧的平均渲染耗时
 
@@ -71,6 +68,6 @@ IndeX具有[更优的交互式渲染]{.mark}，但初始化耗时很高。
 
 OSPRay利用了多线程执行的优势，适用于没有GPU的集群。OSPRay在初始化和平均渲染耗时方面具有最大优势，但在相邻进程边界处的并行化合成图像时有瑕疵，但这些瑕疵在极端放大后才能看出来（在MPI分布数据的ghost-cells附近）。
 
-[最好的可视化质量]{.mark}，对于[电影级产出]{.mark}的折中方法是：使用ParaView自己的体渲染程序，使用GPU节点的小subsets。
+[最好的可视化质量]，对于[电影级产出]的折中方法是：使用ParaView自己的体渲染程序，使用GPU节点的小subsets。
 
 这里的科学可视化[主要有2个目的]{.mark}：（1）交互式环境可对大规模数据做原型的可视化，编辑颜色和透明度转移函数是最必须的步骤来提供合适的可视化；（2）处理长的与时间相关的模拟输出，为实现高效率产出，可使用并行化和scable的IO程序。

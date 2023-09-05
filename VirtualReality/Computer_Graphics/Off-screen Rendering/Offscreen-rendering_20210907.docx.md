@@ -217,7 +217,7 @@ implementation of the OpenGL standard. Despite the names, H/W doesn\'t
 necessarily imply use of GPUs, nor does S/W imply exclusion of GPUs.
 Nonetheless we use this naming scheme as it has been prevalent.
 
-### APIs for Headless Support {#apis-for-headless-support .标题3}
+### APIs for Headless Support
 
 Traditionally, OpenGL implementations are coupled with the window system
 to provide an OpenGL context. Thus, they are designed for non-headless

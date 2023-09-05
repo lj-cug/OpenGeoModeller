@@ -61,8 +61,7 @@ two servers, the builtin server and the catalyst server. Note that next
 to the catalyst server there is a 'play' icon showing that the
 simulation is running.
 
-![](./media/image1.png){width="2.3224376640419946in"
-height="1.8524289151356081in"}
+![](./media/image1.png)
 
 The two grayed out icons next to PVTrivialProducer0 and Contour0 allow
 you to extract data from Catalyst, transfer it, and visualize it on
@@ -72,8 +71,7 @@ simulations). When you click on the extract icon next the the Contour0
 data is added as a source to the builtin server. This data can be
 visualized by clicking on the eye icon next to it.
 
-![](./media/image2.jpeg){width="3.5051082677165355in"
-height="3.272516404199475in"}
+![](./media/image2.jpeg)
 
 A user can do the following operations:
 
@@ -197,8 +195,7 @@ connection.
 
 A new server appears in the pipeline browser, named 'catalyst'.
 
-(1)![](./media/image3.png){width="2.28125in"
-height="1.1145833333333333in"}
+(1)![](./media/image3.png)
 
 **hint** : check Catalyst/Pause Simulation. As the demo is quite short,
 it is useful to pause before the connection happens.
@@ -220,14 +217,12 @@ be able to display it in ParaView (4)(don't forget to click on the eye
 to set the visibility !)\
 (4)
 
-![](./media/image6.png){width="4.66282261592301in"
-height="3.515768810148731in"}
+![](./media/image6.png)
 
 The simulation is still paused here.\
 You can now unpause it via the same menu (Catalyst / run) and see your
 simulation data being updated on the screen ! (5)\
-(5) ![](./media/image7.gif){width="2.8125in"
-height="2.4791666666666665in"}\
+(5) ![](./media/image7.gif)\
 **hint** : in this example, one time step is quite quick so maybe the
 visualization will jump and drop some of the timesteps ... don't
 hesitate to modify the code !
@@ -250,14 +245,11 @@ Click on the Catalyst/Define Export menu to open the Export Inspector.
 Here you can select a writer for your source, take screenshots and
 enable others live visualization (7a). Writers can be configured (7b).
 
-(7a) ![](./media/image9.png){width="2.6770833333333335in"
-height="2.0520833333333335in"} (7b)
-![](./media/image10.png){width="2.292869641294838in"
-height="1.6729451006124234in"}\
+(7a) ![](./media/image9.png) (7b)
+![](./media/image10.png)\
 Save the script with Catalyst/Export script.
 
 You can re run the simulation with your new script !\
 (8)
 
-![](./media/image11.gif){width="4.4327362204724405in"
-height="2.9209930008748906in"}
+![](./media/image11.gif)

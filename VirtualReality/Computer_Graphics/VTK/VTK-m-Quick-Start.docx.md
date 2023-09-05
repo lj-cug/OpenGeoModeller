@@ -8,8 +8,7 @@
 
 Initializing VTK-m.
 
-![](./media/image1.emf){width="2.6730205599300088in"
-height="0.4241699475065617in"}
+![](./media/image1..png)
 
 ## 3.2读取文件
 
@@ -17,8 +16,7 @@ VTK-m有自己的简单的IO库，可读写VTK legacy格式(后缀.vtk)
 
 读取文件使用函数vtkm::io::VTKDataSetReader
 
-![](./media/image2.emf){width="4.500216535433071in"
-height="0.3068744531933508in"}
+![](./media/image2..png)
 
 ReadDataSet方法返回数据在vtkm::cont::DataSet对象中
 
@@ -32,8 +30,7 @@ VTK-m的IO库在第8章介绍。
 
 介绍使用过滤器vtkm::filter::MeshQuality（定义在vtkm/filter/MeshQuality.h）。MeshQuality过滤器计算输入数据的每个单元，计算单元的网格质量，有不少指标。执行[输入]{.mark}的DataSet，产生[输出]{.mark}的DataSet
 
-![](./media/image3.emf){width="5.325635389326334in"
-height="0.2547189413823272in"}
+![](./media/image3..png)
 
 ## 3.4渲染一个图像
 
@@ -41,11 +38,9 @@ height="0.2547189413823272in"}
 
 [渲染数据]{.mark}
 
-![](./media/image4.emf){width="5.5347615923009625in"
-height="0.5055347769028872in"}
+![](./media/image4..png)
 
-![](./media/image5.emf){width="3.755668197725284in"
-height="1.44162510936133in"}
+![](./media/image5..png)
 
 第1步：设置一个渲染，创建一个scene。scene包括一些actors，代表一些待渲染的数据。上例中仅有一个DataSet需要渲染，因此仅创建一个actor，然后添加到scene(第1\~5行代码)。
 
@@ -59,5 +54,4 @@ height="1.44162510936133in"}
 
 CMakeLists.txt to build a program using VTK-m
 
-![](./media/image6.emf){width="5.091299212598425in"
-height="1.0234569116360455in"}
+![](./media/image6..png)

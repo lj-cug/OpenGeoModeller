@@ -13,8 +13,7 @@ subsetting, K-Means clustering, 体插值,
 iso-contouring和VR。这样，地球科学家就可以控制所有ParaView和其他基于VTK的库，如ParaViewWeb,VTK.js,
 PyVista(Sullivan & Kaszynski, 2019)或者将数据扩展至新领域，如VR。
 
-![](./media/image1.emf){width="4.9522375328083985in"
-height="2.3351629483814524in"}
+![](./media/image1.emf)
 
 图1 PyGeo将地球科学与VTK和ParaView连接用于数据可视化
 
@@ -40,8 +39,7 @@ PyVista即可解决上述问题。
 PyVista封装了很多VTK库的常用算法，提供了一套共享的功能集。其核心是纯Python帮助木块，通过Numpy返回VTK数据和VTK的面向对象方法直接数组访问，实现3D可视化(Schroeder
 et al., 2006)。
 
-![](./media/image2.emf){width="4.528643919510062in"
-height="3.4720581802274717in"}
+![](./media/image2.emf)
 
 > 图1
 > PyVista可视化地球科学数据的例子，渲染图包括：数字化陆地表面并使用卫星影像和地质图覆盖，地表下温度模型、采样的温度值散点和地球物理钻井日志数据、GIS地点边界和解译的断层表面。
@@ -55,8 +53,7 @@ doi:10.21105/joss.01450
 
 用于4D可视化（3D空间+时间）以NetCDF格式存储的大气数据（以及海洋数据）。使用Python2脚本(ver.\>2.5.6))和ParaView(ver.\>=4.1)加载、处理和可视化数据。脚本可自动加载经度-纬度-压力网格、再计算压力对数网格或球坐标。还可以添加网格线、平面和标记等。有2个示例脚本。
 
-![](./media/image3.emf){width="4.497856517935258in"
-height="1.858817804024497in"}
+![](./media/image3.emf)
 
 Jucker, M 2014 Scientific Visualisation of Atmospheric Data with
 ParaView. Journal of Open Research Software, 2(1): e4, DOI:
@@ -67,7 +64,7 @@ http://dx.doi.org/10.5334/jors.al
 试验性项目。将ParaView渲染窗口内嵌入PySide2 GT
 GUI。目的是：探讨将ParaView窗口嵌入Qt应用程序的可行性（通过PySider2）,然后通过已有的Paraview/Python接口API控制Qt应用程序。
 
-### 要求 {#要求 .标题3}
+### 要求
 
 Qt 5.9.1
 

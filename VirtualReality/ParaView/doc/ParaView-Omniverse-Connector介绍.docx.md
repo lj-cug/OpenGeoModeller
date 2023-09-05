@@ -14,8 +14,7 @@ Omniverse ParaView Connector即将推出
 这款在2021年GTC大会上发布的**Omniverse ParaView
 Connector**即将推出，研究人员可以通过它来提高产能、加快研究速度。他们不再需要下载和交换大型数据集，同时也可以获得即时反馈------这一切都要归功于**Omniverse**可以让用户在云端的同一工作空间中工作。
 
-![https://pic1.zhimg.com/80/v2-e39aa3713509f3d836e15916f9cf0480_1440w.jpg](./media/image1.jpeg){width="4.522084426946631in"
-height="2.463826552930884in"}
+![https://pic1.zhimg.com/80/v2-e39aa3713509f3d836e15916f9cf0480_1440w.jpg](./media/image1.jpeg)
 
 NVIDIA Omniverse流水线
 
@@ -35,8 +34,7 @@ IndeX）打开USD文件并进行互动。请查看文件了解如何与**Omniver
 **NVIDIA
 IndeX**为大型体积数据提供交互式可视化功能，让用户能够实时放大任何时间步长的最小细节。通过即将登陆**Omniverse**的IndeX，用户将能够运用这两种技术进行更好、更快的科学分析。这场GTC分会将介绍当IndeX连接到**Omniverse**时，可以为研究人员带来什么好处。
 
-![https://pic1.zhimg.com/80/v2-6353e87a56bcb0b2389f1b1887b07ed8_1440w.jpg](./media/image2.jpeg){width="5.225902230971129in"
-height="3.2071839457567806in"}
+![https://pic1.zhimg.com/80/v2-6353e87a56bcb0b2389f1b1887b07ed8_1440w.jpg](./media/image2.jpeg)
 
 在Omniverse中使用 NVIDIA
 IndeX实现火星登陆器的可视化。模拟数据由NASA提供。

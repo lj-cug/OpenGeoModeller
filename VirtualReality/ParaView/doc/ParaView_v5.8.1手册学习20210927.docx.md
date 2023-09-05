@@ -7,8 +7,7 @@
 基于数据流(data flow)，经过算法处理（如clipping,
 slicing,），转换为图片。
 
-![](./media/image1.emf){width="4.43084864391951in"
-height="1.2093897637795274in"}
+![](./media/image1.emf)
 
 图1.1可视化模型：处理对象A，B，C（源、过滤和映射对象: [source, filter,
 mapper objects]{.mark}）
@@ -55,8 +54,7 @@ Trace
 
 File-\>Open（快捷键：Ctrl+O）
 
-动画：VCR Controls ![](./media/image2.emf){width="1.0814873140857393in"
-height="0.22808180227471567in"}
+动画：VCR Controls ![](./media/image2.emf)
 
 打开近期打开过的文件：File-\>Recent Files
 
@@ -108,13 +106,13 @@ object：或者是科学数据，如矩形网格或FEM网格；或者是更抽�
 
 这些数据结构由更小的块构成：网格(拓扑和几何)和属性(attributes)。
 
-### 3.1.1网格 {#网格 .标题3}
+### 3.1.1网格
 
 vertices(points)
 
 cells(elements, zones)
 
-### 3.1.2属性(fields, arrays) {#属性fields-arrays .标题3}
+### 3.1.2属性(fields, arrays)
 
 包括：压力、温度、速度和切应力等
 
@@ -123,7 +121,7 @@ pointe-centered: 在节点上定义变量，单元内的分布插值得到
 cell-centered：假设整个单元内均匀分布。可以应用：Cell Data to Point
 Data过滤，在PV中该过滤是自动执行的
 
-### 3.1.3均匀矩形网格(图像数据) {#均匀矩形网格图像数据 .标题3}
+### 3.1.3均匀矩形网格(图像数据)
 
 Extents
 
@@ -131,45 +129,42 @@ Origin
 
 Spacing
 
-### 3.1.4矩形网格 {#矩形网格 .标题3}
+### 3.1.4矩形网格
 
 Extents
 
 Three arrays defining coordinates in the x-, y- and z-directions
 
-### 3.1.5曲线网格（结构网格） {#曲线网格结构网格 .标题3}
+### 3.1.5曲线网格（结构网格）
 
 Extents
 
 An array of point coordinates - This array stores the position of each
 vertex explicitly.
 
-### 3.1.6AMR数据集 {#amr数据集 .标题3}
+### 3.1.6AMR数据集
 
 VTK支持Berger-Oliger类型的AMR数据集，如下图。
 
-![](./media/image3.emf){width="2.8936734470691166in"
-height="2.90755905511811in"}
+![](./media/image3.emf)
 
-### 3.1.7非结构网格 {#非结构网格 .标题3}
+### 3.1.7非结构网格
 
 支持的非结构网格类型参考：vtkCellType.h
 
-![](./media/image4.emf){width="4.390509623797025in"
-height="1.0732261592300962in"}
+![](./media/image4.emf)
 
-![](./media/image5.emf){width="5.237066929133858in"
-height="2.9328226159230097in"}
+![](./media/image5.emf)
 
-### 3.1.8多边形网格(polydata) {#多边形网格polydata .标题3}
+### 3.1.8多边形网格(polydata) 
 
 ### 3.1.9表 {#表 .标题3}
 
-### 3.1.10多块数据 {#多块数据 .标题3}
+### 3.1.10多块数据
 
 ## 3.2获取数据信息
 
-### 3.2.1 Information面板 {#information面板 .标题3}
+### 3.2.1 Information面板
 
 View-\>Information
 
@@ -183,7 +178,7 @@ Bounds
 
 Time
 
-### 3.2.2 Statistics Inspector面板 {#statistics-inspector面板 .标题3}
+### 3.2.2 Statistics Inspector面板
 
 Geometry Size
 
@@ -204,13 +199,13 @@ views：是sinks，获取输入数据，但不输出数据
 
 ## 4.1多个视图
 
-### 4.1.1paraview中的多个视图 {#paraview中的多个视图 .标题3}
+### 4.1.1paraview中的多个视图 
 
 Split View
 
 \+ X
 
-### 4.1.2pvpython中的多个视图 {#pvpython中的多个视图 .标题3}
+### 4.1.2pvpython中的多个视图
 
 **from** paraview.simple **import** \*
 
@@ -229,11 +224,11 @@ and adding title texts for chart views. These parameters are referred to
 as View Properties and are accessible from the Properties panel in
 paraview.
 
-### 4.2.1paraview中的视图属性 {#paraview中的视图属性 .标题3}
+### 4.2.1paraview中的视图属性 
 
 Properties面板-\>View Apply
 
-### 4.2.2pvpython中的视图属性 {#pvpython中的视图属性 .标题3}
+### 4.2.2pvpython中的视图属性
 
 \# 1. Save reference when a view is created
 
@@ -254,11 +249,11 @@ and view. Thus, if the data output from a source is shown in two views,
 there will be two sets of display properties used to control the
 appearance of the data in each of the two views.
 
-### 4.3.1在paraview中看显示属性 {#在paraview中看显示属性 .标题3}
+### 4.3.1在paraview中看显示属性
 
 无需apply。
 
-### 4.2.2pvpython中看显示属性 {#pvpython中看显示属性 .标题3}
+### 4.2.2pvpython中看显示属性
 
 \# Using SetDisplayProperties/GetDisplayProperties to access the display
 
@@ -293,7 +288,7 @@ the data.
 
 [批注]{.mark}：渲染；Surface LIC插件？
 
-### 4.4.1了解渲染过程 {#了解渲染过程 .标题3}
+### 4.4.1了解渲染过程 
 
 Surface rendering：实体表面的渲染。
 
@@ -303,7 +298,7 @@ Volume rendering：Ray Tracing渲染。
 
 显示属性，Properties面板或查看Representation Toolbar。
 
-### 4.4.2 Render View in paraview {#render-view-in-paraview .标题3}
+### 4.4.2 Render View in paraview
 
 Creating a Render View：右击视图的标题栏，Convert
 to子菜单，将[视图]{.mark}转换为渲染视图。
@@ -318,7 +313,7 @@ Multi Rotate
 
 PV自动决定交互模式，根据加载的数据是2D还是3D。
 
-### 4.4.3 Render View in pvpython {#render-view-in-pvpython .标题3}
+### 4.4.3 Render View in pvpython 
 
 创建render view
 
@@ -548,8 +543,7 @@ the resulting data on its outputs. A filter can have one or more input
 and output ports. Each input port can optionally accept multiple input
 connections.
 
-![](./media/image6.emf){width="2.2336701662292215in"
-height="1.328413167104112in"}
+![](./media/image6.emf)
 
 Figure 5.1 过滤
 
@@ -559,13 +553,12 @@ Figure 5.1 过滤
 
 菜单FilterS，启用相关的过滤。
 
-### 5.2.1 多个输入连接 {#多个输入连接 .标题3}
+### 5.2.1 多个输入连接
 
 在Pipeline
-Browser中，使用![](./media/image7.emf){width="1.347561242344707in"
-height="0.20837270341207348in"}选择所有相关的管线模块，仅接受在输入端口上多个连接的在Filters菜单中启用。
+Browser中，使用![](./media/image7.emf)选择所有相关的管线模块，仅接受在输入端口上多个连接的在Filters菜单中启用。
 
-### 5.2.2 多个输入端口 {#多个输入端口 .标题3}
+### 5.2.2 多个输入端口 
 
 [Figure 5.3:]{.mark} The Change Input Dialog is shown to allow you to
 pick inputs for each of the input ports for a filter with multiple input
@@ -575,7 +568,7 @@ connected to this input port. Repeat the step for the other input
 port(s). If an input port can accept multiple input connections, you can
 select multiple modules, just like in the Pipeline Browser.
 
-### 5.2.3 修改输入连接 {#修改输入连接 .标题3}
+### 5.2.3 修改输入连接 
 
 ParaView允许用户在创建过滤后修改[输入]{.mark}。To change inputs to a
 filter, [right-click on the filter]{.mark} in the Pipeline Browser to
@@ -604,7 +597,7 @@ the option to change inputs for a filter.
 
 3 \>\>\> shrink = Shift(Input=reader)
 
-### 5.3.1 多个输入连接 {#多个输入连接-1 .标题3}
+### 5.3.1 多个输入连接
 
 1 \>\>\> sphere = Sphere ()
 
@@ -618,7 +611,7 @@ the option to change inputs for a filter.
 
 6 \>\>\> **print**( appendDatasets .Input)
 
-### 5.3.2 Multiple input ports {#multiple-input-ports .标题3}
+### 5.3.2 Multiple input ports
 
 1 \>\>\> sphere = Sphere ()
 
@@ -629,7 +622,7 @@ the option to change inputs for a filter.
 4 \>\>\> resampleWithDataSet = ResampleWithDataset (Input=sphere,
 Source=wavelet)
 
-### 5.3.3 Changing input connections {#changing-input-connections .标题3}
+### 5.3.3 Changing input connections
 
 1 \# For filter with single input connection
 
@@ -683,50 +676,48 @@ Source=wavelet)
 
 ## [5.6 Filters for sub-setting data]{.mark}
 
-### [Clip]{.mark} {#clip .标题3}
+### [Clip]
 
-![](./media/image8.emf){width="5.204089020122485in"
-height="1.0913090551181102in"}
+![](./media/image8.emf)
 
 [Clip in pvpython]{.mark}
 
 This following script demonstrates various aspects of using the Clip
 filter in pvpython.
 
-### [Slice]{.mark} {#slice .标题3}
+### [Slice]{.mark}
 
-![](./media/image9.emf){width="5.336432633420823in"
-height="0.27405074365704285in"}
+![](./media/image9.emf)
 
 有Slice in Pvpython吗？
 
-### 5.6.3 Extract Subset {#extract-subset .标题3}
+### 5.6.3 Extract Subset
 
 Extract Subset in paraview
 
-### Threshold {#threshold .标题3}
+### Threshold
 
 [Threshold in pvpython]{.mark}
 
-### Iso Volume {#iso-volume .标题3}
+### Iso Volume
 
 有Iso Volume in pvpython吗？
 
-### Extract Selection {#extract-selection .标题3}
+### Extract Selection
 
 ## 5.7 Filters for geometric manipulation
 
-### 5.7.1 Transform {#transform .标题3}
+### 5.7.1 Transform
 
 The Transform can be used to arbitrarily translate, rotate, and scale a
 dataset. The transformation is applied by scaling the dataset, rotating
 it, and then translating it based on the values specified.
 
-### 5.7.2 Transform in paraview {#transform-in-paraview .标题3}
+### 5.7.2 Transform in paraview
 
 可以从Filters-\>Alphatical菜单中创建新的Transform。一旦创建好，就可以利用Properties面板设置转换，如：旋转、平移和尺度。
 
-### 5.7.3 Transform in pvpython {#transform-in-pvpython .标题3}
+### 5.7.3 Transform in pvpython
 
 1 \# To create the filter(if Input is not specified, the active source
 will be
@@ -745,7 +736,7 @@ will be
 
 8 \>\>\> transform.Transform.Rotate = \[0, 0, 0\]
 
-### 5.7.4 Reflect {#reflect .标题3}
+### 5.7.4 Reflect
 
 沿一个轴，做镜像。
 
@@ -753,30 +744,28 @@ will be
 
 这些过滤，计算新的数据集，表征数据集的一些必要特征，作为[输入]{.mark}（管线的输入）。
 
-### 5.8.1 Glyph（字形） {#glyph字形 .标题3}
+### 5.8.1 Glyph（字形）
 
 Glyphy用于放置标记或glphy在输入数据集的点位置。glphy可以旋转或调整大小，基于这些点的标量和矢量属性。
 
-Filters或者![](./media/image10.emf){width="0.24285761154855642in"
-height="0.2045330271216098in"}按钮，选择Glyph Type: Arrow, Sphere,
+Filters或者![](./media/image10.emf)按钮，选择Glyph Type: Arrow, Sphere,
 Cylinder, etc.
 
 Figure 5.14: The Properties panel for the Glyph filter
 
 glyph表征可提供更快速的渲染和低内存消耗，在生成3D几何体时需要，即输出glyph几何体到文件，需要glyph过滤。
 
-### 5.8.2 Glyph With Custom Source {#glyph-with-custom-source .标题3}
+### 5.8.2 Glyph With Custom Source 
 
 Glyph With Custom Source与glyph一样，除了Glyph Type有限外。
 
 Figure 5.16: Setting the Input and Glyph Source in the Glyph With Custom
 Source filter.
 
-### 5.8.3 Stream Tracer（流线） {#stream-tracer流线 .标题3}
+### 5.8.3 Stream Tracer（流线）
 
 The Stream Tracer filter is used to generate streamlines for vector
-fields.产生流线：Filters-\>![](./media/image11.emf){width="0.2437937445319335in"
-height="0.22652996500437445in"}
+fields.产生流线：Filters-\>![](./media/image11.emf)
 
 [几个控制参数]{.mark}：Integration Parameters，Integration
 Direction，Integrator Type，Maximum Streamline Length
@@ -838,7 +827,7 @@ SeedType='Point Source ')
 
 23 \>\>\> Show ()
 
-### 5.8.4 Stream Tracer With Custom Source {#stream-tracer-with-custom-source .标题3}
+### 5.8.4 Stream Tracer With Custom Source
 
 Stream Tracer allows you to specify the seed points either as a point
 cloud or as a line source.
@@ -846,19 +835,19 @@ cloud or as a line source.
 Figure 5.19: Streamlines generated from the disk out ref.ex2 dataset
 using the output of the Slice filter as the Source for seed points.
 
-### 5.8.5 Resample With Dataset {#resample-with-dataset .标题3}
+### 5.8.5 Resample With Dataset
 
 在Filters菜单下
 
 Resample With Dataset samples the point and cell attributes of one
 dataset on to the points of another dataset
 
-### 5.8.6 Resample To Image {#resample-to-image .标题3}
+### 5.8.6 Resample To Image
 
 对均匀网格数据集实施效率更高。体渲染就是这样的操作。Resample to
 Image过滤可以将任何数据集转换为Image数据。
 
-### [5.8.7 Probe]{.mark} {#probe .标题3}
+### [5.8.7 Probe]
 
 Probe可以在特殊点处采样数据集，获得单元数据属性以及插值点数据属性。
 
@@ -866,7 +855,7 @@ Probe可以在特殊点处采样数据集，获得单元数据属性以及插值
 
 probe位置可以使用Render View中显示的交互式3D Widget定义。
 
-### [5.8.8 Plot over line]{.mark} {#plot-over-line .标题3}
+### [5.8.8 Plot over line]
 
 Plot Over Line沿着指定的线采样输入的数据集，然后在Line Chart
 View绘制结果。与Probe过滤机制一样。
@@ -878,11 +867,11 @@ Line，获得Python脚本。可以尝试语音控制。
 
 ## 5.9 属性操作的过滤器
 
-### 5.9.1 Calculator {#calculator .标题3}
+### 5.9.1 Calculator
 
-### 5.9.2 Python calculator {#python-calculator .标题3}
+### 5.9.2 Python calculator
 
-### 5.9.3 Gradient {#gradient .标题3}
+### 5.9.3 Gradient
 
 There are two filters that can compute gradients:
 
@@ -890,7 +879,7 @@ There are two filters that can compute gradients:
 
 -   Gradient of Unstructured DataSet
 
-### 5.9.4 Mesh Quality {#mesh-quality .标题3}
+### 5.9.4 Mesh Quality
 
 The Mesh Quality filter creates a new cell array containing a geometric
 measure of each cell's fitness.
@@ -918,7 +907,7 @@ Filters-\>Manage Favorites
 
 ## 5.12 最佳做法
 
-### 5.12.1 避免数据爆炸 {#避免数据爆炸 .标题3}
+### 5.12.1 避免数据爆炸
 
 when visualizing large datasets, it is important to understand the
 memory requirements of filters.
@@ -938,8 +927,7 @@ in its output that is roughly equivalent to the input. These filters
 should never be used with structured data and should be used with
 caution on unstructured data.
 
-![](./media/image12.emf){width="5.140590551181102in"
-height="1.0996609798775152in"}
+![](./media/image12.emf)
 
 # 第6章 选择数据
 
@@ -965,25 +953,23 @@ SpreadSheet View
 
 Sources-\> Wavelet-\> Render View-\> SpreadSheet View
 
-![](./media/image13.emf){width="5.269360236220472in"
-height="3.49837489063867in"}
+![](./media/image13.emf)
 
 ## 6.2使用视图创建选择
 
-### 6.2.1在RenderView中选择 {#在renderview中选择 .标题3}
+### 6.2.1在RenderView中选择
 
 有2种方法选择cells, points or blocks：交互式和非交互时
 
-（1）进入非交互式选择模式：![](./media/image14.emf){width="0.28155621172353457in"
-height="0.3041240157480315in"}![](./media/image15.emf){width="1.4945538057742782in"
-height="0.24091426071741032in"}
+（1）进入非交互式选择模式：
+![](./media/image14.emf)
+![](./media/image15.emf)
 
-（2）交互式选择模式：![](./media/image16.emf){width="0.49770997375328085in"
-height="0.2757917760279965in"}
+（2）交互式选择模式：![](./media/image16.emf)
 
-### 6.2.2在SpreadSheet View中选择 {#在spreadsheet-view中选择 .标题3}
+### 6.2.2在SpreadSheet View中选择
 
-### 6.2.3 Selecting in Line Chart View {#selecting-in-line-chart-view .标题3}
+### 6.2.3 Selecting in Line Chart View
 
 ## 6.3 Creating selections using the Find Data dialog
 
@@ -997,26 +983,23 @@ View-\>Selection Display Inspector
 
 Extract Selection and Plot Selection Over Time
 
-### 6.6.1 Extract selection {#extract-selection-1 .标题3}
+### 6.6.1 Extract selection
 
-![](./media/image17.emf){width="4.666820866141732in"
-height="4.018501749781278in"}
+![](./media/image17.emf)
 
-### 6.6.2 Plot selection over time {#plot-selection-over-time .标题3}
+### 6.6.2 Plot selection over time
 
 Plot Selection Over Time
 
 Filter-\>Data
-Analysis或![](./media/image18.emf){width="0.2509689413823272in"
-height="0.24330489938757655in"}
+Analysis或![](./media/image18.emf)
 
 使用Properties面板的Copy Active Selection之后，修改，然后Apply
 
 Find Data对话框: Only Report Selection Statistics （Plot Selection Over
 Time过滤）
 
-![](./media/image19.emf){width="5.313675634295713in"
-height="2.6707403762029744in"}
+![](./media/image19.emf)
 
 ## 6.7 Freezing selections
 
@@ -1036,8 +1019,7 @@ Animation Keyframes-\>New
 
 ## 7.2动画视图header
 
-![](./media/image20.emf){width="5.175482283464567in"
-height="0.9075032808398951in"}
+![](./media/image20.emf)
 
 几种动画回放模式：
 
@@ -1058,8 +1040,7 @@ View可以将动画时间与数据时间分离，因此可以在动画期间，�
 
 双击TimeKeeper，有3个选择：Animation Time, Constant Time, Variable Time
 
-![](./media/image21.emf){width="2.9693274278215225in"
-height="2.3911318897637797in"}
+![](./media/image21.emf)
 
 Figure 7.4: Controlling Data Time with keyframes
 
@@ -1067,33 +1048,29 @@ Figure 7.4: Controlling Data Time with keyframes
 
 设计好动画后，可使用VCR控制条播放动画。
 
-![](./media/image22.emf){width="4.566058617672791in"
-height="0.6688199912510936in"}
+![](./media/image22.emf)
 
 ## 7.5相机动画
 
 [预设置相机的视角轨迹，展示动画。]{.mark}
 
-### 7.5.1插值相机位置 {#插值相机位置 .标题3}
+### 7.5.1插值相机位置
 
 动画不断改变相机位置，2帧之间插值相机的位置。
 
 编辑keyframes，双击track。也可使用Use Current按钮，捕捉当前位置。
 
-![](./media/image23.emf){width="3.6331791338582677in"
-height="2.174514435695538in"}
+![](./media/image23.emf)
 
-### 7.5.2轨道(Orbit) {#轨道orbit .标题3}
+### 7.5.2轨道(Orbit)
 
 Orbit from the Camera
 
-![](./media/image24.emf){width="2.7303772965879265in"
-height="1.9112160979877515in"}
+![](./media/image24.emf)
 
 ### 7.5.3跟随路径（创建相机跟踪轨道） {#跟随路径创建相机跟踪轨道 .标题3}
 
-![](./media/image25.emf){width="4.661906167979002in"
-height="3.747344706911636in"}
+![](./media/image25.emf)
 
 [备注：可以考虑使用Xbox等joystick实时控制相机视角，可通过VRPN在VR环境下实施。]{.mark}
 
@@ -1104,8 +1081,7 @@ height="3.747344706911636in"}
 可以保存管线模块产生的数据集，包括：sources, readers, filters.
 
 File-\>Save
-Data或者![](./media/image26.emf){width="0.28037292213473314in"
-height="0.2718121172353456in"}或者Ctrl+S
+Data或者![](./media/image26.emf)}或者Ctrl+S
 
 或者在pvpython中保存数据：SaveData(\"sample.csv\", source)
 
@@ -1178,12 +1154,11 @@ Properties面板是paraview中最常用的面板。
 Properties面板对active对象，即显示active source and active
 view的属性，以及显示属性。
 
-### 9.1.1按钮 {#按钮 .标题3}
+### 9.1.1按钮
 
-![](./media/image27.emf){width="3.0765048118985128in"
-height="6.258530183727034in"}
+![](./media/image27.emf)
 
-### 9.1.2 搜索盒 {#搜索盒 .标题3}
+### 9.1.2 搜索盒
 
 The Search box allows you to search for a property by using the name or
 the label for the property. Simply start typing text in the Search box,
@@ -1194,7 +1169,7 @@ When you start searching for a property by typing text in the Search
 box, irrespective of the current mode of the panel (i.e., default or
 advanced), all properties that match the search text will be shown.
 
-### 9.1.3 属性 {#属性 .标题3}
+### 9.1.3 属性
 
 ## 9.2 自定义布局
 
@@ -1223,29 +1198,26 @@ There are separate transfer functions for color and opacity. Th[e
 opacity transfer function is used for volume rendering]{.mark}, and it
 is optional when used for surface renderings.
 
-### 10.1.1 Color mapping in paraview {#color-mapping-in-paraview .标题3}
+### 10.1.1 Color mapping in paraview
 
-![](./media/image28.emf){width="5.265456036745407in"
-height="2.4436964129483814in"}
+![](./media/image28.emf)
 
-### 10.1.2 Color mapping in pvpython {#color-mapping-in-pvpython .标题3}
+### 10.1.2 Color mapping in pvpython
 
 ## 10.2 Editing the transfer functions in paraview
 
 View-\>Color Map Editor
 
-![](./media/image29.emf){width="3.019679571303587in"
-height="5.37895450568679in"}
+![](./media/image29.emf)
 
 Figure 10.2: Color Map Editor panel in paraview showing the major
 components of the panel
 
-### 10.2.1 Separate Color Map {#separate-color-map .标题3}
+### 10.2.1 Separate Color Map
 
-![](./media/image30.emf){width="4.303560804899387in"
-height="0.7779024496937883in"}
+![](./media/image30.emf)
 
-### 10.2.2 Mapping data {#mapping-data .标题3}
+### 10.2.2 Mapping data
 
 The Mapping Data group of properties controls how the data is mapped to
 colors or opacity.
@@ -1261,23 +1233,21 @@ depends on several things:
 -   When doing volume rendering, the opacity mapping will always be
     used.
 
-### 10.2.3 转换函数编辑器 {#转换函数编辑器 .标题3}
+### 10.2.3 转换函数编辑器
 
-### 10.2.4 Color mapping parameters {#color-mapping-parameters .标题3}
+### 10.2.4 Color mapping parameters
 
 ## 10.3 Editing the transfer functions in pvpython
 
 ## 10.4 Color legend
 
-Color Map Editor：![](./media/image31.emf){width="0.23680555555555555in"
-height="0.30069444444444443in"}
+Color Map Editor：![](./media/image31.emf)
 
-![](./media/image32.emf){width="3.0975in" height="1.6514982502187228in"}
+![](./media/image32.emf)
 
-### 10.4.1 Color legend参数 {#color-legend参数 .标题3}
+### 10.4.1 Color legend参数 
 
-![](./media/image33.emf){width="3.716317804024497in"
-height="4.982737314085739in"}
+![](./media/image33.emf)
 
 ## 10.5 Annotations
 
@@ -1316,7 +1286,7 @@ rendering)。
 
 ## 14.2 paraview中的远程可视化
 
-### 14.2.1启动远程服务器 {#启动远程服务器 .标题3}
+### 14.2.1启动远程服务器
 
 在远程系统上启动服务端应用：pvserver
 
@@ -1332,25 +1302,23 @@ Accepting connection(s): myhost :11111
 
 这表明服务器已启动，[听]{.mark}从客户端来的连接。
 
-### 14.2.2设置服务器连接 {#设置服务器连接 .标题3}
+### 14.2.2设置服务器连接
 
-在客户端打开paraview：File-\>Connect，或者点击![](./media/image34.emf){width="0.2346380139982502in"
-height="0.26384186351706035in"}图标，打开Choose Server
+在客户端打开paraview：File-\>Connect，或者点击![](./media/image34.emf)图标，打开Choose Server
 Configuration对话框：（刚打开的时候是空的，需要自己[Add Server]{.mark}）
 
-![](./media/image35.emf){width="3.1650798337707786in"
-height="2.422349081364829in"}
+![](./media/image35.emf)
 
 Figure 14.1: The Choose Server Configuration dialog is used to connect
 to a server.
 
 保存的服务器设置是XML文件。可以使用Fetch Servers按钮加载。
 
-### 14.2.3连接到远程服务器 {#连接到远程服务器 .标题3}
+### 14.2.3连接到远程服务器
 
 选择刚才设置好的服务器，点击Connect，现在可以构建可视化管线了。
 
-### 14.2.4管理多个客户端 {#管理多个客户端 .标题3}
+### 14.2.4管理多个客户端
 
 可能同时有多个客户端连接[pvserver]{.mark}。此时，称之为[master]{.mark}，使用管线交互访问。其他客户端仅允许可视化数据。连接的客户端之间由Collaboration
 Panel共享信息。
@@ -1367,12 +1335,11 @@ master客户端可以停止继续连接：
 
 \--multi-clients \--disable-further-connections
 
-### 14.2.5 Setting up a client/server visualization pipeline {#setting-up-a-clientserver-visualization-pipeline .标题3}
+### 14.2.5 Setting up a client/server visualization pipeline
 
 Pipeline Browser
 
-![](./media/image36.emf){width="0.15625in"
-height="0.1902176290463692in"}图标旁边的服务器连接地址修改：from
+![](./media/image36.emf)图标旁边的服务器连接地址修改：from
 builtin: to cs://myhost:11111
 
 ## 14.3 pvpython中的远程可视化
@@ -1400,11 +1367,11 @@ Client connected.
 
 ## 14.5理解并行化处理
 
-### 14.5.1 Ghost levels {#ghost-levels .标题3}
+### 14.5.1 Ghost levels
 
-### 14.5.2 Data partitioning {#data-partitioning .标题3}
+### 14.5.2 Data partitioning
 
-### 14.5.3 D3 Filter {#d3-filter .标题3}
+### 14.5.3 D3 Filter
 
 平衡非结构数据的过滤，创建ghost cells，称之为D3: distributed data
 decomposition
@@ -1440,21 +1407,18 @@ is also in the client. The client is always a serial application.
 （1）Standalone模式：客户端，dara server, render
 server都整合为一个单独的串行程序，都是串行运行。
 
-![](./media/image37.emf){width="1.663565179352581in"
-height="1.2650667104111986in"}
+![](./media/image37.emf)
 
 （2）Client-Server模式：在并行机器上执行pvserver，在paraview客户端（或pvpython）上连接到服务器。pvserver即有data
 server也有render server。
 
-![](./media/image38.emf){width="2.8973370516185475in"
-height="1.4320166229221347in"}
+![](./media/image38.emf)
 
 （3）Client-render Server-data
 Server模式（[很少使用]{.mark}）：所有的3个逻辑单元都以独立程序运行。Client通过单独端口连接到render
 server, data server与render server有很多端口连接。
 
-![](./media/image39.emf){width="3.4876509186351705in"
-height="1.4947090988626421in"}
+![](./media/image39.emf)
 
 ## 14.8以paraview和pvpython并行可视化
 
@@ -1518,7 +1482,7 @@ View时，看到的是近似渲染，当释放鼠标后，全部细节将呈现�
 
 交互式渲染是[速度和精度]{.mark}之间的折中。当使用较低的LOD时需要关注很多[渲染参数]{.mark}。
 
-### 14.11.1基本渲染参数 {#基本渲染参数 .标题3}
+### 14.11.1基本渲染参数
 
 Level of Detail
 (LOD)渲染参数是最重要的。当使用交互式渲染时，几何体被较低的LOD代替，使用较少多边形的近似几何体。
@@ -1528,8 +1492,7 @@ View]{.mark}（如下图），包括：LOD Threshold、LOD
 Resolution、Non-Interactive Render Delay、Use Outline For LOD
 Rendering。
 
-![](./media/image40.emf){width="2.9528772965879266in"
-height="3.6581288276465442in"}
+![](./media/image40.emf)
 
 ParaView还有更多的渲染参数。这里仅列举一些影响渲染效率，不管ParaView是否是以client-server模式运行，有：
 
@@ -1538,15 +1501,13 @@ ParaView还有更多的渲染参数。这里仅列举一些影响渲染效率，
 
 -   Miscellaneous (Outline Threshold, Show Annotation)
 
-以上设置都在![](./media/image41.emf){width="0.2693132108486439in"
-height="0.24917213473315836in"}按钮中。注意：上面的渲染参数没有列全，没有列出显著影响渲染效率的参数，也没有列出并行化client-server渲染的设置参数，将在14.11.4节讨论。
+以上设置都在![](./media/image41.emf)按钮中。注意：上面的渲染参数没有列全，没有列出显著影响渲染效率的参数，也没有列出并行化client-server渲染的设置参数，将在14.11.4节讨论。
 
 ### 14.11.2基本的并行化渲染 {#基本的并行化渲染 .标题3}
 
 ParaView使用并行化渲染库IceT。IceT使用sort-last算法做并行化渲染，该种渲染算法是[在各进程上独立渲染其几何部分，然后合并分部图像，形成最终图像。]{.mark}
 
-![](./media/image42.emf){width="3.969025590551181in"
-height="1.9534623797025372in"}
+![](./media/image42.emf)
 
 IceT还包含多种其他的并行化图像合成算法，比如：binary tree, binary swap,
 radix-k，使用多个阶段(phases)将工作分到各进程。
@@ -1562,8 +1523,7 @@ display]{.mark}的功能，是由一系列显示器和投影仪分片组合成�
 
 并行化渲染的交互期间，ParaView可subsample图像，降低通信量。
 
-![](./media/image43.emf){width="4.848958880139983in"
-height="1.2208136482939633in"}
+![](./media/image43.emf)
 
 Finest LoD 2 4 8
 
@@ -1592,8 +1552,7 @@ View标签中，与其他几个渲染选项混在一块。并行化渲染的参�
 
 -   Image Compression
 
-![](./media/image44.emf){width="3.463963254593176in"
-height="4.167272528433946in"}
+![](./media/image44.emf)
 
 ### 14.11.5大规模数据渲染参数设置 {#大规模数据渲染参数设置 .标题3}
 
@@ -1615,8 +1574,7 @@ render view to data values associated with particular points or cells.
 
 Sources-\>Alphabetical
 
-![](./media/image45.emf){width="4.066247812773403in"
-height="0.897179571303587in"}
+![](./media/image45.emf)
 
 ## 17.2注释过滤
 
@@ -1626,8 +1584,7 @@ To turn on the [Axes Grid]{.mark} for a Render View, you use the
 [Properties]{.mark} panel. Under the View section, you check the Axes
 Grid checkbox to turn the Axes Grid on for the active view.
 
-![](./media/image46.emf){width="3.0789304461942257in"
-height="0.6883967629046369in"}
+![](./media/image46.emf)
 
 # 第19章 用户个性化ParaView
 
@@ -1637,23 +1594,19 @@ Edit-\>Settings：有很多tab：
 
 General
 
-![](./media/image47.emf){width="3.8995844269466318in"
-height="5.835652887139108in"}
+![](./media/image47.emf)
 
 Camera设置：Rotate, Pan, Zoom, etc.
 
-![](./media/image48.emf){width="3.829031058617673in"
-height="4.313934820647419in"}
+![](./media/image48.emf)
 
 Render View设置：参考14.11.1和14.11.4节
 
 Color Palette
 
-![](./media/image49.emf){width="3.9454615048118984in"
-height="4.349886264216972in"}
+![](./media/image49.emf)
 
-![](./media/image50.emf){width="2.855916447944007in"
-height="3.475644138232721in"}
+![](./media/image50.emf)
 
 Figure 19.5: Popup menu allows you to link a color property to a color
 palette category in the Properties panel.
@@ -1666,8 +1619,7 @@ palette category in the Properties panel.
 
 使用JSON配置默认设置：˜/.config/ParaView/ParaView-UserSettings.json
 
-![](./media/image51.emf){width="2.8217989938757655in"
-height="2.239549431321085in"}
+![](./media/image51.emf)
 
 Figure 19.6: Buttons for saving and restoring default property values in
 the Properties panel
