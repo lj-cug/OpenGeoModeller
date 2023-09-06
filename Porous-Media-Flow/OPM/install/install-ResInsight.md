@@ -2,7 +2,7 @@
 
 Fast and free 3D visualization of simulation results in Eclipse binary format.
 
-![RESINSIGHT-GUI](./ResInsight-UI.png)
+![RESINSIGHT-GUI](./media/ResInsight-UI.png)
 
 https://resinsight.org/
 

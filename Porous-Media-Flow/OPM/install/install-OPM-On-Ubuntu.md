@@ -1,6 +1,6 @@
 # Install OPM on Ubuntu Linux 20.04 or 22.04 (64 bit version only)
 
-![OPM_Norne](./OPM-Flow.png)
+![OPM_Norne](./media/OPM-Flow.png)
 
 ## install the apt-add-repository command
 
