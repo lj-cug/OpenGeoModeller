@@ -1,28 +1,30 @@
 # Installing on Ubuntu 20
 
-These instructions were tested on a clean VM with Ubuntu 20 OS. (I used Jetstream2 for cloud services.)
+These instructions were tested on a clean VM with Ubuntu 20 OS. 
 
-## First, install VisIt
+## 安装VisIt
 
-See the VisIt User Guide, [Installing and Starting VisIt](https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/getting_started/Installing_VisIt.html)
+Get the source code and the install script.
 
-We will use VisIt version [3.1.4](https://visit-dav.github.io/visit-website/releases-as-tables/#series-31) so we can use server mode on Expanse.  Get the source code and the install script.
 ```
 wget https://github.com/visit-dav/visit/releases/download/v3.1.4/visit3_1_4.linux-x86_64-ubuntu20.tar.gz
 wget https://github.com/visit-dav/visit/releases/download/v3.1.4/visit-install3_1_4
 ```
+
 Change to executable mode
 ```
 chmod +x visit-install3_1_4
 ```
+
 For the following, we install visit in the home directory to avoid using sudo.  Choose '1', no specific configuration.
 ```
-./visit-install3_1_4 3.1.4 linux-x86_64-ubuntu20 ~/visit
+./visit-install3_1_4 3.1.4 linux-x86_64-ubuntu20 /home/lijian/visit
 1
 ```
+
 Set the path for the executable
 ```
-export PATH=~/visit/bin:$PATH
+export PATH=/home/lijian/visit/bin:$PATH
 ```
 
 Try VisIt:
@@ -31,7 +33,7 @@ visit
 ```
 It works.
 
-# Install the plugin
+# 安装插件
 
 Now try the steps to install the plugin.
 
@@ -85,7 +87,7 @@ make
 ```
 Check:
 ```
-ls ~/.visit/3.1.4/linux-x86_64/plugins/databases
+ls /home/lijian/.visit/3.1.4/linux-x86_64/plugins/databases
 ```
 There should be four new files in ~/.visit/3.1.4/linux-x86_64/plugins/databases:
 ```
@@ -183,7 +185,7 @@ For SCHISM_v5.6.1_sample_outputs:
 It works:
 ![](OLD_IO.png)
 
-
+使用新的异步I/O功能，不能实现转换.
 When I use the new IO, I need to specify "SCHISM" when reading in the file, and it has an artifact that makes it impossible to do the transform.
 ![](artifact.png)
 
