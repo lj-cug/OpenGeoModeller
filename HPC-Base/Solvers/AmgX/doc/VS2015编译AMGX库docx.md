@@ -19,13 +19,11 @@ code.
 \'thrust::device_vector\<X, thrust_amgx_allocator\>\'.\
 编译成功！
 
-![D:\\CUDA-Learning\\AMG-GPU\\34193717-2a064d64-e590-11e7-9ca8-9fbee9eb86b5.png](./media/image1.png){width="5.768055555555556in"
-height="3.2243602362204724in"}
+![D:\\CUDA-Learning\\AMG-GPU\\34193717-2a064d64-e590-11e7-9ca8-9fbee9eb86b5.png](./media/image1.png)
 
 Fail
 
-![D:\\CUDA-Learning\\AMG-GPU\\34288441-3ebbed24-e728-11e7-8a65-c314c99a34c3.jpg](./media/image2.jpeg){width="6.368483158355206in"
-height="2.9966327646544184in"}
+![D:\\CUDA-Learning\\AMG-GPU\\34288441-3ebbed24-e728-11e7-8a65-c314c99a34c3.jpg](./media/image2.jpeg)
 
 Success
 
