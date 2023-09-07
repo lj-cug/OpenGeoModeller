@@ -45,13 +45,11 @@ Palabos与离散元模型LAMMPS耦合模拟动脉中的血红细胞运动
 
 MPLBM-UT支持3种模拟设置：
 
--   Single-phase flow: permeability and preferential path assessment
+-   单相流: 渗透率和运动路径倾向评价
 
--   Unsteady-state multiphase-phase flow: drainage and imbibition,
-    capillary pressure curves, unsteady relative permeability
+-   非恒定多相流: 排水率, 毛细压力曲线, 非恒定相对渗透率
 
--   Steady-state multiphase-phase flow: relative permeability, contact
-    angle studies
+-   恒定多相流: 相对渗透率和接触角研究
 
 多相流模型使用一些解析解做了验证，包括：Young-Laplace方程、Washburn方程和Brooks-Corey相对渗透模型。
 
@@ -146,5 +144,4 @@ media analysis. SoftwareX 18 (2022) 101097
 Javier E. Santos, MichaelJ. Pyrcz, Maša Prodanovic. 3D Dataset of binary
 images: A collection of synthetically created digital rock images of
 complex media. Data in Brief 40 (2022) 107797
-
 数字岩心，以HDF5格式存储的3D数组
