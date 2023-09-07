@@ -1,0 +1,36 @@
+name: pyschism
+channels:
+  - conda-forge
+dependencies:
+  - f90nml
+  - numpy 
+  - gfortran
+  - pandas
+  - matplotlib
+  - pygeos
+  - geopandas
+  - netcdf-flattener>=1.2.0
+  - netCDF4
+  - psutil
+  - scipy
+  - wget
+  - cf-python
+  - metpy
+  - sqlalchemy
+  - pyugrid
+  - boto3
+  - rtree
+  - numba
+  - tqdm
+  - xmltodict
+  - cdsapi
+  - seawater
+  - xarray
+  - cfgrib
+  - zarr
+  - fsspec
+  - stormevents
+  - utm
+  - pyproj
+  - pyshp
+  - appdirs
