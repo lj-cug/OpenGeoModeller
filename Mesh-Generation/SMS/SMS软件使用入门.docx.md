@@ -22,23 +22,18 @@ University)等合作开发的商业软件，可用来模拟水体的流场和浓
 
 具体操作如下：
 
-1.  点击图标![](./media/image1.png){width="0.2722222222222222in"
-    height="0.2611111111111111in"}增加节点，利用图标![](./media/image2.png){width="0.25in"
-    height="0.2388888888888889in"}选择节点，以便对节点进行修改；
+1.  点击图标![](./media/image1.png)增加节点，利用图标![](./media/image2.png)选择节点，以便对节点进行修改；
 
 2.  选中两节点，在SMS8.1版本中在窗口下方偏右出现*distance*项为两节点距离，如图2所示。已知两点距离，可在*Node/Interpolation
     Option*项中调整插入的节点数，根据实际情况插入节点。
 
 3.  节点坐标包括x、y、z值可在坐标框中输入，确定节点的确切位置及高程，如图3所示。
 
-> ![](./media/image3.png){width="4.316666666666666in"
-> height="0.18888888888888888in"}
+> ![](./media/image3.png)
 >
 > 图2 两节点间距离显示图
 >
-> ![](./media/image4.png){width="5.427777777777778in"
-> height="0.20555555555555555in"}
->
+> ![](./media/image4.png)
 > 图3 节点坐标显示图
 
 1.3 构建网格
@@ -54,81 +49,61 @@ University)等合作开发的商业软件，可用来模拟水体的流场和浓
 1.3.2 构建方法：
 
 1、手动添加网格单元:
-选中三个节点，点击![](./media/image5.png){width="0.25in"
-height="0.2611111111111111in"}，形成形如图标的六节点三角形网格；选中四个节点，点![](./media/image6.png){width="0.25in"
-height="0.2388888888888889in"}形成八节点的四边形网格；点![](./media/image7.png){width="0.2388888888888889in"
-height="0.2611111111111111in"}分割四边形网格或将两相邻的三角形网格合成为四边形网格；点![](./media/image8.png){width="0.2388888888888889in"
-height="0.2388888888888889in"}将内含两个三角形网格的四边形网格调转方向，使得网格满足适应流线，避免出现网格质量的原则。
+选中三个节点，点击![](./media/image5.png)，形成形如图标的六节点三角形网格；选中四个节点，点![](./media/image6.png)形成八节点的四边形网格；点![](./media/image7.png)分割四边形网格或将两相邻的三角形网格合成为四边形网格；点![](./media/image8.png)将内含两个三角形网格的四边形网格调转方向，使得网格满足适应流线，避免出现网格质量的原则。
 
 2、通过节点线构造三角形、四边形网格：
 
-节点如图4所示，点![](./media/image9.png){width="0.2388888888888889in"
-height="0.2611111111111111in"}连接节点线，三角形网格三边界，四边形网格四边界，从起点开始，终点双击结束，形如图5所示；最终，6条边界的节点线如图6所示。
+节点如图4所示，点![](./media/image9.png)连接节点线，三角形网格三边界，四边形网格四边界，从起点开始，终点双击结束，形如图5所示；最终，6条边界的节点线如图6所示。
 
-![](./media/image10.png){width="1.6888888888888889in"
-height="1.5722222222222222in"} ![](./media/image11.png){width="1.7in"
-height="1.5722222222222222in"}
-![](./media/image12.png){width="1.6555555555555554in"
-height="1.5722222222222222in"}
+![](./media/image10.png)
+![](./media/image11.png)
+![](./media/image12.png)
 
 图4 图5 图6
 
-点![](./media/image13.png){width="0.2833333333333333in"
-height="0.2611111111111111in"}选择节点线，三边界须构造三角形网格单元，选中三条边界，在*Element/Triangular
+点![](./media/image13.png)选择节点线，三边界须构造三角形网格单元，选中三条边界，在*Element/Triangular
 Patch*构造三角形单元，点*Preview*预览，如图7；
 
-![](./media/image14.png){width="4.344444444444444in"
-height="2.3555555555555556in"}
+![](./media/image14.png)
 
 图7
 
 四边形网格构造与三角形网格构造大体相同，选其四条边界，在*Element*/*Rectangular
 Patch*中构造,如图8；另外可根据图中的四条边界*End1、End2、Side1、Side2*中*Distribute*命令可在中间插入若干个节点，此方法适合构建大规模、结构简单的四边形网格。
 
-![](./media/image15.png){width="5.144444444444445in"
-height="2.3333333333333335in"}
+![](./media/image15.png)
 
 图8
 
 3、通过map模型，构造大规模的网格
 
-按![](./media/image16.png){width="0.2611111111111111in"
-height="0.2833333333333333in"}切换至地图模型，点![](./media/image17.png){width="0.25in"
-height="0.25in"}在底图边界上绘制节点线，起始点单击，在终点双击结束此条节点线的绘制,如图9。绘制另一条相邻的节点线时，软件将自动识别节点之间的耦合性如图10。不管地形规则或不规则，都要形成一个图块，图块至少需要四条节点线，形如图11所示。构建模型时，为了不同的材质、地形可设置互相连接的若干个块；连接完所有的块，点*feature
+按![](./media/image16.png)切换至地图模型，点![](./media/image17.png)在底图边界上绘制节点线，起始点单击，在终点双击结束此条节点线的绘制,如图9。绘制另一条相邻的节点线时，软件将自动识别节点之间的耦合性如图10。不管地形规则或不规则，都要形成一个图块，图块至少需要四条节点线，形如图11所示。构建模型时，为了不同的材质、地形可设置互相连接的若干个块；连接完所有的块，点*feature
 objects*/*build
-polygons*，这时，模型自动建立块，但是从界面上看不出来。点![](./media/image18.png){width="0.25in"
-height="0.25in"}再选择你所要构造的块，出现如图12
+polygons*，这时，模型自动建立块，但是从界面上看不出来。点![](./media/image18.png)再选择你所要构造的块，出现如图12
 所示的效果。接下来点*feature objective\\attribute*
 ，出现如图13所示，您可以在*Mesh Type*
 中选择网格的类型，分*paving、patch、adaptive
-tessellation*分别代表三角形网格、四边形网格、密集型三角形网格。点*preview*预览。假如构造的块含有4条以上的节点线，点![](./media/image19.png){width="0.2388888888888889in"
-height="0.2611111111111111in"}选中某个你认为不必要的点（此点是节点线的起点或终点）在*node
+tessellation*分别代表三角形网格、四边形网格、密集型三角形网格。点*preview*预览。假如构造的块含有4条以上的节点线，点![](./media/image19.png)选中某个你认为不必要的点（此点是节点线的起点或终点）在*node
 option*中选择*merge*就可以把此点转换成中间点，可进行下一步骤。最后点*feature
 objects/map-\>2D mesh*把地图生成二维网格。
 
-![](./media/image20.png){width="1.1777777777777778in"
-height="1.1555555555555554in"}
-![](./media/image21.png){width="1.0555555555555556in"
-height="1.5722222222222222in"}
-![](./media/image22.png){width="1.1444444444444444in"
-height="1.5722222222222222in"}
-![](./media/image23.png){width="1.0722222222222222in"
-height="1.5722222222222222in"}
+![](./media/image20.png)
+![](./media/image21.png)
+![](./media/image22.png)
+![](./media/image23.png)
 
 图9 图10 图11 图12
 
 网格构造完后，要对模型定义底高程。确定模型所用的单位（米或英尺及其它），在*edit\\current
 coordination*中改变*unit*选项调整单位。
 
-![](./media/image24.png){width="5.488888888888889in"
-height="3.1055555555555556in"}
+![](./media/image24.png)
 
 图13 网格的类型
 
 1.4 模型质量检查
 
-整个计算区域的网格划分完毕后，为使网格收敛，点击![](./media/image25.png){width="0.25in"
-height="0.25in"}图标选中Mesh quality选项，对网格进行检查，检查内容包括：
+整个计算区域的网格划分完毕后，为使网格收敛，点击![](./media/image25.png)图标选中Mesh quality选项，对网格进行检查，检查内容包括：
 
 1、三角形内角满足10°≤α≤150°，四边形内角满足30°≤α≤150°；
 
@@ -150,20 +125,17 @@ height="0.25in"}图标选中Mesh quality选项，对网格进行检查，检查�
 
 1、首先将选项Nodes/Locked前面的对号去掉，以便可以任意移动节点；
 
-点击图标![](./media/image2.png){width="0.25in"
-height="0.2388888888888889in"}移动节点，直到该节点处不出现质量问题为止；
+点击图标![](./media/image2.png)移动节点，直到该节点处不出现质量问题为止；
 
 2、对于一些节点需改变其底高程，可在图3节点坐标显示图中输入适当的值，直到不出现网格质量；
 
-3、点击图标![](./media/image9.png){width="0.2388888888888889in"
-height="0.2611111111111111in"}按逆时针方向，点击需光滑的节点线起始点，按住Ctrl键点击终点，然后点击图标![](./media/image13.png){width="0.2833333333333333in"
-height="0.2611111111111111in"}选中需光滑的节点线，点击Nodestrings/Smooth命令即可；
+3、点击图标![](./media/image9.png)按逆时针方向，点击需光滑的节点线起始点，按住Ctrl键点击终点，然后点击图标![](./media/image13.png)选中需光滑的节点线，点击Nodestrings/Smooth命令即可；
 
 4、此外，对于四边形单元应尽量使其长边与短边的比例增大，并使长边方向与水流方向一致。在敏感区域（如水流变化较大处）需适当增加单元数，以使网格收敛。
 
 修改后直至不再出现网格质量问题，方可进行下一步操作。
 
-![](./media/image26.png){width="5.322222222222222in" height="2.8in"}
+![](./media/image26.png)
 
 图14网格质量显示图
 
@@ -175,8 +147,7 @@ height="0.2611111111111111in"}选中需光滑的节点线，点击Nodestrings/Sm
 Date*点击*New*创建新材质，点击对话框中的*ID*、*Name*和*Pattern*可以定义不同的特性。
 
 2、选择*Element/Option*，点击*Set default
-material*可以设置默认的材质。若需更改单元的材质，可以点击![](./media/image27.png){width="0.25in"
-height="0.2611111111111111in"}工具选择需要修改的单元。然后选择*Element/Assign
+material*可以设置默认的材质。若需更改单元的材质，可以点击![](./media/image27.png)工具选择需要修改的单元。然后选择*Element/Assign
 Element Type*重新选择材质。
 
 3、最后在*RMA2*/*Material
@@ -184,13 +155,10 @@ Properties*中设置材质的不同的参数（曼宁系数和涡粘性系数等
 
 1.6 设置边界条件
 
-1、利用![](./media/image9.png){width="0.2388888888888889in"
-height="0.2611111111111111in"}工具，按下Shift键点击起始点，最后双击终点即可创建节点串。然后利用![](./media/image13.png){width="0.2833333333333333in"
-height="0.2611111111111111in"}工具点击节点串，查看边界线方向。入流边界方向应朝向计算域内，出流边界方向应朝向计算域外。若不符合要求，可以选择*Nodestrings*/*Reverse
+1、利用![](./media/image9.png)工具，按下Shift键点击起始点，最后双击终点即可创建节点串。然后利用![](./media/image13.png)工具点击节点串，查看边界线方向。入流边界方向应朝向计算域内，出流边界方向应朝向计算域外。若不符合要求，可以选择*Nodestrings*/*Reverse
 Direction*更改方向。
 
-2、入流与出流边界方向确定后，利用![](./media/image13.png){width="0.2833333333333333in"
-height="0.2611111111111111in"}工具点击节点串选择*RMA2*/*Assign
+2、入流与出流边界方向确定后，利用![](./media/image13.png)工具点击节点串选择*RMA2*/*Assign
 BC*分别设置入流和出流边界条件。选项Boundary Condition
 Type中可以设置边界的类型，Specified flow可以定义流量边界；Water surface
 elevation可以定义水位高程边界；Reflecting
@@ -207,8 +175,7 @@ Properties选择中，Temperature设置水温，Density设置水的密度，Spec
 initial water surface for定义模型出口初始水位，Specify 1D node initial
 condition设置初始水深和流速估计值；其它选项取默认值，如图15所示。
 
-![](./media/image28.png){width="5.405555555555556in"
-height="2.988888888888889in"}
+![](./media/image28.png)
 
 > 图15 RMA2模型控制General选项对话框
 
@@ -230,8 +197,7 @@ input按钮，找到"\*.hot"文件，便可进行热启动计算。
 
 上述操作完成后，便可进行RMA2模型检查了。选择*RMA2*/*Model
 Check*，然后点击*Run
-Check*即可运行模型检查。若出现错误，可根据提示进行修改；若无错误提示，剩下的可能提示就是对网格进行重新编号。此时可以利用![](./media/image13.png){width="0.2833333333333333in"
-height="0.2611111111111111in"}工具点击出口处节点串，选择*Nodestrings*/*Renumber*命令即可对网格重新编号，文件存档。
+Check*即可运行模型检查。若出现错误，可根据提示进行修改；若无错误提示，剩下的可能提示就是对网格进行重新编号。此时可以利用![](./media/image13.png)工具点击出口处节点串，选择*Nodestrings*/*Renumber*命令即可对网格重新编号，文件存档。
 
 1.9 模型运行
 

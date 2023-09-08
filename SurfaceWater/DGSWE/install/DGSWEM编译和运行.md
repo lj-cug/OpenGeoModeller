@@ -54,7 +54,7 @@ Once you have intel compilers and python (with
 the work directory, "dgswem/work/." The code can be compiled to run in
 either serial, parallel, or both. To compile all of the above, a simple
 
-[\$ make all]{.mark}
+\$ make all
 
 works. This is the best option, and in order to run the test case that
 ships with the code, you will need at least 64 processors, requiring
@@ -64,11 +64,11 @@ any implementation will work.
 
 Now, in order to run the code you can simply type:
 
-[\$ ./dgswem_serial]{.mark}
+\$ ./dgswem_serial
 
 or
 
-[\$ ibrun -np 12 ./dgswem]{.mark}
+\$ ibrun -np 12 ./dgswem
 
 and so on, depending on your submission system. A sample script is
 included in the repo for submitting to
@@ -89,7 +89,7 @@ running a new (or different) test case, you need to make sure that
 get_winds is turned off in the "makefile." This can be accomplished by
 removing "winds" from the makefile.
 
-## 输入文件[fort.dg]
+## 输入文件fort.dg
 
 The basic input files for DG-SWEM are similar, and meant to coincide
 with those of the [ADCIRC project](http://adcirc.org/). The majority of
@@ -97,7 +97,7 @@ the information about these input files [can be found on the adcirc
 pages](http://adcirc.org/home/documentation/users-manual-v50/input-file-descriptions/).
 
 The basic difference in the input files for DG-SWEM can be found in the
-[fort.dg]{.mark} file in the work directory. An example of this file
+fort.dgfile in the work directory. An example of this file
 (the one that ships with the repo) is:
 
 1 ! DGSWE
@@ -468,69 +468,4 @@ else - simple)
 
 该文件夹下包含很多工具小程序，FORTRAN和MATLAB语言。
 
-# 编译dgswem出现的错误及解决方法
 
-\(1\)
-
-Error: There is no specific subroutine for the generic
-\'mpi_dist_graph_creat_adjacent\'
-
-**解决方法**：使用mpich2库(mpich-3.3)，或者使用3.1版本以上（Ver. \>
-3.1）的openmpi库。
-
-gedit \~/.bashrc
-
-export PATH=/home/lijian/mpich-3.3/bin:\$PATH
-
-\(2\) 对\'dgesv\_\"未定义的应用
-
-没有正确安装或设置lapack库。
-
-打开/work/makefile，阅读第118行下面的内容：
-
-\###############################################################
-
-\# Library Links (Platform Specific) \#
-
-\###############################################################
-
-查看主机名：hostname
-
-修改makefile中的ifeq
-(\$(NAME),chl-tilos)为：lijian（我的笔记本的主机名）
-
-\(3\) 使用Python 3执行run_case.py出现：print l.strip()的语法错误
-
-[切换为Python 2.7]{.mark}
-
-alias python=\'/usr/bin/python2.7\'
-
-在bashrc中使用假名，将永久生效。
-
-或者建立软连接：ln --s /usr/bin/python2.7 /usr/bin/python
-
-或者使用update-alternatives
-
-\(4\) 执行./plot出现错误：convert not authorized error/..
-
-修改：/etc/ImageMagick-6/policy.xml文件中的内容：
-
-rights=\"none\" rights=\"read\|write\"
-
-# python的进程管理语法
-
-os.chdir()方法用于改变当前工作目录到指定的路径。
-
-os.rename()方法用于命名文件或目录，从src到dst，如果dst是一个存在的目录，将抛出OSError。
-
-os.rename语法
-
-rename()方法语法格式如下：
-
-os.rename(src, dst)
-
-参数
-
-src \-- 要修改的目录名
-
-dst \-- 修改后的目录名
