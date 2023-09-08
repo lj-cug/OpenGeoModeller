@@ -5,8 +5,7 @@
 Error: There is no specific subroutine for the generic
 \'mpi_dist_graph_creat_adjacent\'
 
-**解决方法**：使用mpich2库(mpich-3.3)，或者使用3.1版本以上（Ver. \>
-3.1）的openmpi库。
+**解决方法**：使用mpich2库(mpich-3.3)，或者使用OpenMPI(5.0版本以上)。
 
 gedit \~/.bashrc
 
