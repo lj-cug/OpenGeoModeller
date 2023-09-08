@@ -331,7 +331,9 @@ make dgprep
 
 make dgpost
 
-（2）进入/plot目录，编译plot程序：
+注意：上述编译遇到错误，解决方法见"DGSWEM编译问题解决.md"
+
+（2）进入/plot/work目录，编译plot程序：
 
 make clean
 

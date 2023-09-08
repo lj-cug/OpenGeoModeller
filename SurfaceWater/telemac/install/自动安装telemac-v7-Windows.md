@@ -1,6 +1,6 @@
 # Instructions to finish the installation manually after a failure of the automatic installation
 
-*[Important note:]{.underline}* *The following instructions are to check
+*Important note:* *The following instructions are to check
 out the first tag (v7p2r2) of the v7p2 version. If you wish to work with
 a different version, edit all commands, paths, names and the
 configuration file with the version you wish to use.*
@@ -21,10 +21,10 @@ svn co http://svn.opentelemac.org/svn/opentelemac/tags/v7p2r2
 \"C:\\opentelemac-mascaret\\v7p2\" \--username ot-svn-public \--password
 telemac1\*
 
-[Note:]{.underline} The download could last more than 20 minutes
+Note: The download could last more than 20 minutes
 depending on the quality of the internet connection.
 
-[Note:]{.underline} If the checkout crashed you do not have to start
+Note: If the checkout crashed you do not have to start
 again just type svn update in the v7p2r2 folder to carry on the
 download.
 
@@ -81,7 +81,7 @@ compileTELEMAC.py
 [Note:]{.underline} The compilation can last more than 30 minutes
 depending on the characteristics of your computer
 
-# 如何运行一个模拟项目?
+# 如何运行一个模拟项目
 
 After installing the TELEMAC system with the automatic installer, the
 software can be run through the shortcut created during the installation
@@ -135,46 +135,3 @@ To check that it worked:
 2.  mpiexec -validate (it should return SUCCESS on a user shell)
 
 3.  smpd -status (it should return \'smpd running on \<hostname\>\')
-
-# 编译TELEMAC-MASCARET V8.2
-
-不能正确编译mascaret模型，其他一切正常。
-
-必须在ifort CMD环境下，执行Python3脚本。
-
-## 遇到的问题及解决
-
-2.1
-
-编译nestor时，#error: can\'t find include file: backfill_to_level.f
-
-......
-
-要把nestor下的代码，拷贝到builds/../nestor下面去？！！！
-
-2.2
-
-UnicodeDecodeError: \'utf-8\' codec can\'t decode byte 0xd3 in position
-1086: invalid continuation byte
-
-在parser_fortran.py的第1695行，
-
-\# encoding=\'utf-8\'修改为encoding=\'ISO-8859-1\'
-
-修改代码为：
-
-src_file = open(dif_file, \'r\', encoding=\'ISO-8859-1\')
-
-2.3
-
-mascaret静态链接库连接的问题:
-
-xilib.exe /nologo /out:libmascaret.lib \*.obj
-
-再返回到D:\\opentelemac\\v8p2r0\\scripts\\python3
-
-继续执行python compile_telemac.py
-
-2.4 仍然无法连接生成mascaret,exe
-
-注销了compil_tools.py的部分错误信息代码，在第507行。
