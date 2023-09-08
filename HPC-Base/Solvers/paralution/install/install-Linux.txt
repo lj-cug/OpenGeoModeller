@@ -1,0 +1,4 @@
+# Linux OS下安装
+
+使用make或CMAKE, 执行源码安装
+
