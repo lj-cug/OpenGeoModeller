@@ -1,10 +1,10 @@
-# 安装AmgX
+# Install AmgX
 
 
-# 安装AmgX_Wrapper (AmgX-PETSc)
+# Install AmgX_Wrapper (AmgX-PETSc)
 
 
 
-# 安装AmgX_Wrapper_c
+# Install AmgX_Wrapper_c
 
 
