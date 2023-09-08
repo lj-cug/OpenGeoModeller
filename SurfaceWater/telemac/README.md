@@ -9,3 +9,6 @@ FORTRAN语言
 [EDF-Telemac主页](http://www.opentelemac.org/)
 
 [国内代理-浙江远算科技有限公司](https://cae.yuansuan.cn/)
+
+telemac的代码已经在[gitlab上](https://gitlab.pam-retd.fr/otm/telemac-mascaret/-/tree/main)
+
