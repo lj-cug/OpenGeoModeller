@@ -16,15 +16,16 @@ flow202110 NORNE_ATW2013.DATA --accelerator-mode=amgcl --matrix-add-well-contrib
 nvcc amgclSolverbackend.cu
 
 编译错误：
+
 impl_pointer xi=x->impl();
 
-使用GNU gcc-9/g++-9, 重新配置AmgCL
+必须使用GNU gcc-7/g++-7和CUDA-9.2, 重新配置AmgCL并编译测试程序
 	
-### 切换CUDA版本
+### 切换至CUDA-9.2版本
 
 rm -rf /usr/local/cuda
 
-ln -s /usr/local/cuda-9.2 /usr/local/cuda    # 切换到CUDA-9.2
+ln -s /usr/local/cuda-9.2 /usr/local/cuda
 	
 ## 运行说明
 
