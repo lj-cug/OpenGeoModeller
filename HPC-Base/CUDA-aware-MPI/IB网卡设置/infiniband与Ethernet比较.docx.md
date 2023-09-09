@@ -20,23 +20,20 @@ Alliance）定义推动在超级计算机集群领域广泛应用，同时，随
 的10Gbps DDR 20Gbps QDR 40Gps FDR56Gbps EDR
 100Gbps发展到今天的200Gbps，受益于RDMA技术，CPU没有因为速率的大幅提升而牺牲更多的资源用于网络处理而拖慢整个HPC性能的发展，未来将会推出**400Gbps**的NDR和**800Gbps**的XDR。
 
-![https://pic4.zhimg.com/80/v2-afc5625559ec42080699f2a057a73b93_720w.jpg](./media/image1.jpeg){width="4.720270122484689in"
-height="2.8882502187226597in"}
+![https://pic4.zhimg.com/80/v2-afc5625559ec42080699f2a057a73b93_720w.jpg](./media/image1.jpeg)
 
 ## 时延
 
 此处主要分为两部分进行对比，一部分在交换机上，作为网络传输模型中的二层技术，Ethernet交换机普遍采用了[MAC查表寻址和存储转发的方式]{.mark}（有部分产品借鉴了InfiniBand的Cut-though技术）由于需要考虑诸如IP、MPLS、QinQ等复杂业务的处理，导致Ethernet交换机处理流程较长，一般会在若干us（支持cut-though的会在200ns以上），而InfiniBand交换机二层处理非常简单，仅需要根据16bit的LID就可以查到转发路径信息，同时采用了Cut-Through[\[4\]](https://zhuanlan.zhihu.com/p/163104439/edit#_ftn4)技术大大缩短了转发时延至100ns以下，远远快于Ethernet交换机；网卡层面如前所述，采用RDMA技术，网卡转发报文不需要经过CPU，大大加快了报文在封装解封装处理的时延，一般InfiniBand的网卡收发时延（write，send）在600ns，而基于Ethernet上的TCP
 UDP应用的收发时延会在10us左右，相差十几倍之多。
 
-![https://pic4.zhimg.com/80/v2-1498582b93500806e6540057ef0b452b_720w.jpg](./media/image2.jpeg){width="3.3646161417322835in"
-height="2.5398972003499565in"}
+![https://pic4.zhimg.com/80/v2-1498582b93500806e6540057ef0b452b_720w.jpg](./media/image2.jpeg)
 
 ## 可靠
 
 在高性能计算领域，丢包重传对整体性能的影响非常大，所以需要一个高可靠的网络协议从机制层面来保证网络的无损特性，从而实现其高可靠特性。InfiniBand是一个完整的网络协议有自己定义的一至四层格式，报文在网络上的收发是基于端到端的流控来实现的，也就是说报文从发送端是否可以发送是受接收端调度控制的，这样就可以保证报文从发送到接受都不会出现拥塞，这样不仅实现了真正意义上的无损网络，同时由于网络上没有拥塞而使得业务流在InfiniBand的网络上传输不会出现缓存积累，这样时延抖动也就控制到了最小，从而构造了一个理想纯净的网络；而Ethernet构造的网络没有基于调度的流控机制，导致报文在发出的时候是不能保证对端是否会出现拥塞的，因此，为了能够吸收网络内瞬时流量的突然增大，需要在交换内开辟多大数十MB的缓存空间用于暂时存储这些报文，而缓存的实现是非常占用芯片面积的，这使得同等规格的Ethernet的交换机芯片面积明显大于InfiniBand芯片，不仅成本高而且功耗也会更大，除此之外，由于没有端到端的流控机制，导致网络在略极端情况下，会出现缓存拥塞而导致的丢包，使得数据转发性能大幅波动。
 
-![https://pic4.zhimg.com/80/v2-9cfa637e2ea62c9d5c261a1b6c58828f_720w.jpg](./media/image3.jpeg){width="5.067240813648294in"
-height="2.489134951881015in"}
+![https://pic4.zhimg.com/80/v2-9cfa637e2ea62c9d5c261a1b6c58828f_720w.jpg](./media/image3.jpeg)
 
 ## 组网方式
 
@@ -44,8 +41,7 @@ Ethernet的组网方式需要IP配合ARP协议来自动生成MAC表项的，需�
 
 虽然，以上几个角度是从InfiniBand的优势来说明的，但是，不可否认的事，Ethnernet本身有更加宽泛的速率支持从10Mbps到400Gbps，有更多低成本的设备支持，使其在时延、带宽、可靠性要求不高的场景中，得到更加广泛的应用。由于其兼容性扩展了RDMA技术（RoCE），使得不仅具备了高带宽，同时也可以初步具备无损网络的特质，因此，近些年来在高性能计算领域中也出现Ethernet网络的身影，这也从一个侧面看出Ethernet网络超强的适应性[\[7\]](https://zhuanlan.zhihu.com/p/163104439/edit#_ftn7)。
 
-![https://pic3.zhimg.com/80/v2-1430de568844e42dd5807446a2849332_720w.jpg](./media/image4.jpeg){width="5.3634186351706035in"
-height="2.6337521872265968in"}
+![https://pic3.zhimg.com/80/v2-1430de568844e42dd5807446a2849332_720w.jpg](./media/image4.jpeg)
 
 总结一下：Ethernet和InfiniBand是特点鲜明的两种不同的互连技术，各有所长，都有自己独到看家本领，在各自的应用领域中不断发展，增强互联网的性能优化互连的体验。
 
@@ -83,8 +79,7 @@ OFED用于Linux，Windows
 OpenFabrics Alliance
 (OFA)是一个基于开源的组织，它开发、测试、支持OpenFabrics企业发行版。该联盟的任务是开发并推广软件，通过将高效消息、低延迟和最大带宽技术架构直接应用到最小CPU开销的应用程序中，从而实现最大应用效率。
 
-![https://pic1.zhimg.com/80/v2-fcaf57efb93654b5b28d7b463665e568_720w.jpg](./media/image5.jpeg){width="4.714653324584427in"
-height="2.911545275590551in"}
+![https://pic1.zhimg.com/80/v2-fcaf57efb93654b5b28d7b463665e568_720w.jpg](./media/image5.jpeg)
 
 该联盟成立于2004年6月，最初是OpenIB联盟，致力于开发独立于供应商、基于Linux的InfiniBand软件栈。2005，联盟致力于支持Windows，此举将使软件栈真正跨平台。\
 2006年，该组织再次扩展其章程，包括对iWARP的支持，在2010年增加了对RoCE
@@ -107,8 +102,7 @@ InfiniBand的架构和服务能力(简化的InfiniBand架构)。\
 InfiniBand软件栈的设计是为了简化应用部署。IP和TCP套接字应用程序可以利用InfiniBand性能，而无需对运行在以太网上的现有应用程序进行任何更改。这同样适用于SCSI、iSCSI和文件系统应用程序。位于低层InfiniBand适配器设备驱动程序和设备独立API(也称为verbs)之上的上层协议提供了行业标准接口，可以无缝部署现成的应用程序。\
 LinuxInfiniBand软件架构。该软件由一组内核模块和协议组成。还有一些关联的用户模式共享库，这些库在图中没有显示。在用户级操作的应用程序对底层互连技术保持透明。本文的重点是讨论应用程序开发人员需要知道什么，才能使他们的IP、SCSI、iSCSI、套接字或基于文件系统的应用程序在InfiniBand上运行。
 
-![https://pic2.zhimg.com/80/v2-62022a2a494e463bbff5d78a101ce9b9_720w.jpg](./media/image6.jpeg){width="3.994867672790901in"
-height="4.168266622922134in"}
+![https://pic2.zhimg.com/80/v2-62022a2a494e463bbff5d78a101ce9b9_720w.jpg](./media/image6.jpeg)
 
 对协议的操作、底层核心和HCA驱动程序的详细讨论超出了本文的范围。但是，为了完整起见，下面是内核级别的简要概述，下面将介绍InfiniBand特定模块和协议。\
 内核代码逻辑上分为三层: **HCA驱动程序、核心InfiniBand模块**和**上层协议**。用户级访问模块实现了必要的机制，允许从用户模式应用程序访问InfiniBand硬件。核心InfiniBand模块包括InfiniBand设备的内核级中间层，中间层允许访问多个HCA

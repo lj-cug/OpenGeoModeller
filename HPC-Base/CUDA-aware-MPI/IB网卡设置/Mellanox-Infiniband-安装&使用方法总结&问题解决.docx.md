@@ -21,11 +21,11 @@ https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed
 
 下载[驱动](https://link.zhihu.com/?target=http%3A//www.mellanox.com/page/mlnx_ofed_eula%3Fmtag%3Dlinux_sw_drivers%26mrequest%3Ddownloads%26mtype%3Dofed%26mver%3DMLNX_OFED-5.5-1.0.3.2%26mname%3DMLNX_OFED_LINUX-5.5-1.0.3.2-ubuntu18.04-x86_64.tgz),以Ubuntu18.04为例：
 
-### 2.1检查PCIE 是否识别IB卡 {#检查pcie-是否识别ib卡 .标题3}
+### 2.1检查PCIE 是否识别IB卡
 
 lspci \| grep -i Mellanox\*
 
-### 2.2安装驱动 {#安装驱动 .标题3}
+### 2.2安装驱动
 
 1\. tar -zxvf MLNX_OFED_LINUX-5.5-1.0.3.2-ubuntu18.04-x86_64.tgz
 
@@ -37,16 +37,16 @@ lspci \| grep -i Mellanox\*
 
 5\. sudo /etc/init.d/opensmd restart
 
-### 2.3检查IB状态 {#检查ib状态 .标题3}
+### 2.3检查IB状态
 
 ibstat // ib卡State为 active 并且 Link Layer 为: InfiniBand
 则正常，如果Link Layer 为 Ethernet 模式，请见本文第三章节的FAQ
 
-### 2.4配置临时IP {#配置临时ip .标题3}
+### 2.4配置临时IP
 
 sudo ifconfig ib0 11.1.1.15 up //ib0为第一块IB卡， ip地址自己定义
 
-### 2.5测试读带宽  {#测试读带宽 .标题3}
+### 2.5测试读带宽
 
 前提: Server端和 Client 网络通常，
 
@@ -89,7 +89,7 @@ Manual](https://link.zhihu.com/?target=https%3A//www.mellanox.com/sites/default/
 
 ## 4. FAQ
 
-### 4.1切换IB卡模式为 InfiniBand {#切换ib卡模式为-infiniband .标题3}
+### 4.1切换IB卡模式为 InfiniBand
 
 1\. sudo mst start
 
@@ -99,11 +99,11 @@ Manual](https://link.zhihu.com/?target=https%3A//www.mellanox.com/sites/default/
 
 3\. ibstat // 查看修改后的IB卡模式
 
-### 4.2 查看IB 卡硬件型号信息 {#查看ib-卡硬件型号信息 .标题3}
+### 4.2 查看IB 卡硬件型号信息
 
 sudo mlxvpd -d mlx5_0 // -d 为 ib hca_id, 可以通过ibstat中查看
 
-### 4.3 NUMA 架构下IB卡带宽不稳定解决方法 {#numa-架构下ib卡带宽不稳定解决方法 .标题3}
+### 4.3 NUMA 架构下IB卡带宽不稳定解决方法
 
 // server 端执行
 

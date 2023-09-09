@@ -12,7 +12,7 @@
 
 ## CUDA-aware MPI
 
-### MPI简介 {#mpi简介 .标题3}
+### MPI简介
 
 MPI标准定义了信息传送API，包括点对点通信以及集合操作，如reduction。下面的C程序将"[Hello,
 there]{.mark}"从进程0发送到进程1.
@@ -84,7 +84,7 @@ return 0;
 ![C:\\Users\\Administrator\\Desktop\\LaunchMPI1-1024x598.png](media/image1.png){width="4.591940069991251in"
 height="2.6835159667541557in"}
 
-### 什么是CUDA-aware MPI？ {#什么是cuda-aware-mpi .标题3}
+### 什么是CUDA-aware MPI?
 
 一般情况下，MPI传递指针给host内存，然后使用cudaMemcopy将GPU缓存数据传输给host内存。CUDA-aware
 MPI可以直接发送和接收GPU缓存间的数据。没有CUDA-aware
@@ -112,14 +112,13 @@ MPI_Send(s_buf_d,size,MPI_CHAR,1,100,MPI_COMM_WORLD);
 
 MPI_Recv(r_buf_d,size,MPI_CHAR,0,100,MPI_COMM_WORLD, &status);
 
-### CUDA-aware MPI如何工作？ {#cuda-aware-mpi如何工作 .标题3}
+### CUDA-aware MPI如何工作？
 
 [CUDA 4.0]{.mark}开始支持[Unified Virtual Addressing (UVA)]{.mark} (CUDA
 4.0, Compute Capability 2.0 and later GPUs)简化了CUDA-aware
 MPI，所有的CPU和GPU内存统一为一个地址空间。
 
-![https://devblogs.nvidia.com/wp-content/uploads/2013/03/UVA.png](media/image2.png){width="5.440356517935258in"
-height="2.1630741469816273in"}
+![https://devblogs.nvidia.com/wp-content/uploads/2013/03/UVA.png](media/image2.png)
 
 使用UVA，缓存位置基于地址的MSB可以确定，因此无需改变MPI的API。
 
@@ -130,7 +129,7 @@ CUDA-aware MPI不仅让CUDA+MPI程序使用更容易，还是程序更高效，�
 -   CUDA-aware MPI takes advantage of best GPUDirect technology
     available
 
-### 支持CUDA-aware MPI库 {#支持cuda-aware-mpi库 .标题3}
+### 支持CUDA-aware MPI库
 
 -   [MVAPICH2](https://developer.nvidia.com/mvapich) (ver.???)
 
@@ -154,35 +153,32 @@ GPUDirect technologies cover all kinds of inter-rank communication:
 intra-node, inter-node, and RDMA inter-node communication.
 （GPUDirect是一类技术的总称。）
 
-### （1）GPUDirect RDMA （计算节点间） {#gpudirect-rdma-计算节点间 .标题3}
+### （1）GPUDirect RDMA （计算节点间）
 
 The newest GPUDirect feature, introduced with [CUDA 5.0,]{.mark} is
 support for [Remote Direct Memory Access (**RDMA**),]{.mark} with which
 buffers can be [directly sent from the GPU memory to a network
-adapter]{.mark} without staging through host
-memory.（[GPU与数据交换机之间的直接数据传递]{.mark}）
+adapter] without staging through host
+memory.（[GPU与数据交换机之间的直接数据传递]）
 
 Eliminate CPU bandwidth and latency bottlenecks using remote direct
 memory access (RDMA) transfers between GPUs and other PCIe devices,
 resulting in significantly improved MPISendRecv efficiency between GPUs
 and other nodes)
 
-![https://developer.nvidia.com/sites/default/files/akamai/cuda/images/toolsscreenshots/RDMA.png](media/image3.png){width="5.048649387576553in"
-height="2.277772309711286in"}
+![https://developer.nvidia.com/sites/default/files/akamai/cuda/images/toolsscreenshots/RDMA.png](media/image3.png)
 
 GPUDirect™ Support for RDMA, Introduced with [CUDA 5
 (2012)](https://developer.nvidia.com/cuda-toolkit)
 
-![GPUDirectRDMA](media/image4.png){width="5.555758967629046in"
-height="1.6594925634295714in"}
+![GPUDirectRDMA](media/image4.png)
 
-### （2）Peer-to-Peer Transfers between GPUs（计算[节点内GPU间的直接数据传递]{.mark}） {#peer-to-peer-transfers-between-gpus计算节点内gpu间的直接数据传递 .标题3}
+### （2）Peer-to-Peer Transfers between GPUs（计算节点内GPU间的直接数据传递）
 
 Use high-speed DMA transfers to copy data between the memories of two
 GPUs on the same system/PCIe bus.
 
-![https://developer.nvidia.com/sites/default/files/akamai/cuda/images/GPUDirect_v2.0_p2p_coms.png](media/image5.png){width="4.597968066491688in"
-height="2.7600863954505686in"}
+![https://developer.nvidia.com/sites/default/files/akamai/cuda/images/GPUDirect_v2.0_p2p_coms.png](media/image5.png)
 
 NVIDIA GPUDirect Peer-to-Peer (P2P) Communication Between GPUs on the
 Same PCIe Bus (2011)
@@ -190,12 +186,11 @@ Same PCIe Bus (2011)
 Another variant is GPUDirect for Peer-to-Peer (P2P) transfers, which was
 introduced with CUDA 4.0 and can accelerate intra-node communication.
 Buffers can be directly copied between the memories of two GPUs in the
-same system with [GPUDirect P2P.]{.mark}
+same system with [GPUDirect P2P.]
 
-![GPUDirectP2P](media/image6.png){width="5.890778652668416in"
-height="1.8477723097112861in"}
+![GPUDirectP2P](media/image6.png)
 
-### （3）GPUDirect (Pined memory) {#gpudirect-pined-memory .标题3}
+### （3）GPUDirect (Pined memory)
 
 GPUDirect for accelerated communication with network and storage devices
 was the first GPUDirect technology, introduced with CUDA 3.1. This
@@ -204,7 +199,6 @@ common pinned buffer in order to avoids an unnecessary memcpy within
 host memory between the intermediate pinned buffers of the CUDA driver
 and the network fabric buffer.
 
-![https://developer.nvidia.com/sites/default/files/akamai/cuda/images/GPUDirect_comp.JPG](media/image7.jpeg){width="5.644597550306211in"
-height="2.636239063867017in"}
+![https://developer.nvidia.com/sites/default/files/akamai/cuda/images/GPUDirect_comp.JPG](media/image7.jpeg)
 
 GPUDirect™ Shared Memory (2010)

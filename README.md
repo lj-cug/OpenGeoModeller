@@ -45,4 +45,4 @@
 有对这个项目感兴趣的同仁，一块研究，提高地球科学数值模拟的研究。
 
 作者简介：李健，QQ: 94207625        	email: jianli@cug.edu.cn   
-		  ![微信QR](./HPC-Base/QR-code.png)
+		  [微信QR](./HPC-Base/QR-code.png)
