@@ -2,8 +2,7 @@
 
 [https://users.oden.utexas.edu/\~michoski/dgswem_doc/index.html#](https://users.oden.utexas.edu/~michoski/dgswem_doc/index.html)
 
-This is documentation for the discontinuous Galerkin shallow water
-equations model (DG-SWEM).
+This is documentation for the discontinuous Galerkin shallow water equations model (DG-SWEM).
 
 ## 发展史
 
@@ -18,109 +17,57 @@ Neupane的代码来看，已经脱离了ADCIRC，但仍然采用了很多ADCIRC�
 
 Brus的代码与Neupane的代码区别很大了！
 
-## 下载DG-SWEM（Neupane与Brus的dgswe不同）
+## 下载DG-SWEM
 
-DG-SWEM is available for download through github. The reposisoty is
-openly available to anyone, though (at present) we are tracking users
-for internal purposes. In order to get the repository, please create a
-github account.
-
-Once you have done so, join the DG-SWEM google groups online forum and
-start a new topic called "Access." You will be added to the forum and
-given access to the repository at this point.
-
-The online forum is intended to help DG-SWEM users and developers to
-improve and learn how to use the code. Please feel free to ask any
-question there, or to answer any question you feel qualified to respond
-to. This is a friendly environment, and is entirely intended to help the
-user community grow and flourish.
+Neupane与Brus版本的dgswe不同, github上下载
 
 ## 运行DG-SWEM的基本模块
 
-Running DG-SWEM should be quite simple. The code has been primarily
-developed to work with the [intel fortran
-compilers](http://software.intel.com/en-us/intel-compilers), and
-[python](http://www.python.org/) (with sympy functionality) is also
-necessary in order to run the sediment transport portion of the code --
-though the code may easily be run with this function turned off.
+运行DG-SWEM需要FORTRAN编译器和Python及[sympy](http://sympy.org/en/index.html)库
 
-That being said, gfortran compilers can also be used if one has GNU
-Fortran (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3 or newer. For information
-on how to compile using this compiler see the [online
-forum](https://groups.google.com/forum/#!forum/dgswem).
+进入dgswem/work/.
 
-Once you have intel compilers and python (with
-[sympy](http://sympy.org/en/index.html) -- 一个符号计算库) loaded, go to
-the work directory, "dgswem/work/." The code can be compiled to run in
-either serial, parallel, or both. To compile all of the above, a simple
+make all
 
-\$ make all
+./dgswem_serial
 
-works. This is the best option, and in order to run the test case that
-ships with the code, you will need at least 64 processors, requiring
-MPI. We tend to use
-[mvapich2](http://mvapich.cse.ohio-state.edu/overview/mvapich2/), though
-any implementation will work.
+或者
 
-Now, in order to run the code you can simply type:
+mpirun -np 12 ./dgswem
 
-\$ ./dgswem_serial
+如果需要耦合DG-SWEM与波浪模型[SWAN](http://swanmodel.sourceforge.net/),
+可以参考[online forum](https://groups.google.com/forum/#!forum/dgswem).
 
-or
-
-\$ ibrun -np 12 ./dgswem
-
-and so on, depending on your submission system. A sample script is
-included in the repo for submitting to
-[Stampede](https://www.tacc.utexas.edu/stampede/) on
-[TACC](https://www.tacc.utexas.edu/).
-
-All parts of the code can be made separately as well. To see these
-options, one can simply open "makefile" in the work directory. For
-example, if one wants to compile DG-SWEM with short waves from
-[SWAN](http://swanmodel.sourceforge.net/), you can find the instructions
-in the [online forum](https://groups.google.com/forum/#!forum/dgswem).
-
-It should be noted that the test case that ships in the git repository
-requires large wind files that cannot be stored on github. As a
-consequence, these files are hosted elsewhere, and downloaded during
-compilation using the "get_winds.py" script in the work directory. When
-running a new (or different) test case, you need to make sure that
-get_winds is turned off in the "makefile." This can be accomplished by
-removing "winds" from the makefile.
+运行算例，需要风场数据，可以使用get_winds.py脚本下载。运行新的算例时，需要在makefile中关闭get_winds，可以在makefile中删掉winds来实现.
 
 ## 输入文件fort.dg
 
-The basic input files for DG-SWEM are similar, and meant to coincide
-with those of the [ADCIRC project](http://adcirc.org/). The majority of
-the information about these input files [can be found on the adcirc
-pages](http://adcirc.org/home/documentation/users-manual-v50/input-file-descriptions/).
+DGSWE的基本输入与[ADCIRC project](http://adcirc.org/)类似，输入文件的信息
+参考[adcirc的输入](http://adcirc.org/home/documentation/users-manual-v50/input-file-descriptions/).
 
-The basic difference in the input files for DG-SWEM can be found in the
-fort.dgfile in the work directory. An example of this file
-(the one that ships with the repo) is:
+输入文件的主要区别见work路径下的fort.dgfile，一个例子：
 
-1 ! DGSWE
+1    ! DGSWE
 
-0,2 ! padapt(1=on,0=off), pflag(1=smooth,2=shocks)
+0,2  ! padapt(1=on,0=off), pflag(1=smooth,2=shocks)
 
-1,8 ! gflag(0=fixed,1=dioristic), dioristic tolerance (0-100)
+1,8  ! gflag(0=fixed,1=dioristic), dioristic tolerance (0-100)
 
 1,1,1 ! pl(low p), ph(high p), px(fixed p)
 
 0.00005 ! slimit (epsilon tolerance in pflag=1 p_enrichment)
 
-10 ! plimit (integer timestep counter for p_enrichment)
+10      ! plimit (integer timestep counter for p_enrichment)
 
-1,0.5,2 ! k, ks, L for pflag=2 tolerance:log((k\*p)\*\*(-L\*2))-ks
+1,0.5,2  ! k, ks, L for pflag=2 tolerance:log((k\*p)\*\*(-L\*2))-ks
 
-1 ! FLUXTYPE
+1          ! FLUXTYPE
 
-2,2 ! RK_STAGE,RK_ORDER
+2,2 		! RK_STAGE,RK_ORDER
 
-1 ! DG_TO_CG (ignore)
+1 		! DG_TO_CG (ignore)
 
-0 ! MODAL_IC
+0 		! MODAL_IC
 
 0, 86400 ! DGHOT, DGHOTSPOOL
 
@@ -250,7 +197,7 @@ fort.dgfile in the work directory. An example of this file
 DG-SWEM has been written in a semi-modular way, in order to preserve
 performance on when certain features are not active. As a consequence
 many compiler directive are used. The directives can be set in
-[cmplrflg.mk]{.mark}. Here is a breakdown of the compiler directive
+cmplrflg.mk. Here is a breakdown of the compiler directive
 options:
 
 -   **DRKSSP**: Indicates that strong stability preserving Runge Kutta
@@ -288,186 +235,3 @@ options:
 -   **[DSWAN:]{.mark} Indicates that the nearshore wave model
     [SWAN](http://swanmodel.sourceforge.net/) will be coupled to the
     solution.**
-
-# DGSWE基本操作
-
-从run_case.py代码中学习到：
-
-使用python2语言的subprocess module控制各程序的运行：
-
-show_output显示执行某命令（进程）的输出信息。
-
-def show_output(command):
-
-output = subprocess.Popen(command,stdout=subprocess.PIPE,shell=True)
-
-while output.poll() is None:
-
-l = output.stdout.readline()
-
-print l.rstrip(\'\\n\')
-
-## 1、设置绝对路径
-
-plot_work_dir
-
-dgswe_work_dir
-
-example_dir
-
-nprocessors #启用的进程数(MPI)
-
-## 2、编译DG-SWEM
-
-（1）进入/work目录，编译dgswe_mpi程序：
-
-make clean
-
-make metis
-
-make dgswe OPTS=mpi
-
-make dgprep
-
-make dgpost
-
-注意：上述编译遇到错误，解决方法见"DGSWEM编译问题解决.md"
-
-（2）进入/plot/work目录，编译plot程序：
-
-make clean
-
-make plot
-
-（3）运行dgswe
-
--   建立一个文件：np.in，内容是nprocessors
-
--   执行前处理：./dgprep \< np.in
-
--   执行主程序：mpirun --n nprocessors ./dgswe_mpi
-
--   再执行后处理：./dgpost
-
-（4）绘制（可视化）结果：
-
-./plot
-
-## 3、删除所有运行例子产生的文件
-
-clean_case.py
-
-删除所有的文件，包括可执行程序。
-
-## plot后处理程序
-
-输出为PostScript的矢量图，包括高阶FEM的可视化方法（见Brus,
-2017的博士论文）
-
-需要输入文件：plot.inp和plot_sta.inp (可选)
-
-plot.inp的几个感兴趣的参数：
-
-station plot option 绘制测站位置的示意图
-
-order of nodal set for plotting straight elements
-
-order of nodal set for plotting curved elements
-
-adaptive plotting option
-
-colormap path 可选择Legend颜色模式
-
-plot Google Map 下载谷歌地图图片，作为背景图
-
-## error分析程序
-
-分析收敛性和误差的后处理程序，比较粗网格和细网格的收敛速率。
-
-需要输入文件error.inp
-
-!/home/sbrus/Codes/dgswe/grids/converge_quad.grd ! coarse grid file
-
-!/home/sbrus/data-drive/converge_quad/mesh1/P2/CTP2/ ! coarse output
-directory
-
-!2 ! p - coarse polynomial order
-
-!2 ! ctp - coarse parametric coordinate transformation order
-
-!.5d0 ! dt - coarse timestep
-
-!/home/sbrus/Codes/dgswe/grids/converge_quad2.grd ! fine grid file
-
-!/home/sbrus/data-drive/converge_quad/mesh2/P2/CTP2/ ! fine output
-directory
-
-!2 ! p - fine polynomial order
-
-!2 ! ctp - fine parametric coordinate transformation order
-
-!.25d0 ! dt - fine timestep
-
-!2d0 ! tf - final time (days)
-
-!20 ! lines - lines in output files
-
-## bathy_interp程序
-
-地形的高阶插值计算。
-
-输入文件：bathy.inp；内容？
-
-输出文件：\_interp.hb、elem_nodes.d、interp_nodes.d、boundary_nodes.d、bathy.d
-
-## rimls程序
-
-输入文件：rimls.inp
-
-具体功能尚未清楚。是优化网格的？
-
-/home/sbrus/Codes/dgswe/grids/dummy.cb ! curved boundary file
-
-/home/sbrus/Codes/dgswe/rimls/work/Rimls_test-sub.grd ! eval grid - used
-to determine rimls surface evaluation points
-
-1 ! eval hbp - bathymetry order
-
-1 ! eval ctp - parametric coordinate transformation order
-
-/home/sbrus/Codes/dgswe/grids/dummy.cb ! curved boundary file
-
-3 ! lsp - moving least squares fit order
-
-0 ! basis_opt - basis for least squares polynomial (1 - orthonormal,
-else - simple)
-
-1d0 ! Erad - radius of Earth
-
-0d0,0d0 ! lambda0,phi0 - center of CPP coordinate system
-
-3.0d0 ! r - muliplier for search radius (1.5 - 4.0)
-
-1.5d0 ! sigma_n - smoothing parameter (0.5 - 1.5)
-
-../output/ ! output directory
-
-1 ! nrpt - number of random points (for converging channel hardwire)
-
-0d0
-
-## spline程序
-
-输入文件：spline.inp
-
-## stations程序
-
-输入文件：dgswe.inp
-
-绘制测站的位置示意图。
-
-## util文件夹
-
-该文件夹下包含很多工具小程序，FORTRAN和MATLAB语言。
-
-
