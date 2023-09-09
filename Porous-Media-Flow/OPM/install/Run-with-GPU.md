@@ -18,18 +18,13 @@ nvcc amgclSolverbackend.cu
 编译错误：
 impl_pointer xi=x->impl();
 
-参考： https://stackoverflow.com/questions/55143135/error-cannot-call-member-function-impl-of-impl-pointer-in-boost
-
-(1) 使用CUDA-9.x，不能使用CUDA-10.x (最佳解决方案)
-I had the same issue recently on Ubuntu 18.10 with boost 1.78 an CUDA 10.1. I fixed the error by switching to CUDA 9.2. and gcc-7.				   
-				   
-(2)安装Boost时，仅使用CPU_ONLY模式 (不推荐)
-Obviously not the best solution, but I solved this problem by enabling CPU_ONLY mode in the Makefile.config
+使用GNU gcc-9/g++-9, 重新配置AmgCL
 	
 ### 切换CUDA版本
 
 rm -rf /usr/local/cuda
-ln -s /usr/local/cuda-9.0 /usr/local/cuda    # 切换到CUDA-9.2
+
+ln -s /usr/local/cuda-9.2 /usr/local/cuda    # 切换到CUDA-9.2
 	
 ## 运行说明
 
