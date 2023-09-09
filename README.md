@@ -40,6 +40,12 @@
 2.  基于Linux操作系统(Ubuntu 20.04 和 Huawei Euler OS)
 3.  代码的编译bash脚本
 
+## 实施效果预览
+
+1.  [个人集群硬件]()
+2.  [集群运行监测界面](./HPC-Base/Ubuntu20.04-Cluster/media/image6.png)
+3.  [高性能计算应用部署](./HPC-Base/Ubuntu20.04-Cluster/我的集群照片.jpg)
+
 ## 合作与共赢
 
 有对这个项目感兴趣的同仁，一块研究，提高地球科学数值模拟的研究。
