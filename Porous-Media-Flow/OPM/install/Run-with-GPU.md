@@ -35,7 +35,8 @@ amgclSolverBackend.cpp代码中，在编译时，可以使用不同的amgcl参数(如选择预处理器或
 
 linear-solver-reduction, linear-solver-max-iter, flow-linear-solver-verbosity
 
-AMGCL默认使用内建的后端，运行在CPU上。也可使用CUDA作为后端，如果CMake发现CUDA。
+AMGCL默认使用内建的后端，运行在CPU上。
+如果CMake发现CUDA，则使用CUDA作为后端。
 这时必须设置AMGCL_CUDA=1，在amgclSolverBackend.cpp:solve_system().
 
 也可以在solve_system()中选择不同的预处理器或迭代求解器。
@@ -82,30 +83,34 @@ G: Overall Newton Iterations
 H: Overall Linear Iterations
 
 CPU: unknown 16-core Haswell, 2.3GHz, GPU: NVIDIA V100:
+---------------------------------------------------------
 
 Dune:                            708 (164+393+ 84+55), 1866, 1501, 22131
 
 amgcl + cuda:                   1090 (166+775+ 83+53), 1868, 1504, 22204
 
-cusparseSolver:                  447 (165+133+ 83+53), 1846, 1485, 21167
+cusparseSolver:                  447 (165+133+ 83+53), 1846, 1485, 21167     单节点,单GPU最佳
 
 openclSolver (graph_coloring):   612 (210+223+108+58), 2371, 1984, 45230
 
 openclSolver (level_scheduling): 637 (170+313+ 85+56), 1824, 1462, 22133
 
+
 CPU: Intel Xeon E5-2620 v3 @ 2.4GHz, GPU: NVIDIA 2080Ti:
+---------------------------------------------------------
 
 Dune:                            816 (322+413+111+65), 1866, 1501, 22131
 
 amgcl + cuda:                    695 (207+292+116+65), 1866, 1501, 22333
 
-cusparseSolver:                  543 (205+155+106+62), 1845, 1485, 21132
+cusparseSolver:                  543 (205+155+106+62), 1845, 1485, 21132     单节点,单GPU最佳
 
 openclSolver (graph_coloring):   725 (267+229+142+71), 2335, 1943, 43688
 
 The value of 'prm.precond.relax.solve.iters' is denoted as N.
 
 CPU: AMD Ryzen 5 2400G, NVIDIA GTX 1050Ti:
+---------------------------------------------------------
 
 Dune:                            414 (120+194+59+34), 1866, 1501, 22131
 
@@ -113,7 +118,9 @@ amgcl + cuda:                    968 (138+720+66+36), 1835, 1474, 22190
 
 amgcl + vexcl, N=2:             1420 (155+1154+76+27), 2042, 1664, 153288 | 329 fallbacks to Dune
 
+
 CPU: AMD Ryzen 5 2400G, NVIDIA GTX 1050Ti, masters of 2021-8-8 10:00:
+---------------------------------------------------------
 
 amgcl + cuda:                   1028 (136+ 714+67+94), 1860, 1494,  21946 | 0 fallbacks
 
@@ -136,20 +143,9 @@ amgcl + vexcl, N=10:            1058 (135+ 758+62+88), 1852, 1491,  51746 |   1 
 Well plots verified for N=[2,6,8,10]
 
 
-Detail, amgcl + cuda, NVDIA 2080Ti, accumulated time (s):
-
-solve_system: 225.2
-
-get_result:     0.3
-
-convert_data:   7.4
-
-copy_rhs:       0.4
-
-solve_system here also includes the ilu decomposition inside amgcl
-
 ### Example amgcl_options.json
 
+"
 {
     "backend_type": "cuda",
     "precond": {
@@ -167,6 +163,6 @@ solve_system here also includes the ilu decomposition inside amgcl
         "verbose": "true"
     }
 }
-
+"
 
 
