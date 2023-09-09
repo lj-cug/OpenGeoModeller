@@ -1,0 +1,17 @@
+{
+    "backend_type": "cuda",
+    "precond": {
+        "class": "relaxation",
+	"type": "ilu0",
+        "damping": "0.9",
+        "solve": {
+          "iters": "2"
+        }
+    },
+    "solver": {
+        "type": "bicgstab",
+        "maxiter": "200",
+        "tol": "1e-2",
+        "verbose": "true"
+    }
+}

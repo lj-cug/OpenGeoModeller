@@ -143,26 +143,6 @@ amgcl + vexcl, N=10:            1058 (135+ 758+62+88), 1852, 1491,  51746 |   1 
 Well plots verified for N=[2,6,8,10]
 
 
-### Example amgcl_options.json
+### amgcl_options.json
 
-"
-{
-    "backend_type": "cuda",
-    "precond": {
-        "class": "relaxation",
-	"type": "ilu0",
-        "damping": "0.9",
-        "solve": {
-          "iters": "2"
-        }
-    },
-    "solver": {
-        "type": "bicgstab",
-        "maxiter": "200",
-        "tol": "1e-2",
-        "verbose": "true"
-    }
-}
-"
-
-
+使用这个文件，设置amgcl使用的预处理器和迭代求解器
