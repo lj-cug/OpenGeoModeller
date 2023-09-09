@@ -10,7 +10,28 @@ flow202110 NORNE_ATW2013.DATA --accelerator-mode=amgcl --matrix-add-well-contrib
 
 注意：--accelerator-mode的求解器选择
 
-## 说明
+## 编译后端为CUDA的opm-simulator的问题及解决
+
+### 问题
+nvcc amgclSolverbackend.cu
+
+编译错误：
+impl_pointer xi=x->impl();
+
+参考： https://stackoverflow.com/questions/55143135/error-cannot-call-member-function-impl-of-impl-pointer-in-boost
+
+(1) 使用CUDA-9.x，不能使用CUDA-10.x (最佳解决方案)
+I had the same issue recently on Ubuntu 18.10 with boost 1.78 an CUDA 10.1. I fixed the error by switching to CUDA 9.2. and gcc-7.				   
+				   
+(2)安装Boost时，仅使用CPU_ONLY模式 (不推荐)
+Obviously not the best solution, but I solved this problem by enabling CPU_ONLY mode in the Makefile.config
+	
+### 切换CUDA版本
+
+rm -rf /usr/local/cuda
+ln -s /usr/local/cuda-9.0 /usr/local/cuda    # 切换到CUDA-9.2
+	
+## 运行说明
 
 amgclSolverBackend.cpp代码中，在编译时，可以使用不同的amgcl参数(如选择预处理器或求解器)
 
