@@ -1,27 +1,19 @@
-# ubuntu下opencl环境搭建
+# Ubuntu OS下安装OpenCL及测试
 
-## 下载 OpenCl SDK
+## 安装
 
-https://software.intel.com/content/www/us/en/develop/tools/opencl-sdk/choose-download.html，选择linux平台，解压。
-
-sudo ./install.sh
-
-## 安装 clinfo
+安装 clinfo
 
 sudo apt install clinfo
 
-## 安装开发包
+输入clinfo，查看显卡是否支持OpenCL
 
-sudo apt install ocl-icd-opencl-dev
+安装开发包：
 
-cmake 配置
-set(sysLibs OpenCL)
-target_link_libraries(   
-    ${project_name}
-      ${sysLibs}
-)
+apt-get install opencl-headers ocl-icd-opencl-dev
 
-测试
+
+## 测试
 
 #include <stdio.h>
 #include <stdlib.h>
