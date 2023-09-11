@@ -6,6 +6,8 @@ Golem采用非结构网格表征裂隙岩石，模拟地热系统
 
 MOOSE框架下可调用PETSc的求解器、Hypre等，原理参考doc
 
+5年前代码停止研发
+
 ## 参考文献
 
 Mauro Cacace and Antoine B. Jacquey. 2017. Flexible parallel implicit
