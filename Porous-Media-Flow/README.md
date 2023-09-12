@@ -9,7 +9,7 @@ L. Bilke, B. Flemisch, T. Kalbacher, O. Kolditz, R. Helmig, T. Nagel, Developmen
 
 ## MODFLOW6
 
-美国USGS开发的地下水模拟系统，基于PETSc，MPI并行化MODFLOW6
+美国USGS开发的地下水模拟系统，基于PETSc和MPI并行化MODFLOW6
 
 ## OPM
 
@@ -27,13 +27,13 @@ L. Bilke, B. Flemisch, T. Kalbacher, O. Kolditz, R. Helmig, T. Nagel, Developmen
 
 Thermo-hydro-mechanical/chemical (THMC)模拟系统，有ogs5和ogs6两个版本
 
-## waiwera
+## Waiwera
 
 基于MPI和PETSc开发的地热及CO2封存模拟系统
 
 ## golem
 
-基于MPI并行的地热模拟系统
+基于MOOSE框架的并行化地热模拟系统
 
 ## MPLBM-UT
 
