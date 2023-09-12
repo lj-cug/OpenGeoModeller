@@ -357,13 +357,13 @@ mesh **=** geom**.**generate_mesh()
 ## 参考文献
 
 [[\[1\] Gmsh
-官方网站.]{.underline}](https://zhuanlan.zhihu.com/p/256334824/www.gmsh.info)
+官方网站]](https://zhuanlan.zhihu.com/p/256334824/www.gmsh.info)
 
 [[\[2\] Gmsh CAD File Import and Mesh Generation
-Tutorial.]{.underline}](https://link.zhihu.com/?target=https%3A//www.featool.com/tutorial/2017/11/06/gmsh-cad-step-file-import-and-mesh-generation-tutorial)
+Tutorial.]](https://link.zhihu.com/?target=https%3A//www.featool.com/tutorial/2017/11/06/gmsh-cad-step-file-import-and-mesh-generation-tutorial)
 
 [[\[3\] Visual Description of GMSH
-Tutorials]{.underline}](https://link.zhihu.com/?target=http%3A//www.cfdyna.com/Home/gmshCatalogue.html)
+Tutorials]](https://link.zhihu.com/?target=http%3A//www.cfdyna.com/Home/gmshCatalogue.html)
 
-[[\[4\] Gmsh
-极简入门]{.underline}](https://link.zhihu.com/?target=https%3A//numanal.com/gmsh-%25E6%259E%2581%25E7%25AE%2580%25E5%2585%25A5%25E9%2597%25A8/)
+[\[4\] Gmsh
+极简入门](https://link.zhihu.com/?target=https%3A//numanal.com/gmsh-%25E6%259E%2581%25E7%25AE%2580%25E5%2585%25A5%25E9%2597%25A8/)

@@ -207,8 +207,7 @@ bottom of the display. Using pulldown menus, the menu bar allows access
 to a variety of features used to create, modify, and report on the
 status of grids.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/greditmain.gif](./media/image1.gif){width="4.757225503062117in"
-height="3.8591951006124234in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/greditmain.gif](./media/image1.gif)
 
 File
 
@@ -216,15 +215,13 @@ The pulldown menu **File** controls the reading/writing of data files
 (through two separate popups), printing of the drawing area, and
 allowing the user to exit ACE/gredit.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/filemenu.gif](./media/image2.gif){width="0.9879582239720035in"
-height="1.1271675415573053in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/filemenu.gif](./media/image2.gif)
 
 • Selecting the **Read** item from the **File** pulldown opens a dialog
 allowing data to be read from disk. See Chapter 3 for details about the
 file formats.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/filesread.gif](./media/image3.gif){width="2.67051946631671in"
-height="4.7532403762029745in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/filesread.gif](./media/image3.gif)
 
 Use the **Filter** selection to get a listing of files in the directory.
 
@@ -262,8 +259,7 @@ drawn.
 
 Similarly, selecting the Save popup
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/fileswrite.gif](./media/image4.gif){width="2.4722222222222223in"
-height="1.5264140419947507in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/fileswrite.gif](./media/image4.gif)
 
 opens a dialogue allowing data to be written to disk.
 
@@ -275,8 +271,7 @@ and click on Accept.
 To generate a hardcopy, select the **Print** item from
 the **File** menu.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/print.gif](./media/image5.gif){width="2.802748250218723in"
-height="2.1597222222222223in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/print.gif](./media/image5.gif)
 
 Select the device, either PostScript landscape, PostScript portrait,
 FrameMake .mif landscape, or FrameMaker .mif portrait.
@@ -301,13 +296,11 @@ to disk will be lost upon the termination of ACE/gredit.
 Items in the **Display** pulldown menu affect how and which objects are
 drawn on the drawing area.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/displaymenu.gif](./media/image6.gif){width="2.6770833333333335in"
-height="1.7940780839895014in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/displaymenu.gif](./media/image6.gif)
 
 **Settings**
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/display.gif](./media/image7.gif){width="2.6417530621172354in"
-height="2.3194444444444446in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/display.gif](./media/image7.gif)
 
 **Scroll %** sets the amount of movement for the arrow buttons located
 on the main panel. With the mouse, press on the highlighted bar while
@@ -331,8 +324,7 @@ a point is in an element.
 
 Autoscale the display with regard to one or more features
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/scaling.gif](./media/image8.gif){width="1.3055555555555556in"
-height="1.9271216097987751in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/scaling.gif](./media/image8.gif)
 
 Select the object(s) to use to set the scale, then click on Accept. The
 display will be scaled in such a manner that the selected object(s) will
@@ -342,8 +334,7 @@ be contained in the display.
 
 Set the
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/mapscale.gif](./media/image9.gif){width="2.8958333333333335in"
-height="2.225909886264217in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/mapscale.gif](./media/image9.gif)
 
 Set the map scale legend by selecting the length of the legend, the
 units of the legend, and other properties. Use \<bplace\< b=\"\"\>to
@@ -351,8 +342,7 @@ pick the location of the legend on the drawing area.
 
 **Set isolines of bathymetry (edit grid)**
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/isolines.gif](./media/image10.gif){width="3.8125in"
-height="5.3714479440069995in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/isolines.gif](./media/image10.gif)
 
 **Limits (status only)**: Display the minimum and maximum values of the
 depths in the edit grid.
@@ -400,25 +390,21 @@ background grid only.
 
 Set the scaling of the drawing area
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/world.gif](./media/image11.gif){width="2.1041666666666665in"
-height="2.6056321084864393in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/world.gif](./media/image11.gif)
 
-**Viewport （视角）**
+**Viewport**
 
 Set the viewport or clipping region of the drawing area
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/view.gif](./media/image12.gif){width="2.4569444444444444in"
-height="2.6645833333333333in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/view.gif](./media/image12.gif)
 
 Read an image to display on the drawing area.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/readimage.gif](./media/image13.gif){width="3.647222222222222in"
-height="4.636111111111111in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/readimage.gif](./media/image13.gif)
 
 **Set colors**
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/colors.gif](./media/image14.gif){width="3.9791666666666665in"
-height="4.326439195100613in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/colors.gif](./media/image14.gif)
 
 ACE/gredit uses 48 colors divided into three sections, one reserved for
 annotation, the second is used for isolines of bathymetry, the third for
@@ -473,8 +459,7 @@ the popup.
 Use this popup to place annotative text, lines, and rectangles on the
 drawing area.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/objects.gif](./media/image15.gif){width="2.3055555555555554in"
-height="2.761258748906387in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/objects.gif](./media/image15.gif)
 
 **Text:** To draw a text string, click on Text, then click at the
 location on the drawing area to place the text and type the text
@@ -507,13 +492,12 @@ rectangles created after the use of this popup.
 **Use Clear all text, Clear all lines, and Clear all boxes** to remove
 each of these types of objects.
 
-### [Locate]{.mark}
+### Locate
 
 Displays information concerning individual nodes and elements, and
 places the pointer at user-selected nodes and elements.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/locmenu.gif](./media/image16.gif){width="1.9722222222222223in"
-height="3.3859733158355207in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/locmenu.gif](./media/image16.gif)
 
 **Find nearest node**
 
@@ -563,13 +547,11 @@ Selecting the Goto node/element item brings up a popup allowing a node
 or element number to be entered. pressing the Goto node or Goto element
 button moves the pointer to that node or element.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/goto.gif](./media/image17.gif){width="1.8055555555555556in"
-height="2.100376202974628in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/goto.gif](./media/image17.gif)
 
 **Goto X, Y**
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/gotoxy.gif](./media/image18.gif){width="1.3888888888888888in"
-height="1.3936909448818897in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/gotoxy.gif](./media/image18.gif)
 
 Use Goto X, Y to warp the pointer to a particular location in the
 drawing area.
@@ -588,8 +570,7 @@ Disable the use of a fixed point for the locator position.
 Set the format and precision to use for the display of the pointer
 position.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/locator.gif](./media/image19.gif){width="3.986111111111111in"
-height="2.898788276465442in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/locator.gif](./media/image19.gif)
 
 **Locator:** Toggle the continuous display of the pointer position. When
 ON, the pointers posistion is displayed continuously in the locator item
@@ -642,10 +623,9 @@ DY\], \[DISTANCE\], or \[R, Theta\].
 Press **Accept** to register the changes, **Reset** to restore the
 default values, and **Done** to close the popup.
 
-### [Edit]{.mark} {#edit-1}
+### Edit
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/editmenu.gif](./media/image20.gif){width="1.925in"
-height="0.8611111111111112in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/editmenu.gif](./media/image20.gif)
 
 Call the pop-ups that control the editing of nodes, elements and
 associated features, either in an individual basis, over the entire
@@ -656,8 +636,7 @@ grid, or within selected regions.
 For grids composed strictly of triangles, the following operations may
 be performed on nodes and elements of the grid.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/editelements.gif](./media/image21.gif){width="1.6597222222222223in"
-height="3.064750656167979in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/editelements.gif](./media/image21.gif)
 
 **Move node**
 
@@ -780,8 +759,7 @@ acceptable configuration.
 
 Operations over an entire grid or in specified regions
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/editgrids.gif](./media/image22.gif){width="1.8472222222222223in"
-height="3.732389545056868in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/editgrids.gif](./media/image22.gif)
 
 The popup for operations within specified regions includes several
 items.
@@ -838,8 +816,7 @@ counter-clockwise fashion.
 
 ### Regions 
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/regionmenu.gif](./media/image23.gif){width="1.6458333333333333in"
-height="2.1812970253718285in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/regionmenu.gif](./media/image23.gif)
 
 • Create region
 
@@ -865,8 +842,7 @@ Boundaries
 This menu allows the creation and edition of edit internal and external
 boundaries.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/bound.gif](./media/image24.gif){width="2.013888888888889in"
-height="3.3414490376202974in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/bound.gif](./media/image24.gif)
 
 Individual items in the menu are discussed below.
 
@@ -935,8 +911,7 @@ Display the boundary as node numbers.
 This menu controls the placement of build points and their triangulation
 into a properly formed finite element grid.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/buildmenu.gif](./media/image25.gif){width="2.06172353455818in"
-height="4.5in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/buildmenu.gif](./media/image25.gif)
 
 • Place build points
 
@@ -957,8 +932,7 @@ the new location of the build point. Click again to place the point.
 
 Create build points according to a circular pattern.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/circularspread.gif](./media/image26.gif){width="2.532876202974628in"
-height="2.6527777777777777in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/circularspread.gif](./media/image26.gif)
 
 In the items Center X and Center Y enter the point to use as the center
 of the circle. Enter the maximum radius in the text item labeled Maximum
@@ -971,8 +945,7 @@ of points as the radii increases.
 Create build points within a rectangular region, according to a either
 regular (rectangular or rectangular offset) or random patterns
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/rectangularspread.gif](./media/image27.gif){width="2.9791666666666665in"
-height="1.8960706474190727in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/rectangularspread.gif](./media/image27.gif)
 
 • Automatic placement
 
@@ -980,8 +953,7 @@ Create build points according to one of four pre-specified criterion.
 The Courant number and maximum dimensionless criteria are currently set
 for flow models (i.e., rely on a depth-related celerity, c=sqrt(gh)).
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/automaticplacement.gif](./media/image28.gif){width="4.084697069116361in"
-height="3.798611111111111in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/automaticplacement.gif](./media/image28.gif)
 
 The minimal requirements for automatic generation of build points, are
 an edit grid boundary and a background grid of bathymetry. If the
@@ -1066,8 +1038,7 @@ operations. These operations are currently limited to the loading of the
 bathymetry to the edit grid nodes, and to the generation/display of
 bathymetric profiles. This is a menu in expansion phase.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/griddem.gif](./media/image29.gif){width="2.2430555555555554in"
-height="1.4680555555555554in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/griddem.gif](./media/image29.gif)
 
 **Load bathymetry**
 
@@ -1078,8 +1049,7 @@ editable grid.
 
 Use this feature to display the gradients and slopes of the bathymetry.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/gradslopes.gif](./media/image30.gif){width="2.3958333333333335in"
-height="2.386936789151356in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/gradslopes.gif](./media/image30.gif)
 
 **Profiles**
 
@@ -1092,15 +1062,13 @@ Minimize the bandwidth of a grid of linear triangles.
 
 ### Application specific popups.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/special.gif](./media/image31.gif){width="1.6319444444444444in"
-height="1.7630194663167105in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/special.gif](./media/image31.gif)
 
 ### Properties
 
 Use the properties popup to define quantities or groups of elements.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/props.gif](./media/image32.gif){width="4.111111111111111in"
-height="2.3709208223972005in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/props.gif](./media/image32.gif)
 
 Select the number of the property to define. Use the item Define to
 select if the property is to be defined at the nodes of the grid, or at
@@ -1118,8 +1086,7 @@ sets the property values of all nodes (elements) that are presently
 contained in the Region. Use Write to write the current state of the
 property values and Read to read in previously defined values.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/selectnodes.gif](./media/image33.gif){width="3.1041666666666665in"
-height="1.982678258967629in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/selectnodes.gif](./media/image33.gif)
 
 **Dimensionless numbers**
 
@@ -1127,8 +1094,7 @@ Use the functions provided here to determine if the current grid
 satisfies specific numerical criteria. At present there are two
 selections that may be displayed simultaneously.
 
-![http://ccrm.vims.edu/schismweb/ACE/gredit/dimnum.gif](./media/image34.gif){width="4.847222222222222in"
-height="2.5696259842519686in"}
+![http://ccrm.vims.edu/schismweb/ACE/gredit/dimnum.gif](./media/image34.gif)
 
 The dimensionless wavelength, L~m~, is defined by:
 

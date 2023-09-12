@@ -1,7 +1,5 @@
 # ACE Tools的基本操作
 
-李健 整理
-
 ## 1、安装ACE Tools
 
 run xmgredit5.exe through Cygwin X server,
@@ -17,7 +15,7 @@ ACE的图片输出：print to file,
 
 ## 3、ACE的具体操作
 
-以下操作步骤按照视频中([SELFE_tutorial2012.flv]{.mark})出现的顺序整理。
+以下操作步骤按照视频中(SELFE_tutorial2012.flv)出现的顺序整理。
 
 ### 3.1生成边界
 
@@ -30,8 +28,7 @@ BkGr:Background Grid 背景网格不可以编辑（原始地形数据）
 
 Boundary \--\> Compute boundary 生成网格边界（每次第一步就做这个！）
 
-![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203990(1).png](./media/image1.png){width="5.083333333333333in"
-height="3.4229166666666666in"}
+![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203990(1).png](./media/image1.png)
 
 ### 3.2 显示等值线图
 
@@ -44,8 +41,7 @@ place legend \--\> accept\--\>draw
 
 Display\--\> color\--\> Tune the RGB color \--\> draw
 
-![](./media/image2.png){width="3.3847222222222224in"
-height="2.936111111111111in"}
+![](./media/image2.png)
 
 ### 3.3 定位点在网格中的位置
 
@@ -55,8 +51,7 @@ height="2.936111111111111in"}
 
 Locate\--\>Find the nearest node 可查看设置的节点水深值
 
-![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203907(1).png](./media/image3.png){width="3.9291666666666667in"
-height="3.5194444444444444in"}
+![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203907(1).png](./media/image3.png)
 
 3.4 创建三角形(triangle)和区域(region)
 
@@ -65,8 +60,7 @@ Edit -\> Edit nodes/elements
 功能有：移动/添加/删除 节点、三角形和四边形单元；加密三角形/四边形(split
 3 or split 4)
 
-![](./media/image4.png){width="1.2243055555555555in"
-height="2.9743055555555555in"}
+![](./media/image4.png)
 
 Edit -\> Create Region
 
@@ -91,10 +85,9 @@ triangles，split element
 复制网格、四边形网格质量检查、三角形转成四边形单元、高亮单元、提取子网格（extract
 sub-grid，类似于Cutmesh?）
 
-固定负面积区域、Volumes...？ CPP投影
+固定负面积区域、Volumes... CPP投影
 
-![](./media/image5.png){width="1.8270833333333334in"
-height="4.070833333333334in"}
+![](./media/image5.png)
 
 ### 3.4 区域(region)操作
 
@@ -102,28 +95,25 @@ height="4.070833333333334in"}
 
 计算区域的面积和周长。
 
-![](./media/image6.png){width="1.4805555555555556in"
-height="1.8395833333333333in"}
+![](./media/image6.png)
 
 ### 3.5 边界(boundary)操作
 
 创建边界等。。。
 
-![](./media/image7.png){width="1.5451388888888888in"
-height="2.5381944444444446in"}
+![](./media/image7.png)
 
 ### 3.6 Build
 
 创建一些点？还没用过
 
-![](./media/image8.png){width="2.0770833333333334in"
-height="4.1409722222222225in"}
+![](./media/image8.png)
 
 ### 3.7 gridDEM
 
 加载水深/地形、创建开边界和陆地边界、梯度/坡度、剖面
 
-![](./media/image9.png){width="1.9875in" height="1.3138888888888889in"}
+![](./media/image9.png)
 
 创建开边界(Create open boundary)：可以不在SMS或GAMBIT中设置边界标记了。
 
@@ -139,18 +129,17 @@ Create land boundary 是一样的。**陆地边界是绿色。**
 
 **其他内边界不用编辑，是红色，**自动定义为island (internal boundary)
 
-**[注意：]{.mark}**
+**注意：**
 
 **[（1）需要以逆时针按顺序依次选择开边界和陆地边界的端点，相邻的开边界和陆地边界节点要重合。]{.mark}**
 
 **（2）定义一个开边界或陆地边界，只能用上下左右的箭头移动计算域。两头端点的点击之间，不能点击其他按钮。**
 
-![](./media/image10.png){width="2.5125in" height="2.063888888888889in"}
+![](./media/image10.png)
 
 ### 特殊功能(Special)
 
-![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512204081(1).png](./media/image11.png){width="4.922916666666667in"
-height="1.448611111111111in"}
+![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512204081(1).png](./media/image11.png)
 
 其中设置prop文件的功能如下：
 
@@ -159,8 +148,7 @@ in region\"，然后是保存\"Write...\"
 
 操作顺序不对，程序会退出！
 
-![](./media/image12.png){width="2.942361111111111in"
-height="2.8270833333333334in"}
+![](./media/image12.png)
 
 [创建及可视化prop文件]{.mark}
 
@@ -197,8 +185,7 @@ Special\--\>Dimensionless numbers 检查CFL条件在单元上的满足情况
 
 然后，File\--\>Save: Write data\--\> To file: diffmax.gr3 (for example)
 
-![](./media/image13.png){width="2.910416666666667in"
-height="1.9805555555555556in"}
+![](./media/image13.png)
 
 ## 检查网格
 
@@ -232,8 +219,7 @@ Files\--\>Grids\--\>Read data_popup\--\>Read to grid:2
 
 View\--\>Grid setup\--\>Isolines\--\>Colors
 
-![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203660(1).png](./media/image14.png){width="3.8652777777777776in"
-height="4.281944444444444in"}
+![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203660(1).png](./media/image14.png)
 
 SELFE slabs （水平分层面）
 
@@ -251,5 +237,4 @@ Command\--\> batch run 1,20
 
 SELFE Samples\--\>Setup
 
-![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203694(1).png](./media/image15.png){width="2.890972222222222in"
-height="4.320833333333334in"}
+![C:\\Users\\lijian\\AppData\\Local\\Temp\\1512203694(1).png](./media/image15.png)
