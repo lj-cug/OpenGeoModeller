@@ -24,7 +24,8 @@ OpendTect软件的实战操作(Practices)与手册(Manual)
 
 ## JTK (Java ToolKits)
 
-美国科罗拉多矿业学院Dave Hales与中国科学技术大学Wu Xinming教授，使用Java语言开发的地震解释工具
+美国科罗拉多矿业学院Dave Hales与中国科学技术大学Wu Xinming教授，使用Java语言开发的地震解释断层和层位的程序
+使用了JAVA的多线程并行机制，实现高效的地震数据解释
 
 ### OSV
 
@@ -40,7 +41,7 @@ OpendTect软件的实战操作(Practices)与手册(Manual)
 
 ## AVO
 
-AVO技术及程序说明
+AVO技术及Python程序说明，加速AVO计算工作流
 
 
 # 地质建模
