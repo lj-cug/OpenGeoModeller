@@ -43,8 +43,9 @@
 ## 实施效果展示
 
 1.  [个人集群硬件平台](./HPC-Base/Ubuntu20.04-Cluster/我的集群照片.jpg)
-2.  [集群运行监测界面](./HPC-Base/Ubuntu20.04-Cluster/media/image6.png)
-3.  [高性能计算应用部署]()
+2.  [CPU集群运行监控界面](./HPC-Base/Ubuntu20.04-Cluster/media/image7.png)
+3.  [GPU集群运行监控界面](./HPC-Base/Ubuntu20.04-Cluster/media/image13.png)
+4.  [高性能计算应用部署](./HPC-Base/opengeomodeller-build.png)
 
 ## 合作与共赢
 
