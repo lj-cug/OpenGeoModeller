@@ -1,46 +1,60 @@
 # Mesh-Generation
 
-[非结构网格生成及编辑](./非结构网格生成及编辑.md)
-
-地表水、水文模型及地球物理模型的网格生成，包括：
+地表水、水文模型及地球物理模型的网格生成，主要采用3种方式(推荐第3种,工作效率最高)：
 
 1. 商业软件Gambit, SMS等的非结构网格生成
 
 2. 开源软件，如GMSH等，的非结构网格生成
 
-3. 基于Python脚本的网格快速生成，以及不同格式网格文件之间的转换
+3. 基于Python脚本的网格快速生成，以及不同格式网格文件之间的转换(meshio工具)
+
+## Corner-Point-Mesh
+
+油气藏模拟器中常用的网格类型：角点网格(Corner-Point Mesh),Petrel软件可生成CPM网格，是油气藏模拟的前处理程序
+
+## Gambit
+
+我自己使用FORTRAN编程的用于处理商业软件Gambit生成网格文件的格式转换，包括：地形插值、初始条件及边界条件设置、Gambit软件生成的中间网格文件格式转换、时间序列文件生成等
+
+## SMS
+
+地表水模拟系统(SMS)的网格划分软件，在工程应用中拥有很多用户
 
 ## GMSH
 
-## JIGSAW
-
-DARREN ENGWIRDA. Locally Optimal Delaunay-refinement and Optimisation-based Mesh Generation
+开源的非结构网格划分工具，有很多强大的工具，如pygmsh
 
 ## OCSMesh
 
-非结构网格快速生成工具，针对SCHISM模型的网格文件格式(.gr3)
+SCHISM的非结构网格生成的Python程序，使用JIGSAW作为网格生成引擎
 
-OCSMesh: a data-driven automated unstructured mesh generation software for coastal ocean modeling. NOAA Technical Memorandum NOS CS 47, 2021
+## OCSMesh
+
+非结构网格快速生成工具，针对SCHISM, ADCIRC, DGSWE等模型的网格文件格式(.gr3)
+
+## LaGridT
+
 
 ## mesher
 
 可根据地形变化、植被类型及其他网格优化要求（包括物理过程的特点），生成非结构化网格，针对分布式水文模型的三角网格生成
 
-Christopher B. Marsh, et al. Multi-objective unstructured triangular mesh generation for use in hydrological and land surface models. Computers and Geosciences 119 (2018) 49–67
-
 ## OceanMesh2D
 
-Keith J. Roberts, et al. OceanMesh2D 1.0: MATLAB-based software for two-dimensional unstructured mesh generation in coastal ocean modeling. Geosci. Model Dev., 12, 1847–1868, 2019
+Matlab语言编写的海洋模式非结构网格生成工具，计算效率不高
 
 ## SeismicMesh
 
-生成用于全波形反演(FWI)使用的三角形非结构网格
+生成用于全波形反演(FWI)使用的三角形非结构网格，用于有限单元法的spyro模型
 
 ## MODFLOW-usg-Mesh
 
 用于MODFLOW-usg的非结构网格生成工具gridgen和后处理工具ModelMuse
 
+
 # 非结构网格编辑工具
+
+非结构网格生成后，可能根据工程情况，需要对其进行编辑(如切合,合并等)以及优化
 
 ## ACE Tools
 
@@ -58,25 +72,12 @@ MATLAB GUI编程的三角形网格编辑工具，包括：区域切割、合并等操作
 
 ## CutMesh
 
-## LaGridT
+## High-Order-meshing
 
-## Gambit-Post
+高阶数值格式，如DG法，的数值模拟的网格生成技术
 
-我自己使用FORTRAN编程的用于处理商业软件Gambit生成网格文件的格式转换，包括：地形插值、初始条件及边界条件设置、Gambit软件生成的中间网格文件格式转换、时间序列文件生成等
 
-## OCSMesh
-
-SCHISM的非结构网格生成的Python程序
-
-# High-Order-meshing
-
-高阶数值格式，如DG法，的数值模拟的网格生成技术，是CAE领域的前沿课题
-
-# meshio
-
-常见非结构网格文件之间的格式转换Python脚本
-
-# 非结构网格生成的一些经验总结
+# 非结构网格生成经验
 
 使用非结构网格模型，如FVCOM, ADCIRC, SELFE,
 SCHISM等，都需要生成三角形或其他类型的非结构化网格，如SCHISM模型需要hgrid.gr3文件。
@@ -135,8 +136,3 @@ Aron Roland的polymesh:
 
 基于Triangle，大部分为FORTRAN代码，以及与Triangle的接口程序，且具有误差预估和自适应网格的功能。
 
-# Corner-Point-Mesh
-
-一类地质模型，尤其是油气藏模拟器中，常用的网格模式：角点网格(Corner-Point Mesh)
-
-Petrel软件可生成CPM网格，是油气藏模拟的前处理程序

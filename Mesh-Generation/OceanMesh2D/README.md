@@ -213,16 +213,17 @@ element)导致的数值计算误差。（SCHISM模型却不忌讳歪斜单元）
 
 # 参考文献
 
+Keith J. Roberts, et al. OceanMesh2D 1.0: MATLAB-based software for two-dimensional unstructured mesh generation in coastal ocean modeling. Geosci. Model Dev., 12, 1847–1868, 2019
+
 Jonas Koko. A Matlab mesh generator for the two-dimensional finite
 element method. Applied Mathematics and Computation, 250:650-664, 2015.
-[KMG]{.mark}
 
 Darren Engwirda. Locally optimal Delaunay-refinement and
 optimization-based mesh generation. PhD thesis, University of Sydney,
 2014. URL http://hdl.handle.net/2123/13148.
 
 Per-olof Persson and Gilbert Strang. A Simple Mesh Generator in MATLAB.
-SIAM Rev., 46: 2004 [DistMesh]{.mark}
+SIAM Rev., 46: 2004
 
 J. J. Westerink, R. A. Luettich, A. M. Baptists, N. W. Schefner, and P.
 Farrar. Tide and Storm Surge Predictions Using Finite Element Model.
