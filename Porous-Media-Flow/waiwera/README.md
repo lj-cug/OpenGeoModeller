@@ -6,7 +6,9 @@ Department of Engineering Science, University of Auckland, Private Bag 92019, Au
 
 waiwera类似TOUGH3的地热模型，但TOUGH2和TOUGH3不开源，TOUGH是商业软件。
 
-TOUGH模型的很多前处理Python程序是开发的，可以用于waiwera的前处理，因为waiwera可视为TOUGH模型的继承者
+TOUGH模型的前后处理Python程序(pytough)是开源的，也可用于waiwera的前处理
+
+waiwera自己的前后处理Python程序是：  pip install pywaiwera
 
 编程语言： FORTRAN 2003
 
