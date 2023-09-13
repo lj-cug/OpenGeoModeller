@@ -1,5 +1,7 @@
 apt update
+
 apt install build-essential
+
 gcc --version   # Ubuntu 18.04中显示gcc版本是 7.4.0
 
 1、安装 gcc-4.8
@@ -28,7 +30,8 @@ update-alternatives --config g++
 g++ --version
 
 
-2、安装多个GCC版本（新版本！)
+2、安装多个GCC版本
+
 在本节中，我们将提供有关如何在Ubuntu 18.04上安装和使用多个版本的GCC的说明。 较新版本的GCC编译器包括对新语言的支持，更好的性能和扩展功能。
 默认的Ubuntu存储库包括几个GCC版本，从5.x.x到8.x.x. 最新版本的GCC是9.1.0，可从Ubuntu Toolchain PPA获得。
 

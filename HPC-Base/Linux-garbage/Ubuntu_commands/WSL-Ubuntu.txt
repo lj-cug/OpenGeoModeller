@@ -8,10 +8,12 @@ wsl --version
 
 apt install gedit 
 gedit
+
 (1)
 错误：(gedit:8798): Gtk-WARNING **: 19:51:33.161: cannot open display:
 问题：Opening Ubuntu 20.04 Desktop on WSL2
 解决：https://askubuntu.com/questions/1252007/opening-ubuntu-20-04-desktop-on-wsl2/1365455#1365455
+
 Xfce
 sudo apt install xrdp xfce4
 # If asked, select lightdm, although it probably doesn't matter
@@ -49,5 +51,29 @@ deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted u
 
 WSL 的存储路径：  file://wsl%24/Ubuntu/home/lijian/
 
+# 安装桌面组件
 
+echo "y"|sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager
+
+配置dbus避免出现错误
+
+dpkg-reconfigure dbus && service dbus restart
+
+
+# 安装中文支持并配置profile文件
+
+在WSL上另外打开一个终端，执行以下命令安装中文支持（如当前用户不是root，则命令前加上sudo）
+apt-get -y install language-pack-zh-hans
+
+将以下环境变量添加到/etc/profile 文件中
+export DISPLAY=localhost:0
+export LANG=zh_CN.UTF-8 
+export LANGUAGE=zh_CN.UTF-8 
+export LC_ALL=zh_CN.UTF-8
+
+重新加载profile
+source /etc/profile
+
+重新完成locale
+sudo locale-gen
 
