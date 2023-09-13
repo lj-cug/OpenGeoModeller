@@ -1,0 +1,212 @@
+release.txt
+
+                           MODFLOW-USG Release Notes
+
+     This file describes changes introduced into MODFLOW-USG with each
+official release; these changes may substantially affect users. In this
+file, packages are referred to by their 3-or 4-character abbreviation. 
+For information and references related to these packages, see mfusg.txt
+("Summary of MODFLOW-USG").
+
+NOTE: Any use of trade, product or firm names is for descriptive purposes 
+      only and does not imply endorsement by the U.S. Government.
+      
+
+o Version 1.5 02/27/2019
+    MFUSG -- Updated program version and date.
+    GLO2BASU1 -- DDREFERENCE was not implemented correctly and so the drawdown
+       reference array was never reset when DDREFERENCE was specified in the
+       output control file.
+    GWF2BASU1 -- Fixed DDREFERENCE bug.
+    GWF2BCF-LPF-U1 -- Fixed horizontal anisotropy rotation equation.
+    GWF2EVT8U1 -- Adding missing variable to use statement.
+    GWF2WEL7U1 -- Initialized variable to zero.
+    UTL7U1 -- Modified UBDSVBU to use correct node number.
+    Executables -- Compiled using Intel Fortran 2019.2.190
+
+
+o Version 1.4 10/27/2017
+    MFUSG -- Updated program version and date.  Added calls for the
+       ETS and DRT Packages.  Revised the way flow terms are written 
+       to the budget file for CLN.
+    GLO2BASU1 -- Added JA symmetry check.  Program now terminates
+       with an error if the user-provided JA is not symmetric.
+    GWF2BCF-LPF-U1 -- Removed the minimum saturation value.  Difficult
+       problems behave better by allowing saturation to go to zero
+       and letting the solver handle it. Revised the way CLN-GW flows 
+       are written to the budget file.
+    GWF2ETS8U1 -- This is the Segmented Evapotranspiration Package
+       added in this release.
+    GWF2DRT8U1 -- This is the Drain with Return Flow Package added
+       in this release.
+    GWF2WEL7U1 -- Revised the way flow terms are written to the
+       budget file for CLN.
+    GWF2DRN7U1 -- Revised the way flow terms are written to the
+       budget file for CLN.
+    GWF2RIV7U1 -- Revised the way flow terms are written to the
+       budget file for CLN.
+    GWF2GHB7U1 -- Revised the way flow terms are written to the
+       budget file for CLN.
+    GWF2FHB7U1 -- Revised the way flow terms are written to the
+       budget file for CLN.
+    GWF2LAK7U1 -- Added ability to read bathymetry and stage/volume
+       tables.
+    GWF2SFR7U1 -- Corrected an error in saving stream flows to
+       a compact budget file.
+    GWF2SUB7U1 -- Corrected errors in the unstructured subsidence
+       formulation and output.
+    CLN2BASU1 -- Removed the minimum saturation value. Revised the
+       way GW-CLN flow terms are written to the CLN budget file.
+    GLO2SMS-U1 -- Modified the way constant head and inactive cells
+       are handled at the matrix level.  In the present version,
+       these cells are handled by inserting a 1.0 on the diagonal,
+       zeroing out the off-diagonal terms, and putting the head
+       value on the right-hand side.
+    UTL7U1 -- Added two new subroutines for writing flow terms
+       to budget files.
+    PARUTL7 -- Corrected an error that caused list-based parameter
+       to work incorrectly for structured grids.
+    GMODULES -- Added a placedholder variable (IATS) that is not
+       used by the program.
+    ZONBUDUSG -- Updated to version 1.01.  A bug could be
+       encountered with non-compact budget files, output in the
+       CSV format, and a changing number of budget types in the
+       budget file.  The program now terminates with an error
+       if this condition is encountered and recommends use of the
+       COMPACT BUDGET format.
+    Executables -- Compiled using Intel Fortran 2017.4.210. 
+
+
+o Version 1.3 12/01/2015
+    GLO2BASU1 -- Added DDREFERENCE option so that the reference head
+       used to calculate drawdown can change during the simulation.
+    GWF2BASU1 -- Removed calls to u1drel8 and replaced with calls to
+       generalized u1drel array reader.  Time information was being
+       written to the listing file more frequently than necessary
+       for an unstructured simulation.  This was corrected to be
+       consistent with MODFLOW-2005.
+    GWF2BCF-LPF-U1 -- Fixed a problem with BCF input that occured 
+       when LAYCON was assigned a value of 2.
+    GLO2SMSU1 -- Modifed approach for handling matrix terms for
+       rows with IBOUND <= 0.
+    DISU2GNCN1 -- In BD routines changed AMAT to AMATFL to allow 
+       for new approach for handling IBOUND <= 0.  
+    GWF2HFBU1 -- Implemented IVC=1 for vertically staggered staggered 
+       grids.
+    GWF2WELU1 -- Fixed issue for case where wells were assigned to
+       CLN nodes and structured GWF nodes.
+    GWF2GHB7U1 -- Changed call to ULSTRDU so that CLN nodes can be
+       specified.
+    GWF2RIV7U1 -- Changed call to ULSTRDU so that CLN nodes can be
+       specified.
+    GWF2DRN7U1 -- Changed call to ULSTRDU so that CLN nodes can be
+       specified.  Fixed bug related parameters.
+    GWF2CHD7U1 -- Changed call to ULSTRDU so that CLN nodes can be
+       specified.
+    GWF2EVT8U1 -- For unstructured grids, the node number written
+       to the binary budget file may have been incorrect in some
+       cases.
+    GWF2RCH8U1 -- For unstructured grids, the node number written
+       to the binary budget file may have been incorrect in some
+       cases.
+    GWF2FHB7U1 -- Fixed a bug in the writing of FHB flows to the
+       binary budget file.
+    GWF2SFR7U1 -- Fixed several issues related to streams in dry
+       cells and streams in models with only a single layer.
+    CLN2BASU1 -- Minor changes to unit number handling and filling
+       of arrays. Fixed bug in assigning conduit node number.  Fixed
+       bug in calculation of conduit height. Fixed bug in saving
+       of CLN IBOUND to binary file.
+    PCGU7 -- Added several variable initialization statements.
+    XMDLIB_2 -- Added some additional write statements for MUTPCG=0.
+    UTL7U1 -- Removed u1drel8.  Generalized u1drel so that it can
+       read binary files in the same manner as u2drel.
+    Example problems -- Made a few minor changes to several of the 
+       input files.  The results from the simulations are the same, 
+       but, the appearance of some output files is slightly different.
+    Executables -- Compiled using Intel Fortran 16.0.0.110 
+       Build 20150815
+    Program version citation --
+        Panday, Sorab, Langevin, C.D., Niswonger, R.G., Ibaraki, 
+        Motomu, and Hughes, J.D., 2015, MODFLOW-USG version 1.3.00: 
+        An unstructured grid version of MODFLOW for simulating 
+        groundwater flow and tightly coupled processes using a 
+        control volume finite-difference formulation:  U.S. 
+        Geological Survey Software Release, 01 December 2015,  
+        http://dx.doi.org/10.5066/F7R20ZFJ
+
+
+o Version 1.2 03/21/2014
+    CLN2BASU1 -- Added transient IBOUND option so that CLN nodes can 
+       change between prescribed head, active, and inactive.  Added
+       capability to read CLN input in IA-JA format.  Corrected bug in
+       cell-by-cell flow output for CLN so that flows between CLN nodes
+       are written in the IA-JA format.  Description is provided in the 
+       description of model input and output.
+    DISU2GNCN1 -- Slight change to method for constructing system of 
+       equations.  Fixed bug for case when node used for interpolation
+       goes dry.
+    GLO2BASU1 -- Change in method for constructing system of equations.
+    GLO2SMS-U1 -- Changed method for using PCGU7U1AR routine.  Changed
+       method for deallocating linear solvers.
+    GMODULES -- Added items to CLN1MODULE.
+    GWF2BCF-LPF-U1 -- Corrected method for calculating nodal hydraulic
+       conductivity values when connection hydraulic conductivity values
+       are specified.
+    GWF2CHD7U1 -- Fixed bugs related to parameter values and case where
+       reusing CHDs from previous stress period.
+    GWF2DRN7U1 -- Fixed bug related to parameter values.
+    GWF2EVT8U1 -- Fixed bug that may affect structured models with
+       variable cell sizes.
+    GWF2GAG7U1 -- Small formatting change.
+    GWF2GHB7U1 -- Fixed bug related to parameter values.
+    GWF2RCH8U1 -- Fixed bug that may affect structured models with
+       variable cell sizes.
+    GWF2RIV7U1 -- Fixed bug related to parameter values.
+    MFUSG -- Added call to CLN1RP and changed allocation method for
+       linear solvers.
+    OPENSPEC -- Added comment about STREAM ACCESS.
+    PCGU7 -- Encapsulated all subroutines into the PCGUMODULE.
+    
+
+o Version 1.1 08/23/2013:
+    CLN2BASU1 -- Renamed some internal variables and changed how the CLN
+       constant-head budget terms are tabulated.
+    DISU2GNCB1 -- Minor source formatting changes.
+    DISU2GNCN1 -- Devised new approach for expanding the system of 
+       equations to include ghost-node connections.  New method should 
+       be substantially faster for problems with many ghost nodes. Fixed
+       case where ghost-node contributing cell starts or becomes inactive.
+    GLO2SMS-U1 -- Added support for PCGU bgcs option.
+    GMODULES -- Renamed TMPA variable to FLOWJA and fixed an 
+       initialization issue with this variable.
+    GWF2BCF-LPF-U1 -- Revised method for calculating constant-head flows.
+       Constant-head flows are now calculated from FLOWJA array instead
+       of being recalculated.  Constant-head flows are tabulated by cell
+       face instead of by cell to provide a more accurate budget.
+    GWF2GHB7U1 -- Fixed the NOPRINT option.
+    GWF2LAK7U1 -- Fixed several bugs related to lakes and their use with
+       unstructured grid models.
+    GWF2SFR7U1 -- Fixed several bugs related to streams and their use
+       with unstructured grid models.
+    GWF2STR7U1 -- Added support for auxiliary variables and for reading
+       free format input files.  The 'STREAM FLOW OUT' budget term is now
+       written in compact form when compact budgets are used.
+    GWF2WEL7U1 -- Removed inactivation of well package when there are no
+       active wells.
+    PCGU7 -- Added the bi-conjugate gradient stabilized acceleration 
+       method for the PCGU linear solver.  Changed default pcgu settings
+       for 'simple', 'moderate', and 'complex'. See input instructions for
+       additional details.
+    UTL7U1 -- Small formatting change.
+    XMD -- Added warning if reduced system (IREDSYS=1) is used.
+    MFUSG -- Small revisions and change in subroutine calls for tabulating
+       constant-head budget terms.
+    SPARSE -- Added new SPARSEMATRIX module to facilitate matrix expansion
+       for ghost nodes.
+
+
+o Version 1.0 05/03/2013:
+
+This version is the initial release.
+
