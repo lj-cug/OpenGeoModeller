@@ -2,26 +2,23 @@
 
 ## 安装依赖
 
-sudo apt-get update && sudo apt-get install -y \
-build-essential \ 
-uuid-dev \ 
-libgpgme-dev \ 
-squashfs-tools \ 
-libseccomp-dev \ 
-wget \
-pkg-config \ 
-git \ 
+sudo apt-get update && sudo apt-get install -y 
+build-essential 
+uuid-dev  
+libgpgme-dev 
+squashfs-tools  
+libseccomp-dev  
 cryptsetup-bin
 
 ## 安装GO语言
 
 下载地址：https://golang.org/dl/
 
-wget https://golang.org/dl/go1.14.12.linux-amd64.tar.gz #下载
+wget https://studygolang.com/dl/golang/go1.21.1.src.tar.gz     #下载
 
-tar -C /pub/software -xzvf go1.14.12.linux-amd64.tar.gz #解压
+tar -C /pub/software -xzvf go1.21.1.src.tar.gz                 #解压
 
-rm go1.14.12.linux-amd64.tar.gz #删除安装包
+rm go1.21.1.src.tar.gz                                #删除安装包
 
 ### 添加到环境变量
 
