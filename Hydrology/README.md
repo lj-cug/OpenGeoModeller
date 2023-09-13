@@ -8,3 +8,4 @@
    2. ParFLOW - 地表水与地下水模型MODFLOW的耦合模型
    3. GSFLOW - USGS开发的地表水文模型与MODFLOW的耦合模型
    4. CHM - 加拿大冰雪下垫面的分布式水文模型，基于非结构网格，体现局部地形等差异
+   5. pywatersed - USGS开发的耦合PRMS水文模型与MODFLOW6地下水模型，使用Python语言，降低使用难度
