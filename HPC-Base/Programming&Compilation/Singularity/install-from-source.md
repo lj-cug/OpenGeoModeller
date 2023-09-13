@@ -52,10 +52,15 @@ sudo make install
 
 可以从 Container Library（https://cloud.sylabs.io/library）
 
-例如：singularity pull library://cenat/default/blast.sif:latest
+例如：
+
+singularity pull library://cenat/default/blast.sif:latest
+
 or Docker Hub（https://hub.docker.com/)下载images。
 
-例如：singularity pull docker://ncbi/blast
+例如：
+
+singularity pull docker://ncbi/blast
 
 singularity pull --arch amd64 library://library/default/ubuntu:20.04
 
@@ -67,14 +72,13 @@ singularity shell --writable --fakeroot blast
 
 在容器中安装软件，建议不要使用anaconda 安装，而是手动安装，我们要尽量保持容器轻量。
 
-### 添加环境变量
+添加环境变量
 
 退出容器后, 在blast/environment 中添加PATH
 
 "
 vi blast/environment
-#!/bin/sh
-# Custom environment shell code should follow 
+!/bin/sh
 export PATH=/opt/ncbi-blast-2.10.1+/bin:$PATH
 "
 
@@ -100,6 +104,8 @@ singularity exec blast.sif blastp
 
 ### 用户和权限
 
-使用容器不得不考虑安全性，安全性来自两个方面，一个是使用了不被信任的容器，这个就像你在电脑上安装了不被信任的软件一样，Singularity提供了签名机制来验证；另一方面是容器会不会越权对Host 做一些不该做的事情，这个是需要考虑的。
+使用容器不得不考虑安全性，安全性来自两个方面，一个是使用了不被信任的容器，这个就像你在电脑上安装了不被信任的软件一样，Singularity提供了签名机制来验证；
+另一方面是容器会不会越权对Host做一些不该做的事情，这个是需要考虑的。
 
-singularity 的解决办法是会在容器内动态创建一个用户，该用户与Host里的用户名、组名、权限等都保持一致。这样你在Host 中做不了的事情，在容器里也干不了。
+singularity 的解决办法是会在容器内动态创建一个用户，该用户与Host里的用户名、组名、权限等都保持一致。
+这样你在Host 中做不了的事情，在容器里也干不了。
