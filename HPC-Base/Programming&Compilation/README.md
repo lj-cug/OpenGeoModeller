@@ -52,8 +52,12 @@
 	
 ## Docker容器
 
-	快速部署复杂程序的编译和运行环境
-		
+	快速部署复杂程序的编译和运行环境的容器
+	
+## Singularity容器
+
+	面向HPC环境的容器
+	
 ## Compilers
 
 	Windows 与Linux OS下的编译器以及编译参数总结
