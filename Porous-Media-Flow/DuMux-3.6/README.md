@@ -12,6 +12,16 @@
 
 CO2封存
 
+# 研发(L. Bilke, et al., 2019)
+
+Dumux项目与[OPM项目](https://opm-project.org/)都是基于DUNE框架，因此一直是相互借鉴
+
+Dumux-material --> opm-material
+
+eWoms --> opm-simulators
+
+Dumux也借鉴了opm-grid的角点网格(石油工程的工业标准)
+
 ## 参考文献
 
 Timo Koch, et al. DuMux 3–an open-source simulator for solving flow and transport problems in porous media with a focus on model coupling. Computers and Mathematics with Applications 81 (2021) 423-443.
