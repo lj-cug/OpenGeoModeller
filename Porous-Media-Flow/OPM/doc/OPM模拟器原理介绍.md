@@ -1,8 +1,10 @@
-# 学习《The Open Porous Media Flow reservoir simulator》
+# OPM模拟器原理介绍
 
-Norway与Germany研发的油藏模拟器。
+根据文献"The Open Porous Media Flow reservoir simulator"整理
 
-## 1引言
+OPM是Norway国家石油公司与Germany研发的油藏模拟器
+
+## 1 引言
 
 始于2009年的项目，着眼于多孔介质过程模拟的创新和可重复研究框架。
 
