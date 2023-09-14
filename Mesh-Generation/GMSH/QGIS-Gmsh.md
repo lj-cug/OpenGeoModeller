@@ -4,9 +4,7 @@
 
 ## 安装
 
-Copy the "gmsh" sub-directory in your QGIS "/python/plugin/" directory (e.g. ~/AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins under Windows 10). 
-
-Then enable it through the "Plugins>Manage and Install Plugins..." menu.
+在 "Plugins>Manage and Install Plugins..." 中输入GMSH即可自动安装.
 
 ## 使用
 
