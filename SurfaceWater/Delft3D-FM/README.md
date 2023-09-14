@@ -8,7 +8,7 @@ Delft3D Flexible Mesh Flow model (非结构网格的Delft3d)
 
 ## 下载
 
-svn -o https://svn.oss.deltares.nl/repos/delft3d/tags/delft3dfm/65980/
+svn co https://svn.oss.deltares.nl/repos/delft3d/tags/delft3dfm/65980/
 
 ## 使用
 
