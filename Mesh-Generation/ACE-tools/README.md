@@ -26,7 +26,7 @@ Ubuntu Linux系统下，参考上述路径下的Install_notes_new
 
 需要安装必须的库：
 
-apt install libgd-dev libmotif-dev
+apt install libgd-dev libmotif-dev libxpm-dev
 
 ## ACE-tool使用视频
 
