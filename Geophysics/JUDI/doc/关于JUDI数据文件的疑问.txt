@@ -1,6 +1,6 @@
 1 FWI工作流中读取初始速度模型和观测数据模型(segy or ?)的疑问
 
-fwi_2D_small_overthrust_sgd.jl   中
+#-------------fwi_2D_small_overthrust_sgd.jl --------------------------
 
 # Load starting model
 n,d,o,m0 = read(h5open("$(JUDI.JUDI_DATA)/small_overthrust_model.h5","r"), "n", "d", "o", "m0")
@@ -20,9 +20,8 @@ d_obs = judiVector(block)
 # Plot convergence and final result
 
 #
-#---------------------------------------------------------------
+#-------------------fwi_3D_overthrust_spg.jl---------------------------
 #
-fwi_3D_overthrust_spg.jl    中
 # Load overthrust model
 if ~isfile("$(JUDI.JUDI_DATA)/overthrust_3D_initial_model.h5")
     ftp_data("ftp://slim.gatech.edu/data/SoftwareRelease/WaveformInversion.jl/3DFWI/overthrust_3D_initial_model.h5")
@@ -38,7 +37,9 @@ d_obs = judiVector(container)
 
 # Save results
 
+
 2 生成速度模型数据的疑问
+
 2.1 生成2D速度模型
 
 # Load overthrust model
@@ -76,6 +77,5 @@ opt = Options(limit_m = true,
 
 # Generate data and save as individual SEG-Y files to disk
 d_obs = Pr*A_inv*adjoint(Ps)*q
-
-# Save segy ???			  
-
+	  
+Save results!
