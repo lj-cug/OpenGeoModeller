@@ -2,7 +2,12 @@
 
 https://www.pygimli.org/_examples_auto/2_seismics/index.html
 
-¹Ø¼ü´Ê: geophone positions and a measurement scheme, shot and receiver indices,first arrival traveltime
+¹Ø¼ü´Ê: 
+source and receiver,
+714 data points using 63 sensors (shots and geophones),
+geophone positions and a measurement scheme, 
+shot and receiver indices,
+first arrival traveltime
 
 # 2D Refraction modeling and inversion
 

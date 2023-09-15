@@ -2,6 +2,11 @@
 
 地球物理的模拟程序，分为正演和反演模型，数值方法主要采用：有限差分法和有限单元法
 
+# first-arrival-time-pick
+
+4个Python语言编写的初至时间拾取的GUI程序,
+初至拾取文件是使用pyGIMLi执行层析反演的输入文件
+
 # pyGIMLi
 
 pyGIMLi是一款高效的使用Python语言编写的地球物理反演工作,
