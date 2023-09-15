@@ -19,12 +19,6 @@ julia
 
 ## install JUDI
 
-# remove error info. for libcurl
-
-using Libdl
-
-filter!(contains("curl"), dllist())
-
 pkg> add JUDI
 
 or from the command line
