@@ -18,14 +18,20 @@ apt install libcurl4-openssl-dev libcurl4-doc libidn11-dev libkrb5-dev libldap2-
 
 或者源码安装：
 
-wget https://curl.se/download/curl-7.85.0.tar.gz
+wget https://curl.se/download/curl-8.3.0.tar.gz    # 8.3.0 for julia-1.9.0
 
-tar -vxzf curl-7.85.0.tar.gz
+tar -vxzf curl-8.3.0.tar.gz
 
-cd curl-7.85.0
+cd curl-8.3.0
 
 ./configure --with-openssl
 
 make
 
 make install
+
+## 设置环境变量
+
+gedit ~/.bashrc
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH

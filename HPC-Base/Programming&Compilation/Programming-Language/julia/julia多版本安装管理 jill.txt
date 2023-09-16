@@ -1,41 +1,50 @@
 julia多版本安装管理: jill
+
 jill 还有不少问题, 还很不成熟
 
 安装 anconda py3.8
-#清华镜像源
+
+# 清华镜像源
 
 启动anconda 安装 jill :
+
 pip install jill
 
 jill 安装 指定版本julia:
+
  jill install 1.6.5
  jill install 1.7.2
 
 jill 下载失败: failed to download ( SSL: CERTIFICATE_VERIFY_FAILED )
 
 julia设置包下载源 为 清华源
+
 ENV["JULIA_PKG_SERVER"] = "https://mirrors.tuna.tsinghua.edu.cn/julia"
 
 julia禁用自动编译 当前写的代码
+
 #办法1 :julia代码中增加以下行:
+
 ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0
 
 #办法2: 增加系统环境变量JULIA_PKG_PRECOMPILE_AUTO, 值为0
 
 
 julia禁用库自动编译: 解决常见using报错
+
 julia禁用库自动编译: 使得julia在using XXX库 时 不自动编译XXX库: --compiled-modules=no
 
 #解决常见using报错
+
 #举例来说: 
+
 using IJulia
 using MLDataset
+
 #等 这些语句会导致 自动编译 这些库,  编译过程中所需资源不足，还是  编译后加载引发的资源不足, 使得 using报错, 无法继续使用
 
 julia命令行
+
 #使得julia在using XXX库 时 不自动编译XXX库: --compiled-modules=no
 # %UserProfile%\AppData\Roaming\Microsoft\Windows\Start Menu\Julia 1.7.1.lnk  : 增加参数 --compiled-modules=no :
 D:\Julia-1.7.1\bin\julia.exe --compiled-modules=no
-
-
-

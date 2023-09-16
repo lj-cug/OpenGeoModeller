@@ -34,7 +34,7 @@ julia -e 'using Pkg;Pkg.add("JUDI")'
 
 指定PYTHON环境变量,这样Julia知道在哪找到python软件包,如devito及其依赖库,执行命令:
 
-export PYTHON=$(which python) # or $(which python3)
+export PYTHON=$(which python) # '$(which python3)'
 
 pkg> build PyCall   # rebuild PyCall to point to your python
 
