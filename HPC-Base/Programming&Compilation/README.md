@@ -16,9 +16,13 @@
 	
 	总之，大部分自研编译器都是在clang和flang编译器基础做的优化
 	
-## Intel-OneAPI
+## OneAPI-Intel
 
-    Intel公司的OneAPI套件安装及开发
+    Intel公司的OneAPI套件安装及开发，即Intel HPC套件
+	
+## NVHPC-Nvidia
+
+    Nvidia公司的NVHPC套件安装及开发，用于OpenACC等CUDA并行代码编译和运行
 
 ## CUDA-programming
 

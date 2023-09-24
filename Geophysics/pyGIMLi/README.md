@@ -19,6 +19,11 @@ conda create -n pg -c gimli -c conda-forge pygimli=1.4.3
 
 conda activate pg
 
+或者，
+到 https://anaconda.org/gimli/pygimli/files直接下载某版本的tar.gz2文件，然后执行：
+ 
+   conda install package.tar.gz
+
 或者，安装最新版本
 
 git clone https://github.com/gimli-org/gimli

@@ -31,3 +31,7 @@ pyGIMLi是一款高效的使用Python语言编写的地球物理反演工作,
 ## spyro + Firedrake
 
 采用**间断Galerkin法和波形自适应非结构网格技术**的全波形反演模拟，特点是在非结构网格上求解波动方程
+
+## stride
+
+基于Devito的医学成像的全波形反演程序
