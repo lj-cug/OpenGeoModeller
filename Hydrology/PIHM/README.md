@@ -8,5 +8,14 @@ OpenMP并行
 
 数据同化
 
+## 输入数据处理
+
+分布式水文模型都需要大量不同类型的输入数据，处理过程繁琐
+
+PIHM模型的快速的数据处理，可联系舒乐乐课题组(PIHM的开发课题组人员):
+
+https://mp.weixin.qq.com/s/a8FfRqj2ZwNTDZB2t-5TBg
+
 ## 参考文献
 
+PIHM Model
