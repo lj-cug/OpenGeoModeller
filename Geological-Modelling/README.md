@@ -1,4 +1,4 @@
-# Geological-Modelling(地质建模)
+# Seismic-Interpretation(地震数据解释)
 
 ## Principles
 
@@ -44,7 +44,7 @@ OpendTect软件的实战操作(Practices)与手册(Manual)
 AVO技术及Python程序说明，加速AVO计算工作流
 
 
-# 地质建模
+# Implicit-Geological-Modelling (隐式地质建模)
 
 使用近年来开源的隐式地质建模Python脚本工具，实现地质建模（即多孔介质流动模型的前处理）
 
