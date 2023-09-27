@@ -1,12 +1,6 @@
 # firedrake
 
-Python语言开发的自动差分库
-
-基于firedrake库开发了很多地球科学领域的CFD应用程序
-
-## 可视化
-
-paraview
+Python语言开发的DSL库,基于firedrake库开发了很多地球科学领域的CFD应用程序
 
 ## thetis
 
@@ -27,6 +21,10 @@ paraview
 ## geodynamics via Firedrake
 
 地幔动力学模拟
+
+## OpenTidalFarm
+
+海洋潮汐能优化部署的应用程序
 
 ## 学习路线
 

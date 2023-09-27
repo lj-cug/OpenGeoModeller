@@ -1,0 +1,69 @@
+https://data.mendeley.com/datasets/cg4n68bm9v/1
+
+DAFoam Multidisciplinary Design Optimization Setup
+Published: 11 July 2019
+|
+Version 1
+|
+DOI:  10.17632/cg4n68bm9v.1
+
+Contributors:
+Ping He, Charles A. Mader, Joaquim R. R. A. Martins, Kevin J. Maki
+
+Description
+This data set contains files and instructions to reproduce the results in the following paper:
+
+Ping He, Charles A. Mader, Joaquim R. R. A. Martins, and Kevin J. Maki. DAFoam: An open source adjoint framework for multidisciplinary design optimization with OpenFOAM.
+
+In this paper, we use an open source adjoint framework (DAFoam; see the link below) to perform optimizations that cover a wide range of disciplines (aerodynamics, heat transfer, structures, and radiation), configurations (wings, aircraft, turbine cooling channels, compressor blades), and conditions (incompressible, subsonic, and transonic). 
+
+The following files are the meshes and flow and optimization configurations to reproduce the optimization results.
+
+- UAV_Aero_Opt.tar.gz: Multipoint aerodynamic optimization for a UAV wing at low speed.
+- DPW4_Aero_Opt.tar.gz: Trimmed aerodynamic optimization for a transonic aircraft configuration.
+- UBend_AeroTherm_Opt.tar.gz: Aerothermal optimization for a turbine internal cooling channel.
+- Rotor67_AeroStruct_Opt.tar.gz: Aerostructural optimization for an axial compressor rotor.
+
+The Code_Version.txt file contains the required codes to reproduce the results, including their links and GIT versions.
+
+Download All 165 MB
+
+Files
+
+TXT
+Code_Version.txt  1 KB
+
+GZ
+DPW4_Aero_Opt.tar.gz  96 MB
+
+GZ
+Rotor67_AeroStruct_Opt.tar.gz  10 MB
+
+GZ
+UAV_Aero_Opt.tar.gz  26 MB
+
+GZ
+UBend_AeroTherm_Opt.tar.gz  34 MB
+
+Steps to reproduce
+
+1. Download and install the codes as listed in Code_Version.txt. Make sure you use the correct versions. Refer to https://dafoam.rtfd.io for detailed installation instructions.
+2. Download one of the tar.gz files above and untar it.
+3. Go to the "run" folder and run: "./Allrun.sh"
+4. All the intermediate shapes and flow fields are stored in the "optOutput" folder. After the optimizations are done, use Paraview to post-process the optimization results.
+
+NOTE: you may need to adjust the name of your MPI executive, the number of CPU cores to use, and the path to your OpenFOAM bashrc file in the Allrun.sh script. Also, if you do not have the access to default SNOPT optimizer, change 'snopt' to 'slsqp' in runScript.py. 
+
+Institutions
+
+University of Michigan
+
+Categories
+
+Aerospace Engineering, Radiation, Heat Transfer, Multidisciplinary Design Optimization, Computational Fluid Dynamics, Applied Aerodynamics, Structural Analysis
+
+Related Links
+
+Software
+
+https://dafoam.rtfd.io   is related to this dataset

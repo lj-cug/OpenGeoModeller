@@ -1,0 +1,59 @@
+# Turbulence
+
+侧重湍流细微结构的CFD模型，同时考虑其工程应用价值.
+
+## OpenFOAM
+
+一个家喻户晓且不断发展和得到广泛应用的CFD开源软件.
+
+## DAFOAM
+
+基于CFD和离散伴随方法的体型优化工具，类似的工具还有：ADFLOW, SU2等
+
+注： ADFLOW使用可压缩的RANS求解器和多块结构网格，适用于机翼体型的气动优化;
+SU2是斯坦福大学开发的C++程序, 使用非结构网格, 可快速实施气动优化的整个工作流;
+DAFOAM的CFD求解器是OpenFOAM, 其功能性应该是最强的,且使用Python语言,易于使用.
+
+## ShallowFOAM, demFoam, sediFOAM和mdFOAM
+
+基于OpenFOAM框架开发的浅水方程求解器、整合LAMMPS的DEM模型、水沙两相流和分子动力学模型.
+
+## fastFlume
+
+基于OpenFOAM框架开发的水轮机的模拟程序.
+
+## Hydro3D
+
+大涡模拟工具，应用于海洋能牧场的优化.
+
+Visit the [Wiki](https://github.com/OuroPablo/Hydro3D/wiki) in this repository to find information on how to use the code, how to extend it and more.
+
+## finesed3d
+
+直接数值模拟(DNS)的水沙两相流模型.
+
+## WInc3D
+
+基于LES和actuator line model (ALM)的风力发电牧场的模型.
+
+## Incompact
+
+英国帝国理工学院开发的基于紧致差分格式的DNS模型.
+
+## PCUILES
+
+最早的可用于学习LES方法的FORTRAN程序，美国Stanford大学开发.
+
+## VFS-Rivers
+
+美国Minnisota大学开发的用于模拟自由表面流动的LES模型，已经停止开发.
+
+## HiFiLES
+
+基于非结构网格的高阶LES模型, 可运行在GPU集群上.
+
+Manuel R. L′opez-Morales et al., 2014. Verification and Validation of HiFiLES: a High-Order LES unstructured solver on multi-GPU platforms. AIAA Aviation, 32nd AIAA Applied Aerodynamics Conference
+
+# tudflow3d
+
+基于结构网格，用于研究河道疏浚的LES模型，包括水动力和泥沙输移两部分.
