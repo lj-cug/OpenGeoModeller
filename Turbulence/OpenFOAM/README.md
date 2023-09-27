@@ -1,3 +1,7 @@
+# OpenFOAM安装与使用
+
+[用户手册](https://doc.cfd.direct/openfoam/user-guide-v10/)
+
 # 1. Software for Compilation
 
 ## Install packages for repositories and compilation
