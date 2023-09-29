@@ -28,6 +28,7 @@ The following instructions are written for the OpenFOAM-dev and ThirdParty-dev r
 To clone the repositories, execute the following:
 
 git clone https://github.com/OpenFOAM/OpenFOAM-dev.git
+
 git clone https://github.com/OpenFOAM/ThirdParty-dev.git
 
 # 3. Setting the Environment
