@@ -57,7 +57,7 @@ Ninja被设计成尽可能快速执行构建的工具。
 
 一般将Meson和Ninja配合使用，Meson负责构建项目依赖关系，Ninja进行编译。
 
-### 3.2 简单的Meson构建样例 {#简单的meson构建样例 .标题3}
+### 3.2 简单的Meson构建样例
 
 本节将会给出几个简单的Meson构建样例，粗略介绍Meson的使用方式。
 
@@ -183,7 +183,7 @@ Build targets in project: 1
 
 Found ninja-1.10.0.git.kitware.jobserver-1 at /usr/bin/ninja
 
-NOTICE: You are using Python 3.5 which is EOL. Start。ing with v0.57,
+NOTICE: You are using Python 3.5 which is EOL. Start.ing with v0.57,
 Meson will require Python 3.6 or newer
 
 信息有Meson版本，源码目录和构建目录，一部分构建选项的参数，并且最后提示ninja的存在，可以直接使用ninja编译。
@@ -382,11 +382,11 @@ hellow third library
 
 ## **一· 搭建meson环境并简单编译：**
 
-### **1. 什么是meson** {#什么是meson .标题3}
+### **1. 什么是meson**
 
 Meson旨在开发最具可用性和快速的构建系统。提供简单但强大的声明式语言用来描述构建。原生支持最新的工具和框架，如Qt5、代码覆盖率、单元测试和预编译头文件等。利用一组优化技术来快速编译代码，包括增量编译和完全编译。
 
-### **2. 安装meson** {#安装meson .标题3}
+### **2. 安装meson**
 
 注意：meson安装前必须确认是否已经安装python3.5及以上版本；因为meson依赖于python3和ninja
 
@@ -405,7 +405,7 @@ sudo ln -s /usr/bin/python3.5 /usr/bin/python3
 
 pip3 install \--user meson
 
-### **3. 编译C代码** {#编译c代码 .标题3}
+### **3. 编译C代码**
 
 **3.1 下面写一个简单的程序(main.c)：**
 
@@ -419,27 +419,23 @@ pip3 install \--user meson
 project(\'tutorial\', \'c\')\
 executable(\'demo\', \'main.c\')
 
-![https://img-blog.csdnimg.cn/img_convert/601311fabdd6f940994afed5c4de57ee.png](./media/image1.png){width="3.471814304461942in"
-height="0.23965879265091863in"}
+![https://img-blog.csdnimg.cn/img_convert/601311fabdd6f940994afed5c4de57ee.png](./media/image1.png)
 
 **3.3 执行**\
-[\$ meson build]{.mark}
+\$ meson build
 
-![https://img-blog.csdnimg.cn/img_convert/314f6a1bae2772e15efd4a7e40f760d1.png](./media/image2.png){width="5.699828302712161in"
-height="1.9322419072615924in"}
+![https://img-blog.csdnimg.cn/img_convert/314f6a1bae2772e15efd4a7e40f760d1.png](./media/image2.png)
 
 **3.4 进入 build目录，执行ninja**\
 \$cd ninja && ninja\
 njnja 相当于 make, 所以上面会编译代码，生成可执行文件 demo.
 
-![https://img-blog.csdnimg.cn/img_convert/2333f0e6fd8d9cafa79f8bd3f1f33994.png](./media/image3.png){width="4.597869641294838in"
-height="0.5500853018372703in"}
+![https://img-blog.csdnimg.cn/img_convert/2333f0e6fd8d9cafa79f8bd3f1f33994.png](./media/image3.png)
 
 **3.5 编译完成**
 
 \$ ./demo\
-![https://img-blog.csdnimg.cn/img_convert/e6cee5515242d745bf2446112a128911.png](./media/image4.png){width="4.603897637795275in"
-height="0.43394028871391077in"}
+![https://img-blog.csdnimg.cn/img_convert/e6cee5515242d745bf2446112a128911.png](./media/image4.png)
 
 ## **二· 编译开源代码**
 
@@ -447,12 +443,10 @@ height="0.43394028871391077in"}
 
 现在很多开源代码都转向meson进行构建和编译了，例如gsreamer，pulseaudio等这时候你可以在代码根目录下看到很meson.build文件，并且每个子目录页包含meson.build文件；
 
-![https://img-blog.csdnimg.cn/img_convert/0a159e1e86b9e6f114e757bf817b4ac8.png](./media/image5.png){width="5.351589020122485in"
-height="0.9604943132108487in"}
+![https://img-blog.csdnimg.cn/img_convert/0a159e1e86b9e6f114e757bf817b4ac8.png](./media/image5.png)
 
 **2. 查看支持哪些编译选项（哪些模块需要编译）**
 
 #meson configure
 
-![https://img-blog.csdnimg.cn/img_convert/a8cfba7f6901e9173df68f27741ae623.png](./media/image6.png){width="5.252141294838145in"
-height="1.1883005249343832in"}
+![https://img-blog.csdnimg.cn/img_convert/a8cfba7f6901e9173df68f27741ae623.png](./media/image6.png)

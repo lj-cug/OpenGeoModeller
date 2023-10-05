@@ -337,7 +337,7 @@ docker-compose unpause \[SERVICE\...\]
 
 ## 三，Docker-compose模板文件
 
-### 1，Docker-compose模板文件简介 {#docker-compose模板文件简介 .标题3}
+### 1，Docker-compose模板文件简介
 
 Compose允许用户通过一个docker-compose.yml模板文件（YAML格式）来定义一组相关联的应用容器为一个项目（project）。Compose模板文件是一个定义服务、网络和卷的YAML文件。Compose模板文件默认路径是当前目录下的docker-compose.yml，可以使用.yml或.yaml作为文件扩展名。
 

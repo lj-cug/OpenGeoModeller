@@ -48,11 +48,11 @@ common.dll
 
 ## 4. 指定编译包含的源文件
 
-### 4.1 明确指定包含哪些源文件 {#明确指定包含哪些源文件 .标题3}
+### 4.1 明确指定包含哪些源文件
 
 add_library(demo demo.cpp test.cpp util.cpp)
 
-### 4.2 搜索所有的cpp文件 {#搜索所有的cpp文件 .标题3}
+### 4.2 搜索所有的cpp文件
 
 aux_source_directory(dir VAR)
 发现一个目录下所有的源代码文件并将列表存储在一个变量中。
@@ -61,7 +61,7 @@ aux_source_directory(. SRC_LIST) \# 搜索当前目录下的所有.cpp文件
 
 add_library(demo \${SRC_LIST})
 
-### 4.3 自定义搜索规则 {#自定义搜索规则 .标题3}
+### 4.3 自定义搜索规则
 
 file(GLOB SRC_LIST \"\*.cpp\" \"protocol/\*.cpp\")
 
@@ -148,7 +148,7 @@ demo
 在 Windows 下，系统会根据链接库目录，搜索xxx.lib 文件，Linux 下会搜索
 xxx.so 或者 xxx.a 文件，如果都存在会优先链接动态库（so 后缀）。
 
-### 8.1 指定链接动态库或静态库 {#指定链接动态库或静态库 .标题3}
+### 8.1 指定链接动态库或静态库
 
 target_link_libraries(demo libface.a) \# 链接libface.a
 
@@ -160,7 +160,7 @@ target_link_libraries(demo \${CMAKE_CURRENT_SOURCE_DIR}/libs/libface.a)
 
 target_link_libraries(demo \${CMAKE_CURRENT_SOURCE_DIR}/libs/libface.so)
 
-### 8.3 指定链接多个库 {#指定链接多个库 .标题3}
+### 8.3 指定链接多个库
 
 target_link_libraries(demo
 
@@ -174,7 +174,7 @@ pthread)
 
 ## 9. 设置变量
 
-### 9.1 set 直接设置变量的值 {#set-直接设置变量的值 .标题3}
+### 9.1 set 直接设置变量的值
 
 set(SRC_LIST main.cpp test.cpp)
 
@@ -200,7 +200,7 @@ add_executable(demo \${SRC_LIST})
 
 ## 10. 条件控制
 
-### 10.1 if...elseif...else...endif {#ifelseifelseendif .标题3}
+### 10.1 if...elseif...else...endif
 
 逻辑判断和比较：
 
@@ -298,7 +298,7 @@ else()
 
 endif()
 
-### 10.2 while...endwhile {#whileendwhile .标题3}
+### 10.2 while...endwhile
 
 while(condition)
 
@@ -306,7 +306,7 @@ while(condition)
 
 endwhile()
 
-### 10.3 foreach...endforeach {#foreachendforeach .标题3}
+### 10.3 foreach...endforeach
 
 foreach(loop_var RANGE start stop \[step\])
 
@@ -420,7 +420,7 @@ add_definitions(-DENABLE_DEBUG -DABC) \# 参数之间用空格分隔
 
 一个经典的C程序，如何通过cmake来编译呢？
 
-### 1.1 新建文件 main.c {#新建文件-main.c .标题3}
+### 1.1 新建文件 main.c
 
 #include \<stdio.h\>
 
@@ -438,7 +438,7 @@ project(HELLO)
 
 add_executable(hello main.c)
 
-### 1.3 编译和运行 {#编译和运行 .标题3}
+### 1.3 编译和运行
 
 新建一个build文件夹，目录情况如下：
 
@@ -455,25 +455,21 @@ cmake ..
 首先进入到 build 目录，然后就是 cmake ..
 命令，另外要注意将cmake配置到环境变量中去才可直接使用，否则需要使用绝对路径，..表示上一级目录，cmake会在上一级目录下找到CMakeLists.txt文件并编译，并生成如下图所示的一些中间文件：
 
-![https://img-blog.csdn.net/20180725140742951?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image1.png){width="2.9289468503937006in"
-height="1.9248195538057742in"}
+![https://img-blog.csdn.net/20180725140742951?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image1.png)
 
 直接执行make命令，生成可执行程序，如下图：
 
-![https://img-blog.csdn.net/20180725140822407?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image2.png){width="2.795878171478565in"
-height="2.1406528871391077in"}
+![https://img-blog.csdn.net/20180725140822407?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image2.png)
 
 运行程序，如下所示：运行程序，如下所示：
 
-![https://img-blog.csdn.net/20180725142225891?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image3.png){width="2.9060531496062993in"
-height="1.8993011811023621in"}
+![https://img-blog.csdn.net/20180725142225891?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image3.png)
 
 ## 2. 复杂项目（多个目录，多个源文件，多个项目）
 
 目录结构如下：
 
-![https://img-blog.csdn.net/20180725140917986?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image4.png){width="1.5988987314085739in"
-height="1.635538057742782in"}
+![https://img-blog.csdn.net/20180725140917986?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmZWlfXw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70](./media/image4.png)
 
 demo根目录下的CMakeLists.txt文件如下：
 

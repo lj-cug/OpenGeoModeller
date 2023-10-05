@@ -15,6 +15,7 @@ $ sudo apt-get update -y
 $ sudo apt-get install -y nvhpc-23-3-cuda-multi
 
 ### Ö¸¶¨°æ±¾
+
 Bundled with the newest plus two previous CUDA versions (11.4, 11.0, 10.2)
 
 $ curl https://developer.download.nvidia.com/hpc-sdk/ubuntu/DEB-GPG-KEY-NVIDIA-HPC-SDK | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-hpcsdk-archive-keyring.gpg

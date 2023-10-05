@@ -28,8 +28,7 @@ Docker containers that run on Docker Engine:
 3.  **Secure:** Applications are safer in containers and Docker provides
     the strongest default isolation capabilities in the industry
 
-![C:\\Users\\Administrator\\Desktop\\container-what-is-container.png](./media/image1.png){width="2.4832075678040244in"
-height="2.1209087926509187in"}
+![C:\\Users\\Administrator\\Desktop\\container-what-is-container.png](./media/image1.png)
 
 图1
 
@@ -757,7 +756,7 @@ from it.
 
 The next logical step after creating a new image from an existing image
 is to share it with a select few of your friends, the whole world on
-[Docker Hub]{.mark}, or other Docker registry that you have access to.
+[Docker Hub], or other Docker registry that you have access to.
 To push an image to Docker Hub or any other Docker registry, you must
 have an account there.
 
@@ -765,7 +764,7 @@ This section shows you how to push a Docker image to Docker Hub. To
 learn how to create your own private Docker registry, check out  [[[How
 To Set Up a Private Docker Registry on Ubuntu
 14.04]{.underline}](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04).
-设置自己的私有Docker Registry仓库]{.mark}
+设置自己的私有Docker Registry仓库]
 
 To push your image, first log into Docker Hub.
 
@@ -865,5 +864,4 @@ distribution you are comfortable with: Ubuntu!
 It is now possible to do so using the power of Docker technology and
 Hyper-V virtualization on Windows.
 
-![screenshot](./media/image5.png){width="4.363297244094488in"
-height="1.8809689413823272in"}
+![screenshot](./media/image5.png)

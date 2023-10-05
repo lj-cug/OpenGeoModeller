@@ -16,6 +16,14 @@ MesonÖ¼ÔÚ¿ª·¢×î¾ß¿ÉÓÃĞÔºÍ¿ìËÙµÄ¹¹½¨ÏµÍ³¡£Ìá¹©¼òµ¥µ«Ç¿´óµÄÉùÃ÷Ê½ÓïÑÔÓÃÀ´ÃèÊö¹¹½¨¡
 	½øÈë buildÄ¿Â¼£¬Ö´ĞĞninja
 	
 	cd ninja && ninja
+	
+## meson-ui (MESON¿ÉÊÓ»¯½çÃæ)
+
+Qt GUI for the Meson build system
+
+https://github.com/michaelbrockus/meson-ui
+
+pip install meson-ui
 
 ## meson.build±àĞ´
 
@@ -28,3 +36,5 @@ executable("project", 'src/main.c')
 
 project('project02', 'c')
 static_library('thirdinfo', 'src/third_lib.c')
+
+

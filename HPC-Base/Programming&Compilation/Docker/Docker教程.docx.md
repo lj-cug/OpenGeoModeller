@@ -73,8 +73,7 @@ Docker 容器通过 Docker 镜像来创建。
   镜像                              类
   -----------------------------------------------------------------------
 
-![](./media/image1.png){width="5.385416666666667in"
-height="4.083333333333333in"}
+![](./media/image1.png)
 
 +---------------+------------------------------------------------------+
 | 概念          | 说明                                                 |
@@ -445,7 +444,7 @@ runoob@runoob:\~\$ docker run ubuntu:15.10 /bin/echo \"Hello world\"
 
 Hello world
 
-![](./media/image2.png){width="5.770833333333333in" height="0.34375in"}
+![](./media/image2.png)
 
 各个参数解析：
 
@@ -568,19 +567,17 @@ CONTAINER ID IMAGE COMMAND \...
 
 runoob@runoob:\~\$ docker logs 2b1b7a428627
 
-![](./media/image3.png){width="3.7083333333333335in"
-height="2.2291666666666665in"}
+![](./media/image3.png)
 
 runoob@runoob:\~\$ docker logs amazing_cori
 
-![](./media/image4.png){width="3.59375in" height="2.5104166666666665in"}
+![](./media/image4.png)
 
 ## 停止容器
 
 我们使用 **docker stop**命令来停止容器:
 
-![](./media/image5.png){width="3.6770833333333335in"
-height="0.3333333333333333in"}
+![](./media/image5.png)
 
 通过 docker ps 查看，容器已经停止工作:
 
@@ -601,8 +598,7 @@ docker 客户端非常简单 ,我们可以直接输入 docker 命令来查�
 
 runoob@runoob:\~# docker
 
-![](./media/image6.png){width="5.770833333333333in"
-height="3.5833333333333335in"}
+![](./media/image6.png)
 
 可以通过命令 **docker command \--help**更深入的了解指定的 Docker
 命令使用方法。
@@ -611,8 +607,7 @@ height="3.5833333333333335in"}
 
 runoob@runoob:\~# docker stats \--help
 
-![](./media/image7.png){width="5.770833333333333in"
-height="1.1770833333333333in"}
+![](./media/image7.png)
 
 ## 容器使用
 
@@ -629,8 +624,7 @@ height="1.1770833333333333in"}
 
 \$ docker run -it ubuntu /bin/bash
 
-![](./media/image8.png){width="6.174390857392826in"
-height="0.3457655293088364in"}
+![](./media/image8.png)
 
 参数说明：
 
@@ -647,8 +641,7 @@ height="0.3457655293088364in"}
 
 root@ed09e4490c57:/# exit
 
-![](./media/image9.png){width="6.791476377952756in"
-height="0.5224212598425196in"}
+![](./media/image9.png)
 
 ### 启动已停止运行的容器
 
@@ -658,15 +651,13 @@ height="0.5224212598425196in"}
 
 点击图片查看大图：
 
-![](./media/image10.png){width="9.892787620297463in"
-height="0.4166513560804899in"}
+![](./media/image10.png)
 
 使用 docker start 启动一个已停止的容器：
 
 \$ docker start b750bbbcfd88
 
-![](./media/image11.png){width="6.664632545931759in"
-height="0.3928204286964129in"}
+![](./media/image11.png)
 
 ### 后台运行
 
@@ -677,11 +668,9 @@ height="0.3928204286964129in"}
 
 点击图片查看大图：
 
-![](./media/image12.png){width="10.311452318460193in"
-height="0.402334864391951in"}
+![](./media/image12.png)
 
-![](./media/image13.png){width="10.34051290463692in"
-height="0.46010279965004375in"}
+![](./media/image13.png)
 
 **注：**加了 -d 参数默认不会进入容器，想要进入容器需要使用指令**docker
 exec**（下面会介绍到）。
@@ -692,15 +681,13 @@ exec**（下面会介绍到）。
 
 \$ docker stop \<容器 ID\>
 
-![](./media/image14.png){width="6.57117125984252in"
-height="0.36105424321959756in"}
+![](./media/image14.png)
 
 停止的容器可以通过 docker restart 重启：
 
 \$ docker restart \<容器 ID\>
 
-![](./media/image15.png){width="6.3562117235345585in"
-height="0.3682917760279965in"}
+![](./media/image15.png)
 
 ### 进入容器
 
@@ -718,8 +705,7 @@ height="0.3682917760279965in"}
 
 \$ docker attach 1e560fca3906
 
-![](./media/image16.png){width="5.680555555555555in"
-height="1.226388888888889in"}
+![](./media/image16.png)
 
 **注意：** 如果从这个容器退出，会导致容器的停止。
 
@@ -729,8 +715,7 @@ height="1.226388888888889in"}
 
 docker exec -it 243c32535da7 /bin/bash
 
-![](./media/image17.png){width="5.916666666666667in"
-height="1.2006944444444445in"}
+![](./media/image17.png)
 
 **注意：** 如果从这个容器退出，容器不会停止，这就是为什么推荐大家使用
 **docker exec**的原因。
@@ -747,8 +732,7 @@ height="1.2006944444444445in"}
 
 导出容器 1e560fca3906 快照到本地文件 ubuntu.tar。
 
-![](./media/image18.png){width="6.050694444444445in"
-height="1.0840277777777778in"}
+![](./media/image18.png)
 
 这样将导出容器快照到本地文件。
 
@@ -759,8 +743,7 @@ ubuntu.tar 导入到镜像 test/ubuntu:v1:
 
 \$ cat docker/ubuntu.tar \| docker import - test/ubuntu:v1
 
-![](./media/image19.png){width="6.186111111111111in"
-height="1.3409722222222222in"}
+![](./media/image19.png)
 
 此外，也可以通过指定 URL 或者某个目录来导入，例如：
 
@@ -772,8 +755,7 @@ height="1.3409722222222222in"}
 
 \$ docker rm -f 1e560fca3906
 
-![](./media/image20.png){width="6.197279090113736in"
-height="1.2599289151356081in"}
+![](./media/image20.png)
 
 下面的命令可以清理掉所有处于终止状态的容器。
 
@@ -791,7 +773,7 @@ runoob@runoob:\~# docker pull training/webapp \# 载入镜像
 
 runoob@runoob:\~# docker run -d -P training/webapp python app.py
 
-![](./media/image21.png){width="5.770833333333333in" height="0.5in"}
+![](./media/image21.png)
 
 参数说明:
 
@@ -821,7 +803,7 @@ Docker 开放了 5000 端口（默认 Python Flask 端口）映射到主机端�
 
 这时我们可以通过浏览器访问WEB应用
 
-![](./media/image22.png){width="3.78125in" height="0.875in"}
+![](./media/image22.png)
 
 我们也可以通过 -p 参数来设置不一样的端口：
 
@@ -1149,8 +1131,7 @@ runoob@runoob:\~\$ docker search httpd
 
 点击图片查看大图：
 
-![](./media/image23.jpeg){width="6.665444006999125in"
-height="1.2870264654418198in"}
+![](./media/image23.jpeg)
 
 **NAME:** 镜像仓库源的名称
 
@@ -1195,8 +1176,7 @@ runoob@runoob:\~\$ docker run httpd
 
 \$ docker rmi hello-world
 
-![](./media/image24.png){width="6.572220034995626in"
-height="0.7793602362204725in"}
+![](./media/image24.png)
 
 ## 创建镜像
 
@@ -1548,8 +1528,7 @@ CONTAINER ID IMAGE COMMAND \... PORTS NAMES
 
 \$ docker network create -d bridge test-net
 
-![](./media/image25.png){width="6.117439851268592in"
-height="2.1949136045494315in"}
+![](./media/image25.png)
 
 参数说明：
 
@@ -1569,8 +1548,7 @@ height="2.1949136045494315in"}
 
 点击图片查看大图：
 
-![](./media/image26.png){width="6.541325459317585in"
-height="0.4982425634295713in"}
+![](./media/image26.png)
 
 下面通过 ping 来证明 test1 容器和 test2 容器建立了互联关系。
 
@@ -1585,15 +1563,13 @@ apt install iputils-ping
 
 点击图片查看大图：
 
-![](./media/image27.png){width="6.103767497812774in"
-height="1.0455839895013124in"}
+![](./media/image27.png)
 
 同理在 test2 容器也会成功连接到:
 
 点击图片查看大图：
 
-![](./media/image28.png){width="6.035690069991251in"
-height="1.180161854768154in"}
+![](./media/image28.png)
 
 这样，test1 容器和 test2 容器建立了互联关系。
 
@@ -1626,8 +1602,7 @@ height="1.180161854768154in"}
 
 点击图片查看大图：
 
-![](./media/image29.png){width="6.7526082677165356in"
-height="0.8072583114610674in"}
+![](./media/image29.png)
 
 **手动指定容器的配置**
 
@@ -1652,8 +1627,7 @@ host.example.com。
 
 点击图片查看大图：
 
-![](./media/image30.png){width="6.315404636920385in"
-height="1.2780555555555555in"}
+![](./media/image30.png)
 
 如果在容器启动时没有指定 **\--dns**和 **\--dns-search**，Docker
 会默认用宿主主机上的 /etc/resolv.conf 来配置容器的 DNS。
@@ -1733,8 +1707,7 @@ Docker 账号。
 
 \$ docker login
 
-![](./media/image31.jpeg){width="6.188325678040245in"
-height="0.7688046806649169in"}
+![](./media/image31.jpeg)
 
 **退出**
 
@@ -1751,14 +1724,13 @@ height="0.7688046806649169in"}
 
 \$ docker search ubuntu
 
-![](./media/image32.png){width="5.668954505686789in"
-height="1.3312423447069117in"}
+![](./media/image32.png)
 
 使用 docker pull 将官方 ubuntu 镜像下载到本地：
 
 \$ docker pull ubuntu
 
-![](./media/image33.png){width="5.75in" height="1.5333333333333334in"}
+![](./media/image33.png)
 
 ### 推送镜像
 
@@ -1806,8 +1778,7 @@ FROM nginx
 RUN echo \'这是一个本地构建的nginx镜像\'\>
 /usr/share/nginx/html/index.html
 
-![](./media/image34.png){width="5.1338145231846015in"
-height="1.8548337707786526in"}
+![](./media/image34.png)
 
 **2、FROM 和 RUN 指令的作用**
 
@@ -1861,8 +1832,7 @@ nginx:v3（镜像名称:镜像标签）。
 
 \$ docker build -t nginx:v3 .
 
-![](./media/image35.png){width="4.8720199037620295in"
-height="1.9623884514435697in"}
+![](./media/image35.png)
 
 以上显示，说明已经构建成功。
 
