@@ -1,0 +1,11 @@
+DAFoam supports high-fidelity design optimization for a wide range of disciplines, e.g., aerodynamics, heat transfer, solid mechanics, and hydrodynamics.
+
+The optimization configurations for the DAFoam tutorials are available from here. If you use the DAFoam Docker image, first start a Docker container, refer to this page. Then, for most of the tutorials, run this command for pre-processing:
+
+./preProcessing.sh
+
+Then, use this command to run the tutorial:
+
+mpirun -np 4 python runScript.py 2>&1 | tee logOpt.txt
+
+Check the instructions in each tutorial for details.

@@ -1,0 +1,72 @@
+The following publications used or tested DAFoam in their studies. If we miss yours, please feel free to edit this page and submit a pull request.
+
+F. Cao, Z. Tang, C. Zhu X. Zhao. An Efficient Hybrid Multi-Objective Optimization Method Coupling Global Evolutionary and Local Gradient Searches for Solving Aerodynamic Optimization Problems. Mathematics, 2023.
+
+C. Wu, Y. Zhang. Enhancing the shear-stress-transport turbulence model with symbolic regression: A generalizable and interpretable data-driven approach. Physical Review Fluids, 2023.
+
+J. Park, B. Knight, Y. Liao, M. Mangano, B. Pacini, K. Maki, J. Martins, J. Sun, and Y. Pan. CFD-based Design Optimization of Ducted Hydrokinetic Turbines, arXiv:2307.03248, 2023.
+
+B. Pacini, M. Prajapati, K. Duraisamy, J.R.R.A. Martins, P. He. Towards Mixed-Fidelity Aero-Structural-Acoustic Optimization for Urban Air Mobility Vehicle Design. In: AIAA Aviation Forum, 2023.
+
+H. M. Hajdik, B. Pacini, A. Yildirim, B. J. Brelje, J.R.R.A. Martins. Combined systems packaging and aerodynamic shape optimization of a full aircraft configuration. In: AIAA Aviation Forum, 2023.
+
+S. Batay, B. Kamalov, D. Zhangaskanov, Y. Zhao, D. Wei, T. Zhou, X. Su. Adjoint-Based High-Fidelity Concurrent Aerodynamic Design Optimization of Wind Turbine. Fluids, 2023
+
+H. U. Koyuncuoglu, P. He. CFD Based Multi-Component Aerodynamic Optimization for Wing Propeller Coupling. In: AIAA Scitech Forum, 2023.
+
+P. He, H.U. Koyuncuoglu, H. Hu, A. Dhulipalla, H.Y. Hu, H. Hu. High-fidelity Aerodynamic and Aerostructural Optimization of UAV Propellers Using the Adjoint Method. In: AIAA Scitech Forum, 2023.
+
+B Pacini M. Prajapati, K. Duraisamy, J.R.R.A. Martins, P. He. Multipoint Aerostructural Optimization for Urban Air Mobility Vehicle Design. In: AIAA Scitech Forum, 2023.
+
+B Pacini M. Prajapati, K. Duraisamy, J.R.R.A. Martins, P. He. Understanding Distributed Propulsion on the NASA Tiltwing Concept Vehicle with Aerodynamic Shape Optimization. In: AIAA Scitech Forum, 2023.
+
+M. H. Negahban, M. Bashir, R.M. Botez. Free-Form Deformation Parameterization on the Aerodynamic Optimization of Morphing Trailing Edge. Applied Mechanics, 2023.
+
+M. H. Negahban, M. Bashir, R.M. Botez. Aerodynamic Optimization of a Novel Synthetic Trailing Edge and Chord Elongation Morphing: Application to the UAS-S45 Airfoil. In: AIAA Scitech Forum, 2023.
+
+A. Ghasemi, A. Elham. Efficient multi?stage aerodynamic topology optimization using an operator?based analytical differentiation. Structural and Multidisciplinary Optimization, 2022.
+
+L. Jofre, A. Doostan. Rapid aerodynamic shape optimization under uncertainty using a stochastic gradient approach. Structural and Multidisciplinary Optimization, 2022.
+
+H. U. Koyuncuoglu, P. He. Simultaneous wing shape and actuator parameter optimization using the adjoint method. Aerospace Science and Technology, 2022.
+
+Y.L. Lamer, J. Morlier, E. Benard, P. He. Aeroelastic analysis of high aspect ratio and strut-braced wings. In: 33th Congress of the International Council of the Aeronautical Sciences. 2022.
+
+Omid Bidar, Ping He, Sean Anderson, Ning Qin. An open-source adjoint-based field inversion tool for data-driven RANS modelling, In: AIAA Aviation Forum, 2022. AIAA 2022-4125. https://doi.org/10.2514/6.2022-4125
+
+Omid Bidar, Ping He, Sean Anderson, Ning Qin. Turbulent mean flow reconstruction based on sparse multi-sensor data and adjoint-based field inversion, In: AIAA Aviation Forum, 2022. AIAA 2022-3900. https://doi.org/10.2514/6.2022-3900
+
+H. U. Koyuncuoglu, P. He. Coupled Wing-Propeller Aerodynamic Optimization Using the Adjoint Method. In: AIAA Scitech Forum, 2022.
+
+C. Wu, Y. Zhang. Flow Topology Optimization at High Reynolds Numbers Based on Modified Turbulence Models. arXiv:2207.11711, 2022.
+
+N.N. Kozyulin, M.S. Bobrov, M.Y. Hrebtov. Adjoint shape optimization of a duct for a wall jet film cooling setup. J. Phys.: Conf. Ser. 2119, 2021.
+
+Kiet T. Tran, Ping He. Unsteady aerodynamic optimization of airfoils considering shape and propeller parameters. In: AIAA Aviation Forum, 2021.
+
+J. Ho, A. West. Field Inversion and Machine Learning for Turbulence Modelling Applied to Three-Dimensional Separated Flows. In: AIAA Aviation Forum, 2021.
+
+Ping He, Joaquim R. R. A. Martins. A hybrid time-spectral approach for aerodynamic optimization with unsteady flow. In: AIAA Scitech Forum, 2021. https://doi.org/10.2514/6.2021-0278
+
+Ping He, Charles A. Mader, Joaquim R.R.A. Martins, Kevin J. Maki. DAFoam: An open-source adjoint framework for multidisciplinary design optimization with OpenFOAM. AIAA Journal, 2020. https://doi.org/10.2514/1.J058853
+
+Ping He, Alton J. Luder, Charles A. Mader, Joaquim R.R.A. Martins, Kevin J. Maki. A time-spectral adjoint approach for aerodynamic shape optimization under periodic wakes. In: AIAA Scitech Forum, 2020. AIAA-2020-2114. https://doi.org/10.2514/6.2020-2114
+
+Ping He, Grzegorz Filip, Kevin J. Maki, Joaquim R. R. A. Martins. Design optimization for self-propulsion of a bulk carrier hull using a discrete adjoint method. Computers & Fluids, 192, pp. 104259, 2019. http://dx.doi.org/10.1016/j.compfluid.2019.104259
+
+Gaetan K. W. Kenway, Charles A. Mader, Ping He, Joaquim R. R. A. Martins. Effective adjoint approaches for computational fluid dynamics. Progress in Aerospace Sciences, 110, pp. 100542, 2019. http://dx.doi.org/10.1016/j.paerosci.2019.05.002
+
+Ping He, Charles A. Mader, Joaquim R. R. A. Martins, Kevin J. Maki. Aerothermal optimization of a ribbed U-bend cooling channel using the adjoint method. International Journal of Heat and Mass Transfer, 140, 152-172, 2019. http://dx.doi.org/10.1016/j.ijheatmasstransfer.2019.05.075
+
+Ping He, Charles A. Mader, Joaquim R. R. A. Martins, Kevin J. Maki. An object-oriented framework for rapid discrete adjoint development using OpenFOAM. In: AIAA Scitech Forum, 2019. AIAA-2019-1210. http://dx.doi.org/10.2514/6.2019-1210
+
+Ping He, Charles A. Mader, Joaquim R. R. A. Martins, Kevin J. Maki. Aerothermal optimization of internal cooling passages using the adjoint method, In: 2018 Joint Thermophysics and Heat Transfer Conference, 2018. AIAA Aviation Forum, AIAA-2018-4080. http://dx.doi.org/10.2514/6.2018-4080
+
+
+
+Ping He, Grzegorz Filip, Joaquim R. R. A. Martins, Kevin J. Maki. Hull form hydrodynamic design using a discrete adjoint optimization method, In: 13th International Marine Design Conference, 2018
+
+Computational fluid dynamics based optimization is becoming increasing popular in hull form hydrodynamic designs; however, existing optimization studies commonly utilize gradient-free methods which can only handle a handful of design variables. Ship hull geometry is necessarily described by a large number of design variables since the hydrodynamic drag is strongly influenced by small changes in the hull shape. To break this limit, in this paper we utilize a gradient-based optimization approach along with the adjoint method for efficient gradient computation. To demonstrate its power, we optimize the stern region of the KVLCC2 tanker using more than 100 design variables subject to proper geometric constraints (volume and thickness) for practical shape. We also evaluate the impact of propellers on the optimization results. We neglect the free-surface since the Froude number is low and the design changes are in the stern region. Overall, we obtain 2.9% and 1.3% hydrodynamic drag reduction for the cases with and without the propeller, respectively.
+
+
+Ping He, Charles A. Mader, Joaquim R. R. A. Martins, Kevin J. Maki. An aerodynamic design optimization framework using a discrete adjoint approach with OpenFOAM. Computers & Fluids, 168, pp. 285-303, 2018. http://dx.doi.org/10.1016/j.compfluid.2018.04.012
