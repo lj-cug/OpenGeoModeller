@@ -1,7 +1,7 @@
 # OpenFOAM (OpenCFD)
 
 一个家喻户晓且不断发展和得到广泛应用的CFD开源软件.
-在OpenFOAM矿机的基础上开发了很多特殊用途的CFD应用.
+在OpenFOAM框架的基础上开发了很多特殊用途的CFD应用.
 
 值得关注一个基于OpenFOAM开发的很多用途的CFD模型，包括aeroacoustic等.
 [**UniCFD Web-laboratory**](https://github.com/unicfdlab) was established in ISP RAS (www.ispras.ru) in 2011 to develop and spread scientific open source software in Russia.
