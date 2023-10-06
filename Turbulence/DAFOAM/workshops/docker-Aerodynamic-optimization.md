@@ -24,9 +24,11 @@ cd $HOME/workshops/2022_Summer/examples/openmdao
 
 ## run this command to start a Docker container
 
-docker run -it --rm -u dafoamuser --mount \
-"type=bind,src=$(pwd),target=/home/dafoamuser/mount" \
--w /home/dafoamuser/mount dafoam/opt-packages:v3.0.7 bash
+docker run -it --rm -u dafoamuser --mount "type=bind,src=$(pwd),target=/home/dafoamuser/mount" -w /home/dafoamuser/mount dafoam/opt-packages:v3.0.7 bash
+
+### Windows docker container
+
+docker run -it --rm -u dafoamuser --mount "type=bind,src=%cd%,target=/home/dafoamuser/mount" -w /home/dafoamuser/mount dafoam/opt-packages:v3.0.7 bash
 
 在Docker容器内，你会看到：
 
