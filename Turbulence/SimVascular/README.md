@@ -1,5 +1,9 @@
 # Simvascular
 
+第1款用于心血管CFD的开源模型, 可以运行在Linux, MacOS和Windows Cygwin
+
+C++语言，只能使用gcc 7.5编译
+
 https://simvascular.github.io/
 
 ## CAPABILITIES
