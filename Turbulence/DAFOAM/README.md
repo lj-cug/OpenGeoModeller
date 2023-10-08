@@ -1,8 +1,8 @@
 # DAFOAM
 
-基于伴随优化和OpenFOAM_v1812求解器的通用优化工具
+基于离散伴随(AD)优化和OpenFOAM_v1812求解器的优化工具
 
-Python语言 + C++语言
+Python语言 和 C++语言
 
 Linux操作系统下使用，或者Docker容器下使用
 

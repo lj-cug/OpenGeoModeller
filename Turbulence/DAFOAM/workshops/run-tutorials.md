@@ -1,22 +1,12 @@
-# Install docker
+# Run tutorials
 
-sudo apt-get remove docker docker-engine docker.io containerd runc && sudo apt-get update && sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent   software-properties-common -y && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https:// download. docker.com/linux/ubuntu $(lsb_release -cs) stable" && sudo apt-get update && sudo apt-get install docker docker.io -y
-
-sudo usermod -aG docker $USER
+## 测试docker容器
 
 docker --version
 
 docker pull dafoam/opt-packages:v3.0.7
 
-## 查看容器
-
-docker ps -a
-
-## 删除容器
-
-docker rm -f <CONTAINER_ID or CONTAINER_NAME>
-
-## download the workshop examples
+## download the workshop and tutrial
 
 git clone https://github.com/dafoam/workshops
 
@@ -25,6 +15,8 @@ cd $HOME/workshops/2022_Summer/examples/openmdao
 ## run this command to start a Docker container
 
 docker run -it --rm -u dafoamuser --mount "type=bind,src=$(pwd),target=/home/dafoamuser/mount" -w /home/dafoamuser/mount dafoam/opt-packages:v3.0.7 bash
+
+运行workshop的NACA0012算例，需要dafoam-v2.2.7
 
 ### Windows docker container
 
@@ -46,15 +38,17 @@ python runScript.py
 
 # Run NACA0012 subsonic case
 
+运行workshop的NACA0012算例，需要dafoam-2.2.7
+
 cd workshops/2022_Summer/examples/naca0012
 
 ## generate the mesh
 
 ./preProcessing.sh
 
-## run the optimization with 2 cores
+## run the optimization with 4 cores
 
-mpirun -np 2 python runScript.py 2>&1 | tee logOpt.txt
+mpirun -np 4 python runScript.py 2>&1 | tee logOpt.txt
 
 The optimization log will be printed to the screen and saved to
 logOpt.txt. In addition, the optimizer will write a separate log to the
