@@ -1,10 +1,14 @@
 # OpenFOAM (OpenCFD)
 
 一个家喻户晓且不断发展和得到广泛应用的CFD开源软件.
-在OpenFOAM框架的基础上开发了很多特殊用途的CFD应用.
+在OpenFOAM框架的基础上开发了很多特殊用途的CFD应用,包括：
 
-值得关注一个基于OpenFOAM开发的很多用途的CFD模型，包括aeroacoustic等.
-[**UniCFD Web-laboratory**](https://github.com/unicfdlab) was established in ISP RAS (www.ispras.ru) in 2011 to develop and spread scientific open source software in Russia.
+1.  基于PDE约束和伴随方法的优化
+2.  气动声学
+3.  多相流模型
+4.  分子动力学模型
+5.  精细湍流模型(LES, DNS)
+6.  水轮机和风力发电机模拟
 
 ## DAFOAM
 
@@ -13,6 +17,12 @@
 注： ADFLOW使用可压缩的RANS求解器和多块结构网格，适用于机翼体型的气动优化;
 SU2是斯坦福大学开发的C++程序, 使用非结构网格, 可快速实施气动优化的整个工作流;
 DAFOAM的CFD求解器是OpenFOAM, 其功能性应该是最强的,且使用Python语言,易于使用.
+
+## libAcoustics
+
+俄罗斯人开发的基于OpenFoam框架的气动声学模型
+
+[**UniCFD Web-laboratory**](https://github.com/unicfdlab) was established in ISP RAS (www.ispras.ru) in 2011 to develop and spread scientific open source software in Russia.
 
 ## ShallowFOAM
 
@@ -48,7 +58,8 @@ DAFOAM的CFD求解器是OpenFOAM, 其功能性应该是最强的,且使用Python语言,易于使用.
 
 ## Hydro3D
 
-大涡模拟工具，应用于海洋能牧场的优化.
+大涡模拟工具，应用于海洋能水轮机牧场的优化.
+
 Visit the [Wiki](https://github.com/OuroPablo/Hydro3D/wiki) in this repository to find information on how to use the code, how to extend it and more.
 
 ## finesed3d
