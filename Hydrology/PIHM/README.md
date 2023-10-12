@@ -14,7 +14,7 @@ OpenMP并行
 
 PIHM模型的快速的数据处理，可联系舒乐乐课题组(PIHM的开发课题组人员):
 
-https://mp.weixin.qq.com/s/a8FfRqj2ZwNTDZB2t-5TBg
+https://www.shud.xyz/zh/
 
 ## 参考文献
 

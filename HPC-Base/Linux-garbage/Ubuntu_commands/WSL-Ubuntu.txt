@@ -1,15 +1,19 @@
+# 安装WSL
+
 wsl --install -d Ubuntu
 
 wsl --install
 
 # or, if already installed
+
 wsl --update
 
 # confirm 1.0.0 or later via:
+
 wsl --version
 
+## 安装gedit
 apt install gedit 
-gedit
 
 (1)
 错误：(gedit:8798): Gtk-WARNING **: 19:51:33.161: cannot open display:
@@ -17,9 +21,15 @@ gedit
 解决：https://askubuntu.com/questions/1252007/opening-ubuntu-20-04-desktop-on-wsl2/1365455#1365455
 Xfce
 
+## WSL的图形界面安装
+
+https://blog.csdn.net/sihsd/article/details/124261374
+
 sudo apt install xrdp xfce4
 
-下载Xwing:  https://sourceforge.net/projects/xming/files/latest/download
+(1)下载Xwing:  
+
+https://sourceforge.net/projects/xming/files/latest/download
 
 运行 Xlaunch 或 Xwing
 
