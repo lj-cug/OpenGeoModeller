@@ -1,26 +1,11 @@
 # 解决R安装curl的错误
 
-参考： https://blog.csdn.net/qq_34536369/article/details/131579825
+https://github.com/jeroen/curl/issues/310
 
-## 安装 openssl
+You have multiple conflicting versions of libcurl on your machine. Try removing the custom one under /usr/local:
 
-apt install libcurl4-openssl-dev
+sudo rm -Rf /usr/local/include/curl 
 
-## 手动指定INCLUDE_DIR和LIB_DIR
+sudo rm -Rf /usr/local/lib/libcurl*
 
-先得找到libcurl.pc的位置
-
-可以直接sudo find / -name "libcurl.pc"，查的有点慢
-
-直接找默认应该有在/usr/lib/x86_64-linux-gnu/pkgconfig/libcurl.pc
-
-## 配置Renviron
-
-命令gedit ~/.Renviron
-
-我是个空文件，写入：
-
-INCLUDE_DIR=/usr/lib/x86_64-linux-gnu/pkgconfig/libcurl.pc
-LIB_DIR=/usr/lib/x86_64-linux-gnu/pkgconfig/libcurl.pc
-
-然后再打开R去装curl就成功了
+And instead install the libcurl system library on your machine, such as yum install curl-devel or apt-get install libcurl4-openssl-dev
