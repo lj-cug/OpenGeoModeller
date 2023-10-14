@@ -16,6 +16,13 @@ PIHM模型的快速的数据处理，可联系舒乐乐课题组(PIHM的开发课题组人员):
 
 https://www.shud.xyz/zh/
 
+## PIHMgis-Linux
+
+PIHMgis 3.0源代码中仅有Windows和MacOS的可执行程序
+
+在Ubuntu 20.04系统下编译了PIHMgis 3.0
+
+
 ## 参考文献
 
 PIHM Model
