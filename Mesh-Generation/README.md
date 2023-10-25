@@ -26,18 +26,14 @@
 
 ## OCSMesh
 
-SCHISM的非结构网格生成的Python程序，使用JIGSAW作为网格生成引擎
-
-## OCSMesh
-
-非结构网格快速生成工具，针对SCHISM, ADCIRC, DGSWE等模型的网格文件格式(.gr3)
+针对SCHISM, ADCIRC, DGSWE等模型的网格文件格式(.gr3)的非结构网格生成的Python程序，使用JIGSAW作为网格生成引擎
 
 ## LaGridT
 
 
 ## mesher
 
-可根据地形变化、植被类型及其他网格优化要求（包括物理过程的特点），生成非结构化网格，针对分布式水文模型的三角网格生成
+可根据地形变化、植被类型及其他网格优化要求，生成非结构化网格，针对分布式水文模型的三角网格生成
 
 ## OceanMesh2D
 
@@ -51,6 +47,20 @@ Matlab语言编写的海洋模式非结构网格生成工具，计算效率不高
 
 用于MODFLOW-usg的非结构网格生成工具gridgen和后处理工具ModelMuse
 
+## 其他
+
+```
+SALOME
+FreeCAD
+Blender
+MeshLab
+cfMesh
+enGrid
+Gmsh
+Triangle
+TetGen
+NETGEN
+```
 
 # 非结构网格编辑工具
 
