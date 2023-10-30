@@ -8,6 +8,6 @@
    4. CHM - 加拿大开发的基于非结构网格的冰雪下垫面的分布式水文模型
    5. pywatersed - USGS开发的耦合PRMS水文模型与MODFLOW6地下水模型(Python脚本)
    6. UniFHy - 英国开发的耦合地表水-地下水的水文模型(Python脚本)
-   7. 
+   7. tRIBS - 美国开发的基于TIN网格的分布式水文模型(C++语言, MPI并行化)
    
    Python语言开发的水文模型(pywatershed, UniFHy)降低了复杂的水文模型的使用难度，但并行化仍然是未来分布式水文模型的发展趋势(ParFlow)
