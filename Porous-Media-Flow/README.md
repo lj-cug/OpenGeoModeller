@@ -7,6 +7,10 @@
 
 L. Bilke, B. Flemisch, T. Kalbacher, O. Kolditz, R. Helmig, T. Nagel, Development of open-source porous media simulators: Principles and experiences, Transp. Porous Media (2019)
 
+## porousMultiphaseFoam
+
+在OpenFOAM-v2206框架的基础上，开发的平面2D/3D Richards方程求解器
+
 ## MODFLOW6
 
 美国USGS开发的地下水模拟系统，基于PETSc和MPI并行化MODFLOW6

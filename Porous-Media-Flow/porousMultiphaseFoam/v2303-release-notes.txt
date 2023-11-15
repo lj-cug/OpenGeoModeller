@@ -1,0 +1,152 @@
+v2303: Dual porosity model + readthedocs
+
+PMF documentation is now available on readthedocs.
+
+Bug fix
+parallel issue for source-injection/fixed points
+
+parallel issue in time derivative computation (used for timesteps management)
+
+General
+All solvers display current version of PMF.
+
+Global reorganization of libraries for dual porosity developements.
+
+To handle scalar transport in simple/dual porosity models, CEqn.H has been
+moved in porousMediumTransportModel classes (and removed from solver). The
+transport equation is solved as for example:
+
+pmTransportModel->solveTransport(Utheta, phi, theta);
+
+Libraries
+porousMediumModel
+
+new class for handling porosity (eps) and permeability (K)
+twophasePorousMediumModel
+
+new asbtract class for handling simple/dual porosity model (flow only)
+simplePorosity
+
+porousMedium class for one porosity model (one Saturation, kr, pc...)
+dualPorosity
+
+porousMedium class for dual porosity model (with Fracture and Matrix)
+porousMediumTransportModel
+
+new class for handling simple/dual porosity model (transport)
+simplePorosityTransport
+
+porousMedium class for scalar transport in one porosity model
+dualPorosityTransport
+
+porousMedium class for scalar transport in dual porosity model
+(with Fracture and Matrix)
+relativePermeability/capillarity:
+
+Smin/Smax are common to all kr/pc model and included in general abstract. As
+a consequence, values are now read in the model dictionary (and not from the
+global transportProperties dict). For example, the thetamin value for
+Van Genuchten model is read in VanGenuchtenCoeffs
+Solvers
+steadyGroundwaterFoam/groundwaterFoam
+
+solvers have been merged. Steady simulations can be done using -steady
+option, i.e. :
+groundwaterFoam -steady
+
+Picard residuals can be written in residuals.csv file by adding option in
+controlDict (works for steady run) :
+writeResiduals true;
+
+steadyGroundwater2DFoam/groundwater2DFoam
+
+solvers have been merge. Steady simulations can be done using -steady
+option, i.e. :
+groundwater2DFoam -steady
+groundwaterFoam (steady mode)
+
+residual field and max values can be written during the run with the
+controlDict option:
+writeResiduals yes;
+
+Tutorials
+1Dinfiltration_dualPorosity (for flow and flow+transport)
+
+validation case for dual porosity model using METIS results
+
+Minor changes
+new kr(volfield) function added to relativePermeability classes to compute
+relative permeability from a given saturation
+
+new S(volfield) function added to capillaryModel classes to compute saturation
+from a given pressure head field
+
+
+Releases PMFv2102
+Newton Algorithm for unsaturated (groundwater) solvers
+
+Compilation
+Toolbox now accepts parallel compilation, run :
+
+./Allwmake -jX
+
+with X the number of processors
+
+Solvers
+Global
+
+output event value are not explictly computed but constructed by
+interpolation to avoid time step instabilities. Time interpolated fields are
+also used for CSV outputs.
+groundwaterFoam/groundwaterTransportFoam
+
+pressure head equation can be solved using Newton algorithm to handle
+strong non linearities. Convergence is faster than Picard's algorithm and can
+handle complex cases where Picard does not converge, for example flow close
+to the saturated point.
+pressure head equation is first solved using Picard formulation until the
+Picard tolerance is reached (specified in system/fvSolution) and then equation
+is solver using Newton method until the Newton tolerance.
+the equations residual is now signed and under-relaxation occurs only when
+residual increases without changing sign.
+timestep is managed using time scheme for truncation error. Only the Euler
+timescheme is currently handled for the pressure head equation but 2nd order
+schemes can be used for C equation (see tutorials).
+stationaryGroundwaterFoam
+
+convergence and time control is now based on hEqn residual.
+additional under-relaxation has been added (based on residual decrease)
+to improve convergence rate.
+seepage option is now independant from fixedPotentialList and is activated
+in transportProperties as:
+seepage yes;
+groundwater2DFoam/groundwater2DTransportFoam
+
+add waterSourceEventFile options to 2D solvers to force localized volumetric
+in 2D solvers (same usage as groundwaterFoam/groundwaterTransportFoam)
+Utilities
+setBoundaryHeadPressure
+
+add uniform potential option for 2D solvers (potential field)
+setFieldsFromXY
+
+user can specify the number of points for interpolation (default = 3):
+1 => use closest point value
+0 => use number of neighbour faces for each cell
+Libraries
+numericalMethods
+
+new Jacobian Matrix class for handling FD Newton algorithm (finite
+difference method, for debugging only)
+Bug fixes
+solved ambiguous calls for compatibility with CLANG and OSX
+fix dimensions in ToddNo.H
+fix interpolation functions for event value computation
+3rd time derivative computed on potential (instead of hwater) to avoid
+instabilities when hwater tends to 0
+fix retard coefficient for unsaturated (depends on saturation flow)
+fix flow/balance computation in 2D solvers
+handle correctly dry cells for stationaryGroundwater2DFoam solver
+fix deltat reduction for Picard loop groundwaterTransportFoam
+fix C flux computation in CSV (groundwaterTransportFoam)
+add FatalError when timestep is fixed and Picard/Newton does not converge

@@ -10,6 +10,8 @@ OpenMP并行
 
 ## 输入数据处理
 
+PIHM输入文件格式，可参考： https://blog.csdn.net/qq_44246618/article/details/115049620
+
 分布式水文模型都需要大量不同类型的输入数据，处理过程繁琐
 
 PIHM模型的快速的数据处理，可联系舒乐乐课题组(PIHM的开发课题组人员):
@@ -22,6 +24,7 @@ PIHMgis 3.0源代码中仅有Windows和MacOS的可执行程序
 
 在Ubuntu 20.04系统下编译了PIHMgis 3.0
 
+使用步骤可参考： https://blog.csdn.net/qq_44246618/article/details/115011089
 
 ## 参考文献
 
