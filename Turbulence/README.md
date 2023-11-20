@@ -22,7 +22,8 @@ DAFOAM的CFD求解器是OpenFOAM, 其功能性应该是最强的,且使用Python语言,易于使用.
 
 俄罗斯人开发的基于OpenFoam框架的气动声学模型
 
-[**UniCFD Web-laboratory**](https://github.com/unicfdlab) was established in ISP RAS (www.ispras.ru) in 2011 to develop and spread scientific open source software in Russia.
+[**UniCFD Web-laboratory**](https://github.com/unicfdlab) was established in ISP RAS (www.ispras.ru) 
+in 2011 to develop and spread scientific open source software in Russia.
 
 ## ShallowFOAM
 
@@ -50,17 +51,19 @@ DAFOAM的CFD求解器是OpenFOAM, 其功能性应该是最强的,且使用Python语言,易于使用.
 
 ## SU2
 
-斯坦福大学研发的用于机翼体型优化的CFD求解器, 可在Windows, Linux和MacOS系统下使用
+斯坦福大学研发的用于机翼体型优化的CFD求解器, 可在Windows, Linux和MacOS系统下使用.
 
 ## SimVascular
 
 唯一一款开源的心血管血液流动的CFD模型. 有从医学成像建立模型到血液模拟的完整的工作流操作工具.
 
+## PCUILES
+
+可用于学习LES方法的FORTRAN程序, 美国Stanford大学开发.
+
 ## Hydro3D
 
-大涡模拟工具，应用于海洋能水轮机牧场的优化.
-
-Visit the [Wiki](https://github.com/OuroPablo/Hydro3D/wiki) in this repository to find information on how to use the code, how to extend it and more.
+用于海洋水下水轮机发电牧场优化的LES程序, 如何使用和开发, 请参考[Wiki](https://github.com/OuroPablo/Hydro3D/wiki)
 
 ## finesed3d
 
@@ -68,25 +71,21 @@ Visit the [Wiki](https://github.com/OuroPablo/Hydro3D/wiki) in this repository t
 
 ## WInc3D
 
-基于LES和actuator line model (ALM)的风力发电牧场的模型.
+基于帝国理工学院开发的Incompact3D-LES和actuator line model (ALM)的风力发电牧场的模型.
 
-## Incompact
-
-英国帝国理工学院开发的基于紧致差分格式的DNS模型.
-
-## PCUILES
-
-最早的可用于学习LES方法的FORTRAN程序，美国Stanford大学开发.
+Incompact3D是英国帝国理工学院开发的基于紧致差分格式的DNS模型.
 
 ## VFS-Rivers
 
-美国Minnisota大学开发的用于模拟自由表面流动的LES模型，已经停止开发.
+美国Minnisota大学开发的用于模拟自由表面流动的LES模型，从2015年就已经停止开发.
 
 ## HiFiLES
 
 基于非结构网格的高阶LES模型, 可运行在GPU集群上.
 
-Manuel R. L′opez-Morales et al., 2014. Verification and Validation of HiFiLES: a High-Order LES unstructured solver on multi-GPU platforms. AIAA Aviation, 32nd AIAA Applied Aerodynamics Conference
+Manuel R. L′opez-Morales et al., 2014. Verification and Validation of HiFiLES: 
+a High-Order LES unstructured solver on multi-GPU platforms. 
+AIAA Aviation, 32nd AIAA Applied Aerodynamics Conference
 
 # tudflow3d
 
