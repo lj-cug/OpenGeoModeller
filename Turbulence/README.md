@@ -75,9 +75,10 @@ in 2011 to develop and spread scientific open source software in Russia.
 
 Incompact3D是英国帝国理工学院开发的基于紧致差分格式的DNS模型.
 
-## VFS-Rivers
+## VFS-Rivers & VFS-Geophysics
 
-美国Minnisota大学开发的用于模拟自由表面流动的LES模型，从2015年就已经停止开发.
+美国Minnisota大学开发的用于模拟自由表面流动的LES模型, 
+明渠河流与泥沙输移的耦合模型VFS-Geophysics (Ali, et al., 2023)
 
 ## HiFiLES
 
