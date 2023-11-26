@@ -2,11 +2,11 @@
 
 µØ±íË®¡¢Ë®ÎÄÄ£ÐÍ¼°µØÇòÎïÀíÄ£ÐÍµÄÍø¸ñÉú³É£¬Ö÷Òª²ÉÓÃ3ÖÖ·½Ê½(ÍÆ¼öµÚ3ÖÖ,¹¤×÷Ð§ÂÊ×î¸ß)£º
 
-1. ÉÌÒµÈí¼þGambit, SMSµÈµÄ·Ç½á¹¹Íø¸ñÉú³É
+1. ÉÌÒµÈí¼þ£¬ÈçGambit, SMSµÈ£¬Éú³É·Ç½á¹¹Íø¸ñ
 
-2. ¿ªÔ´Èí¼þ£¬ÈçGMSHµÈ£¬µÄ·Ç½á¹¹Íø¸ñÉú³É
+2. ¿ªÔ´Èí¼þ£¬ÈçGMSHµÈ£¬Éú³É·Ç½á¹¹Íø¸ñ
 
-3. »ùÓÚPython½Å±¾µÄÍø¸ñ¿ìËÙÉú³É£¬ÒÔ¼°²»Í¬¸ñÊ½Íø¸ñÎÄ¼þÖ®¼äµÄ×ª»»(meshio¹¤¾ß)
+3. »ùÓÚPython½Å±¾µÄÍø¸ñ¿ìËÙÉú³É£¬ÒÔ¼°²»Í¬¸ñÊ½Íø¸ñÎÄ¼þÖ®¼äµÄ×ª»»(ÀûÓÃmeshio¹¤¾ß)
 
 ## Corner-Point-Mesh
 
@@ -96,7 +96,7 @@ SCHISMµÈ£¬¶¼ÐèÒªÉú³ÉÈý½ÇÐÎ»òÆäËûÀàÐÍµÄ·Ç½á¹¹»¯Íø¸ñ£¬ÈçSCHISMÄ£ÐÍÐèÒªhgrid.gr3ÎÄ¼
 
 http://www.robertschneiders.de/meshgeneration/software.html
 
-## ·Ç½á¹¹Íø¸ñ±à¼­
+## ·Ç½á¹¹Íø¸ñµÄ±à¼­
 
 ÎªÊÊÓ¦º£ÑóÊýÖµÄ£ÄâµÄÒ»Ð©ÌØµã£¬ÐèÒª¶ÔÉú³ÉµÄÍø¸ñ½øÐÐ±à¼­£¬¿ÉÊ¹ÓÃACE Tools
 (Turner and Baptista, 1999), BatTri (Bilgili et al., 2006), ...
@@ -105,13 +105,20 @@ http://www.robertschneiders.de/meshgeneration/software.html
     Tools×¨ÃÅÕë¶ÔSELFE¡¢SCHISMÄ£ÐÍµÄÊäÈëÎÄ¼þ¸ñÊ½¿ª·¢µÄ£¬²ÉÓÃCÓïÑÔ±à³Ì£¬ACE
     Toolsµ÷ÓÃTriangleÉú³ÉÍø¸ñ£¬µ«Ö÷ÒªÊÇÍø¸ñ±à¼­¡£
 
--   BatTriÊ¹ÓÃMATLAB³ÌÐòµ÷ÓÃTriangleºËÐÄ³ÌÐò¡£Òò´Ë£¬Éú³ÉÍø¸ñËÙ¶ÈºÜ¿ì£¬ÇÒ¾ßÓÐºÜ¶àÍø¸ñ±à¼­¹¦ÄÜ£¬µ«±à¼­Íø¸ñµÄ¾­ÑéÐÔ²ÎÊý½Ï¶à¡£BatTriÍø¸ñ±à¼­µÄ½»»¥ÐÔºÜÇ¿£¬²»¶ÏÓÐÑ¡ÏîÌáÊ¾¡£
+-   BatTri
+	Ê¹ÓÃMATLAB³ÌÐòµ÷ÓÃTriangleºËÐÄ³ÌÐò¡£Òò´Ë£¬Éú³ÉÍø¸ñËÙ¶ÈºÜ¿ì£¬ÇÒ¾ßÓÐºÜ¶àÍø¸ñ±à¼­¹¦ÄÜ£¬µ«±à¼­Íø¸ñµÄ¾­ÑéÐÔ²ÎÊý½Ï¶à¡£
+	BatTriÍø¸ñ±à¼­µÄ½»»¥ÐÔºÜÇ¿£¬ÓÐÑ¡ÏîÌáÊ¾¡£
 
 BatTriÒÔ¼°PIHM¿Éµ÷ÓÃTriangle³ÌÐòÉú³ÉÍø¸ñ£¬¼ÆËãÐ§ÂÊ¸ß¡£
 
 ACEºÍBatTriµÄÖ÷Òª¹¦ÄÜÌåÏÖÔÚÍø¸ñ±à¼­ÉÏ¡£µ±Íø¸ñÊýÁ¿¼¶½Ï´óÊ±£¬²Ù×÷±È½ÏÀ§ÄÑ¡£
 
 CutMesh, ´Ó´óµÄ±³¾°Íø¸ñÖÐ£¬²Ã¼ôÒ»¿éÐ¡ÇøÓòµÄÈý½ÇÍø¸ñ¡£
+
+TetGen
+```
+Hang Si (2015). TetGen, a Delaunay-Based Quality Tetrahedral Mesh Generator. ACM Trans. on Mathematical Software. 41 (2), Article 11 (February 2015), 36 pages.
+```
 
 ## ·Ç½á¹¹Íø¸ñÉú³É
 
@@ -129,18 +136,21 @@ GMSH¿ÉÉú³É¸´ÔÓ¼¸ºÎ±ß½çµÄ2D/3D·Ç½á¹¹»¯Íø¸ñ¡£
 
 DistMesh(Persson and Strang, 2004), KMG (Koko, 2015), OceanMesh2D ()
 
-OceanMesh2DÐèÒªÓÃ»§½éÈë½ÏÉÙ£¬Éú³ÉÍø¸ñµÄ²Ù×÷¿ÉÖØ¸´ÐÔºÜºÃ£¬½öÐèÒª¶¨Òå¼ÆËãÇøÓò·¶Î§(shapefile)ºÍµØÐÎÊý¾Ý(DEM)£¬²¢ÎüÊÕÁËDistMeshµÄËã·¨¡£OceanMesh2D¼¯Íø¸ñÉú³ÉÓë±à¼­ÓÚÒ»Ìå£¬¼´£ºOceanMesh2D
-= Gambit/SMS + ACE
-Tools¡£¿É²Ù×÷ÐÔºÍ¿ÉÖØ¸´ÐÔÇ¿¡£Èç¹ûÓÐº£°¶ÏßµÄshapefileÎÄ¼þºÍDEMµÄncÎÄ¼þ£¬·Ç³£·½±ãÉú³ÉÍø¸ñ¡£Õë¶Ô½üº£ÇøÓòÄ£Äâ£¬¿É·½±ã¿ØÖÆÍø¸ñ¾Ö²¿·Ö±æÂÊ¡£ÓÉÓÚMATLAB¼ÆËãÐ§ÂÊ½ÏµÍ£¬Éú³ÉÍø¸ñÁ¿¼¶Ó¦ÔÚÊ®ÍòÒÔÏÂ¡£
+OceanMesh2DÐèÒªÓÃ»§½éÈë½ÏÉÙ£¬Éú³ÉÍø¸ñµÄ²Ù×÷¿ÉÖØ¸´ÐÔºÜºÃ£¬½öÐèÒª¶¨Òå¼ÆËãÇøÓò·¶Î§(shapefile)ºÍµØÐÎÊý¾Ý(DEM)£¬²¢ÎüÊÕÁËDistMeshµÄËã·¨¡£
+OceanMesh2D¼¯Íø¸ñÉú³ÉÓë±à¼­ÓÚÒ»Ìå£¬¼´£ºOceanMesh2D = Gambit/SMS + ACE
+Tools¡£
+OceanMesh2D¿É²Ù×÷ÐÔºÍ¿ÉÖØ¸´ÐÔÇ¿¡£Èç¹ûÓÐº£°¶ÏßµÄshapefileÎÄ¼þºÍDEMµÄncÎÄ¼þ£¬·Ç³£·½±ãÉú³ÉÍø¸ñ¡£Õë¶Ô½üº£ÇøÓòÄ£Äâ£¬¿É·½±ã¿ØÖÆÍø¸ñ¾Ö²¿·Ö±æÂÊ¡£µ«ÊÇ£¬ÓÉÓÚMATLAB¼ÆËãÐ§ÂÊ½ÏµÍ£¬Éú³ÉÍø¸ñÁ¿¼¶Ó¦ÔÚÊ®ÍòÒÔÏÂ¡£
 
 ÈçDistMesh,
 KMGµÈ£¬²ÉÓÃMATLABÓïÑÔ±à³Ì£¬¿É·½±ãÉú³ÉÒ»Ð©Á¿¼¶½ÏÐ¡£¨\<10^4^)ÇÒ½áºÏ±ß½ç½Ï¼òµ¥µÄÍø¸ñ¡£¿ÉÓÃÓÚ·Ç½á¹¹»¯Íø¸ñÉú³É¼¼Êõ×¨ÃÅÑÐ¾¿ºÍ½ÌÑ§ÑÝÊ¾¡£
 
 ## Íø¸ñÓÅ»¯
 
-Andr¨¦ FµÄnicegrid2:
+Andr¨¦ F.±àÐ´µÄnicegrid2:
 
-·Ç½á¹¹»¯Íø¸ñ±à¼­³ÌÐò£¬FORTRANÓïÑÔ£¬¿É×Ô¶¯Ôö¼ÓºÍ¼õÉÙÍø¸ñµ¥Ôª£¬Òò´Ë½µµÍÍø¸ñµÄÍáÐ±¶È(skewness)¡£Í¬Ê±£¬¿É¼õÉÙ½ÚµãÖÜÎ§Á¬½Ó½ÚµãµÄÊýÄ¿£¬ÕâÑù¼õÉÙÁËÍø¸ñ¹æÄ£ºÍÄ£ÐÍÖÊÁ¿¾ØÕóµÄ¹æÄ££¬½µµÍÄÚ´æÐèÒªºÍ¼ÆËãÁ¿¡£
+Íø¸ñÊäÈë¸ñÊ½£º ADCIRCºÍSCHISMÄ£Ê½
+
+·Ç½á¹¹»¯Íø¸ñ±à¼­³ÌÐò£¬FORTRANÓïÑÔ£¬¿É×Ô¶¯Ôö¼ÓºÍ¼õÉÙÍø¸ñµ¥Ôª£¬Òò´Ë½µµÍÍø¸ñµÄÍáÐ±¶È¡£Í¬Ê±£¬¿É¼õÉÙ½ÚµãÖÜÎ§Á¬½Ó½ÚµãµÄÊýÄ¿£¬ÕâÑù¼õÉÙÁËÍø¸ñ¹æÄ£ºÍÄ£ÐÍÖÊÁ¿¾ØÕóµÄ¹æÄ££¬½µµÍÄÚ´æÐèÒªºÍ¼ÆËãÁ¿¡£
 
 Aron RolandµÄpolymesh:
 
