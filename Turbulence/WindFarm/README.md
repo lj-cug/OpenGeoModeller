@@ -29,6 +29,8 @@ Incompact3D是英国帝国理工学院开发的基于紧致差分格式的DNS模型.
 
 德国研发的基于LES的PALM气象模式的风力发电效率评估模型
 
+[PALM-WTM的介绍](https://palm.muk.uni-hannover.de/trac/wiki/doc/tec/wtm#no1)
+
 ## WRF_v3.7.1-WindFarm
 
 最早的丹麦研发的基于WRF模式的风力发电效率评价模型, 研究了尾流脱落对发电效率的影响.
