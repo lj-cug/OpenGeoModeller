@@ -57,32 +57,13 @@ in 2011 to develop and spread scientific open source software in Russia.
 
 唯一一款开源的心血管血液流动的CFD模型. 有从医学成像建立模型到血液模拟的完整的工作流操作工具.
 
-## PCUILES
-
-可用于学习LES方法的FORTRAN程序, 美国Stanford大学开发.
-
-## Hydro3D
-
-用于海洋水下水轮机发电牧场优化的LES程序, 如何使用和开发, 请参考[Wiki](https://github.com/OuroPablo/Hydro3D/wiki)
-
 ## finesed3d
 
 直接数值模拟(DNS)的水沙两相流模型.
 
-## WInc3D
-
-基于帝国理工学院开发的Incompact3D-LES和actuator line model (ALM)的风力发电牧场的模型.
-
-Incompact3D是英国帝国理工学院开发的基于紧致差分格式的DNS模型.
-
-## VFS-Rivers & VFS-Geophysics
-
-美国Minnisota大学开发的用于模拟自由表面流动的LES模型, 
-明渠河流与泥沙输移的耦合模型VFS-Geophysics (Ali, et al., 2023)
-
 ## HiFiLES
 
-基于非结构网格的高阶LES模型, 可运行在GPU集群上.
+基于非结构网格的高阶LES模型, 可运行在GPU集群上. 6年前已经停止研发, 研发人员已经转向FR模型开发团队.
 
 Manuel R. L′opez-Morales et al., 2014. Verification and Validation of HiFiLES: 
 a High-Order LES unstructured solver on multi-GPU platforms. 
