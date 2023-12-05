@@ -8,6 +8,10 @@
 
 最早的可用于学习LES方法的FORTRAN程序(美国Stanford大学开发).
 
+## turbinesFOAM
+
+基于OpenFOAM计算框架开发的offshore turbines farm的评估模型（挪威）
+
 ## Hydro3D
 
 用于海洋水下水轮机发电牧场优化的LES程序, 如何使用和开发, 请参考[Wiki](https://github.com/OuroPablo/Hydro3D/wiki)

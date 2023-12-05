@@ -1,6 +1,9 @@
-# PFLOTRAN
-美国Sandia National Laboratories研发的,
-高度并行化的地下水及反应输移方程求解器
+# PFLOTRAN-OGS
+
+PFLOTRAN是美国Sandia National Laboratories研发的,
+高度并行化的地下水及反应输移方程求解器.
+
+PFLOTRAN-OGS是英国OpenGeosim公司研发的，开源的CO2存储和油气储层模拟器
 
 FORTRAN 2003面向对象编程
 
