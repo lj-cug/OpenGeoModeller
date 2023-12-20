@@ -1,0 +1,40 @@
+WRF quick tutorial
+
+Download WRF, WPS from GitHub and compile them.
+
+STEP 1: set up the domain
+
+For WPS, download the WRF geog data and save them.
+https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html
+
+Modify the WPS namelist file.
+
+Run ./geogrid.exe
+
+STEP 2: ungrib the global data
+
+Download the FNL data (or ERA5):
+https://rda.ucar.edu/datasets/ds083.3/
+
+Copy the Vtable file for GRIB data for FNL data:
+cp ungrib/Variable_Tables/Vtable.GFS Vtable
+(For ERA5, use Vtable.ERA-Interim.pl)
+
+Link the downloaded FNL data:
+./link_grib.csh + location of downloaded FNL data
+
+Run ./ungrib.exe
+
+STEP 3: generate WRF met_em files:
+
+Run ./metgrid.exe
+
+STEP 4: run WRF
+
+Modify the WRF namelist file
+
+After WRF is compiled, generate the WRF initial and boundary conditions:
+./real.exe
+
+Then run WRF:
+./wrf.exe

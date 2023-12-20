@@ -1,0 +1,31 @@
+WRF SKEB Scheme
+
+Use skebs = 1 to turn on the SKEB scheme. To turn it off, set skebs = 0.
+
+Change nens in the last line to determine the random seed number (1-50 for 50 ensembles) .
+
+
+&stoch
+skebs                               = 0,     1,
+tot_backscat_psi                    = 1.0E-05, 1.0E-05,
+tot_backscat_t                      = 1.0E-06, 1.0E-06,
+ztau_psi                            = 10800.0,
+ztau_t                              = 10800.0,
+rexponent_psi                       = -1.83,
+rexponent_t                         = -1.83,
+zsigma2_eps                         = 0.0833,
+zsigma2_eta                         = 0.0833,
+kminforc                            = 1,
+lminforc                            = 1,
+kminforct                           = 1,
+lminforct                           = 1,
+kmaxforc                            = 1000000,
+lmaxforc                            = 1000000,
+kmaxforct                           = 1000000,
+lmaxforct                           = 1000000,
+skebs_vertstruc                     = 0,
+iseed_skebs                         = 811,
+perturb_bdy                         = 0,
+nens = 1
+/
+

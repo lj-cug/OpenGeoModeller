@@ -1,0 +1,158 @@
+WRF run using ERA5
+
+https://dreambooker.site/2019/10/03/Initializing-the-WRF-model-with-ERA5-pressure-level/
+
+This is the tutorial of using WRF with ERA5 pressure level (38 vertical levels) data.
+If you prefer model level (138 vertical levels), please check another tutorial.
+
+I recommend the pressure level data, because the download speed is much faster.
+If you don’t have cdsapi, please check this official tutorial.
+
+Required Fields
+
+WRF requires a number of fields as input.
+* 3D Data (e.g. data on pressure levels)
+    * Temperature
+    * U and V components of Wind
+    * Geopotential Height
+    * Relative Humidity (the code can calculate RH if Specific Humidity is available;this is controlled in the Vtable)
+* 2D Data
+    * Surface Pressure
+    * Mean Sea Level Pressure
+    * Skin Temperature/SST
+    * 2-meter Temperature
+    * 2-meter Relative or Specific Humidity
+    * 10-meter U and V components of wind
+    * Soil data (temperature and moisture) and soil height
+If any masked field is ingested, then a LANDSEA field is recommended
+Water equivalent snow depth (SNOW) is a nice field to have, but not required.
+SEAICE is good to have for a high latitude winter case, but it is not required.
+
+==========
+To Download ERA5, CDS API is recommended:
+https://cds.climate.copernicus.eu/api-how-to
+
+==========
+Single level data (Create a file: GetERA5-sl.py)
+==========
+import cdsapi
+
+c = cdsapi.Client()
+
+c.retrieve(
+    'reanalysis-era5-single-levels',
+    {
+        'product_type':'reanalysis',
+        'format':'grib',
+        'variable':[
+            '10m_u_component_of_wind','10m_v_component_of_wind','2m_dewpoint_temperature',
+            '2m_temperature','land_sea_mask','mean_sea_level_pressure',
+            'sea_ice_cover','sea_surface_temperature','skin_temperature',
+            'snow_depth','soil_temperature_level_1','soil_temperature_level_2',
+            'soil_temperature_level_3','soil_temperature_level_4','surface_pressure',
+            'volumetric_soil_water_layer_1','volumetric_soil_water_layer_2','volumetric_soil_water_layer_3',
+            'volumetric_soil_water_layer_4'
+        ],
+        'date':'DATE1/DATE2',
+        'area':'Nort/West/Sout/East',
+        'time':'00/to/23/by/1',
+    },
+    'ERA5-DATE1-DATE2-sl.grib')
+
+==========
+Pressure level data (Create a file: GetERA5-pl.py)
+==========
+import cdsapi
+
+c = cdsapi.Client()
+
+c.retrieve(
+    'reanalysis-era5-pressure-levels',
+    {
+        'product_type':'reanalysis',
+        'format':'grib',
+        'pressure_level':[
+            '1','2','3',
+            '5','7','10',
+            '20','30','50',
+            '70','100','125',
+            '150','175','200',
+            '225','250','300',
+            '350','400','450',
+            '500','550','600',
+            '650','700','750',
+            '775','800','825',
+            '850','875','900',
+            '925','950','975',
+            '1000'
+        ],
+        'date':'DATE1/DATE2',
+        'area':'Nort/West/Sout/East',
+        'time':'00/to/23/by/1',
+        'variable':[
+            'geopotential','relative_humidity','specific_humidity',
+            'temperature','u_component_of_wind','v_component_of_wind'
+        ]
+    },
+    'ERA5-DATE1-DATE2-pl.grib')
+
+==========
+Automation script (Download)
+You can automate the script rather than change elements one by one.
+#!/bin/bash -l
+
+CODEDIR=/nuist/u/home/yinyan/xin/scratch/data/ERA5/code
+DATADIR=/nuist/u/home/yinyan/xin/scratch/data/ERA5/data
+
+# Set your python environment
+export PATH=~/xin/work/anaconda3/bin:$PATH
+source activate root
+cd $CODEDIR
+
+DATE1=20170419
+DATE2=20170420
+YY1=`echo $DATE1 | cut -c1-4`
+MM1=`echo $DATE1 | cut -c5-6`
+DD1=`echo $DATE1 | cut -c7-8`
+YY2=`echo $DATE2 | cut -c1-4`
+MM2=`echo $DATE2 | cut -c5-6`
+DD2=`echo $DATE2 | cut -c7-8`
+Nort=60
+West=80
+Sout=15
+East=150
+
+sed -e "s/DATE1/${DATE1}/g;s/DATE2/${DATE2}/g;s/Nort/${Nort}/g;s/West/${West}/g;s/Sout/${Sout}/g;s/East/${East}/g;" GetERA5-sl.py > GetERA5-${DATE1}-${DATE2}-sl.py
+
+python GetERA5-${DATE1}-${DATE2}-sl.py
+
+sed -e "s/DATE1/${DATE1}/g;s/DATE2/${DATE2}/g;s/Nort/${Nort}/g;s/West/${West}/g;s/Sout/${Sout}/g;s/East/${East}/g;" GetERA5-pl.py > GetERA5-${DATE1}-${DATE2}-pl.py
+
+python GetERA5-${DATE1}-${DATE2}-pl.py
+
+mkdir -p ${DATADIR}/$YY1
+
+mv ERA5-${DATE1}-${DATE2}-sl.grib ERA5-${DATE1}-${DATE2}-pl.grib ${DATADIR}/$YY1/
+
+
+exit 0
+
+==========
+geogrid
+Run geogrid.exe as usual.
+If you’re not familiar with WRF, please check the online tutorial in detail.
+
+==========
+ungrib
+Run ungrib.exe by using the Vtable.ERA-interim.pl table:
+$ ln -s ./ungrib/Variable_Tables/Vtable.ERA-interim.pl Vtable
+
+==========
+metgrid
+Run metgrid.exe as usual.
+References
+1. How to run the WRF model using ERA5 (on model levels) as initial and boundary conditions
+2. Grib to Netcdf conversion
+3. Download ERA-Interim data
+4. UNGRIB: Required Fields
+

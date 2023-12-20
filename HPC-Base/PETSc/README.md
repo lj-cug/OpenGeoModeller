@@ -12,16 +12,17 @@ PETSc是HPC领域常用的一个程序库，可在PETSc库基础上高效开发CFD代码
 
 在Windows和LINUX OS上编译安装PETSc库的bash脚本
 
-## 使用PETSc开发的应用程序
+## 使用PETSc求解器的应用
 
 ```
-waiwera   
-MODFLOW6
-SCHISM
-WW3
-SUNTANS (未开源)
-shyfem
-VFS-Geophysics (结构网格)
-OpenFOAM
+OpenFOAM   (PETSc4FOAM)
+SCHISM     (Surface Water)
+shyfem     (Surface Water)
+waiwera    (Geothermal)
+MODFLOW6   (Groundwater)
+WW3        (Wave Model)
+VFS-Geophysics (LES, structured-mesh)
+PFLOTRAN-ogs (CO2 storage, BlackOil)
+defmod       (FEM)
 
 ```

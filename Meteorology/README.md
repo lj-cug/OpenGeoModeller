@@ -1,22 +1,21 @@
-#  Meteorology
+# Meteorology (Numerical Weather Prediction)
 
 ## WRF
 
-NWP领域最常用的模型，版本4.x
+数值天气预报模型, 持续开发中, 最新版本: 4.x
+
+WRF-AWR:
 
 ## RegCM
 
-区域性NWP模式，容易使用
+区域性NWP模式，最新版本：5.0, 增加了非静水压力模块
 
 ## MPAS
 
-采用非结构网格的新一代NWP模式
+非结构网格的新一代NWP模式, 理论与WRF模式类似
 
 ## HWRF
 
-美国NCEP开发的飓风跟踪模式，基于WRF
+美国NCEP开发的飓风跟踪模式, 基于WRF框架开发, 考虑飓风跟踪算法
 
-## AWR
-
-AWR技术在NWP中的应用研究
 

@@ -1,0 +1,31 @@
+WRF spectral nudging
+
+Use grid_fdda = 2 to turn on spectral nudging. To turn it off, use grid_fdda = 0.
+
+xwavenum and ywavenum determine the wave number. We usually set the “wavelength” to a few hundred kilometers.
+
+&fdda
+grid_fdda                           = 0,     0,
+xwavenum                            =13,    11,
+ywavenum                            = 4,    11,
+gfdda_inname                        = "wrffdda_d<domain>",
+gfdda_end_h                         = 22206,   22206,
+gfdda_interval_m                    = 360,   360,
+fgdt                                = 0,     0,
+fgdtzero                            = 0,     0,
+if_no_pbl_nudging_uv                = 1,     1,
+if_no_pbl_nudging_t                 = 1,     1,
+if_no_pbl_nudging_ph                = 1,     1,
+if_zfac_uv                          = 1,     1,
+ k_zfac_uv                          = 50,   50,
+if_zfac_t                           = 1,     1,
+ k_zfac_t                           = 50,   50,
+if_zfac_ph                          = 1,     1,
+ k_zfac_ph                          = 50,   50,
+guv                                 = 0.0001,     0.0003,
+gt                                  = 0.0001,     0.0003,
+gph                                 = 0.0001,     0.0003,
+if_ramping                          = 0,
+dtramp_min                          = 60.0,
+io_form_gfdda                       = 2,
+

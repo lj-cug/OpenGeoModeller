@@ -8,9 +8,9 @@ export NETCDF=/usr/local/
 
 
 HDF5 not set in environment. Will configure WRF for use without.
-PHDF5 not set in environment. Will configure WRF for use without.
 Will use 'time' to report timing information
 $JASPERLIB or $JASPERINC not found in environment, configuring to build without grib2 I/O...
+
 安装Jasper，使用CMAKE，安装路径： 
 
 export JASPERINC=/home/lijian/ESM_lj/jasper/include/
@@ -36,6 +36,7 @@ WRFV3911 + ESMF的main文件夹下，原始有测试WRF与dummy模式的子程�
 
 
 注意：
+
 使用openmpi-3.1安装失败!!! 必须使用mpich-3.3:
 export PATH=/home/lijian/mpich-3.3/bin:$PATH
 which mpif90  
@@ -46,5 +47,3 @@ which mpif90
 使用 gcc gfortran v7成功编译了 WRFV4.3 (standalone run) 和 WRFV4.3 + ESMF，使用mpich-3.3, 其中直接把ESMF相关的F文件拷贝到相应的位置，io_esmf中的库文件需要手动编译: make -r
 然后，WRF就可以链接到libwrfio_esmf.a了！
  
-
-

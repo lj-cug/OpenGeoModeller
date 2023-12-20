@@ -1,6 +1,8 @@
-# SCRIPPS
+# SCRIPPS-v2.0
 
 KAUST开发的耦合WRF与MITGcm的海气耦合模拟系统
+
+[文档](https://skrips.readthedocs.io/en/latest/)
 
 ## 应用
 
