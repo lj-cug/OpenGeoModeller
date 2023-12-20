@@ -8,8 +8,8 @@ ESMF V8.0 was successfully built using gcc and g++ v7.5, and openmpi v3.1 and mp
 
 建议使用openmpi v3.1，这是RegESM需要的
 
-# PIO安装
+# PIO2安装
 
-PIO  使用gcc/gfortran v7.5 编译成功，并安装：  export PIO=/home/lijian/ESM_lj/pio
+使用gcc/gfortran v7.5 编译成功，并设置环境变量： 
 
-PIO2  使用gcc/gfortran v7.5 编译成功，并安装：  export PI2O=/home/lijian/ESM_lj/pio2
+export PI2O=/home/lijian/ESM_lj/pio2
