@@ -89,7 +89,6 @@ cd ..
 # start to install WRF/WRFPLUS/WRFDA
 
 ## WRF
-
 ```
 wget https://github.com/wrf-model/WRF/releases/download/v4.5/v4.5.tar.gz
 tar -xvzf v4.5.tar.gz
@@ -104,7 +103,6 @@ cd ..
 ```
 
 ## WRFPLUS
-
 ```
 cd WRFPLUSV4.5
 ./configure wrfplus
@@ -126,7 +124,6 @@ cd ..
 ```
 
 ## 问题与解决
-
 ```
 出现错误，删除配置+编译文件请使用 ./clean -a
 
@@ -143,7 +140,6 @@ Fatal Error: Cannot open module file ‘da_control.mod’ for reading at (1): No s
 ```
 
 # install WPS-4.5
-
 ```
 tar -zxvf WPSV4.5.TAR.gz
 cd WPS
