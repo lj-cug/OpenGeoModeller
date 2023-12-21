@@ -21,7 +21,7 @@ export ESMF_OS=Linux
 export ESMF_COMM=openmpi
 export ESMF_OPENMP=OFF
 export ESMF_LAPACK=internal
-export ESMF_BOPT=O3
+export ESMF_BOPT=O
 export ESMF_ABI=64
 export ESMF_COMPILER=gfortran
 export ESMF_CXXCOMPILER=mpicxx
@@ -35,7 +35,7 @@ export ESMF_PNETCDF="standard"
 export ESMF_PNETCDF_INCLUDE="/usr/local/include/"
 export ESMF_PNETCDF_LIBPATH="/usr/local/lib/"
 export ESMF_PNETCDF_LIBS="-lpnetcdf"
-export ESMF_PIO="internal"
+export ESMF_PIO=OFF
 
 export ESMF_YAMLCPP=OFF
 export ESMF_TESTEXHAUSTIVE=ON
