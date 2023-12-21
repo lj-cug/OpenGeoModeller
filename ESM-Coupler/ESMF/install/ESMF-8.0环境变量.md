@@ -24,8 +24,8 @@ export ESMF_LAPACK=internal
 export ESMF_BOPT=O3
 export ESMF_ABI=64
 export ESMF_COMPILER=gfortran
-export ESMF_CXXCOMPILER=g++
-export ESMF_F90COMPILER=gfortran
+export ESMF_CXXCOMPILER=mpicxx
+export ESMF_F90COMPILER=mpifort
 
 export ESMF_NETCDF="standard"
 export ESMF_NETCDF_INCLUDE="/usr/local/include/"
