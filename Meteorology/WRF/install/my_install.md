@@ -63,7 +63,6 @@ cd netcdf-fortran-4.5.2
 ./configure --prefix=$DIR/netcdf CFLAGS="-I$WRF_LIBS_DIR/hdf5/include -I$WRF_LIBS_DIR/netcdf/include" CPPFLAGS="-I$WRF_LIBS_DIR/hdf5/include -I$WRF_LIBS_DIR/netcdf/include" LDFLAGS="-L$WRF_LIBS_DIR/hdf5/lib -L$WRF_LIBS_DIR/netcdf/lib"
 make
 make install
-# make check
 cd ..
 
 tar xzvf zlib-1.2.11.tar.gz
@@ -96,19 +95,20 @@ wget https://github.com/wrf-model/WRF/releases/download/v4.5/v4.5.tar.gz
 tar -xvzf v4.5.tar.gz
 cp -r WRFV4.5 WRFPLUSV4.5
 cp -r WRFV4.5 WRFDAV4.5
+
 cd WRFV4.5
-./configure  # 依据合适的选择，一般选 mpi gfortran (34) 或 mpi ifort (15)，然后选 1
+./configure
 ./compile -j $(nproc) em_real 2>&1 | tee log.compile
-ls -ls main/*.exe # 应该存在 main/ndown.exe, main/real.exe, main/tc.exe, main/wrf.exe
+ls -ls main/*.exe
 cd ..
 ```
 
 ## WRFPLUS
 ```
-cd WRFPLUSV4.5 #安装3DVAR无需安装WRFPLUS，可忽略这一节
-./configure wrfplus # 依据合适的选择，一般选 mpi gfortran (18) 或 mpi ifort (8)
+cd WRFPLUSV4.5
+./configure wrfplus
 ./compile -j $(nproc) 2>&1 wrfplus | tee log.compile
-ls -ls main/*.exe # 应该有 wrfplus.exe
+ls -ls main/*.exe
 export WRFPLUS_DIR=$HOME/Build_WRF/WRFPLUSV4.5
 cd ..
 ```
@@ -116,10 +116,10 @@ cd ..
 ## WRFDA
 ```
 cd WRFDAV4.5
-./configure 4dvar # 依据合适的选择，一般选 mpi gfortran (18) 或 mpi ifort (8)
+./configure 4dvar
 ./compile -j $(nproc) all_wrfvar 2>&1 | tee log.compile
 ./compile -j $(nproc) all_wrfvar 2>&1 | tee log.1.compile
-ls -ls var/build/*.exe var/obsproc/*.exe # 应该有 44 个
+ls -ls var/build/*.exe var/obsproc/*.exe
 # 数多少行 ls -ls var/build/*.exe var/obsproc/*.exe | wc -l
 cd ..
 ```
