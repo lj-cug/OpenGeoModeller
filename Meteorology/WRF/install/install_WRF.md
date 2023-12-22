@@ -85,9 +85,9 @@ cd jasper-1.900.1
 make -j $THREADS
 make install
 cd ..
+```
 
 # start to install WRF/WRFPLUS/WRFDA
-
 ## WRF
 ```
 wget https://github.com/wrf-model/WRF/releases/download/v4.5/v4.5.tar.gz
@@ -119,7 +119,6 @@ cd WRFDAV4.5
 ./compile -j16 all_wrfvar 2>&1 | tee log.compile
 ./compile -j16 all_wrfvar 2>&1 | tee log.1.compile
 ls -ls var/build/*.exe var/obsproc/*.exe
-# 数多少行 ls -ls var/build/*.exe var/obsproc/*.exe | wc -l
 cd ..
 ```
 
@@ -128,15 +127,15 @@ cd ..
 ```
 出现错误，删除配置+编译文件请使用 ./clean -a
 
-Symbol ‘nf_netcdf4’ at (1) has no IMPLICIT type; did you mean ‘nf_cdf5’?
+1 Symbol ‘nf_netcdf4’ at (1) has no IMPLICIT type; did you mean ‘nf_cdf5’?
 如上述方式编译，不要仅仅按照 WRF 的官方教程走，那样装不了当前版本的 WRFDA
 编译 netcdf-fortran 后可以直接 make check 来校验能否找到
 
-checking for Fortran flag to compile .f90 files... unknown
+2 checking for Fortran flag to compile .f90 files... unknown
 添加 export F90FLAGS="-fPIC $F90FLAGS"
 参考：Bug解决方案_tutuerwang的博客-CSDN博客
 
-Fatal Error: Cannot open module file ‘da_control.mod’ for reading at (1): No such file or directory
+3 Fatal Error: Cannot open module file ‘da_control.mod’ for reading at (1): No such file or directory
 估计是 WRFDA 的编译脚本没有写好依赖关系，导致多线程编译时出现问题，出错时查找 da_control.mod 会发现其实是有的
 ```
 
