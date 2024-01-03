@@ -6,13 +6,10 @@
 
 ## 应用
 
-WRF-CROCO-WW3
+WRF-CROCO-WW3等
 
 ## 构建
 
 cd oasis3-mct-4.0\util\make_dir
 
 make make_ubuntu
-
-
-

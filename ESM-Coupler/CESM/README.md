@@ -1,8 +1,9 @@
-# CESM 
+# CESM-2.0
+
+Community Earth System Model
 
 开源的地球耦合模拟系统，全球尺度的
 
-本仓库为华为鲲鹏计算平台(ARM架构)下的编译及运行测试
+## cesm-openeuler-install
 
-
-
+华为鲲鹏计算平台(ARM架构)， OpenEuler-20.04 OS下的编译及运行测试脚本

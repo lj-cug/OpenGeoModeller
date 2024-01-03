@@ -1,8 +1,8 @@
-# BMI (Basic Model Interface )
+# BMI-2.0
 
-https://csdms.colorado.edu/wiki/BMI
+BMI: Basic Model Interface
 
-°æ±¾£º 2.0
+[BMIÖ÷Ò³](https://csdms.colorado.edu/wiki/BMI)
 
 Automobiles benefit from a standard interface--regardless of whether you drive a pickup truck or an electric two-seater, you have an ignition, an accelerator, and steering wheel. Imagine spending weeks of study to switch from one type of automobile to another, or from one brand to another. At CSDMS, we believe that numerical models, and the sub-components that make up these models, should offer a similar kind of standardization. To this end, we have developed the Basic Model Interface (BMI): a set of standard query and control functions that, when added to a model code, make that model both easier to learn and easier to couple with other software.
 
