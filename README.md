@@ -16,7 +16,8 @@
 [**工程流体力学**](https://gitee.com/lijian-cug/fluid-dynamics-course-cug)  -> 
 [**CFD基础算法**](https://gitee.com/lijian-cug/cfd-course-cug) -> 
 [**计算机辅助设计(CAD)**](https://gitee.com/lijian-cug/pre-surface-water) -> 
-[**高性能计算基座**](https://gitee.com/lijian-cug/kunpeng-competition-2022)
+[**高性能计算基座**](https://gitee.com/lijian-cug/kunpeng-competition-2022) ->
+各专业领域应用开发
 
 ## 仓库建设内容
 
