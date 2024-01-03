@@ -12,19 +12,20 @@
 	
 	按照其中的文档说明，你也可以快速地搭建一个属于你自己的“超级计算机"
 			
-## Programming&Compilation	
+## Compilation	
 
-	编程与编译方法
+	编译方法
 		
 ## Nvidia-GPGPU
 	
 	基于Nvidia GPU的通用异构并行环境搭建手册
 
-## GPUDirect
+## CUDA
+### GPUDirect
 
     Nvidia公司的GPU设备直连技术
 	
-## CUDA-aware MPI
+### CUDA-aware MPI
 
 	支持GPUDirect技术的MPI并行通信库的编译，就是OpenMPI和MVMPICH2
 	
@@ -32,7 +33,7 @@
 	
 	HPC应用中常用的PETSc库的编译说明
 	
-## Solver
+## Solver_GPU
 
     线性方程组(Ax=b)求解器
 	
@@ -60,6 +61,3 @@
 
 	IO是HPC环境下的一个瓶颈，MPI-IO，GDS等技术可用于解决此类问题
 
-## Numerical_Algorithm
-
-	HPC应用的数值算法
