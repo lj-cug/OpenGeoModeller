@@ -30,7 +30,7 @@
 8.  Geophysics: 地球物理正反演, OpenSWPC, Seissol, FWI-Devito, JUDI, 基于Firedrake的FWI-sypro
 9. ShallowWater: 浅水方程求解, Titan2d (滑坡), OP2-Volna(海啸-DSL), Triton (GPU-Flood), LISFLOOD-FP-8.0 (DG2-Flood)
 10. Hydrology：基于物理机制的分布式水文模拟及其耦合模拟, PIHM, CHM, ParFLOW, GSFLOW, ...
-11. Mesh-Generation: 网格生成(前处理), 是CFD建模过程中最耗时的步骤.
+11. MeshIng: 网格生成(前处理), 是CFD建模过程中最耗时的步骤.
 12. Turbulence: 基于精细湍流模拟的应用, 如DNS, LES, OpenFOAM, DAFOAM等.
 
 ## 仓库建设目标
@@ -41,6 +41,7 @@
 4.  系统性：实现不同介质耦合模拟, 体现地球科学的系统性.
 5.  易用性：快速编译安装和运行, 用于解决实际工程问题.
 6.  可操作性：完善的操作流程说明, 实现"傻瓜操作".
+7.  引导性：帮助初学者和研发人员, 快速找到他们需要的知识和工具.
 
 ## 安装教程
 
