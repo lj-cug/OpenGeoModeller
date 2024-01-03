@@ -73,3 +73,10 @@ ls -las *.exe
 至此wps编译完成
 
 ```
+
+## 注意
+```
+1 编译好WRF, 再编译WPS
+2 设置好环境变量WRF_DIR = /path/to/WRF
+3 ./configure后, 在configure.wps的-lnetcdf后面, 增加-lgomp
+```
