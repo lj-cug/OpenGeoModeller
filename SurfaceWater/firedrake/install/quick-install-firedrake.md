@@ -20,13 +20,16 @@ source firedrake/bin/activate
 
 参考 https://www.firedrakeproject.org/parallelism.html
 
+如果你在自己的电脑上，使用并行进程数超过了CPU的真实物理核心数，则要设置以下环境变量：
 export PETSC_CONFIGURE_OPTIONS="--download-mpich-device=ch3:sock"
 
+然后, 执行： 
 python3 firedrake-install --mpiexec=mpiexec --mpicc=mpicc --mpicxx=mpicxx --mpif90=mpif90
 
 # 测试安装
 
 cd $VIRTUAL_ENV/src/firedrake
+
 pytest tests/regression/ -k "poisson_strong or stokes_mini or dg_advection"
 
 #升级
