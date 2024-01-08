@@ -1,4 +1,4 @@
-两种方式：
+# 两种方式：
 
 （1）将C语言程序vec(),编译为lib文件，然后再FORTRAN程序中，写：
 
@@ -31,6 +31,7 @@ void arrayadd(int *,float *, float *, float *);
 #define add ADD             // Fortran 调用使用，全部大写
 
 需要在Intel FORTRAN编译器中设置：
+
 FORTRAN -》 External Procedures -》Upper Case (/names:uppercase)
 
-注意：32位和64位程序之间的调用！必须匹配~
+注意：32位和64位程序之间的调用！必须匹配。

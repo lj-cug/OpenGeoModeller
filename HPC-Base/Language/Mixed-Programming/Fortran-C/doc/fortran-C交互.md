@@ -29,7 +29,7 @@ end program test
 
 之前利用命名粉碎技术时，我们既要注意Fortran的默认integer和real的长度，又要注意c语言默认的int长度，加上Fortran传参靠指针，一旦数据长度对不上，结果是灾难性的。有了iso_c_binding定义的这些常数，就不用担心这些问题了。
 
-一个比较坑爹的问题是，Fortran中是没有无符号整数的，所以ios_c_binding中也没有任何unsigned版本的整数；并且c_size_t实际上也是有符号的。
+但是Fortran中是没有无符号整数的，所以ios_c_binding中也没有任何unsigned版本的整数；并且c_size_t实际上也是有符号的。
 
 除了类型常数之外，这个例子中还展示了字符常数c_horizontal_tab。Fortran是不支持转义字符的，这些常数在我们与c语言互相传递字符串时很有用。
 
