@@ -11,6 +11,8 @@
 仓库架构如下图，目的是将地球科学模拟统一在一个框架下，主要就是**前处理、编译运行和后处理可视化**
 ![仓库架构](./HPC-Base/仓库架构.jpg)
 
+![Geosciences-for-the-Future](./HPC-Base/Geoscience-for-the-Future.jpg)
+
 ## 学习路线
 
 [**工程流体力学**](https://gitee.com/lijian-cug/fluid-dynamics-course-cug)  -> 
