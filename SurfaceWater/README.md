@@ -14,9 +14,8 @@
    7.  WaveWatch-III: 波浪模型, 美国-中国
    8.  CROCO：AMR技术的海洋动力学模型，法国
    9.  NEMO-4.0：欧洲开发的3D海洋动力学模型，法国
-   10. firedrake: 基于DSL的DG有限单元法开发库，英国帝国理工大学
-   11. SLIM3D：DG法的3D海洋动力学模式，比利时
-   12. MITGcm: 比较简单的GCM模式，常在ESM中使用,美国
-   13. Delft3d-fm: 非结构网格版本的Delft3d-flow, 用于计算水力学教学
+   10. SLIM3D：DG法的3D海洋动力学模式，比利时
+   11. MITGcm: 比较简单的GCM模式，常在ESM中使用,美国
+   12. Delft3d-fm: 非结构网格版本的Delft3d-flow, 用于计算水力学教学
 
 

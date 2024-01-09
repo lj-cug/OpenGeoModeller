@@ -16,3 +16,11 @@ CUDA是NVIDIA公司研发的一种GPGPU并行化语言, 目前有CUDA C/C++/Fortran等编译器
 ## CUDA-programming
 
 	Nvidia公司的CUDA编程基础知识，使用nvcc编译器编译cu源码文件
+	
+# CUDA-bashrc
+```
+# CUDA 11.0 library
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$MY_APPs/cudnn-11.0/lib64:$LD_LIBRARY_PATH
+
+```	
