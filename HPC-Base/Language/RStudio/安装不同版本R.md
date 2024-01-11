@@ -2,8 +2,10 @@
 
 ## °²×°R-3.5.3
 ```
+apt-get build-dep r-base-dev
 wget https://cran.rstudio.com/src/base/R-3/R-3.5.3.tar.gz
-./configure --prefix=/opt/R/3.3.0 --enable-R-shlib --with-blas --with-lapack
+tar xvf R-3.5.3.tar.gz && cd R-3.5.3
+./configure --prefix=/opt/R/3.5.3 --enable-R-shlib --with-blas --with-lapack
 make
 make install
 ```
