@@ -6,4 +6,6 @@ setwd("")  // 设置工作路径
 
 getwd()  // 查看当前工作路径
 
-install_packages("")  // 安装R包
+install.packages("")  // 安装R包
+
+remove.packages("")  // 删除R包

@@ -12,11 +12,4 @@ cmake ../src -DGOTM_USE_FABM=off
 make
 ```
 
-# GOTM-lake
-
-git clone --branch lake https://hub.fgit.cf/gotm-model/code
-
-# GLM-GOTM
-
-
 

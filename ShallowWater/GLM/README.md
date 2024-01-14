@@ -1,4 +1,4 @@
-# Lake
+# General Lake Model (GLM)
 
 湖泊, 属于内陆浅水区域, 通常伴随气象驱动下的内部流体动力过程(主要为翻转)和水面的热力学过程(热交换+蒸散发),
 以及生物地球化学过程(biogeochemical process).
@@ -10,27 +10,13 @@
 3 General Lake Model (GLM) + FABM + AED2 (Hipsey, et al., 2019)
 ```
 
-## 研究计划
+## GLM研究计划
 
 (1) GLM模型的垂向涡扩散系数计算模块功能欠缺, 目前仅有1个参数化的计算方法, 考虑调用GOTM的turbulence模块, 由于GLM是C语言，需要调用[C接口的GOTM-5.2.1](http://basilisk.fr/src/gotm)
 
 (2) 分布式水文模型SHUD-lake与GLM模型的耦合.
 
 (3) 湖泊模型的数据同化功能, 参考EAT-1D框架(Jorn Bruggeman, et al., 2023)和SCHISM-3D系统(Yu et al., 2022).
-
-## GOTM-C
-```
-wget https://github.com/gotm-model/code/archive/v5.2.1.tar.gz
-tar xzvf v5.2.1.tar.gz
-cd code-5.2.1/src
-wget http://basilisk.fr/src/gotm/gotm.patch?raw -O gotm.patch
-patch -p0 < gotm.patch 
-cd ..
-mkdir build
-cd build
-cmake ../src -DGOTM_USE_FABM=off
-make
-```
 
 ## 增强的FABM生态框架: FABM-NflexPD 1.0
 
