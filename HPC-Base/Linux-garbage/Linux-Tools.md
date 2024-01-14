@@ -1,4 +1,4 @@
-# Linux操作系统安装
+# Linux-Tools
 
   Linux系统推荐使用 Ubuntu 20.04
   在Windowx系统的笔记本上，可以使用VMware workstation (商业软件，有破解版），或者使用[VirtualBox](https://www.virtualbox.org/)

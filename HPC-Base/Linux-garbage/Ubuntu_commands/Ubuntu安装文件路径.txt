@@ -6,7 +6,8 @@ ubuntu 默认的PATH为
 PATH=/home/brightman/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 apt-get install安装目录是包的维护者确定的，不是用户
-$ dpkg -L packagename.deb
+
+dpkg -L packagename.deb
 
 dpkg -L +软件包的名字，可以知道这个软件包包含了哪些文件， 这个方法可以列出所有安装后留在系统里的文件
 

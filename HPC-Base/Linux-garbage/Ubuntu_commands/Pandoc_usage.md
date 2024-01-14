@@ -1,14 +1,14 @@
-PANDOC
+# PANDOC
 
 Markdown是我平时编写各类材料和文章时最喜欢的工具之一，但将其作为文档分发时却略有些不便。毕竟不是所有人都了解 Markdown 的语法，而且它亦不如富文本文档易读。直至我发现了Pandoc，它可以将文档在 Markdown、LaTeX、reStructuredText、HTML、Word docx 等多种标记格式之间相互转换，并支持输出 PDF、EPUB、HTML 幻灯片等多种格式。该程序被称为格式转换界的 “瑞士军刀”。
 
 我平时大量使用该程序生成 HTML 和 PDF 文档，希望本文可以总结一些自己使用的心得。
 
-程序简介
+## 程序简介
 
 Pandoc 的作者是John MacFarlane，他是加州大学伯克利分校的哲学系教授。Pandoc 使用Haskell语言编写，被作者用来生成讲义、课件和网站等。该程序开源免费，目前以 GPL 协议托管在Github 网站上。
 
-程序安装
+## 程序安装
 
 Pandoc 的安装有许多方式，但本文只介绍最简单的方法。Pandoc 的作者已经为 Windows、macOS、Linux 等操作系统分别制作了对应的程序安装包。要使用该程序，只需下载对应的程序安装包进行安装即可。
 
@@ -18,7 +18,7 @@ sudo apt-get install pandoc
 
 或者，如果你已经安装了 Anaconda，那么你可以直接使用 Pandoc 了。该程序已经被集成到 Anaconda 中。
 
-参数说明
+## 参数说明
 
 Pandoc 程序的命令使用方式为：
 
@@ -58,9 +58,9 @@ pandoc <files> <options>
 
 虽然 Pandoc 提供了用于指定输入输出格式的参数，但是很多时候该参数不必使用。Pandoc 已经足够聪明到可以根据文件名判断输入输出格式，所以除非文件名可能造成歧义，否则这两个参数都可以省略。
 
-使用示例
+## 使用示例
 
-信息查看
+### 信息查看
 
 查看程序支持的输入文件格式：
 
@@ -90,7 +90,7 @@ pandoc demo.md --self-contained -c style.css -o demo.html
 
 在该命令中，--self-contained?参数指定：将任何的外部文件嵌入至输出的文件中，形成一个独立的 HTML 文档。这样传送资料时只传送一个文件就可以了，就像分享 PDF 文档一样方便。
 
-生成 docx 文档
+### 生成 docx 文档
 
 虽然我很喜欢使用 HTML 作为文档交换格式，但某些情况下你可能还是需要传送 Word docx 文件。这也不是问题，Pandoc 能够将所支持的输入文件一键转换为 Word docx 格式。
 
@@ -104,7 +104,7 @@ pandoc http://gnss.help/2017/06/12/pandoc-install-usage/ -o this_page.docx
 
 需补充的是：Pandoc 无法为生成的 Word docx 文档指定排版方式。你可能需要二次编辑输出的文件，将标题、正文等调整为满意的样式。
 
-生成 PDF 文档
+### 生成 PDF 文档
 
 使用 Pandoc 直接生成 PDF 文件时，需要安装 LaTeX。并且，Pandoc 自带的 PDF 引擎不支持中文，必须为中文配置额外的引擎和模板。Pandoc 程序生成 PDF 文件的命令为：
 
@@ -112,7 +112,7 @@ pandoc demo.md -o demo.pdf
 
 我生成 PDF 文档时，未使用以上的方法。而是采用 HTML 文件作为中间文件过渡，使用 Windows 系统的 “打印到 PDF” 功能，将 HTML 文档进一步转换为所需的 PDF 文档。
 
-生成 Markdown 文档
+### 生成 Markdown 文档
 
 别忘了 Markdown 也是 Pandoc 支持的输出格式之一，我们可以将任何支持的输入格式转换为 Markdown。这对于我们将之前的文档也切换到 Markdown 格式来说，实在是太方便了。
 
@@ -124,9 +124,9 @@ pandoc demo.docx -o demo.md
 
 pandoc http://gnss.help/2017/06/12/pand
 
-?层叠样式表文件决定最终的显示样式，因此有一个漂亮的 CSS 样式表文件非常重要。在此推荐两个 CSS 文件，首先是由 Alberto Leal 制作的?Github 风格的样式表文件，它的显示效果类似于 Github 网站的 README 文档。另一个是我制作的，类似本站曾采用的?Minos?主题（Minos-style）的样式表文件。该文件还未完全稳定，尚需部分完善，不过对付一般的文字排版已经没有问题。
+层叠样式表文件决定最终的显示样式，因此有一个漂亮的 CSS 样式表文件非常重要。在此推荐两个 CSS 文件，首先是由 Alberto Leal 制作的?Github 风格的样式表文件，它的显示效果类似于 Github 网站的 README 文档。另一个是我制作的，类似本站曾采用的?Minos?主题（Minos-style）的样式表文件。该文件还未完全稳定，尚需部分完善，不过对付一般的文字排版已经没有问题。
 
-Compiling from source
+# Compiling from source
 
 If for some reason a binary package is not available for your platform, or if you want to hack on pandoc or use a non-released version, you can install from source.
 
@@ -148,7 +148,7 @@ cd pandoc
 
 Note: there may be times when the development code is broken or depends on other libraries which must be installed separately. Unless you really know what you’re doing, install the last released version.
 
-Quick stack method
+## Quick stack method
 
 The easiest way to build pandoc from source is to use?stack:
 
@@ -158,19 +158,10 @@ wget -qO- https://get.haskellstack.org/ | sh
 
 Change to the pandoc source directory and issue the following commands:
 
-stack setup
+## stack setup
 
 stack install
 
 stack setup?will automatically download the ghc compiler if you don’t have it.?stack installwill install the?pandoc?executable into?~/.local/bin, which you should add to your?PATH. This process will take a while, and will consume a considerable amount of disk space.
 
 pandoc -f latex -t docx -o test.docx test.tex
-
-Description: CentOS Linux release 7.4.1708 (Core)运行成功，输出的表格略有问题！
-
-最方便的直接下载压缩包
-
-FWIW we (rstudio) provide pandoc binaries at?https://s3.amazonaws.com/rstudio-buildtools/pandoc-1.13.1.zip?(windows, linux and mac)
-
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。。

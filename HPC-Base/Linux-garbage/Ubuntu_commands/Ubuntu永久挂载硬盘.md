@@ -1,3 +1,5 @@
+# 永久挂载
+
 1.首先使用fdiks -l 命令查询到你要挂载的硬盘盘符例如 /dec/sdb
 
 2.使用blkid /dev/sdb 命令查询你要挂载的硬盘的UUID
@@ -12,17 +14,11 @@ UUID=afab653d-7620-49df-ba66-f956c372ef93 /home/mkky/data4 ext4 defaults 0 0
 
 5. df -h查看硬盘是否正确挂载。
 
-
-
-命令合集
-
-fdisk -l?
-
-blkid /dev/sdb?
-
-echo?UUID=afab653d-7620-49df-ba66-f956c372ef93 /home/mkky/data4 ext4 defaults 0 0 >> /etc/fstab
-
-mount -a?
-
+# 命令合集
+```
+fdisk -l
+blkid /dev/sdb
+echo UUID=afab653d-7620-49df-ba66-f956c372ef93 /home/mkky/data4 ext4 defaults 0 0 >> /etc/fstab
+mount -a
 df -h
-
+```
