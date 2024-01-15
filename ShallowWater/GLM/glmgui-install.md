@@ -39,17 +39,5 @@ gcc test.c `pkg-config --cflags --libs gtk+-2.0`, pkg-config --cflags --libs gtk
 ```
 
 ### rGTK2问题
-```
-https://hub.fgit.cf/lawremi/RGtk2/issues/8
 
-To build the extant version of RGtk2 on Windows, use R 4.1.3. Or you can get the binaries with install.packages("https://access.togaware.com/RGtk2_2.20.36.2.zip", repos=NULL) for the same version of R. It can't be done with the current version of R (4.2).
-
-After installing it, run library(RGtk2); you'll be prompted to install Gtk+.
-```
-
-### gWidgets2RGtk2问题
-```
-https://hub.fgit.cf/jverzani/gWidgets2RGtk2/issues/31
-
-it worked with install_github("jverzani/gWidgets2RGtk2"), but I had use R 3.6.3 (on windows).
-```
+ref: rGTK2-install.md
