@@ -81,8 +81,7 @@ return 0;
 
 运行：
 
-![C:\\Users\\Administrator\\Desktop\\LaunchMPI1-1024x598.png](media/image1.png){width="4.591940069991251in"
-height="2.6835159667541557in"}
+![C:\\Users\\Administrator\\Desktop\\LaunchMPI1-1024x598.png](media/image1.png)
 
 ### 什么是CUDA-aware MPI?
 

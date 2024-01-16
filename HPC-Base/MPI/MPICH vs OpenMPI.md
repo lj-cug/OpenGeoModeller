@@ -2,7 +2,9 @@
 
 [╡н©╪ндов](https://stackoverflow.com/questions/2427399/mpich-vs-openmpi)
 
-Can someone elaborate the differences between the OpenMPI and MPICH implementations of MPI ? Which of the two is a better implementation ?
+Can someone elaborate the differences between the OpenMPI and MPICH implementations of MPI? 
+
+Which of the two is a better implementation ?
 
 ## Purpose
 

@@ -1,0 +1,43 @@
+sudo mount -o remount,rw /
+
+/etc/X11/xorg.conf
+
+startx
+
+xinit: connection to X server lost
+
+~/.xinitrc
+
+xinit: giving up
+xinit: unable to connect to X server: Connection refused
+xinit: server error
+
+xauth: error in locking authority file /root/.Xauthority
+
+
+sudo vi /var/log/Xorg.0.log
+sudo nvidia-xconfig --allow-empty-initial-configuration
+
+cd ~
+sudo chown 你的用户名:lijian-cug .Xauthority
+
+
+sudo service lightdm stop
+sudo ./NVIDIA-Linux-x86_64-390.77.run
+sudo service lightdm start
+
+apt remove nvidia-dkms-*
+sudo chmod a+x NVIDIA-Linux-x86_64-*.run
+
+sudo ./NVIDIA-Linux-x86_64-*.run -no-x-check -no-nouveau-check
+// -no-opengl-files
+
+modprobe nvidia
+nvidia-smi
+sudo apt install nvidia-prime
+sudo prime-select nvidia
+
+
+ata6 softreset failed (1st FIS failed)
+
+

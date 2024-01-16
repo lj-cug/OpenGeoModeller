@@ -1,38 +1,35 @@
-Ubuntu默认安装:   
+# Ubuntu默认安装 
 
 apt-get install libopenmpi-dev openmpi-bin openmpi-doc   (V_2.1.1)
 
-显示configure的可配置选项
-./configure --help| less
+显示configure的可配置选项：  ./configure --help| less
 
 运行configure配置脚本（下面以Intel编译器为例，并且已经设置好Intel编译环境）
+```
 CC=icc CXX=icpc FC=ifort ./configure --prefix=/opt/openmpi/2.0.2/intel/2017.0.098
+CC：设定编译C源文件时的编译命令
+CXX：设定编译C++源文件时的编译命令
+FC：设定编译Fortran源文件时的编译命令
+--prefix：设定安装后的目录 
+```
+编译:  make -j8
 
-    CC：设定编译C源文件时的编译命令
-    CXX：设定编译C++源文件时的编译命令
-    FC：设定编译Fortran源文件时的编译命令
-    --prefix：设定安装后的目录 
+安装:  make install
 
-
-编译
-make -j8
-
-安装（如--prefix指定的目录非当前用户可写，那么需要root权限将其安装在那个目录）
-make install
-
-设定环境变量
+# 设定环境变量
 
 可以设置在自己的环境变量中自己使用，也可以设置到系统环境中供全部用户使用
-
+```
     Bash：
         全部用户：/etc/profile、/etc/bash.bashrc、/etc/profile.d/openmpi.sh
         个人用户：~/.bashrc 
     Csh：
         全部用户：/etc/csh.cshrc、/etc/profile.d/openmpi.csh
         个人用户：~/.cshrc 
+```
 
-Bash或Csh的环境设置内容：
-
+# Bash或Csh的环境设置内容
+```
 (1) Bash环境设置：
     OPENMPI=/opt/openmpi/2.0.2/intel/2017.0.098
     PATH=$OPENMPI/bin:$PATH
@@ -48,16 +45,17 @@ Bash或Csh的环境设置内容：
     setenv INCLUDE $OPENMPI/include:$INCLUDE
     setenv CPATH $OPENMPI/include:$CPATH
     setenv MANPATH $OPENMPI/share/man:$MANPATH
-
+```
 设置后重新登录即可生效，或者手动使其生效
 source 设置所在文件
 查看是否设置正确
 
 which mpirun
+
 如果显示/opt/openmpi/2.0.2/intel/2017.0.098/bin/mpirun，则表明正确
 
-
-基本用法:
+## 基本用法
 
 设置使用16个进程运行MPI程序/path/mpiapp
+
 mpirun -n 16 /path/mpiapp
