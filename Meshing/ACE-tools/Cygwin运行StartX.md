@@ -13,4 +13,5 @@ xorg-server (必须, Cygwin/X X 服务器)
 xinit (必须, 开启 X server:的脚本 xinit, startx, startwin (包括开始菜单的快捷方式), startxdmcp.bat )
 
 xinit -- -multiplemonitors -multiwindow -clipboard -noprimary -dpi 96 -listen tcp 
+
 ( -nolisten  # 不行! )

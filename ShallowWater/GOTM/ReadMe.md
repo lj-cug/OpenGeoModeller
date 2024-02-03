@@ -4,8 +4,10 @@
 
 本项目使用的是GOTM的lake分支
 
-git clone --branch lake https://hub.fgit.cf/gotm-model/code
+git clone --branch lake --recursive https://hub.fgit.cf/gotm-model/code
+
+git submodule update --init --recursive
 
 ## GOTM-lake-R
 
-R脚本工具, 如：GOTMr
+R脚本工具, 如：GOTMr, gotmtools
