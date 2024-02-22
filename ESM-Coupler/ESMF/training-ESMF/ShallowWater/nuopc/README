@@ -1,0 +1,35 @@
+In this exercise you will create a NUOPC "cap" for a simple
+shallow water model.  You have already been provided
+with several files:
+
+sw_refactor.F90 -- this is a refactored version of the original
+	               SW model - it has been changes to a Fortran
+	               module instead of a program
+
+sw_driver.F90   -- this is a NUOPC Driver ready to drive a cap
+                   called sw_cap
+                   
+sw_main.F90     -- the Fortran main program
+
+A makefile is also included.  You need to set the environment
+variable ESMFMKFILE to point to your ESMF installation's
+esmf.mk file.
+
+On Theia:
+module use /home/emc.nemspara/SOFT/modulefiles
+module load intel/15.1.133 impi/5.1.1.109 netcdf/4.3.0 yaml-cpp esmf/8.0.0bs38
+
+On Cheyenne:
+module load intel/19.0.2
+export ESMFMKFILE=/glade/work/dunlap/ESMF-INSTALL/8.0.0bs38/lib/libg/Linux.intel.64.mpt.default/esmf.mk
+
+
+Your task is to create a NUOPC cap for the SW model in a file
+called sw_cap.F90.  It should advertise an export field called 
+"height" which should reference the "h" variable in the model.
+
+Challenge:
+Add another cap atm.F90 for a ficticious atmosphere model. Have
+it advertise an import field "height".  Modify the sw_driver.F90
+to drive both sw_cap and atm and use a connector to transfer data
+from the SW model to the atmosphere.

@@ -6,6 +6,10 @@
 
 编译版本： 7.1.0, 8.1.1
 
+## 示例代码
+
+training-ESMF示例耦合浅水方程与大气模式的代码
+
 ## 应用
 
 RegESM使用的是ESMF耦合器，ESMF是目前最常用的地球系统模拟耦合器
@@ -17,4 +21,4 @@ Arlindo da Silva, et al. The Earth System Modeling Framework.
 
 ### ESMF Joint Specification Team
 
-Email: esmf tech@ucar.edu
+Email: esmf_tech@ucar.edu
