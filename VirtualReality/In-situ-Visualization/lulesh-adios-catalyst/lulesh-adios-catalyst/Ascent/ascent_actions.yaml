@@ -1,0 +1,9 @@
+#An example to trigger actions on a subset of timesteps
+
+- 
+  action: "add_triggers"
+  triggers: 
+    t1: 
+      params: 
+        condition: "cycle() % 10 == 0"
+        actions_file: "trigger_ascent_actions.yaml"

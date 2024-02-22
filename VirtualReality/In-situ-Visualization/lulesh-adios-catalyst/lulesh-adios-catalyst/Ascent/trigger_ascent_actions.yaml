@@ -1,0 +1,25 @@
+--- 
+- 
+  action: add_pipelines
+  pipelines: 
+    pl1: 
+      f1: 
+        params: 
+          field: velocity
+        type: vector_magnitude
+- 
+  action: add_scenes
+  scenes: 
+    s1: 
+      plots: 
+        p1: 
+          field: velocity_magnitude
+          pipeline: pl1
+          type: pseudocolor
+      renders: 
+        r1: 
+          camera: 
+            azimuth: -135.0
+            elevation: 30.0
+          image_prefix: velocity.%05d
+

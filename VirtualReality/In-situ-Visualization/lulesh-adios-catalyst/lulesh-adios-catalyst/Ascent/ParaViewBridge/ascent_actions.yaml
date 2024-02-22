@@ -1,0 +1,14 @@
+- 
+  action: add_triggers
+  triggers: 
+    t1: 
+      params: 
+        actions: 
+          - 
+            action: add_extracts
+            extracts: 
+              e1:
+                type: "python" 
+                params:
+                  file: "paraview-pressure-threshold.py"
+        condition: "cycle() % 100 == 0"

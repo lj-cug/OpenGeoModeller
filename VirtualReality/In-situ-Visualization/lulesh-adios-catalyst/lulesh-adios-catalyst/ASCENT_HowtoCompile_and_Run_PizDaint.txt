@@ -1,0 +1,37 @@
+# Runtime options are:
+#
+# Usage: ./bin/lulesh2.0 [opts]
+# where [opts] is one or more of:
+# -q              : quiet mode - suppress all stdout
+# -i <iterations> : number of cycles to run
+# -s <size>       : length of cube mesh along side
+# -r <numregions> : Number of distinct regions (def: 11)
+# -b <balance>    : Load balance between regions of a domain (def: 1)
+# -c <cost>       : Extra cost of more expensive regions (def: 1)
+# -f <numfiles>   : Number of files to split viz dump into (def: (np+10)/9)
+# -p              : Print out progress
+# -v              : Output viz file (requires compiling with -DVIZ_MESH
+# -x <script>     : ParaView analysis script (requires compiling with -DVIZ_CATALYST)
+# -h              : This message
+#
+##############################################################################
+# Compile and run on Piz Daint
+
+module load daint-gpu CMake Ascent cray-hdf5-parallel
+
+mkdir buildAscent
+cd buildAscent
+cmake \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_CXX_COMPILER=CC \
+  -DINSITU=Ascent \
+  -DHDF5_INCLUDE_DIR=$CRAY_HDF5_PARALLEL_PREFIX/include \
+  ..
+
+make -j
+
+##############################################################################
+# Run with Ascent
+
+cd Ascent
+sbatch run_lulesh_Ascent.sh

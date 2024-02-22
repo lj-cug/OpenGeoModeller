@@ -1,0 +1,51 @@
+# Runtime options are:
+#
+# Usage: ./bin/lulesh2.0 [opts]
+# where [opts] is one or more of:
+# -q              : quiet mode - suppress all stdout
+# -i <iterations> : number of cycles to run
+# -s <size>       : length of cube mesh along side
+# -r <numregions> : Number of distinct regions (def: 11)
+# -b <balance>    : Load balance between regions of a domain (def: 1)
+# -c <cost>       : Extra cost of more expensive regions (def: 1)
+# -f <numfiles>   : Number of files to split viz dump into (def: (np+10)/9)
+# -p              : Print out progress
+# -v              : Output viz file (requires compiling with -DVIZ_MESH
+# -x <script>     : ParaView analysis script (requires compiling with -DVIZ_CATALYST)
+# -h              : This message
+#
+##############################################################################
+# Compile and run on Piz Daint
+
+module load daint-gpu CMake ParaView
+mkdir buildCatalyst
+cd buildCatalyst
+
+cmake \
+  -DINSITU=Catalyst \
+  -Dcatalyst_DIR=${EBROOTPARAVIEW}/lib/cmake/paraview-5.10/catalyst \
+  -DCMAKE_CXX_COMPILER=CC \
+  ..
+
+make
+
+##############################################################################
+# Run with a Catalyst script
+
+cd Catalyst
+sbatch run_lulesh_catalyst.sh
+
+# What is happening? See the contents of catalyst.py, the ParaView Catalyst script
+
+Two extractors have been defined:
+
+1) A grid extractor, which saves the mesh data to disk, at a frequency given by
+vTP1.Trigger.Frequency
+
+2) An image extractor which saves a screen capture, at a frequency given by
+pNG1.Trigger.Frequency
+
+by default, all data are saved in a subdirectory called "datasets", thus you
+should look in $SCRATCH/datasets
+
+
