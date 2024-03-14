@@ -1,0 +1,3 @@
+打开AndroidStudio，在右下角有个DeviceFileExplorer，打开就可以看到Oculus的整个目录结构了，录制的视频保存在目录sdcard/Oculus/VideoShots目录下，你右键点击视频文件，然后点击SaveAs就可以保存到你个人的PC上了。
+
+https://blog.csdn.net/grace_yi/article/details/120756988

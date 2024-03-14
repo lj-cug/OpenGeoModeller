@@ -53,9 +53,11 @@ in 2011 to develop and spread scientific open source software in Russia.
 
 斯坦福大学研发的用于机翼体型优化的CFD求解器, 可在Windows, Linux和MacOS系统下使用.
 
-## SimVascular
+## SimVascular和lifex-CFD
 
-唯一一款开源的心血管血液流动的CFD模型. 有从医学成像建立模型到血液模拟的完整的工作流操作工具.
+心血管血液流动的全流程CFD模型. 
+
+lifex-CFD是基于deal.II库开发的, 功能强大.
 
 ## finesed3d
 
