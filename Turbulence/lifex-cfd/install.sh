@@ -9,7 +9,7 @@ cd lifex-env
 ### The installation of any package can be enabled/disabled in the configuration file lifex-env.cfg.
 ## Run command:
 ./lifex-env.sh --prefix=/home/lijian/lifx-CFD/lifex-install -j 8 -y
-
+## Caution: You should build deal.II-9.3.1 for lifex-cfd!
 
 ### Add the following line to your ${HOME}/.bashrc file (or equivalent), replacing /path/to/lifex-env/ with the prefix where lifex-env has been installed:
 source /home/lijian/lifx-CFD/lifex-env/configuration/enable_lifex.sh
