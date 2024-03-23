@@ -43,7 +43,7 @@ the box）。
 
 这一章将会包含比较多的使用细节，会在一系列的文章中去完善该部分内容。
 
-### 3.1 Meson安装 {#meson安装 .标题3}
+### 3.1 Meson安装
 
 首先是安装Python3.x版本，而且版本尽可能的高，我用的是Python3.5。一般来说安装Python是默认带有pip，但是如果系统缺一些库的话pip会不能成功安装，我踩到zlib的坑（pip3的安装可以参考https://www.cnblogs.com/fyly/p/11112169.html）
 
@@ -104,7 +104,7 @@ project01/
 └── main.c
 
 项目构建关系描述完成，接下来就需要通过调用Meson来生成构建目录及构建系统。这就涉及到meson
-command line的使用，当meson安装完成后可以通过meson -v查看Meson
+command line的使用，当meson安装完成后可以通过 meson -v 查看Meson
 版本，这就是命令行。
 
 meson -h / \--help输出：

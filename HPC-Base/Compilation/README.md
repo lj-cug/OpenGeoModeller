@@ -18,7 +18,7 @@
 
 ### CMAKE
 	
-	跨平台编译系统；有cmake-gui
+	跨平台编译系统；用户界面可使用cmake-gui
 	
 ### SCons
 
@@ -26,7 +26,11 @@
 	
 ### Meson
 	
-	基于Python和ninja的编译系统；有GUI界面的meson-gui
+	基于Python和ninja的编译系统
+	
+## Spack
+
+   管理HPC安装包的常用工具
 	
 ## Docker容器
 
@@ -34,5 +38,5 @@
 	
 ## Singularity容器
 
-	面向HPC环境的容器
+	专门面向HPC环境的容器
 	

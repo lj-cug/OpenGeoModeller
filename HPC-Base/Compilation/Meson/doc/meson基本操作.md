@@ -10,8 +10,7 @@ MesonÖ¼ÔÚ¿ª·¢×î¾ß¿ÉÓÃĞÔºÍ¿ìËÙµÄ¹¹½¨ÏµÍ³¡£Ìá¹©¼òµ¥µ«Ç¿´óµÄÉùÃ÷Ê½ÓïÑÔÓÃÀ´ÃèÊö¹¹½¨¡
 
 	pip install meson ninja
 	
-	ÔÚmeson.buildÄ¿Â¼Ö´ĞĞ£º 	
-	meson build
+	ÔÚmeson.buildÄ¿Â¼Ö´ĞĞ£º	meson build
 	
 	½øÈë buildÄ¿Â¼£¬Ö´ĞĞninja
 	
@@ -24,17 +23,4 @@ Qt GUI for the Meson build system
 https://github.com/michaelbrockus/meson-ui
 
 pip install meson-ui
-
-## meson.build±àĞ´
-
-±àÒë¿ÉÖ´ĞĞ³ÌĞò£º
-
-project('project01', 'c')
-executable("project", 'src/main.c')
-
-±àÒë¾²Ì¬Á´½Ó¿â£º
-
-project('project02', 'c')
-static_library('thirdinfo', 'src/third_lib.c')
-
 

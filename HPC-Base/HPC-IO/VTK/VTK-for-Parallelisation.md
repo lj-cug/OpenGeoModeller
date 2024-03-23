@@ -11,6 +11,7 @@ So if you use MPI and let run everything in parallel even writing the data into 
 Unfortunately there is not that much of documentation about how to use this class vtkXMLPUnstructuredGridWriter.
 
 ## 在各rank上创建.vtu文件
+
 Let’s define some vtu files. The following code is run in parallel with MPI:
 
 ```
@@ -55,7 +56,8 @@ There ya go! With pwriterObj->SetInputData(unstructuredGrid); the parallel file 
 
 So far this is very useful. I still have one problem, especially considering that the serial files are scattered across different machines. With this approach you can only use parallelisation on one local machine having the generated files in the same directory.
 
-I asked myself, is it possible to set the parallel file paths manually? There is no VTK documentation in how to do that so far to my knowledge, but I found a way. Let me show you how. 通常, 并行化文件.pvtu与.vtu必须在一个路径下，是否有方法可手动设置.pvtu的路径呢? 答案是：有!
+I asked myself, is it possible to set the parallel file paths manually? There is no VTK documentation in how to do that so far to my knowledge, but I found a way. Let me show you how. 
+通常, 并行化文件.pvtu与.vtu必须在一个路径下，是否有方法可手动设置.pvtu的路径呢? 答案是：有!
 
 Through the VTK classes there exist one virtual method where the attribute of theses references is set void WritePPieceAttributes(int index). Because it is virtual you can create your own class and overload with your code. Let’s do this by creating a new class:
 
