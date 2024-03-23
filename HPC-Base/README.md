@@ -37,12 +37,10 @@
 
     线性方程组(Ax=b)求解器
 	
-### Amgx
+### Amgx与AmgCL
 	
 	Nvidia公司开源的GPU集群并行求解器，与PETSc库结合使用：PETSc-Amgx
 	
-### AmgCL
-
 	俄国人开发的多重网格求解器，使用OpenCL实现异构并行
 	
 ### paralution
@@ -52,10 +50,7 @@
 ## HPX
 
     异步并行运行时系统
-	
-## Domain-Decomposition
 
-	非结构网格的区域分解库，常用的有：METIS, SCOTCH, Zoltan等
    
 ## HPC-IO
 

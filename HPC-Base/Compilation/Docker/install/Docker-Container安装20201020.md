@@ -30,8 +30,6 @@ Docker containers that run on Docker Engine:
 
 ![C:\\Users\\Administrator\\Desktop\\container-what-is-container.png](./media/image1.png)
 
-图1
-
 # Docker Containers Are Everywhere: Linux, Windows, Data center, Cloud, Serverless, etc.
 
 Docker container technology was launched in 2013 as an open

@@ -156,3 +156,7 @@ Aron Roland的polymesh:
 
 基于Triangle，大部分为FORTRAN代码，以及与Triangle的接口程序，且具有误差预估和自适应网格的功能。
 
+	
+## Domain-Decomposition
+
+非结构网格的区域分解库，常用的有：METIS, SCOTCH, Zoltan等

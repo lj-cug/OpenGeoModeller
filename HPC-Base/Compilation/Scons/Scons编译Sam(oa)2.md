@@ -1,4 +1,4 @@
-# SamoaµÄSCons±àÒë
+# SCons±àÒëSam(oa)2
 
 vars = Variables()
 
