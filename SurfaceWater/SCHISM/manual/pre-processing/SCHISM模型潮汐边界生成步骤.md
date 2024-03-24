@@ -1,12 +1,16 @@
-# 1、SCHISM模型中潮汐边界条件施加
+# 最新的生成SCHISM潮汐驱动边界条件的Python和Matlab脚本程序
+
+
+
+# 早期用于生成SCHISM潮汐驱动边界条件的FORTRAN程序
+## 1 SCHISM模型中潮汐边界条件施加
 
 每个开边界上的所有节点上定义潮汐边界条件。这些节点的水位变化由所有从bctides.in文件中的调和分析简单叠加而成。潮汐由调和分析分解为若干种组成：M2,
 Z0, Q1......
 
 潮汐势能由下列源项公式计算，代入动量方程：
 
-![Tidal-potential-eq.png](./media/image1.png){width="3.754166666666667in"
-height="3.2161297025371827in"}
+![Tidal-potential-eq.png](./media/image1.png)
 
 SCHISM模型中，潮汐边界条件和地球潮汐势在bctide.in文件中定义：
 
@@ -56,7 +60,7 @@ Q1  !last freq. for this boundary\
 0.012038 198.774149 \
 0.011939 198.804927 ! Q1 amplitude and phase at last node
 
-# 2、生成SCHISM模型开边界潮汐的步骤
+## 2 生成SCHISM模型开边界潮汐的步骤
 
 （1）生成开边界节点上的潮汐幅度和相位，需要hgrid.gr3文件；
 
