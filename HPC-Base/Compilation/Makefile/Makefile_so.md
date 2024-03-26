@@ -1,3 +1,6 @@
+# MakefileÉú³É¶¯Ì¬¿â(.so)
+
+```
 # Make command to use for dependencies
 RM=rm
 MKDIR=mkdir
@@ -48,3 +51,4 @@ clean:
  
 # Clean this project and all dependencies
 cleanall: clean
+```
