@@ -1,0 +1,198 @@
+docker pull ubuntu:18.04
+docker run -i -t ubuntu:18.04 /bin/bash
+apt-get update
+apt-get install build-essential gfortran wget vim git cmake python python-pip autotools-dev autoconf libtool subversion csh pkg-config libpthread-stubs0-dev libomxil-bellagio-dev libwayland-dev
+pip install numpy scipy netCDF4
+mkdir /opt/progs
+cd /opt/progs
+export PROGS=/opt/progs
+export CC=gcc
+export FC=gfortran
+export CXX=g++
+wget http://zlib.net/fossils/zlib-1.2.8.tar.gz 
+tar -zxvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure --prefix=`pwd`
+make
+make install
+rm $PROGS/zlib-1.2.8.tar.gz
+cd $PROGS
+wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.13/src/hdf5-1.8.13.tar.gz
+tar -zxvf hdf5-1.8.13.tar.gz
+cd hdf5-1.8.13
+./configure --prefix=`pwd` --with-zlib=$PROGS/zlib-1.2.8 --enable-fortran --enable-cxx CXXFLAGS="-std=c++11"
+make
+make install
+rm $PROGS/hdf5-1.8.13.tar.gz
+cd $PROGS
+wget ftp://ftp.unidata.ucar.edu/pub/netcdf/old/netcdf-4.3.0.tar.gz
+tar -zxvf netcdf-4.3.0.tar.gz
+cd netcdf-4.3.0
+mkdir src
+mv * src/.
+cd src
+./configure --prefix=$PROGS/netcdf-4.3.0 LDFLAGS="-L$PROGS/zlib-1.2.8/lib -L$PROGS/hdf5-1.8.13/lib" CPPFLAGS="-I$PROGS/zlib-1.2.8/include -I/$PROGS/hdf5-1.8.13/include"
+make
+make install
+rm $PROGS/netcdf-4.3.0.tar.gz
+export LD_LIBRARY_PATH=$PROGS/netcdf-4.3.0/lib:$LD_LIBRARY_PATH
+cd $PROGS
+wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-cxx-4.2.tar.gz
+tar -zxvf netcdf-cxx-4.2.tar.gz
+cd netcdf-cxx-4.2
+mkdir src
+mv * src/.
+cd src
+./configure --prefix=$PROGS/netcdf-cxx-4.2 LDFLAGS="-L$PROGS/zlib-1.2.8/lib -L$PROGS/hdf5-1.8.13/lib -L$PROGS/netcdf-4.3.0/lib" CPPFLAGS="-I$PROGS/zlib-1.2.8/include -I/$PROGS/hdf5-1.8.13/include -I$PROGS/netcdf-4.3.0/include"
+make
+make install
+rm $PROGS/netcdf-cxx-4.2.tar.gz
+cd $PROGS
+wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-fortran-4.2.tar.gz
+tar -zxvf netcdf-fortran-4.2.tar.gz
+cd netcdf-fortran-4.2
+mkdir src
+mv * src/.
+cd src
+./configure --prefix=$PROGS/netcdf-fortran-4.2 LDFLAGS="-L$PROGS/zlib-1.2.8/lib -L$PROGS/hdf5-1.8.13/lib -L$PROGS/netcdf-4.3.0/lib" CPPFLAGS="-I$PROGS/zlib-1.2.8/include -I/$PROGS/hdf5-1.8.13/include -I$PROGS/netcdf-4.3.0/include"
+make
+make install
+rm $PROGS/netcdf-fortran-4.2.tar.gz
+cd $PROGS/netcdf-4.3.0/lib
+ln -s ../../netcdf-cxx-4.2/lib/* .
+ln -s ../../netcdf-fortran-4.2/lib/* .
+cd $PROGS/netcdf-4.3.0/include
+ln -s ../../netcdf-cxx-4.2/include/* .
+ln -s ../../netcdf-fortran-4.2/include/* .
+export NETCDF=$PROGS/netcdf-4.3.0
+export PATH=$NETCDF/bin:$PATH
+cd $PROGS
+wget https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.1.tar.gz
+tar -zxvf xerces-c-3.1.1.tar.gz
+cd xerces-c-3.1.1
+./configure --prefix=$PROGS/xerces-c-3.1.1
+make
+make install
+rm $PROGS/xerces-c-3.1.1.tar.gz
+cd $PROGS
+wget --no-check-certificate wget https://www.open-mpi.org/software/ompi/v3.0/downloads/openmpi-3.0.0.tar.gz
+tar -zxvf openmpi-3.0.0.tar.gz
+cd openmpi-3.0.0
+./configure --prefix=$PROGS/openmpi-3.0.0
+make
+make install
+rm $PROGS/openmpi-3.0.0.tar.gz
+export PATH=$PROGS/openmpi-3.0.0/bin:$PATH
+export LD_LIBRARY_PATH=$PROGS/openmpi-3.0.0/lib:$LD_LIBRARY_PATH
+export ESMF_OS=Linux
+export ESMF_TESTMPMD=OFF
+export ESMF_TESTHARNESS_ARRAY=RUN_ESMF_TestHarnessArray_default
+export ESMF_TESTHARNESS_FIELD=RUN_ESMF_TestHarnessField_default
+export ESMF_DIR=$PROGS/esmf-7.1.0b30
+export ESMF_TESTWITHTHREADS=OFF
+export ESMF_INSTALL_PREFIX=$PROGS/esmf-7.1.0b30/install_dir
+export ESMF_COMM=openmpi
+export ESMF_TESTEXHAUSTIVE=ON
+export ESMF_BOPT=O
+export ESMF_OPENMP=OFF
+export ESMF_SITE=default
+export ESMF_ABI=64
+export ESMF_COMPILER=gfortran
+export ESMF_PIO=internal
+export ESMF_NETCDF=split
+export ESMF_NETCDF_INCLUDE=$PROGS/netcdf-4.3.0/include
+export ESMF_NETCDF_LIBPATH=$PROGS/netcdf-4.3.0/lib
+export ESMF_XERCES=standard
+export ESMF_XERCES_INCLUDE=$PROGS/xerces-c-3.1.1/include
+export ESMF_XERCES_LIBPATH=$PROGS/xerces-c-3.1.1/lib
+cd $PROGS
+git archive --remote=git://git.code.sf.net/p/esmf/esmf --format=tar --prefix=esmf/ ESMF_7_1_0_beta_snapshot_31 | tar xf -
+mv esmf esmf-7.1.0b30
+cd $ESMF_DIR 
+make 
+make install
+export ESMF_INC=$ESMF_INSTALL_PREFIX/include
+export ESMF_LIB=$ESMF_INSTALL_PREFIX/lib/lib${ESMF_BOPT}/${ESMF_OS}.${ESMF_COMPILER}.${ESMF_ABI}.${ESMF_COMM}.${ESMF_SITE}
+export ESMFMKFILE=$ESMF_LIB/esmf.mk
+cd $PROGS
+wget http://releases.llvm.org/3.9.1/llvm-3.9.1.src.tar.xz
+tar -xvf llvm-3.9.1.src.tar.xz
+mv llvm-3.9.1.src llvm-3.9.1
+cd llvm-3.9.1
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PROGS/llvm-3.9.1 -DLLVM_BUILD_LLVM_DYLIB=ON -DLLVM_ENABLE_RTTI=ON -DLLVM_INSTALL_UTILS=ON -DLLVM_TARGETS_TO_BUILD:STRING=X86 -DCMAKE_CXX_FLAGS="-std=c++11" -DBUILD_SHARED_LIBS=ON ../
+make
+make install
+export LD_LIBRARY_PATH=$PROGS/llvm-3.9.1/lib:$LD_LIBRARY_PATH
+rm $PROGS/llvm-3.9.1.src.tar.xz
+cd $PROGS
+wget https://mesa.freedesktop.org/archive/mesa-17.0.0.tar.gz
+tar -zxvf mesa-17.0.0.tar.gz
+cd mesa-17.0.0/
+mkdir build
+mv * build/.
+mv build src
+cd src
+./configure --prefix=$PROGS/mesa-17.0.0 --enable-opengl --disable-gles1 --disable-gles2 --disable-va --disable-xvmc --disable-vdpau --enable-shared-glapi --disable-texture-float --enable-gallium-llvm --enable-llvm-shared-libs --with-gallium-drivers=swrast,swr --disable-dri --with-dri-drivers= --disable-egl --with-egl-platforms= --disable-gbm --disable-glx --disable-osmesa --enable-gallium-osmesa --with-llvm-prefix=$PROGS/llvm-3.9.1/build
+make
+make install
+export MESA_INSTALL_PREFIX=$PROGS/mesa-17.0.0
+rm $PROGS/mesa-17.0.0.tar.gz
+cd $PROGS
+wget -O ParaView-v5.4.1.tar.gz "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.4&type=binary&os=Sources&downloadFile=ParaView-v5.4.1.tar.gz"
+tar -zxvf ParaView-v5.4.1.tar.gz
+mv ParaView-v5.4.1 paraview-5.4.1
+cd paraview-5.4.1
+mkdir src
+mv * src/.
+mkdir build
+cd build
+cmake \
+  -DCMAKE_BUILD_TYPE=Release                                   \
+  -DPARAVIEW_ENABLE_PYTHON=ON                                  \
+  -DPARAVIEW_USE_MPI=ON                                        \
+  -DPARAVIEW_BUILD_QT_GUI=OFF                                  \
+  -DVTK_USE_X=OFF                                              \
+  -DOPENGL_INCLUDE_DIR=IGNORE                                  \
+  -DOPENGL_xmesa_INCLUDE_DIR=IGNORE                            \
+  -DOPENGL_gl_LIBRARY=IGNORE                                   \
+  -DOSMESA_INCLUDE_DIR=${MESA_INSTALL_PREFIX}/include          \
+  -DOSMESA_LIBRARY=${MESA_INSTALL_PREFIX}/lib/libOSMesa.so     \
+  -DVTK_OPENGL_HAS_OSMESA=ON                                   \
+  -DVTK_USE_OFFSCREEN=OFF ../src
+make
+rm $PROGS/ParaView-v5.4.1.tar.gz
+mkdir $PROGS/COP_LR
+cd $PROGS/COP_LR
+mkdir -p src/atm
+mkdir -p src/ocn
+mkdir -p src/drv
+mkdir input
+mkdir output
+cd $PROGS/COP_LR/src/atm
+wget https://hub.fgit.cf//uturuncoglu/GTC2018_demo/raw/master/src/r6146.tar.gz
+tar -zxvf r6146.tar.gz
+cd r6146
+./bootstrap.sh
+./configure --prefix=`pwd` --enable-cpl MPIFC=mpif90
+make clean install
+cd $PROGS/COP_LR/src/ocn
+wget https://hub.fgit.cf//uturuncoglu/GTC2018_demo/raw/master/src/roms-r809.tar.gz
+tar -zxvf roms-r809.tar.gz
+rm roms-r809.tar.gz
+*****************************************************************************************************
+*** edit MY_ROOT_DIR as /opt/progs/COP_LR/src/ocn, which_MPI as openmpi, FORT as gfortran in build.sh ***
+*****************************************************************************************************
+********************************************************************************************************************
+*** edit roms-r809/Compilers/Linux-gfortran.mk and modify NETCDF_INCDIR, NETCDF_LIBDIR and add -lnetcdff to LIBS ***
+********************************************************************************************************************
+./build.sh
+cd $PROGS/COP_LR/src/drv
+wget https://github.com/uturuncoglu/GTC2018_demo/raw/master/src/RegESM.tar.gz
+tar -zxvf RegESM.tar.gz
+rm RegESM.tar.gz
+cd RegESM
+./bootstrap.sh
+./configure --prefix=`pwd` --with-atm=../../atm/r6146 --with-ocn=../../ocn/Build --with-paraview=$PROGS/paraview-5.4.1/build MPIFC=mpif90 CXXFLAGS="-std=c++11" LDFLAGS="-L/usr/lib/gcc/x86_64-linux-gnu/5 -lstdc++"
+make clean install
