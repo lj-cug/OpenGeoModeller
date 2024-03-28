@@ -52,11 +52,3 @@ export LD_LIBRARY_PATH=$ESMF_LIB/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
 #---------------end of ESMF-8.0 configuration----------------------------
 ```
-
-
-
-
-
-
-
-

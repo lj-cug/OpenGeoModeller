@@ -28,6 +28,7 @@ Advice to installers. Complete the installation of ESMF by defining a single ESM
 By default file esmf.mk is located next to the ESMF library file in directory ESMF_INSTALL_LIBDIR. Consequently, unless esmf.mk has been moved to a different location after the installation, the correct setting for ESMFMKFILE is $(ESMF_INSTALL_LIBDIR)/esmf.mk.
 
 ## 设置环境变量
+
 ```
 ESMF_BOPT  - g (debug)  - O2 (optimized)
 ESMF_COMM  - mpich2, openmpi, intelmpi

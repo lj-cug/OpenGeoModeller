@@ -1,4 +1,5 @@
 # ESMF-7.1的环境变量
+
 ```
 export ESMF_OS=Linux
 export ESMF_ABI=64
@@ -32,7 +33,8 @@ export ESMF_TESTEXHAUSTIVE=ON
 export ESMF_YAMLCPP=OFF
 ```
 
-### Add the path of libraries as environmental variables
+## Add the path of libraries as environmental variables
+
 ```
 export ESMF_INC=$ESMF_INSTALL_PREFIX/include
 export ESMF_LIB=$ESMF_INSTALL_PREFIX/lib/libO/Linux.gfortran.64.openmpi.default
@@ -40,6 +42,7 @@ export ESMFMKFILE=$ESMF_LIB/esmf.mk
 ```
 
 ## Build
+
 ```
 make -j8
 make build_system_tests
