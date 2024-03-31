@@ -13,7 +13,7 @@
 即：**Performance-Productivity-Portability**
 
 仓库架构如下图，目的是将地球科学模拟统一在一个框架下，主要就是**前处理、编译运行和后处理可视化**
-![仓库架构](https://gitee.com/lijian-cug/hpc-base/blob/master/仓库架构.jpg)
+[仓库架构](https://gitee.com/lijian-cug/hpc-base/blob/master/仓库架构.jpg)
 
 ## 学习路线
 
@@ -23,7 +23,7 @@
 [**高性能计算基座**](https://gitee.com/lijian-cug/kunpeng-competition-2022) ->
 [**地球科学的awesome项目**](https://gitee.com/lijian-cug/awesome-geosciences) ->
 [**海洋模拟**](https://gitee.com/lijian-cug/ocean-modeling-course-cug) ->
-![**Geosciences-for-the-Future**](https://gitee.com/lijian-cug/hpc-base/blob/master/Geoscience-for-the-Future.jpg) -> Geosciences for the Future
+[**Geosciences-for-the-Future**](https://gitee.com/lijian-cug/hpc-base/blob/master/Geoscience-for-the-Future.jpg) -> Geosciences for the Future
 
 ## 仓库建设内容
 
