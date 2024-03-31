@@ -1,0 +1,55 @@
+# How to extract and compile XIOS
+
+	svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/trunk XIOS ; cd XIOS 
+	./make_xios --help (or ./make_xios -h) 
+make_xios - installs XIOS on your architecture
+make_xios [options]
+options :
+       [--prod] : compilation in production mode (default)
+       [--dev] : compilation in development mode
+       [--debug] : compilation in debug mode
+       --arch arch : to choose target architecture
+       [--avail] : to know available target architectures 
+       [--full] : to generate dependencies and recompile from scratch
+       [--use_oasis] : to use Oasis coupler
+       [--doc] : to generate Doxygen documentation (not available yet)
+       [--job ntasks] : to use parallel compilation with ntasks
+       [--netcdf_lib 'netcdf4_par'/'netcdf4_seq' : default netcdf4_par] : choice of netcdf library
+Known architectures : ./make_xios --avail
+GCC_LINUX
+GCC_MACOSX
+IA64_PLATINE
+PW6_VARGAS
+X64_CURIE
+X64_HORUS
+X64_TITANE
+X64_TITANE_GCC
+X64_TITANE_VAMPIR
+X86_LOCGNU_FEDORA
+X86_LOCINTEL_FEDORA
+XT6_LYNX
+
+## Compilation 
+o	On an known architecture. For example : ./make_xios --arch X64_CURIE
+o	On an new architecture. You have to create your "arch_NEW_ARCH.fcm" and "arch_NEW_ARCH.path" files
+?	Choice of compilation mode. As explained in the "help", there are three compilation modes : 
+o	[--prod] : compilation in production mode (default) 
+o	[--dev] : compilation in development mode 
+o	[--debug] : compilation in debug mode 
+For example : ./make_xios --dev --arch PW6_VARGAS
+?	Use of "arch*.env" file. "arch*.env" file is an optionnal file (used only if it exists) which allows to define a compilation evironment in order to compile XIOS server. 
+For example : cat arch-X64_TITANE_GCC.env 
+module unload bullxmpi
+module load openmpi/1.4.2_gnu
+module unload intel
+module load gcc
+
+export HDF5_INC_DIR=$WORKDIR/hdf5/include
+export HDF5_LIB_DIR=$WORKDIR/hdf5_gnu/lib
+
+export NETCDF_INC_DIR=$WORKDIR/netcdf4/include
+export NETCDF_LIB_DIR=$WORKDIR/netcdf4_gnu/lib
+
+Use of netcdf library. It is possible to use netcdf in parallel mode or sequential mode : 
+o	--netcdf_lib netcdf4_seq : only the multiple_file writing mode is available. 
+o	--netcdf_lib netcdf4_par : both one_file mode and mutliple_file mode are available. 

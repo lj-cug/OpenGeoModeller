@@ -1,9 +1,6 @@
-# NEMO-4.x
+# NEMO
 
-NEMO是欧洲常用的海洋动力学模型，NEMO-3.x已经停止开发
-
-本仓库是NEMO-3.0迁移到华为鲲鹏计算平台上的迁移指南与编译脚本
-
+NEMO是法国开发的海洋动力学模型，NEMO-3.x已经停止开发.
 NEMO-4.x持续开发中
 
 ## NEMO-PDAF
@@ -12,11 +9,7 @@ NEMO-4.0与并行化数据同化系统PDAF的耦合
 
 下一步将耦合NEMO-4.2与PDAF
 
-
-
 # NEMO-4.0-PDAF的研发
-
-vyou receive this mail, because you registered for downloading PDAF, the Parallel Data Assimilation Framework, at http://pdaf.awi.de.
 
 We like to announce that the PDAF code is now also available on github.com at:
 https://github.com/PDAF/PDAF
