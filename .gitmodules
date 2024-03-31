@@ -1,0 +1,3 @@
+[submodule "HPC-Base"]
+	path = HPC-Base
+	url = https://gitee.com/lijian-cug/hpc-base.git
