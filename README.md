@@ -13,7 +13,7 @@
 即：**Performance-Productivity-Portability**
 
 仓库架构如下图，目的是将地球科学模拟统一在一个框架下，主要就是**前处理、编译运行和后处理可视化**
-![仓库架构](https://gitee.com/lijian-cug/hpc-base/仓库架构.jpg)
+![仓库架构](https://gitee.com/lijian-cug/hpc-base/blob/master/仓库架构.jpg)
 
 ## 学习路线
 
@@ -23,7 +23,7 @@
 [**高性能计算基座**](https://gitee.com/lijian-cug/kunpeng-competition-2022) ->
 [**地球科学的awesome项目**](https://gitee.com/lijian-cug/awesome-geosciences) ->
 [**海洋模拟**](https://gitee.com/lijian-cug/ocean-modeling-course-cug) ->
-![**Geosciences-for-the-Future**](https://gitee.com/lijian-cug/hpc-base/Geoscience-for-the-Future.jpg) -> Geosciences for the Future
+![**Geosciences-for-the-Future**](https://gitee.com/lijian-cug/hpc-base/blob/master/Geoscience-for-the-Future.jpg) -> Geosciences for the Future
 
 ## 仓库建设内容
 
@@ -58,14 +58,14 @@
 
 ## 实施效果展示
 
-1.  [个人集群硬件平台](https://gitee.com/lijian-cug/hpc-base/Ubuntu20.04-Cluster/我的集群照片.jpg)
-2.  [CPU集群运行监控界面](https://gitee.com/lijian-cug/hpc-base/Ubuntu20.04-Cluster/media/image7.png)
-3.  [GPU集群运行监控界面](https://gitee.com/lijian-cug/hpc-base/Ubuntu20.04-Cluster/media/image13.png)
-4.  [高性能计算应用部署](https://gitee.com/lijian-cug/hpc-base/opengeomodeller-build.png)
+1.  [集群硬件平台](https://gitee.com/lijian-cug/hpc-base/blob/master/Ubuntu20.04-Cluster/我的集群照片.jpg)
+2.  [CPU集群监控界面](https://gitee.com/lijian-cug/hpc-base/blob/master/Ubuntu20.04-Cluster/media/image7.png)
+3.  [GPU集群监控界面](https://gitee.com/lijian-cug/hpc-base/blob/master/Ubuntu20.04-Cluster/media/image13.png)
+4.  [高性能计算部署](https://gitee.com/lijian-cug/hpc-base/blob/master/opengeomodeller-build.png)
 
 ## 合作与共赢
 
 有对这个项目感兴趣的同仁, 一块研究, 提高地球科学数值模拟的研究.
 
 作者简介：李健，QQ: 94207625        	email: jianli@cug.edu.cn   
-		  [微信QR](https://gitee.com/lijian-cug/hpc-base/QR-code.png)
+		  [微信QR](https://gitee.com/lijian-cug/hpc-base/blob/master/QR-code.png)
