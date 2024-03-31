@@ -32,7 +32,7 @@
 3.  Underground: 地下流动, 包括：MODFLOW6, MPLBM-UT, OpenPorousMedia,GEOSX,waiwera, OpenGeosys, ...
 4.	Geological-Modelling: 地质建模, 包含：地震数据处理与解释(OpendTect), 隐式地质建模(Gempy, LoopStructural).
 5.  VirtualReality: 可视化后处理, 包括: 虚拟现实(VR), 原位可视化, 集群图形渲染, ...
-6.  HPC-Base: 高性能计算基座: git clone --recursive ...
+6.  HPC-Base: 高性能计算基座: git clone --recursive https://gitee.com/lijian-cug/open-geo-modeller
 7.  ESM-Coupler: 地球系统模式+耦合器, 包含：RegESM, ESMF, BMI, ...
 8.  Geophysics: 地球物理正反演, OpenSWPC, Seissol, FWI-Devito, JUDI, 基于Firedrake的FWI-sypro
 9. ShallowWater: 浅水方程求解, Titan2d, OP2-Volna, Triton (GPU-Flood), LISFLOOD-FP-8.0 (DG2-Flood)
@@ -50,11 +50,7 @@
 6.  可操作性：完善的操作流程说明, 实现"傻瓜操作".
 7.  引导性：帮助初学者和研发人员, 快速找到他们需要的知识和工具.
 
-## 安装教程
-
-1.  参考各组件的文档说明
-2.  基于Linux操作系统(Ubuntu 20.04 和 Huawei Euler OS)
-3.  代码的编译bash脚本
+## [B站视频教程](https://space.bilibili.com/581683925/video)
 
 ## 实施效果展示
 
