@@ -1,5 +1,0 @@
-1.查看所有环境变量：set
-2.设置环境变量：set MyEnvTest=D:\res
-3.查看某个或某类环境变量：set MyEnvTest
-4.修改环境变量值：set MyEnvTest=%MyEnvTest%;D:\apk
-5.删除某个环境变量：set MyEnvTest=

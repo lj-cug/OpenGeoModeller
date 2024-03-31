@@ -1,4 +1,0 @@
-87c87
-<   void* ptr = std::aligned_alloc(align, size);
----
->   void* ptr = aligned_alloc(align, size);
