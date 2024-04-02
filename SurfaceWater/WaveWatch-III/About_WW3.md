@@ -1,6 +1,8 @@
-About WW3     https://github.com/NOAA-EMC/WW3/wiki/About-WW3
+# About WW3     
 
-WAVEWATCH III? is a community wave modeling framework that includes the latest scientific advancements in the field of wind-wave modeling and dynamics.
+https://github.com/NOAA-EMC/WW3/wiki/About-WW3
+
+WAVEWATCH III is a community wave modeling framework that includes the latest scientific advancements in the field of wind-wave modeling and dynamics.
 
 The core of the framework consists of the WAVEWATCH III? third-generation wave model (WAVE-height, WATer depth and Current Hindcasting), developed at NOAA/NCEP in the spirit of the WAM model (WAMDIG 1988, Komen et al, 1994), which evolved from WAVEWATCH (Delft: Tolman 1989, 1991a), and WAVEWATCH II (NASA Goddard: Tolman, 1992). WAVEWATCH III? differs from its predecessors in many important points such as governing equations, model structure, numerical methods and physical parameterizations.
 
@@ -8,24 +10,24 @@ WAVEWATCH III? solves the random phase spectral action density balance equation 
 
 For more detailed information:
 
-Physics
+# Physics
 
-Numerics
+# Numerics
 
-Output Options
+# Output Options
 
-WW3 Manual References (As seen in the manual)
+# WW3 Manual References (As seen in the manual)
 
-MetEd WAVEWATCH III Course (requires login)
+# MetEd WAVEWATCH III Course (requires login)
 
-Google Scholar
 
-The WAVEWATCH III Development Group (As seen in the manual)
+# The WAVEWATCH III Development Group (As seen in the manual)
 
-WAVEWATCH III? Public releases:
+# WAVEWATCH III Public releases
+
 Here are the previous official model releases followed by their key added/modified features and capabilities and code structure changes. The present version (v7.xx) is actively under development and available to the public based on the previous official model release (version 6.07).
 
-v 2.22
+## v 2.22
 
 the first official public release
 
@@ -36,7 +38,8 @@ Tolman Chalikov physics and WAM cycle 3 physics,
 DIA and EXACT ¨C NL,
 Regular grids (lat¨Clon spherical or rectilinear),
 Finite difference in spatial and spectral domains
-v 3.14
+
+# v 3.14
 
 The second release in 2007
 
@@ -44,12 +47,13 @@ Model expanded to two¨Cway nested mosaic system with multiple grids,
 Linear growth term,
 Depth limited wave breaking,
 Numerical schemes for individual grids unchanged
-v 4.18
+
+## v 4.18
 
 The third public release (March 19 2014)
 
 Code development now by an international team of developers (svn),
-Multiple grids formulation expanded to include curvilinear grids, unstructured grids and SMC grids,
+Multiple grids formulation expanded to include curvilinear grids, **unstructured grids** and SMC grids,
 Ardhuin et al physics package,
 Babanin et al physics package,
 Second-order spatial propagation scheme,
@@ -60,7 +64,8 @@ Triads interactions,
 Expanded field of outputs (primarily for coupling),
 SHOWEX bottom friction source term,
 Grid splitting auxiliary code (for hyper scaling)
-v 5.16
+
+## v 5.16
 
 The fourth public release (October 31, 2016)
 
@@ -74,7 +79,8 @@ Namelist format option for multi grid input file (ww3_multi.nml),
 Sea-state dependent stress calculations,
 TSA nonlinear wave-wave interaction,
 Calculation of space-time extremes
-v 6.07
+
+## v 6.07
 
 The fifth public release (April 2019)
 
@@ -86,7 +92,8 @@ Updates the namelist options for the following programs: ww3 ounf, ww3 ounp, ww3
 Adding IC5 as a sea ice source term option,
 Other additions include updates on source term parameterizations such IC2, IS2, ST4, REF1,
 Optional instrumentation to code for profiling of memory use
-WAVEWATCH III? current development
+
+## WAVEWATCH III current development
 
 7.01 Reading wind from restart: Adds option for reading/writing wind in restart file via WRST switch.
 7.02 Interpolate internally winds to curvilinear subgrids: Adds capability to interpolate inputs to curvilinear subgrid in multi-grid.
@@ -103,8 +110,8 @@ WAVEWATCH III? current development
 7.13: Major code clean up including removing support for NetCDFv3, making NC4 the default, making F90 the default (removing the DUM option), removal of compiler directive.
 
 
+# Physics
 
-Physics
 The governing equations of WAVEWATCH III? include refraction and straining of the wave field due to temporal and spatial variations of the mean water depth and of the mean current (tides, surges etc.), when applicable.
 Parameterizations of physical processes (source terms) include wave growth and decay due to the actions of wind, nonlinear resonant interactions, dissipation (`whitecapping'), bottom friction, surf-breaking (i.e., depth-induced breaking) and scattering due to wave-bottom interactions. The model is prepared for triad interactions and is prepared for other, as of yet undefined source terms, but the latter have not been implemented yet. WAM cycle 4, bottom scattering, surf zone physics and wetting/drying new in model version 3.14.
 Wave propagation is considered to be linear. Relevant nonlinear effects such as resonant interactions are, therefore, included in the source terms (physics).
@@ -114,5 +121,3 @@ The model includes options for choosing various term packages, some intended for
 The model includes dynamically updated ice coverage.
 The model is prepared for data assimilation, but no data assimilation package is provided with the present distribution of the source code.
 Spectral partitioning is now available for post-processing of point output, or for the entire wave model grid using the Vincent and Soille (1991) algorithm (Hanson and Jenssen, 2004; Hanson et al , 2006, 2009). New in model version 3.14
-
-

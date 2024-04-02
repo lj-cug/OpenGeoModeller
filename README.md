@@ -38,12 +38,12 @@
 9. ShallowWater: 浅水方程求解, Titan2d, OP2-Volna, Triton (GPU-Flood), LISFLOOD-FP-8.0 (DG2-Flood)
 10. Hydrology：分布式水文模拟, PIHM, CHM, ParFLOW, GSFLOW, ...
 11. Meshing: 网格生成(前处理), 是CFD建模过程中最耗时的步骤.
-12. Turbulence: 基于精细湍流模拟的应用, 如DNS, LES, OpenFOAM, DAFOAM等.
+12. Turbulence: 其他基于CFD的应用, 如DNS, LES, OpenFOAM, DAFOAM等.
 
 ## 仓库建设目标
 
 1.  开源：摆脱商业软件的制约, 实现工程问题求解的可重复操作.
-2.  高效：Python脚本自动化建模工作流, 提高建模效率和可重复性.
+2.  高效：脚本自动化建模工作流, 提高建模效率和可重复性.
 3.  高性能：多并行机制加速模拟, 提高数值模拟时空分辨率.
 4.  系统性：实现不同介质耦合模拟, 体现地球科学的系统性.
 5.  易用性：快速编译安装和运行, 用于解决实际工程问题.
