@@ -1,0 +1,23 @@
+# PreProcessing Scripts
+
+## ArcGIS Tools for Preparing WRF-Hydro Routing Grids
+
+WRF-Hydro GIS Pre-processing Toolkit v5.2
+
+WRF-Hydro V5.2, V5.1.1, V5.0.x Documentation
+
+# Pre-processing Utility Scripts for use with WRF-Hydro
+```
+create_SoilProperties.R (for use with v5.2 model code)
+WRF-Hydro V5.2, V5.1.1, 5.0.3 updated MPTABLE.TBL
+create_wrfinput.R
+WRF-Hydro V5.1.1, V5.0.3, V3
+create_soilproperties.r (for use with v5.0.x model code)
+WRF-Hydro V5.0.x
+convert_LAKEPARM_to_V5.sh
+WRF-Hydro V.5.0
+```
+
+# Open Source WRF-Hydro GIS Pre-Processing Tools - Beta
+
+https://ral.ucar.edu/projects/wrf_hydro/contact
