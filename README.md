@@ -13,7 +13,7 @@
 即：**Performance-Productivity-Portability**
 
 仓库架构如下图，目的是将地球科学模拟统一在一个框架下，主要就是**前处理、编译运行和后处理可视化**
-![仓库架构](./仓库架构.jpg)
+![仓库架构](./Architecture.jpg)
 
 ## 学习路线
 
