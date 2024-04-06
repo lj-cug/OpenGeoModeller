@@ -1,0 +1,37 @@
+# WRF_v3.6 compilation with OASIS3-MCT (v3.1)
+
+I am trying to develop a WRF(atmos)-ROMS(ocean) coupled model by using OASIS3-MCT coupler.  Your website says " The last version of WRF 3.6 is interfaced with OASIS3-MCT to be coupled with the ocean model NEMO". 
+Does this mean there is interface code built in the WRF model? But i could not find it in the WRF code. Could you please tell me where i can get the interface code?
+
+I asked the interface developer of OASIS3-MCT in WRF and he told me that WRF_v3.6 is effectively interfaced with OASIS3-MCT.
+To find the coupling routines, just use the commands :
+
+ls */*oasis* or grep oasis */*F
+in the main repository of WRF.
+
+To compile WRF with OASIS3-MCT :
+Compile first OASIS3-MCT 
+(see https://portal.enes.org/oasis/faq-forum/oasis3-forum/installation-and-compilation/383298250)
+
+Add  -Dkey_cpp_xios in ARCH_LOCAL in the file configure.wrf.
+
+Then add the links to OASIS3-MCT:
+
+For example:
+
+OA3MCT_ROOT_DIR  =  /ccc/work/cont005/ra0542/massons/now/models/oa3mct/CURIE_thin
+- INCLUDES : you must add to  INCLUDE_MODULES:
+                      -I$(OA3MCT_ROOT_DIR)/build/lib/mct \
+                      -I$(OA3MCT_ROOT_DIR)/build/lib/psmile.MPI1 \
+- LIBS : you must add to LIB_EXTERNAL (before -L$(NETCDFPATH)/lib -lnetcdff -lnetcdf) : 
+                     -L$(XIOS_ROOT_DIR)/lib -lxios -L$(OA3MCT_ROOT_DIR)/lib -lpsmile.MPI1 -lmct -lmpeu -lscrip
+					 
+# WRF_v4.x compilation with OASIS3-MCT (v4.0)
+
+In order to compile WRF (latest version 4.0.1) with OASIS3-MCT coupler enabled,
+I needed to modify a couple of lines of frame/module_cpl_oasis3.F
+to make the variable "ishape" consistent with the latest release of OASIS.
+
+The file is attached. hope it helps,
+
+module_cpl_oasis3.F
