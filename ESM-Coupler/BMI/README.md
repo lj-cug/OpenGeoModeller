@@ -12,7 +12,7 @@ BMI is an element of the CSDMS Workbench, an integrated system of software tools
 
 lisflood-mp-bmi
 
-modflow6
+pywatersheds(prms-modflow6)
 
 ## ╡н©╪ндов
 

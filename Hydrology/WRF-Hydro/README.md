@@ -46,6 +46,9 @@ Rwrfhydro
 # ≈‡—µ
 https://github.com/NCAR/wrf_hydro_training
 
+# FAQ's
+https://ral.ucar.edu/projects/wrf_hydro/faqs
+
 # WRF-Hydro V5.2 Test Cases
 ```
 Oahu Hawaii v5.2.x Test Case (NWM configuration only)
