@@ -31,5 +31,3 @@ wrf_hydro.exe
 # Note: if running make after previously running the compile_offline_NoahMP.sh script, only the
 # wrf_hydro.exe file is updated. To avoid confusion use a make clean before each compile.
 # Finally, the environment variables used in the compile are printed.
-
-
