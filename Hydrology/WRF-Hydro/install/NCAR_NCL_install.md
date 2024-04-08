@@ -5,7 +5,7 @@ conda create -n ncl_stable -c conda-forge ncl
 source activate ncl_stable
 ```
 
-###Test NCL
+### Test NCL
 ```
 ncl -V
 ncl $NCARG_ROOT/lib/ncarg/nclex/gsun/gsun02n.ncl
