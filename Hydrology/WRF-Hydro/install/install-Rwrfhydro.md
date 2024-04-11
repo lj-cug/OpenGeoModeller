@@ -9,3 +9,15 @@ devtools::install_github("NCAR/rwrfhydro")
 library(rwrfhydro)
 
 # Tests
+```
+library(rwrfhydro)
+
+browseVignettes("rwrfhydro")
+
+# a listing of functions
+library(help=rwrfhydro)   
+
+# see function help
+?VisualizeDomain
+
+```

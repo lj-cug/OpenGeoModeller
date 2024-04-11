@@ -1,0 +1,20 @@
+components:
+
+  # Component uses Make to builds library (libtawas.a) and fortran module
+  # (tawas.mod) in component's source directory
+  TaWaS:
+    source_dir: components/models/BasicMake
+    install_prefix: components/models/BasicMake
+    # library names are case sensitive (default: TaWaS, the component name)
+    libraries: tawas
+    test_dir: components/models/BasicMake/test
+
+  # Component uses CMake to install Lumo.cmake into CMAKE_INSTALL_PREFIX/cmake
+  # folder.
+  Lumo:
+    source_dir: components/models/BasicCMake
+    test_dir: components/models/BasicCMake/test
+
+tests:
+  BasicApp1:
+    dir: tests/basic-1

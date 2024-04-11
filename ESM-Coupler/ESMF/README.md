@@ -7,17 +7,18 @@
 编译版本： 7.1.0, 8.1.1
 
 ## 示例代码
+### esmf-training
 
-
+### esmx-app-prototypes
+使用ESMX_Builder apps/basicApp.yaml -g -t方便地构建esmf-app
 
 ## 应用
 
-RegESM使用的是ESMF耦合器，ESMF是目前最常用的地球系统模拟耦合器
+RegESM
 
 ## 参考文献
 
 Arlindo da Silva, et al. The Earth System Modeling Framework.
-
 
 ### ESMF Joint Specification Team
 

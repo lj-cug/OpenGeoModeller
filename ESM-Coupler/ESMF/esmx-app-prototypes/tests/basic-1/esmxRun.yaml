@@ -1,0 +1,32 @@
+ESMX:
+
+  App:
+    logKindFlag:   ESMF_LOGKIND_Multi
+    logAppendFlag: false
+    logFlush:      true
+    startTime:     2012-10-24T18:00:00
+    stopTime:      2012-10-24T19:00:00
+
+  Driver:
+    componentList: [ATM, OCN]
+    attributes:
+      Verbosity: low
+    runSequence: |
+      @900
+        ATM -> OCN
+        OCN -> ATM
+        ATM
+        OCN
+      @
+
+ATM:
+  model:           TaWaS
+  ompNumThreads:   4
+  attributes:
+    Verbosity: high
+  petList:         0-3
+
+OCN:
+  model:           Lumo
+  petList:         1,3
+

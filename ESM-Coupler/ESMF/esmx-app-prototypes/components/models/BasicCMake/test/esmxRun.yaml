@@ -1,0 +1,49 @@
+ESMX:
+
+  App:
+    logKindFlag:   ESMF_LOGKIND_Multi
+    globalResourceControl: true
+    logAppendFlag: false
+    logFlush:      true
+    startTime:     2012-10-24T18:00:00
+    stopTime:      2012-10-24T19:00:00
+
+  Driver:
+    componentList: [ATM, OCN]
+    attributes:
+      Verbosity: high
+    runSequence: |
+      @900
+        ATM -> OCN
+        OCN -> ATM
+        ATM
+        OCN
+      @
+
+ATM:
+  model:           ESMX_Data
+  ompNumThreads:   4
+  attributes:
+    Verbosity: high
+  geom:
+    nx: 10
+    ny: 100
+    minx: 10
+    miny: 20
+    maxx: 100
+    maxy: 200
+    coordSys: ESMF_COORDSYS_CART
+  importFields:
+    sea_surface_temperature: {dim: 2, min: 0, max: 100}
+    sea_surface_salinity: {dim: 2, min: 0, max: 100}
+#    sea_surface_height_above_sea_level: {dim: 2, min: 0, max: 100}
+  exportFields:
+    air_pressure_at_sea_level: {dim: 2, val: 50}
+    surface_net_downward_shortwave_flux: {dim: 2, val: 50}
+    precipitation_flux: {dim: 2, val: 50}
+
+OCN:
+  model:           Lumo
+  petList:         0
+  attributes:
+    Verbosity: high
