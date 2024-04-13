@@ -54,9 +54,9 @@ http://polar.ncep.noaa.gov/waves/wavewatch/
 
 ## COAWST模拟系统的参考文献：
 
-[Warner, J.C., Armstrong, B., He, R., Zambon, J.B., 2010, Development of
+Warner, J.C., Armstrong, B., He, R., Zambon, J.B., 2010, Development of
 a Coupled Ocean-Atmosphere-Wave-Sediment Transport (COAWST) modeling
-system: Ocean Modeling, v. 35, no. 3, p. 230-244.]{.mark}
+system: Ocean Modeling, v. 35, no. 3, p. 230-244.
 
 The main website is:
 
