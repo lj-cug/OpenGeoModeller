@@ -1,10 +1,8 @@
-# Meteorology (Numerical Weather Prediction)
+# NWP (Numerical Weather Prediction)
 
 ## WRF
 
 数值天气预报模型, 持续开发中, 最新版本: 4.x
-
-WRF-AWR:
 
 ## RegCM
 
