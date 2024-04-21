@@ -1,10 +1,9 @@
 # 第1章 版本说明
 
-RegCM最新版本4.7.x
-
-新增加：（1）MM5非静水压力动力学核心；（2）修改SAV文件，更好与RegESM框架耦合；（3）地形数据使用GMTED数据集；（4）DUST
+RegCM_4.7, 新增加：（1）MM5非静水压力动力学核心；（2）修改SAV文件，更好与RegESM框架耦合；（3）地形数据使用GMTED数据集；（4）DUST
 12bin；（5）化学和气溶胶模块与CLM4.5兼容；（5）支持从BATS和CLM4.5地表模型的结果初始化土壤湿度。
 
+RegCM_v5.0, 增加了：第3种非静水压力计算核心
 
 ## 设置环境变量
 
@@ -80,7 +79,7 @@ make install DESTDIR=/alternate/directory
 
 运行测试算例的第1步就是：获取静态数据，定位模拟区域DOMAIN，以及大气和海洋的全球模型数据集，构建运行局部区域模拟的初始条件和边界条件ICBC。
 
-export ICTP_DATASITE=[http://clima-dods.ictp.it/regcm4]{.mark}
+export ICTP_DATASITE=http://clima-dods.ictp.it/regcm4
 
 RegCM模拟需要的公开数据都能到上面的网址下载。
 
@@ -102,7 +101,7 @@ RegCM模拟需要的公开数据都能到上面的网址下载。
 
 需要下载4个文件：地形、陆地类型分类、湖泊深度（可选）和土壤类型分类（运行DUST需要）
 
-全球数据：30\'水平分辨率
+全球数据：30'水平分辨率
 
 ![](./media/image1.png)
 
@@ -112,29 +111,28 @@ RegCM模拟需要的公开数据都能到上面的网址下载。
 
 ![](./media/image2.png)
 
-以上文件是clm2rcm程序的输入文件（见6.2节）。
+以上文件是clm2rcm程序的输入文件（见6.2节）
 
 ## 4.4 CLM4.5数据集
 
 ![](./media/image3.png)
 
-以上文件是mksurfdata程序的输入文件（见6.3节）。
+以上文件是mksurfdata程序的输入文件（见6.3节）
 
 ## 4.5海表温度(SST)
 
 SST数据下载有很多种选择，但为了测试，仅下载CAC
-OISST周数据（1981-现在）。
+OISST周数据（1981-现在）
 
 ![](./media/image4.png)
 
 ## 4.6大气和陆地表面温度的全球数据
 
-构建区域尺度模型的初始和边界条件，从一个[全球气候模型（GCM）]{.mark}的输出数据，插值到RegCM网格上。GCM数据可以来自于任何模型，也可下载公开的数据集，现在下载[EIN15数据集]{.mark}（比如1990年:
-Jan 01 00:00:00 UTC to Dec 31 18:00:00 UTC）。
+构建区域尺度模型的初始和边界条件，从一个[全球气候模型（GCM）]{.mark}的输出数据，插值到RegCM网格上。GCM数据可以来自于任何模型，也可下载公开的数据集，现在下载EIN15数据集（比如1990年:Jan 01 00:00:00 UTC to Dec 31 18:00:00 UTC）
 
 ![](./media/image5.png)
 
-准备好以上数据，就可以尝试运行RegCM了。
+准备好以上数据，就可以尝试运行RegCM了
 
 # 第5章 运行算例
 
@@ -289,12 +287,9 @@ debugparam namelist
 噪声与计算域大小(domain size)和气象区域(climatic
 regime)，例如，特别在暖气象区域（如夏季或热带地区）和较大的计算域的情况。
 
-当修改模型做敏感性试验时，如改变[land
-use]{.mark}，这种内部变化的噪声可能[误解为]{.mark}模型对修改因子的响应。
+当修改模型做敏感性试验时，如改变land use，这种内部变化的噪声可能误解为模型对修改因子的响应。
 
-当做敏感性试验时RegCM4用户必须清楚这一点。过滤噪音的最好方法就是：实施ensemble
-simulations，考察系综平均(ensemble
-average)结果，从噪声中提取真实的模型响应。
+当做敏感性试验时RegCM4用户必须清楚这一点。过滤噪音的最好方法就是：实施ensemble simulations，考察系综平均(ensemble average)结果，从噪声中提取真实的模型响应。
 
 O'Brien, T. A., L. C. Sloan, M. A. Snyder, Can ensembles of regional
 climate model simulations improve results from sensitivity studies?,
@@ -318,11 +313,11 @@ ncgen
 
 nccopy
 
-### 8.1.2 NetCDF操作工具NCO {#netcdf操作工具nco .标题3}
+### 8.1.2 NetCDF操作工具NCO
 
 ![](./media/image15.png)
 
-使用手册见：<http://nco.sourceforge.net/nco.html>，[好好学习下！]{.mark}
+使用手册见：<http://nco.sourceforge.net/nco.html>
 
 使用范例：
 
@@ -345,10 +340,3 @@ nccopy
 O'Brien, T. A., L. C. Sloan, M. A. Snyder, Can ensembles of regional
 climate model simulations improve results from sensitivity studies?,
 Climate Dynamics, 37, 1111-1118.
-
-# GraDS百度百科
-
-GrADS（Grid Analysis and Display
-System）是当今气象界广泛使用的一种[数据处理](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/944504)和显示[软件系统](https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F/224122)。该软件系统通过其集成环境，可以对[气象数据](https://baike.baidu.com/item/%E6%B0%94%E8%B1%A1%E6%95%B0%E6%8D%AE/8504282)进行读取、加工、图形显示和打印输出。它在进行数据处理时，所有数据在GrADS中均被视为纬度、经度、层次和时间的4维场，而数据可以是格点资料，也可以是站点资料；数据格式可以是[二进制](https://baike.baidu.com/item/%E4%BA%8C%E8%BF%9B%E5%88%B6/361457)，也可以是GRIB码，还可以是[NetCDF](https://baike.baidu.com/item/NetCDF/6000434)，从而具有操作简单、功能强大、显示快速、出图类型多样化、图形美观等特点。正因为如此，GrADS已迅速成为国内外气象界通用的标准图形环境之一。
-
-GrADS是美国马里兰大学气象系开发的一款气象[数据分析](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/6577123)显示软件。GrADS不仅为格点气象数据资料提供了一个优越的交互操作的分析与显示环境，而且还开发了支持站点数据资料的功能。GrADS以其强大的数据分析能力，灵活的环境设置，丰富的出图类型，以及多样的[地图投影](https://baike.baidu.com/item/%E5%9C%B0%E5%9B%BE%E6%8A%95%E5%BD%B1/1697209)方式等功能，为广大气象工作者的研究带来了极大地方便。该软件自诞生以来，一直受到用户的欢迎和支持，并得到了美国多家科研机构的支持，使其得以不断更新和完善，性能日益强大。随着[计算机技术](https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF)的不断进步，GrADS也推出了适用于各种操作系统的软件版本。
