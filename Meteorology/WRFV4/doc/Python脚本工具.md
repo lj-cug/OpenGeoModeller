@@ -38,11 +38,6 @@ Python automation script to download the Global Forecast System (GFS) data from 
 ## pyWRFsetup
 WRF SETUP & ANALYSIS  
 
-## wrftools
-A framework for running WRF simulations.
-
-It is designed to be flexible and extendable. There are some tools out there which run WRF, but they are not easily modified. This is designed to provide  a framework which is easily customised and modified. 
-
 ## WRF-Run
 This python script package automates the entire WRF process for use on cluster based computers. This is a fully self-contained script package that handles the tasks of obtaining the data, running the pre-processing executables, the WRF process, and forking the task to post-processing scripts for visualization.
 
