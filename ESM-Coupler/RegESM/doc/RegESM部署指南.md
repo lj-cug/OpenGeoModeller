@@ -475,7 +475,7 @@ nested)网格功能。
 
 已经有WRF_3.8.1_cpl可下载！
 
-### 安装区域性海洋模型(ROMS) {#安装区域性海洋模型roms .标题3}
+### 安装区域性海洋模型(ROMS)
 
 为启用ROMS的耦合功能，需要使用补丁程序，补丁对ROMS代码做小的修改。因为ROMS有很多版本（Rutergers
 University\'s ROMS, CROCCO (or ROMS_AGRIF)，UCLA ROMS, ROMS with
@@ -487,7 +487,7 @@ ROMS-r809在[GTC2018-demo]{.mark}中src下；或者用SVN下载r809
 
 下载ROMS和打补丁的命令：
 
-svn checkout -r 809 \--username [Lijian1984]{.mark}
+svn checkout -r 809 \--username [Lijian1984]
 https://www.myroms.org/svn/src/trunk roms-r809
 
 cd roms-r809
@@ -819,7 +819,7 @@ mpirun time ./regesm.x regcm.in_d2 ocean_gom03_N60.in
 ## 5、安装和使用在线可视化(co-processing)
 
 在RegESM_v1.1中使用Co-processing
-([COP]{.mark})组件，用户需要安装第三方库和与工作环境有关的工具。此时，支持2种类型的工作环境：
+([COP])组件，用户需要安装第三方库和与工作环境有关的工具。此时，支持2种类型的工作环境：
 
 1、单个服务器访问X窗口和图形硬件；
 
@@ -837,7 +837,7 @@ XeonPhi卡，使用很多核处理和渲染数据。当缺少需要的图形硬�
 
 下面介绍在不用工作环境下安装Paraview，以及使用COP支持的RegESM安装。
 
-### 5.1使用MESA的Paraview安装（没有图形硬件） {#使用mesa的paraview安装没有图形硬件 .标题3}
+### 5.1使用MESA的Paraview安装（没有图形硬件）
 
 主要根据下面网站，安装没有GPU支持的Paraview工作环境：
 
@@ -899,7 +899,7 @@ make
 
 make install
 
-[安装Paraview]{.mark}：
+安装Paraview：
 
 wget -O ParaView-v5.3.0.tar.gz
 \"http://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.3&type=source&os=all&downloadFile=ParaView-v5.3.0.tar.gz\"
@@ -970,18 +970,15 @@ https://www.khronos.org/registry/EGL/
 EGL_gldispatch_LIBRARY和EGL_opengl_LIBRARY必须指向正确的文件和路径。
 
 关于[Paraview EGL]{.mark}的更多信息，可访问：
-
 https://blog.kitware.com/off-screen-rendering-through-the-native-platform-interface-egl/
-
-还有[Nvidia的博客]{.mark}：
 
 https://devblogs.nvidia.com/parallelforall/egl-eye-opengl-visualization-without-x-server/
 
 ### 5.3模型组件和COP支持
 
-已测试了COP与[2个组件（ATM和OCN）]{.mark}的模型配置，计划与更多组件耦合，包括RTM和WAV，这样能在高时间分辨率下分析多个组件的模拟。[（现在的耦合情况???）]{.mark}
+已测试了COP与[2个组件（ATM和OCN）]的模型配置，计划与更多组件耦合，包括RTM和WAV，这样能在高时间分辨率下分析多个组件的模拟。
 
-运行COP组件和耦合模拟系统，用户需要对ATM模型组件应用[补丁]{.mark}，补丁程序为COP提供需要的3D场变量，在[标准的耦合模拟系统中没有使用]{.mark}。需要[注意：]{.mark}在发送给COP组件之前，3D场变量是从sigma坐标垂向插值到高度层的。此时，使用在配置文件namelist.rc中定义的垂向高度层做插值。
+运行COP组件和耦合模拟系统，用户需要对ATM模型组件应用[补丁]，补丁程序为COP提供需要的3D场变量，在[标准的耦合模拟系统中没有使用]。需要[注意：]{.mark}在发送给COP组件之前，3D场变量是从sigma坐标垂向插值到高度层的。此时，使用在配置文件namelist.rc中定义的垂向高度层做插值。
 
 COP组件与RegCM的开发版做了测试，无需修改COP耦合。执行如下命令下载代码并做补丁：
 
@@ -1070,9 +1067,9 @@ precise和-fp-model source编译参数，但会降低整体计算效率（约5\~
 安装Bit-to-bit
 Reproducibility的ESMF，用户需要修改build_rules.mk配置文件(在build_config/路径下)。
 
-[原本的]{.mark}build_config/Linux.intel.default/build_rules.mk文件：
+[原本的]build_config/Linux.intel.default/build_rules.mk文件：
 
-[修改的]{.mark}build_config/Linux.intel.default/build_rules.mk文件：
+[修改的]build_config/Linux.intel.default/build_rules.mk文件：
 
 然后，安装ESMF。**注意**：新的安装会改变[ESMF_DIR、ESMF_LIB和ESMF_INC]{.mark}环境变量。使用-fp-model
 precise的ESMF安装支持Reproducibility。

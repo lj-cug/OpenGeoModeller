@@ -1,5 +1,4 @@
 # Installation of GTC 2018 Demo
-
 Installation processes of the in-situ visualization Integrated RegESM is divided into three main sections:
 
 1. **Preparing Working Environment:** In this case, set of external software libraries (i.e. [NetCDF](https://www.unidata.ucar.edu/software/netcdf/), [ESMF](https://www.earthsystemcog.org/projects/esmf/), [ParaView](https://www.paraview.org/download/)) must be installed or make them available in the host system that will be used to run the coupled model.

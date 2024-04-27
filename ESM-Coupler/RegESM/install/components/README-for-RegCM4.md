@@ -1,4 +1,4 @@
-# RegCM
+# RegCM4
 
 The **ATM_SRC** environment variable is used to point the installation directory of the atmospheric model and user might replace it by any valid directory name.
 The command that is given here is for Intel Compiler and Linux operating system and might change in different working environment amd compiler. By design, the model components do not have any ESMF related code and user does not need to use ESMF library in the installation of the individual model components. All ESMF related code is placed in "driver" side (RegESM). To that end, the installation of the model is almost same as the standalone version except given extra configure option (**--enable-cpl**) to enable coupling support.

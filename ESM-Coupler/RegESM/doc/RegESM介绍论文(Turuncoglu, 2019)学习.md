@@ -90,9 +90,8 @@ RegCM4中，接收表面粗糙高度，计算海气转换系数和通量(Zeng参
 m)和摩阻流速阈值(0.02 m)。
 
 ## 河道径流模式
-
-[Hydrological Discharge (HD, version 1.0.2), developed by Max Planck
-Institute]{.mark}
+Hydrological Discharge (HD, version 1.0.2), developed by Max Planck
+Institute
 
 目前的驱动器设计中，河流有2种方式表征：
 
@@ -134,7 +133,7 @@ RegESM在大气与海洋组件之间，使用2种不同的时间积分耦合格�
 
 图3 示意图：(a)显式；(b)半隐式
 
-[执行模式：]{.mark}
+执行模式：
 
 \(1\) Sequential mode;
 
@@ -156,7 +155,7 @@ b 使用双线性插值，将源网格上的场数据转换到目标网格上；
 
 c 在源网格上实施外插，在第1步找到的unmapped grid points上填充数据。
 
-确定unmapped grid points的算法是（见图4）：。。。。。。
+确定unmapped grid points的算法是（见图4）：...
 
 最邻近插值的场可能是不真实的数值，或者在复杂的land-sea
 mask结构（如河道或海峡）附近有大梯度值。海岸线附近的虚假值可以在插值后实施轻微光滑或使用更复杂的[外插]{.mark}方法，例如sea-over-land方法(Kara
@@ -165,7 +164,7 @@ et al., 2007; Dominicis et al., 2014)，RegESM系统中尚未考虑。
 当源和目标水平网格分辨率之比较大时，使用2阶守恒插值方法时，联合使用mosaic
 grid，能克服不对齐land-sea mask的问题。
 
-[ESMF 8.0版]{.mark}的[creep fill Strategy]{.mark}可填充unmapped grid
+[ESMF 8.0版]的[creep fill Strategy]可填充unmapped grid
 points。
 
 # 3 在RegESM中整合co-processing组件
@@ -186,8 +185,7 @@ co-processing APIs.
 
 这样模型代码与Catalyst间的交互性通过ESMF得到增强和标准化。
 
-![](./media/image4.jpg){width="5.063406605424322in"
-height="5.419990157480315in"}
+![](./media/image4.jpg)
 
 图5 传统的(a)和ESMF-integrated (b)的in-situ Visualization的比较
 
@@ -283,7 +281,7 @@ CPL: 2个模式耦合（ATM-OCN）
 
 COP：3个组件（ATM-OCN-Co-processing）
 
-COP仅能在[顺序模式]{.mark}下执行 RegESM_1.\*
+COP仅能在[顺序模式]下执行 RegESM_1.\*
 
 # 5 展示应用
 
@@ -403,7 +401,7 @@ modules]{.mark}和用户层的[库]{.mark}，目前尚不支持。因此，Docke
 container不能访问GPU资源，实施可视化和数据分析的硬件层次的渲染。
 
 为实施基于GPU的集装箱，NVIDIA开发了特殊的集装箱，当启用集装箱时，可加载GPU驱动。[RegESM使用Docker
-(通过使用Mesa库，实施软件渲染)和NVIDIA Docker(基于硬件的渲染)。]{.mark}
+(通过使用Mesa库，实施软件渲染)和NVIDIA Docker(基于硬件的渲染)。]
 
 采用集装箱技术增强了RegESM的可移植性和可重复性，计算效率的损失很小（\~5%-10%）。使用NVIDIA
 Docker可使用GPU资源进行硬件渲染（例如，使用直接的体渲染方法表征云）。[见github中的Docker.txt]{.mark}。
@@ -412,8 +410,7 @@ Docker可使用GPU资源进行硬件渲染（例如，使用直接的体渲染�
 
 Co-processing组件需要[增加支持不同的网格类型，如非结构网格]{.mark}。
 
-另外[，还需要探索：]{.mark}
-
+另外[，还需要探索：]
 （1）优化网格特征和映射交换场的传输，提高高分辨率模拟情况的计算效率；
 
 （2）自动探索GPU加速器，自动分配GPU资源给co-processing组件用于渲染计算；
