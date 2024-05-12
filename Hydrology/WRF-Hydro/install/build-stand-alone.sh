@@ -18,7 +18,7 @@ export NETCDF_LIB="/netCdfPathOnYourMachine/lib"
 ./compile_offline_Noah.sh setEnvar.sh
 
 ## To compile WRF-Hydro offline with the NoahMP land surface model, the following script is used:
-./compile_offline_NoahMP. sh setEnvar.sh
+./compile_offline_NoahMP.sh setEnvar.sh
 
 make clean
 make
