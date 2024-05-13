@@ -1,6 +1,31 @@
 # WRF的前后处理工具
+## GeoTIFF2geogrid和geogrid2GeoTIFF转换
+模拟WRF-fire, 网格尺寸小于10m, 需要使用高分辨率的GeoTIFF格式的静态数据《
+因此需要转换.
+
+Jonathan D. Beezley. Integrating high-resolution static data into WRF for real fire simulations.
+## gis4wrf-0.14.7
+基于QGIS的WRF前处理插件
+
+D. Meyera, M. Riechert. 2019. Open source QGIS toolkit for the Advanced Research WRF modelling system. Environmental Modelling and Software,112: 166-178.
+
+## IDV后处理
+https://docs.unidata.ucar.edu/idv/current/workshop/page_interactive.html
+
+```
+3.13.0.0 	Loading WRF Output
+Getting your WRF post-processed data into the IDV environment.
+3.13.0.1 	Saving WRF Displays
+Saving the displays created in the IDV.
+3.13.0.2 	WRF Grid Displays
+Displays for WRF post-processed data.
+3.13.0.3 	WRF Analysis: Formulas
+Formulas in the IDV
+3.13.0.4 	WRF Analysis: Derived Products and Advanced Features
+Derived data products and advanced features.
+```
 ## ARWpost与GrADS
-ARWpost是一个把WRF 结果转为GrADS 或Vis5D 可以辨识的数据格式的软件.
+ARWpost是一个把 WRF 结果转为 GrADS 或 Vis5D 可以辨识的数据格式的软件.
 
 ## Rwrf (R脚本)
 Installing, Simulating, and Visualizing WRF with R, used for installing, running, and visualizing WRF with R Programming Language.
@@ -22,17 +47,6 @@ to reflect the location of your WRF NetCDF output files and domain, etc.
 
 ### NCL_vortex_tracker
 涡旋跟踪,未测试...
-
-## GeoTIFF2geogrid和geogrid2GeoTIFF转换
-模拟WRF-fire, 网格尺寸小于10m, 需要使用高分辨率的GeoTIFF格式的静态数据《
-因此需要转换.
-
-Jonathan D. Beezley. Integrating high-resolution static data into WRF for real fire simulations.
-
-## gis4wrf-0.14.7
-基于QGIS的WRF前处理插件
-
-D. Meyera, M. Riechert. 2019. Open source QGIS toolkit for the Advanced Research WRF modelling system. Environmental Modelling and Software,112: 166-178.
 
 ## Tecplot和ParaView可视化
 tecio_wrf.dll (仅Windows OS可用)
