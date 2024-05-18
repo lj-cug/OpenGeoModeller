@@ -1,8 +1,7 @@
 # ParFlow
+3D地下水模型
 
-地下水模型, 可耦合陆面模型CLM和气象模式WRF
-
-MPI集群并行
+MPI集群并行, 支持GPU并行
 
 多重网格求解器
 
@@ -10,8 +9,10 @@ https://www.parflow.org/
 
 https://hydroframe.github.io/SandTank/
 
-## 参考文献
+## 前处理工具PFGIS-Tool v1.0.0
+Tomas Carlotto, Julian Klaus, Pedro Luiz Borges Chaffe. 2023. An open-source GIS preprocessing tool for the ParFlow hydrological model(PFGIS-Tool v1.0.0). Environmental Modelling and Software, 169: 105824
 
+## 参考文献
 Benjamin N. O. Kuffour, et al. Simulating coupled surface–subsurface flows with ParFlow v3.5.0: capabilities, applications, and ongoing development of an open-source, massively parallel, integrated hydrologic model.Geosci. Model Dev., 13, 1373–1397, 2020
 
 Jones, J.E. and Woodward, C.S. (2001). Newton–Krylov-multigrid solvers for large-scale, highly heterogeneous, variably saturated flow problems. Advances in Water Resources, 24(7), 763–774, doi:10.1016/S0309-1708(00)00075-0.
