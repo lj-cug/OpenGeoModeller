@@ -56,7 +56,9 @@ cd ..
 # Now we can compile the source code in order to generate the GRASS GIS binaries. ¡°configure¡± source code for local machine (checks for CPU type etc):
 MYCFLAGS='-O2 -fPIC -fno-common -fexceptions -std=gnu99 -fstack-protector -m64'
 MYLDFLAGS='-Wl,--no-undefined -Wl,-z,now'
-LDFLAGS="$MYLDFLAGS" CFLAGS="$MYCFLAGS" CXXFLAGS="$MYCXXFLAGS" ./configure \
+LDFLAGS="$MYLDFLAGS" CFLAGS="$MYCFLAGS" CXXFLAGS="$MYCXXFLAGS" 
+
+./configure \
 --with-cxx \
 --enable-largefile \
 --with-proj --with-proj-share=/usr/share/proj \
