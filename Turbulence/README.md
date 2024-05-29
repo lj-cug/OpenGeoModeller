@@ -10,7 +10,7 @@ General Ocean Turbulence Model
 3.  多相流模型
 4.  分子动力学模型
 5.  精细湍流模型(LES, DNS)
-6.  水轮机和风力发电机模拟
+6.  水轮机和风力发电机模拟(Wind_Energy)
 
 ## DAFOAM
 基于CFD和离散伴随方法的体型优化工具，类似的工具还有：ADFLOW, SU2等

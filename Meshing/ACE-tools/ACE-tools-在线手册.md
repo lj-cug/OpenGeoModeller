@@ -1,11 +1,8 @@
 # ACE/gredit
-
-简介：ACE网格生成及编辑程序是由美国俄勒冈卫生健康大学开发，核心是Triangle网格划分程序。
-
 # Chapter 1: Concept and Overview
+ACE网格生成及编辑程序是由美国俄勒冈卫生健康大学开发网格编辑程序
 
 ## 介绍ACE/gredit: 是什么以及能做什么
-
 ACE/gredit is a tool for the flexible, interactive, semi-automatic
 generation of two-dimensional triangular finite element grids. Although
 designed to support studies of estuarine and coastal dynamics and water
@@ -25,14 +22,12 @@ but static grids; self-adaptive grids in time are not handled by this
 software.
 
 ## ACE/gredit: Hardware and software requirements
-
 ACE/gredit is designed for workstations and X-terminals operating under
 UNIX and the X window system with the Motif graphical user interface.
 ACE/gredit has also been ported to Windows 95/NT using Hummingbird
 Corp\'s Motif toolkit.
 
 ## ACE/gredit: Suggestions and bug reports
-
 Suggestions and bug reports on both ACE/gredit and on this document are
 welcome. They should be sent to:
 
@@ -42,14 +37,11 @@ Each suggestion or report will be carefully considered, but time
 constraints may prevent individual replies to all queries.
 
 ## ACE/gredit: Overview of documentation
-
 This User\'s Manual is the first of a series of documents planned for
 ACE/gredit. A tutorial will follow.
 
 # Chapter 2: Guide to Use
-
 ## Concept and Terminology
-
 ACE/gredit is an evolving tool for the generation of two-dimensional
 triangular finite element grids for coastal and land-margin
 applications. The user retains full control of the final grid design,
@@ -58,7 +50,6 @@ ACE/gredit has automatic grid generation features, but we recommend that
 grids be generated semi-automatically, with substantial user control.
 
 ## Grids
-
 **• Background grid（背景网格）**
 
 This is a non-modifiable grid that contains baseline information on
@@ -84,7 +75,6 @@ specific operations. In particular, this grid is formed to support the
 automatic placement of build points (see below).
 
 ## Outlines
-
 **• Coastal outline**
 
 This outline represents the shape of land boundaries (coast, islands,
@@ -102,7 +92,6 @@ edit-grid boundary may at times be non-coincident with the actual
 outline of the edit grid.
 
 ## Miscellaneous
-
 **• Elements**
 
 Elements are the grid \"cells\". In ACE/gredit they can 3 or 6 node
@@ -125,7 +114,6 @@ non-coincident, as the user can independently modify the number and
 locations of either set.
 
 # Chapter 3: Reference Guide
-
 ## Program start-up and command line parameters
 
 ACE/gredit is started by typing one of the following commands:

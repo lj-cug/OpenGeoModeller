@@ -1,6 +1,9 @@
 # build parflow
 https://www.jianshu.com/p/5be68f4c65ca
 
+## 安装TCL
+apt install tcl
+
 ## 下载以及相关资源参考地址
 ```
 Github:https://github.com/parflow/parflow
