@@ -7,6 +7,7 @@ cd lifex-env
 ./lifex-env.sh [options]
 ./lifex-env.sh --help
 ### The installation of any package can be enabled/disabled in the configuration file lifex-env.cfg.
+
 ## Run command:
 ./lifex-env.sh --prefix=/home/lijian/lifx-CFD/lifex-install -j 8 -y
 ## Caution: You should build deal.II-9.3.1 for lifex-cfd!
@@ -90,7 +91,7 @@ ctest -L test_soft
 ## Step 1 - Run!
 ./executable_name -f custom_param_file.ext [option...]
 
-### Parallel run
+### Parallel Run
 mpirun -n <N_PROCS> ./executable_name [option...]
 
 ### Dry run and parameter file conversion
