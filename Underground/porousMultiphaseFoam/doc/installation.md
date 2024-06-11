@@ -1,6 +1,6 @@
 # Installation-PMF-v2303
 
-首先，安装好OpenFOAM-v2206
+首先，安装好OpenFOAM-v2206 (必须是v**06版本!!!)
 
 然后，加载OpenFOAM环境变量：
 
@@ -19,4 +19,4 @@ PMF动态链接库文件存储在标准的OpenFOAM用户路径下：  $FOAM_USER_LIBBIN
 
 - To remove compilation and temporary files, run ::
 
-  ./Allwclean --purge
+./Allwclean --purge
