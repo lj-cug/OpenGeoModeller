@@ -1,0 +1,327 @@
+# Missing header file for amgxwrapper
+
+https://develop.openfoam.com/modules/external-solver/-/issues/25
+
+Winston Virtaus创建于   3年前
+
+I’ve been successfully running GPU accelerated solvers via petsc4foam for three months now and decided to give the amgxwrapper branch of this project a try to see if there were any performance gains over PETSc.
+Amgxwrapper compilation starts fine on OF2012 but at some point the compiler notifies that AmgXCSRMatrix.H file is missing. However, I cannot seem to locate this file anywhere.
+Has this AmgXCSRMatrix.H header file been made publicly available?
+
+---------------------------------------------------------------------
+Simone Bna    @sbna · 3年前
+Developer
+yes, for license issues it is hosted in another public repo:
+
+https://gitlab.hpc.cineca.it/openfoam/foam2csr
+
+Keep in mind that it's in a development stage. We recently update the APIs of foam2csr.
+
+Regarding doc, you can find some presentations made by NVIDIA online. I will provide compilation instructions asap.
+
+--------------------------------------------------------
+Winston Virtaus     @WinstonMechanics  · 3年前
+Many thanks! I'll take a look at the foam2csr library.
+
+This new master branch matrix assembly routine seems promising, I'm currently running PETSc 3.14.5 and I'll update to 3.15 shortly and run some tests!
+
+---------------------------------------------------------
+Winston Virtaus     @WinstonMechanics     · 2年前
+
+The newer matrix assembly routine seems very well optimised now. According to PETSc profiling the conversion overhead dropped from around 3% to around 0.5%-0.7% of total run time which is great!
+
+The latest development version of PETSc (main branch) consumes a lot more GPU memory than v3.14.5. The memory consumption has more than doubled, is this expected?
+
+Edit: I forgot to add, the increased memory consumption can be seen even with the basic PETSc tutorials e.g. ksp/ex2 so it most likely caused by PETSc itself.
+
+---------------------------- Run-1 -----------------------
+Attached you will find logs produced by two different PETSc versions (v3.14.5 and the latest one from main branch) and a snapshot of peak memory consumption through nvidia-smi. These are obtained by running the tutorial in src/ksp/ksp/tutorials/ex2 with the command
+
+mpirun -np 4 ./ex2 -n 1500 -m 1500 -ksp_type cg -pc_type gamg -mat_type mpiaijcusparse -vec_type mpicuda -log_view
+PETSc_main.logmemory_PETSc_main.logPETSc_v3_14_5.logmemory_PETSC_v3_14_5.log
+
+This system is running on NVIDIA GP104 architecture.
+The PETSc configuration can be seen from the logs and I'll happily provide any other info that's needed!
+
+----------------------------- Run-2------------------------
+mpirun -np 4 ./ex2 -n 1500 -m 1500 -ksp_type cg -pc_type gamg -mat_type mpiaijcusparse -vec_type mpicuda -PtAP_matproduct_ptap_via scalable -matptap_via scalable -log_view -options_left
+Here are the logs for the latest main branch version of PETSc and the older v3.14.5.
+
+PETSc_main_via_scalable.logmemory_PETSc_main_via_scalable.logPETSC_v3_14_5_via_scalable.logmemory_PETSC_v3_14_5_via_scalable.log
+
+The -PtAP_matproduct_ptap_via scalable and -matptap_via scalable options were unrecongized by the newer PETSc version for some reason. The older version seems to recognize the -matptap_via scalable option.
+
+
+stefano zampini   @szampini    2年前
+Developer
+Sorry, try -matptap_backend_cpu -pc_gamg_square_matmatmult_backend_cpu with main. These options should force the operations to be done on the CPU.
+
+------------------------------ Run-3 --------------------------
+Many thanks! Adding those commands seemed to have the desired effect. Now peak memory consumption on main is very close to what previous versions had.
+mpirun -np 4 ./ex2 -n 1500 -m 1500 -ksp_type cg -pc_type gamg -mat_type mpiaijcusparse -vec_type mpicuda -PtAP_matproduct_ptap_via scalable -matptap_via scalable -matmatmult_backend_cpu -matptap_backend_cpu -log_view -options_left
+
+PETSc_main_cpu_backend.logmemory_PETSc_main_cpu_backend.log
+
+The -PtAP_matproduct_ptap_via scalable is still ignored but the performance seems good already.
+
+
+--------------------------------------------------------------------------------
+Winston Virtaus   @WinstonMechanics     · 2年前
+@sbna I was able to get the AmgX v2.2.0 solver running using the latest AmgXWrapper + foam2csr. I need to run some more tests later this week.
+
+Is there a good way to get AmgX compute the scaled L1 norm that is usually used by OpenFOAM?
+
+--------------------------------------------------------------------------------
+Winston Virtaus     @WinstonMechanics    · 2年前
+Thanks for the AmgX prerelease access! @mmartineau @sbna @szampini
+
+Here are some test results gathered from several runs using AmgX Prerelease, PETSc 3.15.2 main with cpu backend and OpenFOAM v2012 solvers on icoFoam and simpleFoam test cases. Only the pressure equation has been accelerated on the GPU as this seemed to give the best overall performance. I also included results from the PETSc 3.14.6 version that uses the older matrix assembly routine.
+
+Speedups over 1x on the graph means that the total solution time was faster than using the foam-amg-pcg solver and less than 1x means that the solver did not outperform the foam-amg-pcg solver.
+
+The AmgX solver does indeed give a nice speedup over PETSc on a mid-spec desktop machine and its faster than the foam-AMG-PCG solver out of the box for pretty much all domain sizes ranging from 0.1M to 10M. This is different from PETSc which starts to outperform the stock solvers after domain size exceeds about 1M cells. The scaling of the AmgX solver is fairly close to PETSc.
+
+There doesn't seem to be much difference on matrix conversion overhead between AmgX and the newest PETSc matrix assembly routine. They both nicely reduce the matrix conversion costs to very small levels compared to the older implementation. The matrix conversion overhead is calculated as the total time spent in matrix conversion divided by the total solution time of each run.
+
+The icoFoam results are obtained from the HPC Lid_driven_cavity-3d benchmark in which the cell count is scaled and ran for 100 timesteps at CFL 0.5. Similarly, the simpleFoam results are from the pitzDaily tutorial which has been scaled up, pressure equation relTol set to 0.01, tolerance to 1e-18 and ran for 100 timesteps.
+
+比较作图 (amgxwrapper)
+
+The PETSc solver setup used in these runs is pretty much equal to https://develop.openfoam.com/modules/external-solver/-/blob/develop/tutorials/basic/laplacianFoam/pipeOneD/system/fvSolution-petsc-gamg-device apart from using a value of around 0.01 on the pc_gamg_threshold and 4 smoother iterations. The foam-amg-pcg setup was taken from
+
+https://develop.openfoam.com/committees/hpc/-/blob/develop/Lid_driven_cavity-3d/XL/system/fvSolution.FOAM-GAMG-PCG.fixedNORM. The AmgX setup is similar to https://github.com/NVIDIA/AMGX/blob/main/core/configs/PCG_CLASSICAL_V_JACOBI.json with aggressive PMIS coarsening, more smoothing and obviously the L1_SCALED norm.
+
+One thing that popped up was that if the cpu backend on PETSc is used it was more prone to producing indefinite PCs. I had to use pc_gamg_reuseinterpolation false on the pitzDaily testcase to obtain convergence which results in a significant performance drop. The problem seems to somehow be related to the matptap_backend_cpu command which needs further study.
+
+Test setup details:
+OS: Ubuntu 20.04
+CPU: I5-4690k
+GPU: GTX-1070, Driver 465.19.01, Cuda 11.3
+OpenFOAM: v2012
+MPI: OpenMPI 4.1.0
+
+--------------------------------------------------------------
+stefano zampini @szampini     · 2年前
+
+Thanks for these numbers. PETSc is expected to perform badly for small problem sizes, due to higher latencies and the many blocking stream calls (will be improved in the next weeks). You can try -pc_gamg_cpu_pin_coarse_grids to run coarser grids on the CPU backend to probably improve the results.
+
+Would be interesting to compare the number of iterations. I assume these are sequential runs
+
+One thing that popped up was that if the cpu backend on PETSc is used it was more prone to producing indefinite PCs. I had to use pc_gamg_reuseinterpolation false on the pitzDaily testcase to obtain convergence which results in a significant performance drop. The problem seems to somehow be related to the matptap_backend_cpu command which needs further study.
+
+Can you attach the fvSolution and petscOptions file to reproduce it? I will fix it. Thanks for reporting it.
+
+----------------------------------------------------------------
+Winston Virtaus    @WinstonMechanics    · 2年前
+Good to hear that active development is taking place!
+
+Here's the pitzDaily case that's giving the issue with fvSolution and petscOptions included. There's also logs from two different runs, one with the cpu backend issue and one performing as usual when no cpu backend options are used.
+
+pitzDaily.zip
+
+----------------------------------------------------------------------------------
+I did some more testing with the suggested -pc_gamg_cpu_pin_coarse_grids option.
+
+The performance is pretty much identical to the previous numbers. The logs show very little difference apart from some additional back and fourth cpu-gpu communication.
+
+Should the coarse grid matrix type be manually changed to something like seqaij? The logs show that its still set to seqaijcusparse even if the coarse grids are pinned to cpu. This leads me to think the coarse grids are still run on gpu, see attached logs. These are from the lid driven cavity flow case with around 1M cells.
+
+Were you able to reproduce the bug I reported regarding the cpu backend?
+
+icoFoam_cpu_pin_coarse_grids_true.log       icoFoam_cpu_pin_coarse_grids_false.log
+
+------------------------------------------------------------------------------------
+Longxiang Li       @li12242           · 1年前
+Hi @WinstonMechanics, I tried to test the performance of the AmgX as the preconditioner together with PCG solver, as mentioned in "AMGX GPU SOLVER DEVELOPMENTS FOR OPENFOAM".
+
+I have installed AmgX, AmgXWrapper, foam2csr and petsc4foam (amgxwrapper branch) with OpenFOAM-v2012, and modified the Lid-driven-cavity test case with the following fvSolution file, but the preconditioner amgx is still missing. 
+
+fvSolution.PETSc-AMGX-PCG.fixedNORM 
+log.icoFoam.PETSC-AMGX-PCG.gpu0_1_2_3.np4.08-05-16-37
+
+Please let me know if there is any problem with my installation or fvSolution setting.
+
+
+-----------------使用amgx求解器的正确的Dict设置-----------------------------
+Winston Virtaus     @WinstonMechanics    · 1年前
+
+Hello @li12242, 
+
+I havent tried using AmgX only as a preconditioner but im using it as a full solver instead. You can try putting for example
+
+p
+    {
+        solver          amgx;
+        amgx 		    {};
+        tolerance       1e-06;
+        relTol          0.1;
+    }
+	
+to your fvSolution file and then start modifying the additional amgxpOptions configuration file to suit your needs.
+
+One additional note, I had to put libs ("libpetscFoam.so"); to the controlDict to get the solver properly load. Otherwise the entry solver amgx; in fvSolution would not have been properly recognized.
+
+I've attached a sample fvSolution file and a minimal AmgX solver configuration file from a pitzDaily case.
+
+
+Longxiang Li   @li12242   · 1年前    成功运行了petsc4foam + AmgX
+Hi @WinstonMechanics, thanks so much for your information. With the configure file "amgxpOptions", the icoFoam solver runs successfully with petsc4foam + AmgX.
+
+
+Vansh Sharma  @vansh  · 1年前   这位伙计遇到了安装petsc4Foam的问题
+Hi @li12242 I am facing issues with installing the petsc4Foam (amgxwrapper branch). I opened issue #33 for that. Did you face similar issue while installing petsc4Foam? Would be really helpful if you can check.
+
+
+-----------------------------------------------------
+Hakan Ari   @cudagu   · 9个月前
+
+Hi Winston. Thank you for your help. I am getting an error while running simpleFoam in the pitzDaily case. During the pressure iteration there seems to be a problem regarding the linking of the libraries.
+
+`Initializing PETSC
+
+simpleFoam: symbol lookup error: .../OpenFOAM-v2206/platforms/linux64GccDPInt320pt/lib/libfoam2csr.so: undefined symbol: AMGX_initialize`
+
+Any idea what might be the problem and how can I fix it?
+
+
+Winston Virtaus @WinstonMechanics  · 9个月前
+
+Hi @cudagu,
+
+You can try ldd libfoam2csr.so and see if any of the links are missing.
+
+This is the make/options file that has worked for me in foam2csr compilation, maybe it is useful in your case also. 
+#33 (comment 58566)
+
+
+Hakan Ari        @cudagu          · 6个月前
+Hi Winston, The problem was indeed related to a shared object file that was missing. Thanks for that.
+
+I was able to solve a 3d lid-driven cavity problem with icoFoam using some of the parts of "fvSolution" and "amgxpOptions" that you shared.
+
+For the 100x100x100 domain size, AMGX-PCG solver with A100 80gb resulted in 4x speed up over OpenFOAM PCG solver 27cpu.
+
+For the 200x200x200 domain size, AMGX did not offer any speed up. In fact, it was slower.
+
+Do you expect such a behavior?
+
+Also, I see that you used amgx solver only for the pressure equation. Is it possible to use it also for the velocity (and turbulence for more complex flows) equations? Do I need to set amgx_Options for each equation? Would you expect any improvement if Ux, Uy and Uz were solved with amgx?
+
+Thank you for sharing your time.
+
+
+Winston Virtaus  @WinstonMechanics   · 6个月前
+
+Good to hear!
+
+The solver config I shared was just a minimal example to check the installation to see if everything is working all right. It's just a Jacobi preconditioned CG solver.
+
+For actual performance runs you can try using 
+
+https://github.com/NVIDIA/AMGX/blob/main/src/configs/PCG_CLASSICAL_V_JACOBI.json 
+
+as a starting point to get the advantages of multigrid. Just remember to use the option "norm": "L1_SCALED" to use the same residual norm definition as OpenFOAM. Also set "convergence": "RELATIVE_INI_CORE" or "convergence": "ABSOLUTE" depending on your case setup and of course set the residual tolerance appropriately e.g. "tolerance": 1e-04 to get a decent comparison to the default solver. You may also need to add "store_res_history": 1.
+
+Usually the Jacobi-CG solver is fast for small domain sizes and gradually becomes less performant for larger matrices. The multigrid preconditioned CG is usually the way to go for larger problems. Its a good idea to check what setup has the best scaling with respect to problem size. Often multigrid has the best scaling properties.
+
+I've had the best results GPU accelerating only the Poisson pressure equation on hardware that has limited memory. Solving the pressure equation is usually the largest bottleneck in the solving process so it makes sense to GPU accelerate this portion first. If there's leftover memory then you can indeed solve other equations on the GPU, just choose the amgx solver in the fvsolution and define the appropriate files e.g. amgxUxOptions, amgxUyOptions etc. You can see how much performance you get, but I'd expect that the improvement is more modest than with the pressure equation.
+
+
+Hakan Ari  @cudagu  · 5个月前
+
+Hi @WinstonMechanics, your comments were very helpful.
+
+I am having trouble using the L1_SCALED norm of OpenFOAM using AMGX2.2.0. Do I also need prelease access?
+
+L2 norm straight out results in floating point error while L1 norm results in a thrust error on the gpu side after a few timesteps. Did you encounter a similar problem?
+
+I am not sure why I get the thrust error with L1 norm because GPU memory is never above 20/80gb with 3d cavity problem and residuals seems fine throughout the analysis. Thanks!
+
+Winston Virtaus   @WinstonMechanics  · 5个月前
+
+I think L1_SCALED norm has been introduced into the main branch a few versions ago, its possible version 2.2.0 didn't yet have it. I'm currently using version 2.4.0 with cuda 12.2 without any major issues. It seems that using L2 norm in the lid driven flow indeed causes a crash in the 100x100x100 mesh. The L1 norm didnt result in a crash for me.
+
+You can try updating to the newest version and see if the errors still persist. It sounds like some kind of runtime memory error is happening that could very well been sorted out in the newest version.
+
+-------------------------------------------------------------------
+https://develop.openfoam.com/modules/external-solver/-/issues/33
+关于编译petsc4Foam using the amgxwrapper branch的问题
+------------------------------------------------------------------
+petsc4foam & foam2csr - Issue with AmgXCSRMatrix::setValuesLDU
+ 议题由 Vansh Sharma创建于   1年前
+
+I am trying to install petsc4Foam using the amgxwrapper branch [git clone --branch amgxwrapper https://develop.openfoam.com/modules/external-solver.git petsc4foam]. I have installed AMGX-2.2.0, OpenFOAM v2112, PETSC-v3.15.5 and foam2csr. (I tried with PETSc-v3.16.6 and v3.16.2)
+
+I changed the solvers/petscSolver.C and solvers/petscSolver.H (downloaded from here) after facing the initialization error for List& lowNonZero = ctx.lowNonZero;
+
+When I run ./Allmake command in the petsc4Foam folder, I encounter the following error.
+
+I could not find any changes made to the amgxSolver.C file post commit #29 (closed) to the petsc4foam main branch.
+
+I've tried changing the variable types in the solvers/amgxSolver.C [lines 269-404] but I am not sure if that's the right approach for this.
+Would really appreciate some guidance from the developers. @sbna @szampini @mmartineau
+
+
+solvers/amgxSolver.C:404:5: error: no matching function for call to ‘AmgXCSRMatrix::setValuesLDU(const label&, const label&, Foam::label&, Foam::label&, Foam::label&, const long int*, const long int*, Foam::label&, long int*, long int*, const double*, const double*, const double*, double*)’
+     );
+     ^
+In file included from solvers/amgxSolver.H:46:0,
+                 from solvers/amgxSolver.C:38:
+foam2csr/src/AmgXCSRMatrix.H:54:14: note: candidate: void AmgXCSRMatrix::setValuesLDU(int, int, int, int, int, const int*, const int*, int, const int*, const int*, const float*, const float*, const float*, const float*)
+         void setValuesLDU
+              ^~~~~~~~~~~~
+foam2csr/src/AmgXCSRMatrix.H:54:14: note:   no known conversion for argument 6 from ‘const long int*’ to ‘const int*’
+foam2csr/src/AmgXCSRMatrix.H:74:14: note: candidate: void AmgXCSRMatrix::setValuesLDU(int, int, int, int, int, const int*, const int*, int, const int*, const int*, const double*, const double*, const double*, const double*)
+         void setValuesLDU
+              ^~~~~~~~~~~~
+foam2csr/src/AmgXCSRMatrix.H:74:14: note:   no known conversion for argument 6 from ‘const long int*’ to ‘const int*’
+
+
+-----------------
+Longxiang Li
+@li12242
+· 1年前
+Hi @vansh, I have tried petsc4foam with foam2csr with gcc compiler, but I didn't reproduce this error.
+
+I have checked the caller in solvers/amgxSolver.C:404, which is
+
+    Amat.setValuesLDU
+    (
+        nrows_,
+        nIntFaces_,
+        diagIndexGlobal,
+        lowOffGlobal,
+        uppOffGlobal,
+        &upp[0],
+        &low[0],
+        nProcValues,
+        &procRows[0],
+        &procCols[0],
+        &diagVal[0],
+        &uppVal[0],
+        &lowVal[0],
+        &procVals[0]
+    );
+The 6th argument of the caller function is &upp[0], which is of const labelUList& type. As the error indicates the given type is const long int*, which is incompatible with the variable type const int* in setValuesLDU.
+
+I think this is probably you have set the WM_LABEL_SIZE=64, you can try with WM_LABEL_SIZE=32, where the const labelUList& will be const int* type.
+
+-----------------------
+Vansh Sharma  @vansh · 1年前
+
+Thanks for the reply @li12242. I will re-try this over the weekend. I was thinking its with the architecture because of that data type mismatch, but there wasn't explicit mentioning of switching the default settings in OF.
+
+Also, did you face the initialization error for List& lowNonZero = ctx.lowNonZero; ? The one changed in commit #29 (closed).
+
+I downloaded the amgxwrapper branch of petsc4Foam and I faced this issue. I just went inside the code and made the changes myself. So not sure if that's caused this error. Is it possible if you can share your petsc4foam and foam2csr files?
+
+
+Vansh Sharma @vansh · 1年前
+
+Hi @diegoalexmayer, unfortunately not yet. I am using the main branch with PETSc - v3.17.4 for now. I will look into it again in a few days. I tried changing the architecture as @li12242 suggested but it did not work. Let me know if you make any progress...
+
+
+
+
+
+
