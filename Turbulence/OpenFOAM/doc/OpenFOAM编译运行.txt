@@ -1,0 +1,29 @@
+# 并行运行
+https://www.openfoam.com/documentation/user-guide/3-running-applications/3.2-running-applications-in-parallel
+##  Decomposition of mesh and initial field data
+decomposeParDict
+运行：decomposePar    # 区域分解
+
+
+## Running a decomposed case
+mpirun --hostfile <machines> -np <nProcs>
+        <foamExec> <otherArgs> -parallel > log &
+where: <nProcs> is the number of processors; <foamExec> is the executable, e.g.icoFoam; and, the output is redirected to a file named log. 
+
+mpirun --hostfile machines -np 4 icoFoam -parallel > log &
+
+## Distributing data across several disks
+decomposeParDict        distributed
+
+## Post-processing parallel processed cases
+1 Reconstructing mesh and data
+reconstructPar
+
+2 Post-processing decomposed cases
+paraFoam
+
+
+
+
+
+

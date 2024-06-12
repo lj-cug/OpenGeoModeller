@@ -1,0 +1,56 @@
+后处理, 包括5个方面：
+https://www.openfoam.com/documentation/user-guide/7-post-processing/7.1-parafoam#x27-1070007.1
+
+# 1 paraFoam
+paraFoam -case <caseDir>
+
+# 2 command line interface (CLI)
+## function object
+foamToC -functionObjects
+
+## 3 Post-processing functionality
+
+foamPostProcess
+$FOAM_ETC/caseDicts/postProcessing
+
+foamPostProcess -list
+
+```
+Field calculation
+Field operations
+Forces and force coefficients
+Sampling for graph plotting
+Lagrangian data
+Volume fields
+Numerical data
+Control
+Pressure tools
+Probes
+
+```
+
+### Run-time data processing
+foamGet patchFlowRate
+
+### The foamPostProcess utility
+foamPostProcess -help
+
+
+## 4 Sampling and monitoring data
+测点计算时间序列数据输出
+
+
+
+## 5 Third-Party post-processing
+foamToVTK
+
+
+
+
+
+
+
+
+
+
+
