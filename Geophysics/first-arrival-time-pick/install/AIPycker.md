@@ -1,5 +1,4 @@
 # AIpycker-install
-
 cd AIPycker-master
 
 python setup.py install
