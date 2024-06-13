@@ -36,7 +36,7 @@ on the cell membrane are interacting with potentials. (b) A particle
 connected polymer chain model with stretching and bending resistance.
 
 ### Fluid-solid coupling: the immersed boundary method
-![](./media/media/image2.emf)
+![](./media/image2.emf)
 
 Fig. 2. An illustration of the fluid-solid coupling through the immersed
 boundary method.
@@ -48,7 +48,7 @@ range of the central solid particle on fluid is shown in dashed
 rectangles.
 
 ### Spatial decomposition for fluid-solid coupling
-![](./media/media/image3.emf)
+![](./media/image3.emf)
 
 Fig. 3. Spatial decomposition for parallel computing for fluid--solid
 coupling. The blood flow with cells (red lines) was divided into
@@ -63,7 +63,7 @@ for communication for both fluid and solid independently. An example of
 ### Validation I: Ellipsoid in shear flow
 
 ### Validation II: Red blood cell stretching test
-![](./media/media/image4.png)
+![](./media/image4.png)
 
 Fig. 8. (a) The deformed shape of a red blood cell under 200 pN using
 2562 membrane particles (top) and 10,242 membrane particles (bottom).
@@ -74,7 +74,7 @@ different membrane mesh size, e.g., N = 1320, 2562, and 10,242,
 respectively.
 
 ### Validation III: Effective blood viscosity
-![](./media/media/image5.png)
+![](./media/image5.png)
 
 Fig. 9. (a) The normalized effective viscosity for blood flowing through
 tubes with different diameters. The data by boundary integral method was
@@ -84,7 +84,7 @@ diameters, showing different red blood cell shapes under flow. The
 hematocrit was 30%.
 
 ### Scalability: parallel performance
-![](./media/media/image6.png)
+![](./media/image6.png)
 
 Fig. 10. (a) The speed up of the simulation for strong and weak scaling
 cases. (b) The strong and weak scaling efficiency of the code based on
@@ -95,13 +95,13 @@ scaling performance.
 
 微循环流动中药物输运
 
-![](./media/media/image7.png)
+![](./media/image7.png)
 
 图12 Initial positions for the blood cells and filaments. The cells were
 randomly distributed in the blood vessel, while the filaments were
 uniformly distributed in one end of the vessel.
 
-![](./media/media/image8.png)
+![](./media/image8.png)
 
 图13 Snapshots of the simulations of filaments (green) mixing with blood
 cell suspensions (red) at 8×106time steps. 2 m filaments with bending
