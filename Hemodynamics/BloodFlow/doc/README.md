@@ -27,7 +27,7 @@ Parallel Simulator)模式, 通过浸没边界法(immersed boundary method
 lattice Boltzmann method (LBM)
 ### Particle based solid solver: LAMMPS for deformable cells and particles 
 
-![](./media/media/image1.emf)
+![](./media/image1.png)
 
 Fig. 1. Models for a deformable red blood cell and a polymer chain
 implemented in LAMMPS: (a) A particle based coarse grained red blood
@@ -36,7 +36,7 @@ on the cell membrane are interacting with potentials. (b) A particle
 connected polymer chain model with stretching and bending resistance.
 
 ### Fluid-solid coupling: the immersed boundary method
-![](./media/image2.emf)
+![](./media/image2.png)
 
 Fig. 2. An illustration of the fluid-solid coupling through the immersed
 boundary method.
@@ -48,7 +48,7 @@ range of the central solid particle on fluid is shown in dashed
 rectangles.
 
 ### Spatial decomposition for fluid-solid coupling
-![](./media/image3.emf)
+![](./media/image3.png)
 
 Fig. 3. Spatial decomposition for parallel computing for fluid--solid
 coupling. The blood flow with cells (red lines) was divided into
