@@ -1,0 +1,90 @@
+# 使用"ggmap"包绘制地图
+https://www.zhihu.com/tardis/bd/art/584914747
+
+```
+# 通过限定经纬度范围作图
+library(ggplot2)
+library(ggmap)
+world <- get_map(location = c(left = -179, bottom = -80, right = 179, top = 80))     # 世界地图
+ggmap(world)
+
+china <- get_map(location = c(left = 73, bottom = 3, right = 135, top = 54))         # 中国地图
+ggmap(china)
+
+fuzhou <- get_map(location = c(left = 119, bottom = 25, right = 120.5, top = 26.5))  # 福州近海
+ggmap(fuzhou)
+
+# 通过具体的国家或城市作图, 需要拥有Google API密钥
+china <- get_map(location = 'China', zoom = 4)
+ggmap(china)
+```
+
+```
+    步骤               代码                                    说明
+1 安装依赖包 | install.packages("ggmap") | 通过该命令安装ggmap包，该包提供了在R语言中使用Google Maps和OpenStreetMap的功能。
+
+导入依赖包   | library(ggmap)            | 使用该命令导入ggmap包，以便在代码中调用其中的函数。
+
+获取Google API密钥 | 无需代码 | 在使用ggmap之前，需要在Google Cloud Platform上创建一个项目，并获取API密钥。具体步骤可以参考Google Cloud Platform的官方文档或网上教程。
+
+设置API密钥  | register_google(key = "YOUR_API_KEY") | 将YOUR_API_KEY替换为在步骤3中获取的API密钥，可在代码中使用Google Maps的功能了。
+
+使用ggmap函数 | ggmap(get_map(location = "地点", zoom = 缩放级别)) | 通过该函数可以获取指定地点的地图，并设置缩放级别。"地点"可以是地名、地址、坐标等。缩放级别是一个整数，值越大表示放大程度越高。
+
+在地图上叠加其他图层 | + geom_XXXX | 可以在获取到的地图上叠加其他图层，如点、线、面等。其中XXXX可以是不同的图层类型，具体取决于你要展示的数据类型和效果。
+
+设置图例 | + scale_XXXX | 可以通过该函数设置图例,其中XXXX表示图例类型,包括颜色、形状、大小等。根据需要选择合适的图例类型。
+
+添加标题和标签 | + labs(title = "标题", x = "X轴标签", y = "Y轴标签") | 可以使用该函数给地图添加标题和坐标轴标签，方便阅读和理解地图内容。
+
+显示地图 | print(map) | 通过该命令可以在R语言的控制台中显示地图，方便查看和调整地图效果。
+
+保存地图 | ggsave("文件路径/文件名.png") | 如果需要保存地图到本地文件，可以使用该命令。将文件路径和文件名替换为你想要保存的位置和文件名。
+```
+
+# 如何申请谷歌地图API密钥
+https://zhuanlan.zhihu.com/p/681630649
+
+```
+步骤一：注册 Google Cloud Platform 账户
+访问 Google Cloud Platform 网站：https://cloud.google.com/
+点击 “立即开始使用” 按钮。
+登录您的 Google 账户，或创建一个新的 Google 账户。
+填写您的账户信息，并同意条款和条件。
+
+步骤二：创建项目
+在 Google Cloud Platform 控制台中，点击左侧菜单中的 “项目”。
+点击 “创建项目” 按钮。
+输入您的项目名称，并选择一个地区。
+点击 “创建” 按钮。
+
+步骤三：启用 Google 地图 Platform API
+在 Google Cloud Platform 控制台中，点击左侧菜单中的 “API 和服务”。
+点击 “库”。
+搜索 “Google 地图 Platform”。
+点击 “Google 地图 Platform” 卡片。
+点击 “启用” 按钮。
+
+步骤四：创建 API 密钥
+在 Google Cloud Platform 控制台中，点击左侧菜单中的 “API 和服务”。
+点击 “凭据”。
+点击 “创建凭据” 按钮。
+选择 “API 密钥”。
+点击 “创建” 按钮。
+
+步骤五：获取 API 密钥
+在 “API 密钥” 页面上，找到您的 API 密钥。
+点击 “复制” 按钮。
+
+步骤六：使用 API 密钥
+您可以将 API 密钥用于您的应用程序或网站。有关如何使用 API 密钥的更多信息，请参阅 Google 地图 Platform 文档：https://developers.google.com/maps/documentation/
+```
+
+# 注意事项
+Google 地图 Platform 提供免费和付费两种方案(可以咨询谷歌地图代理商 Cloud Ace云一)
+如果您需要超过免费额度的使用量，则需要升级到付费方案。
+请注意安全地使用您的 API 密钥。不要将您的 API 密钥泄露给任何人。
+
+# 百度地图
+https://blog.csdn.net/qq_41518277/article/details/80188948
+

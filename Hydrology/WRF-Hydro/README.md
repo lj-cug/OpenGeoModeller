@@ -22,7 +22,8 @@ Updated namelist templates
 # wrf_hydro代码开发仓库
 https://github.com/NCAR/wrf_hydro_nwm_public
 
-WRF-Hydro is a community modeling system and framework for hydrologic modeling and model coupling. In 2016 a configuration of WRF-Hydro was implemented as the National Water Model (NWM) for the continental United States.
+WRF-Hydro is a community modeling system and framework for hydrologic modeling and model coupling. 
+In 2016 a configuration of WRF-Hydro was implemented as the National Water Model (NWM) for the continental United States.
 
 ## 构建wrf-hydro
 https://github.com/NCAR/wrf_hydro_nwm_public/blob/main/docs/BUILD.md
@@ -33,14 +34,17 @@ https://ral.ucar.edu/projects/wrf_hydro/pre-processing-tools
 https://github.com/NCAR/wrf_hydro_arcgis_preprocessor
 https://ral.ucar.edu/projects/wrf_hydro/pre-processing-tools#preprocessing1
 ```
+
 ## 气象驱动数据
 ```
 GFS
 GLDAS
-WRF out
-
+WRF
+CMFD (China)
 ```
 # 后处理
+wrfhydro-usage
+
 ```
 Rwrfhydro
 xarray-Python
