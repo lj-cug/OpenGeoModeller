@@ -1,0 +1,72 @@
+# Install GEE-JS
+https://developers.google.com/earth-engine/guides/npm_install#testing-the-installation
+
+## NPM Installation
+### Installing the client library
+1. Set up Node.js and npm
+
+npm is a package manager for JavaScript and Node.js. Verify that you have Node.js 6+ and npm 3+.
+```
+node --version
+npm --version
+```
+2. Install the Earth Engine client library
+
+3. Use the client library in an application
+
+### Updating the client library
+
+### Uninstalling the client library
+
+## Create a Cloud Project and activate the Earth Engine API
+
+## Setting Up Authentication Credentials
+### Client-side authentication with OAuth
+
+### Server-side authentication with a service account
+
+## Testing the installation
+To test that authentication has been set up correctly, run the following script:
+```
+var ee = require('@google/earthengine');
+
+// Authenticate using one (but not both) of the methods below.
+ee.data.authenticateViaOauth(YOUR_CLIENT_ID);
+ee.data.authenticateViaPrivateKey(YOUR_PRIVATE_KEY);
+
+ee.initialize();
+
+// Run an Earth Engine script.
+var image = new ee.Image('srtm90_v4');
+image.getMap({min: 0, max: 1000}, function(map) {
+  console.log(map);
+});
+```
+
+# An Intro to the Earth Engine Python API 
+https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api
+
+## Exploration of the Earth Engine Data Catalog
+
+## Run me first
+First of all, run the following cell to initialize the API. The output will contain instructions on how to grant this notebook access to Earth Engine using your account.
+```
+import ee
+
+# Trigger the authentication flow.
+ee.Authenticate()
+
+# Initialize the library.
+ee.Initialize(project='my-project')
+```
+## Getting started with Collections
+
+## Get a time series
+
+## Static mapping of land surface temperature and ground elevation
+### Clip an image by a region of interest
+
+### Export a GeoTIFF file
+
+## Interactive mapping using folium
+
