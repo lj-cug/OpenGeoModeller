@@ -5,12 +5,13 @@
 地球科学模拟有很多[**Awesome项目**](https://gitee.com/lijian-cug/awesome-geosciences)，本仓库建立地球科学模式的工作流，包含：区域性气象模式、地表水、地下水、地震波正演等数学模式，以及相应的前后处理程序。
 
 选择HPC应用程序的思考维度包括：
-(1) 前沿的数值算法；
-(2) 并行模式和计算效率；
-(3) 模型的工业级应用能力；
-(4) 可迁移性(可应用于不同架构的处理器)
+(1) 前沿的数值算法
+(2) 并行模式和计算效率
+(3) 模型的工业级应用能力
+(4) 可迁移性和可重复的研究
 
-即：**Performance-Productivity-Portability**
+![可重复研究](./Reproducible.jpg)
+** Performance-Productivity-Portability **
 
 仓库架构如下图，目的是将地球科学模拟统一在一个框架下，主要就是**前处理、编译运行和后处理可视化**
 ![仓库架构](./Architecture.jpg)
