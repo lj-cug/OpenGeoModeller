@@ -1,7 +1,5 @@
 # OpenGeoModeller
-
-## 介绍
-
+## 仓库介绍
 地球科学模拟有很多[**Awesome项目**](https://gitee.com/lijian-cug/awesome-geosciences)，本仓库建立地球科学模式的工作流，包含：区域性气象模式、地表水、地下水、地震波正演等数学模式，以及相应的前后处理程序。
 
 选择HPC应用程序的思考维度包括：
@@ -11,13 +9,12 @@
 (4) 可迁移性和可重复的研究
 
 ![可重复研究](./Reproducible.jpg)
-**Performance-Productivity-Portability**
+		**Performance-Productivity-Portability**
 
 仓库架构如下图，目的是将地球科学模拟统一在一个框架下，主要就是**前处理、编译运行和后处理可视化**
 ![仓库架构](./Architecture.jpg)
 
 ## 学习路线
-
 [**工程流体力学**](https://gitee.com/lijian-cug/fluid-dynamics-course-cug)  -> 
 [**CFD基础算法**](https://gitee.com/lijian-cug/cfd-course-cug) -> 
 [**计算机辅助设计(CAD)**](https://gitee.com/lijian-cug/pre-surface-water) -> 
@@ -27,7 +24,6 @@
 ![**Geosciences-for-the-Future**](./Geoscience-for-the-Future.jpg) -> Geosciences for the Future
 
 ## 仓库建设内容
-
 1.  Meterology: 数值气象预报(NWP), 包括：WRF和RegCM.
 2.  SurfaceWater: 地表水(河流, 海洋)模式, 包括：SCHISM, telemac, shyfem, SUNTANS, DGSWE, dgswemv2, ADCIRC, WW3, CROCO, NEMO, firedrake, ...
 3.  Underground: 地下流动, 包括：MODFLOW6, MPLBM-UT, OpenPorousMedia,GEOSX,waiwera, OpenGeosys, ...
@@ -43,7 +39,6 @@
 13. Hemodynamics: 心血管血液动力学CFD模型
 
 ## 仓库建设目标
-
 1.  开源：摆脱商业软件的制约, 实现工程问题求解的可重复操作.
 2.  高效：脚本自动化建模工作流, 提高建模效率和可重复性.
 3.  高性能：多并行机制加速模拟, 提高数值模拟时空分辨率.
@@ -53,18 +48,15 @@
 7.  引导性：帮助初学者和研发人员, 快速找到他们需要的知识和工具.
 
 ## B站视频教程
-
 https://space.bilibili.com/581683925/video
 
 ## 实施效果展示
-
 1.  [集群硬件平台](https://gitee.com/lijian-cug/hpc-base/blob/master/Ubuntu20.04-Cluster/我的集群照片.jpg)
 2.  [CPU集群监控界面](https://gitee.com/lijian-cug/hpc-base/blob/master/Ubuntu20.04-Cluster/media/image7.png)
 3.  [GPU集群监控界面](https://gitee.com/lijian-cug/hpc-base/blob/master/Ubuntu20.04-Cluster/media/image13.png)
 4.  [高性能计算部署](https://gitee.com/lijian-cug/hpc-base/blob/master/opengeomodeller-build.png)
 
 ## 合作与共赢
-
 有对这个项目感兴趣的同仁, 一块研究, 提高地球科学数值模拟的研究.
 
 作者简介：李健，QQ: 94207625        	email: jianli@cug.edu.cn   
