@@ -28,6 +28,5 @@ sudo apt-get install ncl-ncarg
 sudo ln -s /usr/share/ncarg /usr/lib/ncarg
 ```
 ## buid from source code
-
 https://www.ncl.ucar.edu/Download/build_from_src.shtml
 

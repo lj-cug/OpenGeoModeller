@@ -11,7 +11,7 @@
 (4) 可迁移性和可重复的研究
 
 ![可重复研究](./Reproducible.jpg)
-** Performance-Productivity-Portability **
+**Performance-Productivity-Portability**
 
 仓库架构如下图，目的是将地球科学模拟统一在一个框架下，主要就是**前处理、编译运行和后处理可视化**
 ![仓库架构](./Architecture.jpg)
