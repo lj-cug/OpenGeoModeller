@@ -34,7 +34,7 @@ Ascent支持C++和Python语言
 有很多Mini-app: LULESH, Coverleaf3D等
 
 ## SENSEI
-SENSEI整合了AScent和ASIO2(数据管理框架)，看来有更多功能，学习难度也较大。
+SENSEI整合了Catalyst, Ascent和ADIOS2(自适应数据管理框架)
 
 ## Damaris
 Damaris是一个轻量级的在线可视化统一框架，可以对FORTRAN/C/C++的模拟代码，快速实施VisIT与ParaView的在线可视化。
