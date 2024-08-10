@@ -1,11 +1,9 @@
 # OpenGL交互式输入设备函数
-
 在OpenGL程序中，交互设备输入有GLUT中的子程序处理，GLUT有从标准输入设备（包括鼠标、键盘、数据板、空间球、按钮盒和拨号盘）接受输入的函数。我们来看一个示例。
 
 代码见demo/code1.cpp
 
-![è¿éåå¾çæè¿°](./media/image1.png){width="2.275986439195101in"
-height="1.8504943132108487in"}
+![](./media/image1.png)
 
 在这个示例中，程序对我们的鼠标消息做出响应，在鼠标点击的位置绘制红色的点。这里关键的函数有两个，一个是鼠标消息响应函数：
 
@@ -15,14 +13,13 @@ glutMouseFunc(mousePtPlot);
 
 void mousePtPlot(GLint button, GLint action, GLint xMouse, GLint yMouse)
 
-[该函数有四个参数]{.mark}，分别对应鼠标按钮（GLUT_LEFT_BUTTON、GLUT_MIDDLE_BUTTON、GLUT_RIGHT_BUTTON）、按钮行为（GLUT_DOWN或GLUT_UP）、鼠标响应位置。
+该函数有四个参数，分别对应鼠标按钮（GLUT_LEFT_BUTTON、GLUT_MIDDLE_BUTTON、GLUT_RIGHT_BUTTON）、按钮行为（GLUT_DOWN或GLUT_UP）、鼠标响应位置。
 
 下面的示例展示了直线段绘制程序：
 
 demo/code2.cpp
 
-![è¿éåå¾çæè¿°](./media/image2.png){width="2.26754593175853in"
-height="1.8436307961504812in"}
+![](./media/image2.png)
 
 可以使用的另一个GLUT鼠标子程序是：
 
@@ -56,8 +53,7 @@ void keyFcn(GLubyte key,GLint xMouse,GLint yMouse)
 
 demo/code3.cpp
 
-![è¿éåå¾çæè¿°](./media/image3.png){width="2.4692147856517934in"
-height="2.0075973315835522in"}
+![](./media/image3.png)
 
 该程序捕获键盘消息，当键盘c键按下时，开启绘点功能。
 
@@ -73,7 +69,6 @@ void specialKeyFcn(GLint specialKey,GLint xMouse, yMouse);
 
 demo/code4.cpp
 
-![è¿éåå¾çæè¿°](./media/image4.png){width="2.4780271216097987in"
-height="2.0147626859142607in"}
+![](./media/image4.png)
 
 在这个程序中，鼠标消息用于确定方块位置，键盘输入用于缩放方块的大小。每次单击鼠标左键生成一个当前大小的正方形。

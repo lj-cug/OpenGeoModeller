@@ -1,17 +1,15 @@
+# 安装
+`
 sudo apt-get install build-essential
-
 sudo apt-get install libgl1-mesa-dev
-
 sudo apt-get install libglu1-mesa-dev
-
 sudo apt-get install libglut-dev
-
 sudo apt-get install freeglut3-dev
+`
 
-测试
-
+# 测试
 示例test.c源码：
-
+`
 #include <GL/glut.h>
 
 void init(void)
@@ -48,10 +46,8 @@ int main(int argc, char *argv[])
     
     return 0;
 }
+`
 
-编译程序时，执行以下指令：
+编译程序时，执行以下指令：  $ gcc -o test test.c -lGL -lGLU -lglut
 
-$ gcc -o test test.c -lGL -lGLU -lglut
-执行：
-
-$ ./test
+执行：  $ ./test

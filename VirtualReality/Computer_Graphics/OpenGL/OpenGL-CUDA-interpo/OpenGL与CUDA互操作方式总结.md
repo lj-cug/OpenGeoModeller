@@ -1,11 +1,10 @@
-# [OpenGL与CUDA互操作方式总结](https://www.cnblogs.com/csuftzzk/p/cuda_opengl_interoperability.html)
+# OpenGL与CUDA互操作方式总结
+(https://www.cnblogs.com/csuftzzk/p/cuda_opengl_interoperability.html)
 
 ## 一、介绍
-
 CUDA是Nvidia推出的一个通用GPU计算平台，对于提升并行任务的效率非常有帮助。本人主管的项目中采用了OpenGL做图像渲染，但是在数据处理方面比较慢，导致帧率一直上不来。于是就尝试把计算工作分解成小的任务，使用核函数在CUDA中加速计算。对于CUDA和OpenGL如何交互以前从来没有接触过，这次在实施时趟了不少的坑。在这里记录下OpenGL与CUDA的互操作的两种方式。
 
 ## 二、基本操作流程
-
 OpenGL与CUDA互操作可以分成2种：
 
 一种是OpenGL将Buffer对象注册到CUDA中去，供CUDA读写操作，然后再在OpenGL中使用。一般这种情况下注册的是VBO和PBO，VBO一般用于存储顶点坐标、索引等数据；PBO则一般用于存储图像数据，因此称作**Pixel
@@ -25,7 +24,7 @@ Buffer Object。**
 
 下面就以代码为例，讲讲2种方式的异同：
 
-### （1）OpenGL PBO/VBO在CUDA中的使用 {#opengl-pbovbo在cuda中的使用 .标题3}
+### （1）OpenGL PBO/VBO在CUDA中的使用
 
 // 初始化Buffer Object
 
@@ -111,7 +110,7 @@ cudaGraphicsGLRegisterBuffer();
 
 cudaGraphicsResourceGetMappedPointer();
 
-### （2）OpenGL Texture在CUDA中的使用 {#opengl-texture在cuda中的使用 .标题3}
+### （2）OpenGL Texture在CUDA中的使用
 
 // 初始化两个Texture并绑定
 

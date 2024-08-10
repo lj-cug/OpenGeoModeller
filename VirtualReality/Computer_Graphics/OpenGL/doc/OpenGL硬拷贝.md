@@ -1,15 +1,13 @@
 # Contents
+1. Introduction]{.underline}](http://titan.cs.ukzn.ac.za/opengl/opengl-d5/trant.sgi.com/opengl/tutorials/siggraph_crsenotes/html/brianp/hardcopy.htm#Intro)
 
--   [[1.
-    Introduction]{.underline}](http://titan.cs.ukzn.ac.za/opengl/opengl-d5/trant.sgi.com/opengl/tutorials/siggraph_crsenotes/html/brianp/hardcopy.htm#Intro)
-
--   [[2. Bitmap-based
+2. Bitmap-based
     Output]{.underline}](http://titan.cs.ukzn.ac.za/opengl/opengl-d5/trant.sgi.com/opengl/tutorials/siggraph_crsenotes/html/brianp/hardcopy.htm#Bitmap)
 
--   [[3. Vector-based
+3. Vector-based
     Output]{.underline}](http://titan.cs.ukzn.ac.za/opengl/opengl-d5/trant.sgi.com/opengl/tutorials/siggraph_crsenotes/html/brianp/hardcopy.htm#Vector)
 
--   [[4. Microsoft Windows OpenGL
+4. Microsoft Windows OpenGL
     Printing]{.underline}](http://titan.cs.ukzn.ac.za/opengl/opengl-d5/trant.sgi.com/opengl/tutorials/siggraph_crsenotes/html/brianp/hardcopy.htm#Windows)
 
 **1. Introduction**

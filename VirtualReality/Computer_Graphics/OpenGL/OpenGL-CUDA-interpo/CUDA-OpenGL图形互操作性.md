@@ -1,8 +1,7 @@
 # 基于C++与CUDA的N卡GPU并行程序--OpenGL图形互操作性
-
 <https://blog.csdn.net/wanchaochaochao/article/details/105912910>
 
-[摘要：本文较系统地介绍了如何实现OpenGL与CUDA的交互性，以及鼠标设备通过OpenGL与CUDA程序实现交互式计算。]{.mark}
+摘要：本文较系统地介绍了如何实现OpenGL与CUDA的交互性，以及鼠标设备通过OpenGL与CUDA程序实现交互式计算。
 
 ## 图形互操作性的极简框架示例
 

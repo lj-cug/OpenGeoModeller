@@ -15,11 +15,10 @@ glGenVertexArrays(1, &vao);
 glBindVertexArray(vao);
 
 ## 简介
+*VBO*（*vertex buffer object*）是*GPU*上存储顶点数据的高速缓存。
+在应用程序初始化阶段，顶点数据被直接传送到显卡中的高速缓存上，在绘制时可以直接从高速缓存中获取，除非几何数据需要修改，否则*VBO*数据不需变化。除了*VBO*技术外，*OpenGL*还提供顶点数组和显示列表的绘制方式。顶点数组可以降低函数调用次数与降低共享顶点的重复使用，但顶点数组函数位于客户端状态中，且每次引用都须向服务端重新发送数据。显示列表为服务端函数，并不受限于数据传输的开销。不过，一旦显示列表编译完成，显示列表中的数据不能够修改。*VBO*技术使用*OpenGL*的*vertex_buffer_object*扩展，可以实现显示列表方式的高速数据传递，同时又能像使用顶点数组那样，绘制过程中随时修改数据（可以通过映射缓存到客户端内存空间的方式读取与更新顶点缓存对象中的数据）。
 
-*VBO*（*vertex buffer
-object*）是*GPU*上存储顶点数据的高速缓存。在应用程序初始化阶段，顶点数据被直接传送到显卡中的高速缓存上，在绘制时可以直接从高速缓存中获取，除非几何数据需要修改，否则*VBO*数据不需变化。除了*VBO*技术外，*OpenGL*还提供顶点数组和显示列表的绘制方式。顶点数组可以降低函数调用次数与降低共享顶点的重复使用，但顶点数组函数位于客户端状态中，且每次引用都须向服务端重新发送数据。显示列表为服务端函数，并不受限于数据传输的开销。不过，一旦显示列表编译完成，显示列表中的数据不能够修改。*VBO*技术使用*OpenGL*的*vertex_buffer_object*扩展，可以实现显示列表方式的高速数据传递，同时又能像使用顶点数组那样，绘制过程中随时修改数据（可以通过映射缓存到客户端内存空间的方式读取与更新顶点缓存对象中的数据）。
-
-[*OpenGL*的三种绘制方式：]{.mark}
+*OpenGL*的三种绘制方式：
 
 *1)* 直接绘制*: glBegin(),glEnd();*
 
@@ -29,7 +28,6 @@ glDrawArrays()*或*glDrawElements()*或*glDrawRangeElements()*；
 *3) VBO: glBindBuffer(), glDrawArrays()*或*glDrawElements();*
 
 ## VBO，Vertex Buffer Array
-
 为了加快显示速度，显卡增加了一个扩展，即VBO。它本质上是存储几何数据的缓存。它直接把顶点数据放置到显卡中的高速缓存，极大提高了绘制速度。
 
 这个扩展用到ARB_vertex_buffer_object，它可以直接像顶点数组那样使用。唯一不同的地方在于它需要将数据载入显卡的高效缓存，因此需要占用渲染时间。
@@ -54,11 +52,9 @@ GL_STATIC_DRAW); //将顶点集上传至server端\
 //删除句柄，同时删除server端顶点缓冲
 
 ## VBO使用的详细解说(An Songho)
-
 转自：<http://www.songho.ca/opengl/gl_vbo.html>
 
-### 创建VBO {#创建vbo .标题3}
-
+### 创建VBO
 需要3步：
 
 1.  Generate a new buffer object with **glGenBuffers()**.
@@ -67,22 +63,22 @@ GL_STATIC_DRAW); //将顶点集上传至server端\
 
 3.  Copy vertex data to the buffer object with **glBufferData()**.
 
-[（1）glGenBuffers()]{.mark}
+（1）glGenBuffers()
 
 glGenBuffers() creates buffer objects and returns the identifiers of the
 buffer objects. It requires 2 parameters: the first one is the number of
 buffer objects to create, and the second parameter is the address of a
 GLuint variable or array to store a single ID or multiple IDs.
 
-[void glGenBuffers(GLsizei n, GLuint\* ids)]{.mark}
+void glGenBuffers(GLsizei n, GLuint\* ids)
 
-[（2）glBindBuffer()]{.mark}
+（2）glBindBuffer()
 
 Once the buffer object has been created, we need to hook the buffer
 object with the corresponding ID before using the buffer object.
 glBindBuffer() takes 2 parameters: *target* and *ID*.
 
-[void glBindBuffer(GLenum target, GLuint id)]{.mark}
+void glBindBuffer(GLenum target, GLuint id)
 
 *Target* is a hint to tell VBO whether this buffer object will store
 vertex array data or index array data: GL_ARRAY_BUFFER, or
@@ -98,7 +94,7 @@ Once glBindBuffer() is first called, VBO initializes the buffer with a
 zero-sized memory buffer and set the initial VBO states, such as usage
 and access properties.
 
-[（3）glBufferData()]{.mark}
+（3）glBufferData()
 
 You can copy the data into the buffer object with glBufferData() when
 the buffer has been initialized.
@@ -116,24 +112,17 @@ going to be used: *static*, *dynamic* or *stream*,
 and *read*, *copy* or *draw*.
 
 VBO specifies 9 enumerated values for *usage* flags;
-
+`
 GL_STATIC_DRAW
-
 GL_STATIC_READ
-
 GL_STATIC_COPY
-
 GL_DYNAMIC_DRAW
-
 GL_DYNAMIC_READ
-
 GL_DYNAMIC_COPY
-
 GL_STREAM_DRAW
-
 GL_STREAM_READ
-
 GL_STREAM_COPY
+`
 
 *\"Static\"* means the data in VBO will not be changed (specified once
 and used many times), *\"dynamic\"* means the data will be changed
@@ -147,7 +136,7 @@ will be used both drawing and reading (GL to GL).
 Note that only *draw* token is useful for VBO,
 and *copy* and *read* token will be become meaningful only for
 pixel/frame buffer object
-([[PBO]{.underline}](http://www.songho.ca/opengl/gl_pbo.html) or [[FBO]{.underline}](http://www.songho.ca/opengl/gl_fbo.html)).
+([[PBO]{.underline}](http://www.songho.ca/opengl/gl_pbo.html) or [FBO](http://www.songho.ca/opengl/gl_fbo.html)).
 
 VBO memory manager will choose the best memory places for the buffer
 object based on these usage flags, for example, GL_STATIC_DRAW and
@@ -155,7 +144,7 @@ GL_STREAM_DRAW may use video memory, and GL_DYNAMIC_DRAW may use AGP
 memory. Any \_READ\_ related buffers would be fine in system or AGP
 memory because the data should be easy to access.
 
-[（4）glBufferSubData()]{.mark}
+（4）glBufferSubData()
 
 void glBufferSubData(GLenum target, GLint offset, GLsizei size, void\*
 data)
@@ -165,7 +154,7 @@ but it only replaces a range of data into *the existing buffer*,
 starting from the given offset. (The total size of the buffer must be
 set by glBufferData() before using glBufferSubData().)
 
-[（5）glDeleteBuffers()]{.mark}
+（5）glDeleteBuffers()
 
 void glDeleteBuffers(GLsizei n, const GLuint\* ids)
 
@@ -205,7 +194,7 @@ delete \[\] vertices;
 
 glDeleteBuffers(1, &vboId);
 
-### 绘制VBO {#绘制vbo .标题3}
+### 绘制VBO
 
 Because VBO sits on top of the existing vertex array implementation,
 rendering VBO is almost same as using [vertex array]{.underline}. Only
@@ -304,8 +293,7 @@ glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-### 更新VBO {#更新vbo .标题3}
-
+### 更新VBO
 The advantage of VBO over [display list]{.underline} is the client can
 read and modify the buffer object data, but display list cannot. The
 simplest method of updating VBO is copying again new data into the bound
@@ -319,7 +307,7 @@ client\'s memory, and the client can update data with the pointer to the
 mapped buffer. The following describes how to map VBO into client\'s
 memory and how to access the mapped data.
 
-[glMapBuffer()]{.mark}
+[glMapBuffer()]
 
 VBO provides glMapBuffer() in order to map the buffer object into
 client\'s memory.
@@ -391,11 +379,9 @@ glUnmapBuffer(GL_ARRAY_BUFFER); // unmap it after use
 
 例子：绘制一个立方体
 
-![drawing a cube with
-glDrawElements()](./media/image1.png){width="2.5389632545931757in"
-height="1.9740430883639546in"}![drawing a cube with
-texture](./media/image2.png){width="2.5342016622922134in"
-height="1.970343394575678in"}
+![drawing a cube with glDrawElements()](./media/image1.png)
+
+![drawing a cube with texture](./media/image2.png)
 
 This example is to draw a unit cube with glDrawElements().
 
@@ -645,9 +631,7 @@ glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 Example: Drawing a Cube with Shader
 
-![drawing a cube with GLSL
-shader](./media/image3.png){width="4.138510498687664in"
-height="3.2169455380577427in"}
+![drawing a cube with GLSL shader](./media/image3.png)
 
 **Download:** [[vboCubeShader.zip]{.underline}](http://www.songho.ca/opengl/files/vboCubeShader.zip)
 
@@ -715,8 +699,7 @@ glUseProgram(0);
 Example: Updating Vertex Data using glMapBuffer()
 
 ![Example of VBO with memory
-mapping](./media/image4.png){width="3.918267716535433in"
-height="2.639939851268591in"}
+mapping](./media/image4.png)
 
 This demo application makes a VBO wobbling in and out along normals. It
 maps a VBO and updates its vertices every frame with the pointer to the
@@ -776,14 +759,10 @@ example:
 *PBO*（*pixel buffer
 object*）是*GPU*上存储像素数据的高速缓存，类似于*VBO*存储顶点数据。*PBO*的优势是像素数据的快速传递，还可以使*CPU*与*GPU*异步执行。图*1*是用传统的方法从图像源（如图像文件或视频）载入图像数据到纹理对象的过程。像素数据首先存到系统内存中，接着使用*glTexImage2D*将数据从系统内存拷贝到纹理对象。包含的两个子过程均需要有*CPU*执行。而从图*2*中，可以看到像素数据直接载入到*PBO*中，这个过程仍需要*CPU*来执行，但是从数据从*PBO*到纹理对象的过程则由*GPU*来执行*DMA*，而不需要*CPU*参与。另外，*OpenGL*可以进行异步*DMA*，不必等像素数据传递完毕*CPU*就可以继续执行其他操作。
 
-![https://img-blog.csdn.net/20150115173756057](./media/image5.png){width="3.959722222222222in"
-height="1.3277777777777777in"}
-
+![https://img-blog.csdn.net/20150115173756057](./media/image5.png)
 图1
 
-![https://img-blog.csdn.net/20150115173737031](./media/image6.png){width="3.3361111111111112in"
-height="1.3277777777777777in"}
-
+![https://img-blog.csdn.net/20150115173737031](./media/image6.png)
 图2
 
 再来看看纹理缓冲(PBO)是怎么使用的，其实差不多：
@@ -805,7 +784,6 @@ img-\>GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, raw_rgba);
 1. glDeleteTextures(1,&texID); //删除句柄，同时删除server端缓冲
 
 ## FBO, frame buffer object
-
 *FBO (frame buffer
 object)*是*OpenGL*扩展*GL_EXT_framebuffer_object*提供的不能显示的帧缓存接口。和*Windows*系统提供的帧缓存一样，*FBO*也有一组相应存储颜色、深度和模板（注意没有累积）数据的缓存区域。*FBO*中存储这些数据的区域称之为*"*缓存关联图像*"*（*frame
 buffer-attached
@@ -814,5 +792,4 @@ to
 texture*）操作。如果渲染缓存对象的图像数据关联到帧缓存，*opengl*执行的将是*"*离线渲染*"*（*offscreen
 rendering*）。
 
-![https://img-blog.csdn.net/20150115173824343](./media/image7.png){width="4.54375in"
-height="2.3520833333333333in"}
+![https://img-blog.csdn.net/20150115173824343](./media/image7.png)
