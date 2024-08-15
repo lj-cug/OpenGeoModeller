@@ -1,0 +1,100 @@
+关于Nvidia GPU驱动的相关问题
+
+安装NVIDIA驱动。
+
+图形显示为llvmpipe说明显卡驱动安装还是有问题，详见第四步的[注意]
+
+1、第一步：
+首先查看自己的显卡型号（如果已知显卡型号可以忽略）
+采用以下命令： 
+lshw -c vedio
+
+如图所示我的显卡时GeForce GTX 1050Ti
+
+2、查看自己电脑适合的显卡驱动版本
+采用以下命令：
+ubuntu-drivers devices
+
+注意：若该指令无返回值，则采用先采用接下里提到的添加源的操作，然后再回到这一步。
+上面的返回值里面都是我的显卡支持的驱动版本，其中推荐的时430版本的驱动，具体是哪个版本呢？
+进入到系统设置->软件更新->附加驱动，可以看到
+
+推荐的版本是430.64,然后去nvidia官网下载对应版本。
+
+3、禁用nouveau
+nouveau，是一个自由及开放源代码显卡驱动程序，是为Nvidia的显示卡所编写，也可用于属于系统芯片的NVIDIA Tegra系列，此驱动程序是由一群独立的软件工程师所编写，Nvidia的员工也提供了少许帮助。该项目的目标为利用逆向工程Nvidia的专有Linux驱动程序来创造一个开放源代码的驱动程序。所以nouveau开源驱动基本上是不能正常使用的，性能极低。
+
+两种禁用方法：
+
+第一种是采用黑名单的方法：
+sudo gedit /etc/modprobe.d/blacklist.conf
+
+在最后一行添加：
+blacklist nouveau
+
+然后输入：
+sudo update-initramfs -u
+
+重启电脑
+此时发现图标分辨率都不对（有时不会出现），则成功禁用，为了确认，采用指令：
+lsmod | grep nouveau
+没有返回项则禁用成功
+
+4、开始安装
+注意下面的是Ubuntu16.04的安装过程
+sudo service lightdm stop //关闭图形页面，重要
+sudo apt-get remove --purge nvidia* //卸载旧版本的nvidia驱动
+cd Downloads //进入到驱动.run文件所在的文件夹
+sudo chmod a+x NVIDIA-Linux-x86_64-430.64.run //给驱动文件赋予执行权限（activated）
+sudo ./NVIDIA-Linux-x86_64-430.64.run -no-x-check -no-nouveau-check -no-opengl-files //后面的-no系列指令需要先查看下面的声明再决定带什么指令 
+
+注意后面指令的意思
+-no-x-check：安装驱动时关闭X服务 (已经关闭图形界面则不需要该指令)
+-no-nouveau-check：安装驱动时禁用nouveau （已经禁用nouveau不需要该指令）
+-no-opengl-files：只安装驱动文件，不安装OpenGL文件，只有禁用opengl这样安装才不会出现循环登陆的问题。（注意，如果带上该指令之后，系统的详细信息里面没有显卡型号而是llvmpipe，且nividia-smi的Process中只有Xorg，没有compiz，则重装驱动，去掉该指令，一般台机带独显容易有这个问题，不加该指令安装）
+
+安装提示中不安装DKMS，安装X configuration
+sudo service lightdm start      //打开图形页面
+nvidia-smi                      //检查安装是否成功
+
+需要注意的是，上面面的安装过程是对于采用lightdm图形界面的系统所准备的，Ubuntu16.04所采用的就是默认的lightdm，更改图形界面的方式为（一般请不要更改，此处只是说明）：
+sudo dpkg-reconfigure lightdm //即将图形界面换为lightdm
+//除 lightdm 外还有xdm  gdm  gdm3 等图形界面，
+
+Ubuntu16.04 的unity桌面环境默认采用的是lightdm启动器（控制登录的那个页面），Ubuntu18.04等采用gnome桌面采用的是gdm3启动器
+
+对于Ubuntu18.04这种采用gdm3启动器的系统
+安装方式与上述无异，区别在于最开始的图形界面的关闭。
+
+对于gdm3，关闭图形界面，并安装驱动的方式为
+sudo telinit 3       //调整级别，关闭了图形界面
+Ctrl+alt+F1 //进入tty1，在gnome桌面环境下，tty1默认是图形界面，调整等级之后tty1就不是图形界面了
+sudo apt-get remove --purge nvidia* //卸载旧版本的nvidia驱动
+cd Downloads //进入到驱动.run文件所在的文件夹
+sudo chmod a+x NVIDIA-Linux-x86_64-430.64.run //给驱动文件赋予执行权限（activated）
+sudo ./NVIDIA-Linux-x86_64-430.64.run -no-x-check -no-nouveau-check -no-opengl-files //后面的-no系列指令需要先查看下面的声明再决定带什么指令,参见4开始的部分
+
+重复上述步骤安装完之后，启动图形界面那一步更改为
+sudo reboot //重启之后则恢复到图形界面
+
+检查驱动安装是否成功
+nvidia-smi //检查驱动是否安装成功
+
+5、容易遇到的一些问题
+由于ubuntu内核经常更新，有时候会出现显卡驱动没有的情况。例如输入nvidia-smi出现：
+NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
+
+这种情况一般采用以下解决方式。
+
+第一种：
+采用ubuntu-drivers device 指令查看显卡驱动推荐是不是有变化，例如我之前安装的390.138,但是内核更新之后推荐变成了430,因此需要下载新的驱动重新安装即可。（首选项）
+
+第二种：
+另外可以采用进入老的内核，在启动时选取ubuntu高级选项，选择内核版本较低的，查看目前内核版本采用：
+uname -r
+此时可以采用nvidia-smi查看到显卡驱动情况
+
+第三种：
+可以采用安装dkms程序，
+sudo apt-get install dkms
+sudo dkms install -m nvidia -v 430.64    //注意对应好驱动版本号

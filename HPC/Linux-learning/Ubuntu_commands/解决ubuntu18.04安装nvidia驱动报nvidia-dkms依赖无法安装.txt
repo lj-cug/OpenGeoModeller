@@ -1,0 +1,27 @@
+解决ubuntu18.04安装nvidia驱动报nvidia-dkms依赖无法安装
+
+问题起源如下图：
+提示nvidia-driver-440 : 依赖: nvidia-dkms-440 (= 440.26-0ubuntu0~gpu18.04.2) 但是它将不会被安装
+（英文系统提示
+nvidia-driver-440 : Depends: nvidia-dkms-440 (= 440.26-0ubuntu0~gpu18.04.2) but it is not going to be installed）
+ 
+网上绕了一大圈每搜到，自己Ubuntu又不能搭梯google。
+找到了一个关于linux acrh的网站：
+https://www.archlinux.org/packages/extra/x86_64/nvidia-dkms/
+ 
+页面信息说明下，nvidia-dkms 440.31-2包依赖 dkms，libglvnd等等。
+关键信息 我们无法安装的nvidia-dkms要基于dkms。
+所以，sudo apt install dkms先安装基础的试试
+ 
+一层层往下剥，哪个不能被安装就尝试安装哪个来看看依赖信息
+sudo apt install dpkg-dev
+ 
+继续 sudo apt install libdpkg-perl
+ 
+提示libdpkg-perl已经是最新的。看上面的版本信息就知道是它影响了上面的依赖关系。所以，删除它。
+sudo apt remove libdpkg-perl
+ 
+那么，安装就不要从底层开始了。要从源头位置自上而下的建立依赖安装。
+sudo apt install nvidia-driver-440
+ 
+自此，问题解决

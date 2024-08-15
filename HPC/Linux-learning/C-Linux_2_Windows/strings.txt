@@ -1,0 +1,36 @@
+其实，就是再定义2个函数：strcasecmp  strncasecmp
+
+方案1：用VC SDK中的函数来代替，在main函数外面步添加一下代码即可：
+
+#ifdef _MSC_VER
+#define strcasecmp stricmp
+#define strncasecmp  strnicmp 
+#endif
+
+
+方案2：自己添加该函数的声明和定义
+
+第一步：.h文件添加：
+
+#ifdef _MSC_VER
+int strcasecmp(char *s1, char *s2);
+int strncasecmp(char *s1, char *s2, register int n);
+#endif
+
+
+第二步：.c文件中添加
+#ifdef _MSC_VER
+int strcasecmp(char *s1, char *s2)
+{
+   while  (toupper((unsigned char)*s1) == toupper((unsigned char)*s2++))
+       if (*s1++ == '') return 0;
+   return(toupper((unsigned char)*s1) - toupper((unsigned char)*--s2));
+}
+ 
+int strncasecmp(char *s1, char *s2, register int n)
+{
+  while (--n >= 0 && toupper((unsigned char)*s1) == toupper((unsigned char)*s2++))
+      if (*s1++ == '')  return 0;
+  return(n < 0 ? 0 : toupper((unsigned char)*s1) - toupper((unsigned char)*--s2));
+}
+#endif

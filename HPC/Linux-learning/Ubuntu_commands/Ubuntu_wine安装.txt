@@ -1,0 +1,72 @@
+https://linuxize.com/post/how-to-install-wine-on-ubuntu-18-04/
+
+Installing Wine 3.0 on Ubuntu
+
+start by enabling the 32-bit architecture and updating the packages list:
+
+sudo dpkg --add-architecture i386
+sudo apt update
+
+Install Wine by typing the following command:
+sudo apt install wine64 wine32
+
+Once the installation is complete use the wine --version command to print the Wine version:
+wine --version
+
+
+Installing Wine 5.0 on Ubuntu
+At the time of writing this article, the latest major release of the Wine is version 5.0.
+
+In this section, we will provide a step by step instructions about how to install Wine version 5.0 on Ubuntu 18.04.
+
+If you are running 64-bit Ubuntu system enable the 32-bit architecture and update the packages list:
+sudo dpkg --add-architecture i386
+sudo apt update
+
+wget -qO- https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+
+Add the WineHQ repository to your system:
+
+sudo apt install software-properties-common
+sudo apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+
+wget -qO- https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key | sudo apt-key add -
+sudo sh -c 'echo "deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./" > /etc/apt/sources.list.d/obs.list'
+sudo apt update
+
+Install Wine 5.0 package by typing:
+sudo apt-get install --install-recommends winehq-stable
+
+This will install a bunch of packages. Once completed, verify the Wine installation by typing:
+
+wine --version
+Copy
+The output should look something like this:
+wine-5.0
+
+At this point, Wine 5.0 has been installed and ready to be used.
+
+Configuring Wine
+To configure Wine run the winecfg command in your terminal which will install Mono and Gecko and set up the Wine environment:
+
+winecfg
+
+A dialog will appear asking whether you want to install the wine-mono package:
+
+
+Installing Notepad++ on Ubuntu
+Now that Wine is installed and configured, we will explain how to install Windows applications on your Ubuntu.
+
+In this tutorial, we will install Notepad++, which is is one of the most popular text editors among Windows users. Launch your browser and download the Notepad++ installation file from the Notepad++ download page .
+
+Once the download is complete, start the installation by right-clicking on the .exe file and selecting “Open With Wine Windows Program Loader”.
+
+The installation wizard will start, select the language and install Notepad++ in the same way as you would install any application on your Windows computer.
+
+WIndows应用程序安装路径： ~/.wine/drive_c/
+To start the Notepad++ editor navigate to the ~/.wine/drive_c/Program Files (x86)/Notepad++ directory.
+
+And double click on the notepad++.exe file.
+
+Conclusion
+You have successfully installed and configured Wine on your Ubuntu 18.04 desktop. We have also shown you how to install and start Windows applications under Wine.
