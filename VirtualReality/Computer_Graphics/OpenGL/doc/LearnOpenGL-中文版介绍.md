@@ -1,10 +1,10 @@
 # 欢迎来到OpenGL的世界
-欢迎来到OpenGL的世界。这个工程只是我([[Joey de
-Vries]{.underline}](http://joeydevries.com/))的一次小小的尝试，希望能够建立起一个完善的OpenGL教学平台。无论你学习OpenGL是为了学业，找工作，或仅仅是因为兴趣，这个网站都将能够教会你**现代**(Core-profile)
+欢迎来到OpenGL的世界。这个工程只是我([Joey de
+Vries](http://joeydevries.com/))的一次小小的尝试，希望能够建立起一个完善的OpenGL教学平台。无论你学习OpenGL是为了学业，找工作，或仅仅是因为兴趣，这个网站都将能够教会你**现代**(Core-profile)
 OpenGL从基础，中级，到高级的知识。LearnOpenGL的目标是使用易于理解的形式，使用清晰的例子，展现现代OpenGL的所有知识点，并与此同时为你以后的学习提供有用的参考。
 
 如果您喜欢这个系列教程的话，不妨向Joey de
-Vries的[[Paypal]{.underline}](https://www.paypal.me/learnopengl/)进行捐赠，支持一下作者，让这个教程能够持续完善并更新。
+Vries的[Paypal](https://www.paypal.me/learnopengl/)进行捐赠，支持一下作者，让这个教程能够持续完善并更新。
 
 ## 为什么要阅读这些教程呢？
 在互联网上，有关学习OpenGL的有成千上万的文档与资源，然而其中大部分的资源仅仅讨论了OpenGL的立即渲染模式（Immediate
@@ -70,10 +70,9 @@ LearnOpenGL被分解成了许多大的主题。每个主题包括一些小节，
 现在你应该对这个网站的结构有一些了解了，你现在可以进入「入门」这一章，开始你的OpenGL学习生涯吧！
 
 # OpenGL
-
 在开始这段旅程之前我们先了解一下OpenGL到底是什么。一般它被认为是一个API(Application
 Programming Interface,
-应用程序编程接口)，包含了一系列可以操作图形、图像的函数。然而，OpenGL本身并不是一个API，它仅仅是一个由[[Khronos组织]{.underline}](http://www.khronos.org/)制定并维护的规范(Specification)。
+应用程序编程接口)，包含了一系列可以操作图形、图像的函数。然而，OpenGL本身并不是一个API，它仅仅是一个由[Khronos组织](http://www.khronos.org/)制定并维护的规范(Specification)。
 
 OpenGL规范严格规定了每个函数该如何执行，以及它们的输出值。至于内部具体每个函数是如何实现(Implement)的，将由OpenGL库的开发者自行决定（译注：这里开发者是指编写OpenGL库的人）。因为OpenGL规范并没有规定实现的细节，具体的OpenGL库允许使用不同的实现，只要其功能和结果与规范相匹配（亦即，作为用户不会感受到功能上的差异）。
 
@@ -81,7 +80,7 @@ OpenGL规范严格规定了每个函数该如何执行，以及它们的输出�
 
 由于OpenGL的大多数实现都是由显卡厂商编写的，当产生一个bug时通常可以通过升级显卡驱动来解决。这些驱动会包括你的显卡能支持的最新版本的OpenGL，这也是为什么总是建议你偶尔更新一下显卡驱动。
 
-所有版本的OpenGL规范文档都被公开的寄存在Khronos那里。有兴趣的读者可以找到OpenGL3.3（我们将要使用的版本）的[[规范文档]{.underline}](https://www.opengl.org/registry/doc/glspec33.core.20100311.withchanges.pdf)。如果你想深入到OpenGL的细节（只关心函数功能的描述而不是函数的实现），这是个很好的选择。如果你想知道每个函数**具体的**运作方式，这个规范也是一个很棒的参考。
+所有版本的OpenGL规范文档都被公开的寄存在Khronos那里。有兴趣的读者可以找到OpenGL3.3（我们将要使用的版本）的[规范文档](https://www.opengl.org/registry/doc/glspec33.core.20100311.withchanges.pdf)。如果你想深入到OpenGL的细节（只关心函数功能的描述而不是函数的实现），这是个很好的选择。如果你想知道每个函数**具体的**运作方式，这个规范也是一个很棒的参考。
 
 ## 核心模式与立即渲染模式
 早期的OpenGL使用立即渲染模式（Immediate
@@ -192,26 +191,21 @@ glBindObject(GL_WINDOW_TARGET, 0);
 使用对象的一个好处是在程序中，我们不止可以定义一个对象，并设置它们的选项，每个对象都可以是不同的设置。在我们执行一个使用OpenGL状态的操作的时候，只需要绑定含有需要的设置的对象即可。比如说我们有一些作为3D模型数据（一栋房子或一个人物）的容器对象，在我们想绘制其中任何一个模型的时候，只需绑定一个包含对应模型数据的对象就可以了（当然，我们需要先创建并设置对象的选项）。拥有数个这样的对象允许我们指定多个模型，在想画其中任何一个的时候，直接将对应的对象绑定上去，便不需要再重复设置选项了。
 
 ## 让我们开始吧
-
 你现在已经知道一些OpenGL的相关知识了，OpenGL规范和库，OpenGL幕后大致的运作流程，以及OpenGL使用的一些传统技巧。不要担心你还没有完全消化它们，后面的教程我们会仔细地讲解每一个步骤，你会通过足够的例子来真正掌握OpenGL。如果你已经做好了开始下一步的准备，我们可以在[[这里]{.underline}](https://learnopengl-cn.github.io/01%20Getting%20started/02%20Creating%20a%20window/)开始创建OpenGL上下文以及我们的第一个窗口了。
 
 ## 附加资源
+[opengl.org](https://www.opengl.org/)：OpenGL官方网站。
 
-[[opengl.org]{.underline}](https://www.opengl.org/)：OpenGL官方网站。
-
-[[OpenGL
-registry]{.underline}](https://www.opengl.org/registry/)：包含OpenGL各版本的规范和扩展。
+[OpenGL registry](https://www.opengl.org/registry/)：包含OpenGL各版本的规范和扩展。
 
 # 创建窗口
-
-注意，由于作者对教程做出了更新，之前本节使用的是GLEW库，但现在改为了使用GLAD库，关于GLEW配置的部分现在已经被修改，但我仍决定将这部分教程保留起来，放到一个历史存档中，如果有需要的话可以到[[这里]{.underline}](https://learnopengl-cn.github.io/legacy/)来查看。
+注意，由于作者对教程做出了更新，之前本节使用的是GLEW库，但现在改为了使用GLAD库，关于GLEW配置的部分现在已经被修改，但我仍决定将这部分教程保留起来，放到一个历史存档中，如果有需要的话可以到[这里](https://learnopengl-cn.github.io/legacy/)来查看。
 
 在我们画出出色的效果之前，首先要做的就是创建一个OpenGL上下文(Context)和一个用于显示的窗口。然而，这些操作在每个系统上都是不一样的，OpenGL有目的地将这些操作抽象(Abstract)出去。这意味着我们不得不自己处理创建窗口，定义OpenGL上下文以及处理用户输入。
 
 幸运的是，有一些库已经提供了我们所需的功能，其中一部分是特别针对OpenGL的。这些库节省了我们书写操作系统相关代码的时间，提供给我们一个窗口和上下文用来渲染。最流行的几个库有GLUT，SDL，SFML和GLFW。在教程里我们将使用**GLFW**。
 
 ## GLFW
-
 GLFW是一个专门针对OpenGL的C语言库，它提供了一些渲染物体所需的最低限度的接口。它允许用户创建OpenGL上下文，定义窗口参数以及处理用户输入，这正是我们需要的。
 
 本节和下一节的目标是建立GLFW环境，并保证它恰当地创建OpenGL上下文并显示窗口。这篇教程会一步步从获取、编译、链接GLFW库讲起。我们使用的是Microsoft
@@ -220,10 +214,7 @@ Studio都是相同的）。如果你用的不是Visual
 Studio（或者用的是它的旧版本）请不要担心，大多数IDE上的操作都是类似的。
 
 ## 构建GLFW
-
-GLFW可以从它官方网站的[[下载页]{.underline}](http://www.glfw.org/download.html)上获取。GLFW已经有针对Visual
-Studio
-2013/2015的预编译的二进制版本和相应的头文件，但是为了完整性我们将从编译源代码开始。所以我们需要下载**源代码包**。
+GLFW可以从它官方网站的[下载页](http://www.glfw.org/download.html)上获取。GLFW已经有针对Visual Studio 2013/2015的预编译的二进制版本和相应的头文件，但是为了完整性我们将从编译源代码开始。所以我们需要下载**源代码包**。
 
 如果你要使用预编译的二进制版本的话，请下载32位的版本而不是64位的（除非你清楚你在做什么）。大部分读者反映64位版本会出现很多奇怪的问题。
 
@@ -236,12 +227,11 @@ Studio
 从源代码编译库可以保证生成的库是兼容你的操作系统和CPU的，而预编译的二进制文件可能会出现兼容问题（甚至有时候没提供支持你系统的文件）。提供源代码所产生的一个问题在于不是每个人都用相同的IDE开发程序，因而提供的工程/解决方案文件可能和一些人的IDE不兼容。所以人们只能从.c/.cpp和.h/.hpp文件来自己建立工程/解决方案，这是一项枯燥的工作。但因此也诞生了一个叫做CMake的工具。
 
 ## CMake
-
 CMake是一个工程文件生成工具。用户可以使用预定义好的CMake脚本，根据自己的选择（像是Visual
 Studio, Code::Blocks,
-Eclipse）生成不同IDE的工程文件。这允许我们从GLFW源码里创建一个Visual
-Studio
-2015工程文件，之后进行编译。首先，我们需要从[[这里]{.underline}](http://www.cmake.org/cmake/resources/software.html)下载安装CMake。我选择的是Win32安装程序。
+Eclipse）生成不同IDE的工程文件。
+
+这允许我们从GLFW源码里创建一个Visual Studio 2015工程文件，之后进行编译。首先，我们需要从[这里](http://www.cmake.org/cmake/resources/software.html)下载安装CMake。我选择的是Win32安装程序。
 
 当CMake安装成功后，你可以选择从命令行或者GUI启动CMake，由于我不想让事情变得太过复杂，我们选择用GUI。CMake需要一个源代码目录和一个存放编译结果的目标文件目录。源代码目录我们选择GLFW的源代码的根目录，然后我们新建一个 *build* 文件夹，选中作为目标目录。
 
@@ -249,8 +239,7 @@ Studio
 Studio 2015，我们选择 **Visual Studio 14** 选项（因为Visual Studio
 2015的内部版本号是14）。CMake会显示可选的编译选项用来配置最终生成的库。这里我们使用默认设置，并再次点击**Configure(设置)**按钮保存设置。保存之后，点击**Generate(生成)**按钮，生成的工程文件会在你的**build**文件夹中。
 
-编译
-
+## 编译
 在**build**文件夹里可以找到**GLFW.sln**文件，用Visual Studio
 2015打开。因为CMake已经配置好了项目，所以我们直接点击**Build
 Solution(生成解决方案)**按钮，然后编译的库**glfw3.lib**（注意我们用的是第3版）就会出现在**src/Debug**文件夹内。
@@ -264,14 +253,12 @@ Solution(生成解决方案)**按钮，然后编译的库**glfw3.lib**（注意�
 完成上面步骤后，我们就可以使用GLFW创建我们的第一个OpenGL工程了！
 
 ## 我们的第一个工程
-
 首先，打开Visual
 Studio，创建一个新的项目。如果VS提供了多个选项，选择Visual
 C++，然后选择**Empty
 Project(空项目)**（别忘了给你的项目起一个合适的名字）。现在我们终于有一个空的工作空间了，开始创建我们第一个OpenGL程序吧！
 
 ## 链接
-
 为了使我们的程序使用GLFW，我们需要把GLFW库链接(Link)进工程。这可以通过在链接器的设置里指定我们要使用**glfw3.lib**来完成，但是由于我们将第三方库放在另外的目录中，我们的工程还不知道在哪寻找这个文件。于是我们首先需要将我们放第三方库的目录添加进设置。
 
 要添加这些目录（需要VS搜索库和include文件的地方），我们首先进入Project
@@ -289,13 +276,11 @@ Directories(包含目录)**时的界面：
 Dependencies(附加依赖项)**字段中(手动或者使用选项都可以)。这样GLFW在编译的时候就会被链接进来了。除了GLFW之外，你还需要添加一个链接条目链接到OpenGL的库，但是这个库可能因为系统的不同而有一些差别。
 
 ## Windows上的OpenGL库
-
 如果你是Windows平台，**opengl32.lib**已经包含在Microsoft
 SDK里了，它在Visual
 Studio安装的时候就默认安装了。由于这篇教程用的是VS编译器，并且是在Windows操作系统上，我们只需将**opengl32.lib**添加进连接器设置里就行了。
 
 ## Linux上的OpenGL库
-
 在Linux下你需要链接**libGL.so**库文件，这需要添加-lGL到你的链接器设置中。如果找不到这个库你可能需要安装Mesa，NVidia或AMD的开发包，这部分因平台而异（而且我也不熟悉Linux）就不仔细讲解了。
 
 接下来，如果你已经添加GLFW和OpenGL库到连接器设置中，你可以用如下方式添加GLFW头文件：
@@ -309,8 +294,7 @@ reference* (未定义的引用) 这个错误。
 GLFW的安装与配置就到此为止。
 
 ## GLAD
-
-到这里还没有结束，我们仍然还有一件事要做。因为OpenGL只是一个标准/规范，具体的实现是由驱动开发商针对特定显卡实现的。由于OpenGL驱动版本众多，它大多数函数的位置都无法在编译时确定下来，需要在运行时查询。所以任务就落在了开发者身上，开发者需要在运行时获取函数地址并将其保存在一个函数指针中供以后使用。取得地址的方法[[因平台而异]{.underline}](https://www.khronos.org/opengl/wiki/Load_OpenGL_Functions)，在Windows上会是类似这样：
+到这里还没有结束，我们仍然还有一件事要做。因为OpenGL只是一个标准/规范，具体的实现是由驱动开发商针对特定显卡实现的。由于OpenGL驱动版本众多，它大多数函数的位置都无法在编译时确定下来，需要在运行时查询。所以任务就落在了开发者身上，开发者需要在运行时获取函数地址并将其保存在一个函数指针中供以后使用。取得地址的方法[因平台而异](https://www.khronos.org/opengl/wiki/Load_OpenGL_Functions)，在Windows上会是类似这样：
 
 // 定义函数原型
 
@@ -330,10 +314,9 @@ glGenBuffers(1, &buffer);
 你可以看到代码非常复杂，而且很繁琐，我们需要对每个可能使用的函数都要重复这个过程。幸运的是，有些库能简化此过程，其中**GLAD**是目前最新，也是最流行的库。
 
 ## 配置GLAD
+GLAD是一个[开源](https://github.com/Dav1dde/glad)的库，它能解决我们上面提到的那个繁琐的问题。GLAD的配置与大多数的开源库有些许的不同，GLAD使用了一个[在线服务](http://glad.dav1d.de/)。在这里我们能够告诉GLAD需要定义的OpenGL版本，并且根据这个版本加载所有相关的OpenGL函数。
 
-GLAD是一个[[开源]{.underline}](https://github.com/Dav1dde/glad)的库，它能解决我们上面提到的那个繁琐的问题。GLAD的配置与大多数的开源库有些许的不同，GLAD使用了一个[[在线服务]{.underline}](http://glad.dav1d.de/)。在这里我们能够告诉GLAD需要定义的OpenGL版本，并且根据这个版本加载所有相关的OpenGL函数。
-
-打开GLAD的[[在线服务]{.underline}](http://glad.dav1d.de/)，将语言(Language)设置为**C/C++**，在API选项中，选择**3.3**以上的OpenGL(gl)版本（我们的教程中将使用3.3版本，但更新的版本也能正常工作）。之后将模式(Profile)设置为**Core**，并且保证**生成加载器**(Generate
+打开GLAD的[在线服务](http://glad.dav1d.de/)，将语言(Language)设置为**C/C++**，在API选项中，选择**3.3**以上的OpenGL(gl)版本（我们的教程中将使用3.3版本，但更新的版本也能正常工作）。之后将模式(Profile)设置为**Core**，并且保证**生成加载器**(Generate
 a
 loader)的选项是选中的。现在可以先（暂时）忽略拓展(Extensions)中的内容。都选择完之后，点击**生成**(Generate)按钮来生成库文件。
 
@@ -346,22 +329,19 @@ GLAD现在应该提供给你了一个zip压缩文件，包含两个头文件目�
 点击编译按钮应该不会给你提示任何的错误，到这里我们就已经准备好继续学习[[下一节]{.underline}](https://learnopengl-cn.github.io/01%20Getting%20started/03%20Hello%20Window/)去真正使用GLFW和GLAD来设置OpenGL上下文并创建一个窗口了。记得确保你的头文件和库文件的目录设置正确，以及链接器里引用的库文件名正确。如果仍然遇到错误，可以先看一下评论有没有人遇到类似的问题，请参考额外资源中的例子或者在下面的评论区提问。
 
 ## 附加资源
+[GLFW: Window Guide](http://www.glfw.org/docs/latest/window_guide.html)：GLFW官方的配置GLFW窗口的指南。
 
-[[GLFW: Window
-Guide]{.underline}](http://www.glfw.org/docs/latest/window_guide.html)：GLFW官方的配置GLFW窗口的指南。
+[Building applications](http://www.opengl-tutorial.org/miscellaneous/building-your-own-c-application/)：提供了很多编译或链接相关的信息和一大列错误及对应的解决方案。
 
-[[Building
-applications]{.underline}](http://www.opengl-tutorial.org/miscellaneous/building-your-own-c-application/)：提供了很多编译或链接相关的信息和一大列错误及对应的解决方案。
-
-[[GLFW with
-Code::Blocks]{.underline}](http://wiki.codeblocks.org/index.php?title=Using_GLFW_with_Code::Blocks)：使用Code::Blocks
+[GLFW with
+Code::Blocks](http://wiki.codeblocks.org/index.php?title=Using_GLFW_with_Code::Blocks)：使用Code::Blocks
 IDE编译GLFW。
 
-[[Running
-CMake]{.underline}](http://www.cmake.org/runningcmake/)：简要的介绍如何在Windows和Linux上使用CMake。
+[Running
+CMake](http://www.cmake.org/runningcmake/)：简要的介绍如何在Windows和Linux上使用CMake。
 
-[[Writing a build system under
-Linux]{.underline}](http://learnopengl.com/demo/autotools_tutorial.txt)：Wouter
+[Writing a build system under
+Linux](http://learnopengl.com/demo/autotools_tutorial.txt)：Wouter
 Verholst写的一个autotools的教程，讲的是如何在Linux上编写构建系统，尤其是针对这些教程。
 
-[[Polytonic/Glitter]{.underline}](https://github.com/Polytonic/Glitter)：一个简单的样板项目，它已经提前配置了所有相关的库；如果你想要很方便地搞到一个LearnOpenGL教程的范例工程，这也是很不错的。
+[Polytonic/Glitter](https://github.com/Polytonic/Glitter)：一个简单的样板项目，它已经提前配置了所有相关的库；如果你想要很方便地搞到一个LearnOpenGL教程的范例工程，这也是很不错的。

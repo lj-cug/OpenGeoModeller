@@ -9,8 +9,7 @@ sudo apt-get install libglfw3
 sudo apt-get install libglfw3-dev
 `
 
-# 测试
-示例test.c源码：
+# 第一个OpenGL程序(GLUT)
 `
 #include <GL/glut.h>
 

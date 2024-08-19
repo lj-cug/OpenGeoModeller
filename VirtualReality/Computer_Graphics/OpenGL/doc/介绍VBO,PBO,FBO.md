@@ -195,7 +195,6 @@ delete \[\] vertices;
 glDeleteBuffers(1, &vboId);
 
 ### 绘制VBO
-
 Because VBO sits on top of the existing vertex array implementation,
 rendering VBO is almost same as using [vertex array]{.underline}. Only
 difference is that the pointer to the vertex array is now as an offset
