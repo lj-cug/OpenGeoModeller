@@ -1,7 +1,0 @@
-1. Install Microsoft HPC Pack 2008 R2 by double clicking mpi_x64.msi. Accept all the default installation option. MS HPC is needed
-   to install and run visit parallel engine.
-2. Install visit2.5.2 by double clicking  visit2.5.2_x64.exe. Choose parallel option during installing.
-
-3. Copy all the dlls under /plugins to C:\Users\youraccount\AppData\Roaming\LLNL\VisIt\databases. If this folder doesn't exist, create one.
-
-4. start Visit, all the support format should be avaible on the GUI.

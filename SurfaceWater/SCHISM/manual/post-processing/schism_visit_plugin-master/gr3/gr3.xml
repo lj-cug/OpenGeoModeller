@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-  <Plugin name="gr3" type="database" label="gr3" version="1.0" enabled="true" mdspecificcode="false" engspecificcode="false" onlyengine="false" noengine="false" dbtype="STSD" haswriter="false" hasoptions="false" filePatternsStrict="false" opensWholeDirectory="false">
-    <FilePatterns>
-      gr3
-    </FilePatterns>
-    <Attribute name="" purpose="" persistent="true" keyframe="true" exportAPI="" exportInclude="">
-    </Attribute>
-  </Plugin>
