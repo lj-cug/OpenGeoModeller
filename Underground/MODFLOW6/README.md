@@ -10,7 +10,7 @@ MODFLOW软件有：
 
 (4) MODFLOW-parallel(Delft三角洲研究院开发的MPI并行版本MODFLOW6）。
 
-[MODPATH7](./MODPATH7/)：基于MODFLOW的地下水粒子轨迹跟踪模型。
+MODPATH7：基于MODFLOW的地下水粒子轨迹跟踪模型（本仓库暂无对应子目录）。
 
 MODFLOW前处理：Flopy, SFRmaker等Python脚本程序、GRIDGEN (生成quadtree网格）
 
@@ -20,7 +20,7 @@ MODFLOW-setup：USGS开发的自动化建模的Python程序（限于结构网格
 
 iMOD: Delft开发的MODFLOW建模的Python程序（针对并行化的MODFLOW）
 
-[Central_Sands-Case](./Central_Sands-Case/)：基于MODFLOW6的地下水建模项目备份（Wisconsin_Central_sands）
+Central_Sands-Case：基于MODFLOW6的地下水建模项目备份（Wisconsin_Central_sands；本仓库暂无对应子目录）。
 
 因此，MODFLOW的基本学习路线应该是：
 
@@ -61,8 +61,6 @@ USGS开发的基于PETSc库的并行版本，即加速求解器的并行，实�
 - [UserGuide](./UserGuide/)：用户指南材料
 - [modflow-2005](./modflow-2005/)：结构网格版本
 - [modflow-usg](./modflow-usg/)：非结构网格版本
-- [MODPATH7](./MODPATH7/)：粒子轨迹跟踪
-- [Central_Sands-Case](./Central_Sands-Case/)：案例备份
 
 ## modflow-2005
 

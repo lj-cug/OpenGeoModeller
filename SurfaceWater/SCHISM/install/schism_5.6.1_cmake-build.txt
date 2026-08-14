@@ -1,18 +1,16 @@
 # helper script for compiling schism
-## moghimis@gmail.com
 
+## moghimis@gmail.com
 export src_dir='/models/schism/02-src/schism/SCHISM-placeholder/v5.6.1/'
 
 ## cd ${src_dir}; svn upgrade
-
 source   ${src_dir}/mk/module_list
+
 #for cmake
-#
 export  CMAKE_Fortran_COMPILER=mpiifort
 export  CMAKE_CXX_COMPILER=mpiicc
 export  FC=ifort
 export  MPI_HEADER_PATH='/apps/intel/impi/5.1.2.150/intel64/'
-#
 export  NetCDF_C_DIR='/apps/netcdf/4.3.0-intel/'
 export  NetCDF_INCLUDE_DIR='/apps/netcdf/4.3.0-intel/include/'
 export  NetCDF_LIBRARIES='/apps/netcdf/4.3.0-intel/lib/'
@@ -23,7 +21,7 @@ cd ${PARMETIS_DIR}
 make
 
 export  TVD_LIM=VL
-#
+
 cd ${src_dir}
 
 #clean cmake build folder
