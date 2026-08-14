@@ -1,8 +1,20 @@
 # JUDI
 
-ÔÚDevito¿âµÄ»ù´¡ÉÏ£¬Ê¹ÓÃJuliaÓïÑÔ·â×°£¬±ãÓÚ¿ìËÙÊµÊ©È«²¨ĞÎ·´Ñİ(FWI)ºÍÄæÊ±Æ«ÒÆ(RTM)µÄÕû¸ö¹ı³Ì²Ù×÷¡£
+åœ¨Devitoåº“çš„åŸºç¡€ä¸Šï¼Œä½¿ç”¨Juliaè¯­è¨€å°è£…ï¼Œä¾¿äºå¿«é€Ÿå®æ–½å…¨æ³¢å½¢åæ¼”(FWI)å’Œé€†æ—¶åç§»(RTM)çš„æ•´ä¸ªè¿‡ç¨‹æ“ä½œã€‚
 
-## ²Î¿¼ÎÄÏ×
+## æœ¬ä»“åº“æ–‡æ¡£
 
-Philipp A. Witte, et al. A large-scale framework for symbolic implementations of seismic inversion algorithms in Julia. GEOPHYSICS, VOL. 84, NO. 3 (MAY-JUNE 2019); P. F57¨CF71, 10.1190/GEO2018-0174.1
+- [install](./install/)ï¼šJUDI å®‰è£…
+- [doc](./doc/)ï¼šè¯´æ˜ææ–™
+- [README_EN.md](./README_EN.md)ï¼šè‹±æ–‡è¯´æ˜
 
+## å‚è€ƒæ–‡çŒ®
+
+Philipp A. Witte, et al. A large-scale framework for symbolic implementations of seismic inversion algorithms in Julia. GEOPHYSICS, VOL. 84, NO. 3 (MAY-JUNE 2019); P. F57â€“F71, 10.1190/GEO2018-0174.1
+
+## ç›¸å…³æ–‡æ¡£
+
+- [Geophysics](../)ï¼šå­¦ç§‘å…¥å£
+- [Devito](../Devito/)ï¼šåº•å±‚æœ‰é™å·®åˆ† DSL
+- [spyro](../spyro/)ï¼šFiredrake è·¯çº¿çš„ FWI
+- [hpc-base](../../hpc-base/)ï¼šç¼–è¯‘ä¸è¿è¡Œç¯å¢ƒ

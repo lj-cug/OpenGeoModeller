@@ -1,5 +1,5 @@
 # ISAAC
-ISAAC is an open source (LGPL) C++ template library for live in situ visualization and steering of highly distributed simulations or data analysis processes running on HPC systems made from the Computational Radiation Physics group of the Helmholtz-Zentrum Dresden ¨C Rossedorf (HZDR). The goals of ISAAC are:
+ISAAC is an open source (LGPL) C++ template library for live in situ visualization and steering of highly distributed simulations or data analysis processes running on HPC systems made from the Computational Radiation Physics group of the Helmholtz-Zentrum Dresden â€“ Rossedorf (HZDR). The goals of ISAAC are:
 
 1 to render the images as fast as possible while interupting the simulation as few as possbile,
 
@@ -8,4 +8,4 @@ ISAAC is an open source (LGPL) C++ template library for live in situ visualizati
 3 but still give the ability to explore the data live as free as possible.
 
 ## example_cuda
-isaac-1.5.2µÄCUDA°æ±¾µÄ²âÊÔÀı×Ó³ÌĞò.
+isaac-1.5.2çš„CUDAç‰ˆæœ¬çš„æµ‹è¯•ä¾‹å­ç¨‹åº.

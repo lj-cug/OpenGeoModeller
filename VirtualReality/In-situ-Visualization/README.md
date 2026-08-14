@@ -1,45 +1,62 @@
-# ԭλ���ӻ�
-Catalyst��ʾ�����뼰ԭ������μ�
+# 原位可视化
 
-# Ӧ�ó���
-`
-RegESM��쫷���ƶ����̣�����paraview-catalyst
-BloodFlow�����Ӷ���ѧLAMMPS + LBMģ����Palabos�� + SENSEI���߿��ӻ�ϵͳ��ʵ��Ѫ���к�ϸ���˶���ģ�⼰���ӻ�
-Nek5000 (2021, KTH Sweden)
-CESM_1.0
-miniFE
-`
+Catalyst的示例代码及原理讲义课件
 
-# �ο�����
-libMesh-sedimentation�� Jose J. Camata, et al. In situ visualization and data analysis for turbidity currents simulation. Computers and Geosciences 110 (2018) 23�C31
+## 本仓库文档
 
-# �ܽ�
-���ģ��ѧ�����IO��Ϊƿ��������£����߿��ӻ���Ϊ��ǰ���о��ȵ㡣
-��ͬ��Ӳ���ܹ��Ĳ��м��㣬�����߿��ӻ�Ҳ������µ�Ҫ��
-ParaView Catalyst��VisIT Libsim�����߿��ӻ������������кܶ�CFDӦ��ʹ����Catalyst����Nek500, RegESM, PyFR, CAM, ...
-��ͳ�����߿��ӻ����ǽ����ݴ�CPU���ڴ棩ת�Ƶ�GPU�ڴ棬��Catalyst
-Խ��Խ��Ĵ���Ǩ�Ƶ�GPU��CUDA����������ʵ����GPU��ʵ�ּ�������ӻ����νӣ��Ǻܾ�����ս���о�����ġ�
-VTK-m��Ϊ�ν�GPU��������ӻ����м����������չ������о�����PyFR-Catalyst
+- [catalyst](./catalyst/)：ParaView Catalyst 示例
+- [ascent](./ascent/)：Ascent 原位可视化
+- [isaac](./isaac/)：ISAAC
+- [sensei](./sensei/)：SENSEI 框架
 
-�����˸�ͳһ�����߿��ӻ���ܣ�����SENSEI, Damaris��Ascent��
-SENSEI��Ascent��������DOE��LLNL���������߿��ӻ�ͳһ��ܣ�Damaris�Ƿ���inria���������߿��ӻ�ͳһ��ܡ�����ͨ��XML�����ļ��͵���API��ʵ��MPI+���/�ں˵����ݿ��ӻ���
+## 应用程序
 
-## Catalyst and Libsim
-ParaView��VISIT������ԭ��ԭλ���ӻ���
+- [RegESM](../../ESM-Coupler/RegESM/)：飓风的移动过程，基于paraview-catalyst
+- [BloodFlow](../../Hemodynamics/BloodFlow/)：分子动力学LAMMPS + LBM模拟后端Palabos库 + SENSEI在线可视化系统，实现血管中红细胞运动的模拟及可视化
+- Nek5000 (2021, KTH Sweden)
+- [CESM](../../ESM-Coupler/CESM/)：CESM_1.0
+- miniFE
 
-## Ascent (�Ƽ�)
-Ascent�з��ĳ��򣬿�֧��MPI+OpenMP/CUDA�����߿��ӻ���ͨ��VTK-m�м�㡣
-��װ��Catalyst and Libsim
-Ascent֧��C++��Python����
-�кܶ�Mini-app: LULESH, Coverleaf3D��
+## 参考文献
 
-## SENSEI
-SENSEI������Catalyst, Ascent��ADIOS2(����Ӧ���ݹ������)
+libMesh-sedimentation： Jose J. Camata, et al. In situ visualization and data analysis for turbidity currents simulation. Computers and Geosciences 110 (2018) 23–31
 
-## Damaris
-Damaris��һ�������������߿��ӻ�ͳһ��ܣ����Զ�FORTRAN/C/C++��ģ����룬����ʵʩVisIT��ParaView�����߿��ӻ���
-Damaris-1.5.0��ʼ֧��ParaView�µķǽṹ���������ݵ����߿��ӻ���û��1.4�汾�������ݲ�֧��VisIT�ķǽṹ�������ݵĿ��ӻ���
-û�й�����tutorials !
+## 总结
 
-## ADIOS2
+大规模科学计算的IO成为瓶颈的情况下，在线可视化成为当前的研究热点。
+不同的硬件架构的并行计算，对在线可视化也提出了新的要求。
+ParaView Catalyst和VisIT Libsim是在线可视化的先驱，已有很多CFD应用使用了Catalyst，如Nek500, RegESM, PyFR, CAM, ...
+传统的在线可视化都是将数据从CPU（内存）转移到GPU内存，如Catalyst
+越来越多的代码迁移到GPU（CUDA），因此如何实现在GPU中实现计算与可视化的衔接，是很具有挑战和研究意义的。
+VTK-m成为衔接GPU计算与可视化的中间层软件，开展较早的研究的是PyFR-Catalyst
+
+现有了更统一的在线可视化框架，例如SENSEI, Damaris和Ascent，
+SENSEI和Ascent是美国的DOE与LLNL开发的在线可视化统一框架，Damaris是法国inria开发的在线可视化统一框架。都是通过XML配置文件和调用API来实现MPI+多核/众核的数据可视化。
+
+### Catalyst and Libsim
+ParaView和VISIT软件的原生原位可视化库
+
+### Ascent (推荐)
+Ascent研发的程序，可支持MPI+OpenMP/CUDA的在线可视化，通过VTK-m中间层。
+封装了Catalyst and Libsim
+Ascent支持C++和Python语言
+有很多Mini-app: LULESH, Coverleaf3D等
+
+### SENSEI
+SENSEI整合了Catalyst, Ascent和ADIOS2(自适应数据管理框架)
+
+### Damaris
+Damaris是一个轻量级的在线可视化统一框架，可以对FORTRAN/C/C++的模拟代码，快速实施VisIT与ParaView的在线可视化。
+Damaris-1.5.0开始支持ParaView下的非结构化网格数据的在线可视化，没有1.4版本发布。暂不支持VisIT的非结构网格数据的可视化。
+没有公开的tutorials !
+
+### ADIOS2
 In transit analysis:  ADIOS2-Catalyst
+
+## 相关文档
+
+- [VirtualReality](../)：学科入口
+- [ParaView](../ParaView/)：Catalyst 所依赖的可视化软件
+- [ESM-Coupler/RegESM](../../ESM-Coupler/RegESM/)：原位可视化应用
+- [Hemodynamics/BloodFlow](../../Hemodynamics/BloodFlow/)：SENSEI 应用
+- [hpc-base](../../hpc-base/)：MPI、CUDA 等

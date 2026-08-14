@@ -1,15 +1,20 @@
 # NEMO
 
-NEMO�Ƿ��������ĺ�����ѧģ�ͣ�NEMO-3.x�Ѿ�ֹͣ����.
-NEMO-4.x����������
+NEMO是法国开发的海洋动力学模型，NEMO-3.x已经停止开发.
+NEMO-4.x持续开发中
+
+## 本仓库文档
+
+- [doc](./doc/)：说明材料
+- [install-Euler-OS](./install-Euler-OS/)：EulerOS 上的安装记录
 
 ## NEMO-PDAF
 
-NEMO-4.0�벢�л�����ͬ��ϵͳPDAF�����
+NEMO-4.0与并行化数据同化系统PDAF的耦合
 
-��һ�������NEMO-4.2��PDAF
+下一步将耦合NEMO-4.2与PDAF
 
-# NEMO-4.0-PDAF���з�
+## NEMO-4.0-PDAF的研发
 
 We like to announce that the PDAF code is now also available on github.com at:
 https://github.com/PDAF/PDAF
@@ -32,3 +37,10 @@ Finally, we will switch from the current hand-made mail list to a proper listmai
 For the PDAF developers,
 
 Lars Nerger
+
+## 相关文档
+
+- [SurfaceWater](../)：学科入口
+- [SCHISM](../SCHISM/)：同为三维海洋动力学模式
+- [ROMS](../ROMS/)：区域海洋模式
+- [hpc-base](../../hpc-base/)：编译器、MPI 等

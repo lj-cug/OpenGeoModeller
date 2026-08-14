@@ -1,41 +1,35 @@
-#  ESM (Earth System Modelling) - Coupler
+# ESM-Coupler
+
+åŒºåŸŸæ€§åœ°çƒè€¦åˆæ¨¡æ‹Ÿç³»ç»Ÿï¼Œä»¥åŠè€¦åˆå™¨ï¼ˆå¯¹åŸå§‹ä»£ç ä¾µå…¥åº¦è¾ƒä½ï¼Œå®ç°ä¸åŒæ¨¡å¼ç»„ä»¶çš„è€¦åˆï¼‰ã€‚è€¦åˆå™¨åŒ…æ‹¬ ESMFã€BMIã€OASIS3-MCT ç­‰ã€‚
+
+ç»¼è¿°å‚è€ƒæ–‡çŒ®ï¼š
+
+```text
+Bert Jagers. Linking Data, Models and Tools: An Overview.
+5th International Congress on Environmental Modelling and Software -
+Ottawa, Ontario, Canada - July 2010
 ```
-ÇøÓòĞÔµØÇòñîºÏÄ£ÄâÏµÍ³£¬ÒÔ¼°ñîºÏÆ÷£¨¶ÔÔ­Ê¼´úÂëµÄÇÖÈë¶È×îµÍ£¬ÊµÏÖ²»Í¬Ä£Ê½×é¼şµÄñîºÏ£©
-µØÇòÏµÍ³Ä£ÄâñîºÏÆ÷£¬°üÀ¨£ºESMF, BMI, OASIS3-MCT, ...
-ñîºÏÆ÷µÄ×ÛÊö²Î¿¼ÎÄÏ×£º
- Bert Jagers. Linking Data, Models and Tools: An Overview. 5th International Congress on Environmental Modelling and Software - Ottawa, Ontario, Canada - July 2010
-```
 
-## Coupler
-### ESMF
+## è€¦åˆå™¨
 
-Earth System Modeling Framework
+- [ESMF](./ESMF/)ï¼šEarth System Modeling Framework
+- [OASIS3-MCT](./OASIS3-MCT/)ï¼šOASIS3 ä¸ MCT è€¦åˆ
+- [BMI](./BMI/)ï¼šBasic Model Interface
+- [OpenMI](./OpenMI/)ï¼šOpen Modelling Interface
 
-### OASIS3-MCT
+## ä»£è¡¨æ€§ ESM
 
-### BMI
+- [CESM](./CESM/)ï¼šå…¨çƒå°ºåº¦åœ°çƒè€¦åˆæ¨¡æ‹Ÿç³»ç»Ÿï¼ŒHPC ç¤¾åŒºå¹¿æ³›ä½¿ç”¨
+- [RegESM](./RegESM/)ï¼šåŒºåŸŸæ€§åœ°çƒè€¦åˆæ¨¡æ‹Ÿï¼›å…·å¤‡ Catalyst åœ¨çº¿å¯è§†åŒ–ï¼Œè§‚å¯Ÿçƒ­å¸¦é£æš´ç­‰å¿«è¿‡ç¨‹
+- [SCRIPPS](./SCRIPPS/)ï¼šWRF-4.1.1 + MITgcm + WaveWatch-III
+- [COAWST](./COAWST/)ï¼šUSGS è¿‘æµ·å²¸ç¯å¢ƒåŒºåŸŸæ€§ ESM
+- [MOSSCO](./MOSSCO/)ï¼šæ¨¡å—åŒ–æµ·å²¸ç³»ç»Ÿè€¦åˆ
+- [CoastalApp](./CoastalApp/)ï¼šè¿‘æµ·å²¸æ¨¡æ‹Ÿç³»ç»Ÿï¼›ESMF è€¦åˆå¤šæ¨¡å¼ï¼Œå¯è¯» HWRFï¼Œå®šé‡æ¨¡æ‹Ÿé£æš´æ½®
+- [CLiMA](./CLiMA/)ï¼šæ°”å€™å»ºæ¨¡ç›¸å…³ç»„ä»¶ä¸ç¬”è®°
 
-### OpenMI
+## ç›¸å…³æ–‡æ¡£
 
-## ´ú±íĞÔµÄESM
-### CESM
-
-È«Çò³ß¶ÈµÄµØÇòñîºÏÄ£ÄâÏµÍ³£¬ÔÚHPCÁìÓò¾ßÓĞ¹ã·ºµÄ¿ª·¢ÉçÇø
-
-### RegESM
-
-ÇøÓòĞÔµØÇòñîºÏÄ£ÄâÏµÍ³£¬¾ß±¸CatalystµÄÔÚÏß¿ÉÊÓ»¯¹¦ÄÜ£¬¹Û²ì¿ìËÙÒÆ¶¯ÎïÀí¹ı³Ì£¬ÈçÈÈ´ø·ç±©
-
-### SCRIPPS
-
-WRF-4.1.1 + MITgcm + WaveWatch-III
-
-### COAWST
-
-USGS¿ª·¢µÄ½üº£°¶»·¾³µÄÇøÓòĞÔESMÏµÍ³
-
-### MOSSCO
-
-### CoastalApp
-
-ÃÀ¹úÑĞ·¢µÄ½üº£°¶Ä£ÄâÏµÍ³, ²ÉÓÃESMFñîºÏÁËÖÚ¶àÄ£Ê½, ¿É¶ÁÈ¡HWRFÊä³öÊı¾İ, ¶¨Á¿Ä£Äâ·ç±©³±¹ı³Ì
+- [Meteorology](../Meteorology/)ï¼šWRF / HWRF ç­‰å¤§æ°”ç»„ä»¶
+- [SurfaceWater](../SurfaceWater/)ï¼šROMSã€CROCOã€MITGcmã€WW3 ç­‰æµ·æ´‹ / æ³¢æµªç»„ä»¶
+- [VirtualReality](../VirtualReality/)ï¼šCatalyst / åŸä½å¯è§†åŒ–
+- [hpc-base](../hpc-base/)ï¼šMPIã€ç¼–è¯‘ä¸ä¾èµ–

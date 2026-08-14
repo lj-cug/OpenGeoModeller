@@ -1,13 +1,26 @@
 # OCSMesh
 
-SCHISMµÄ·Ç½á¹¹Íø¸ñÉú³ÉµÄPython³ÌĞò[OCSMeshÁ´½Ó](https://github.com/noaa-ocs-modeling/OCSMesh)
+SCHISMçš„éç»“æ„ç½‘æ ¼ç”Ÿæˆçš„Pythonç¨‹åº[OCSMeshé“¾æ¥](https://github.com/noaa-ocs-modeling/OCSMesh)
 
-[OCSMesh-TutorialsÁ´½Ó](https://github.com/SorooshMani-NOAA/OCSMeshTutorial)
+[OCSMesh-Tutorialsé“¾æ¥](https://github.com/SorooshMani-NOAA/OCSMeshTutorial)
 
-SCHISMµÄ·Ç½á¹¹Íø¸ñÉú³É»¹¿É²Î¿¼[RiverMeshÁ´½Ó](https://schism-dev.github.io/schism/master/mesh-generation/overview.html)
+SCHISMçš„éç»“æ„ç½‘æ ¼ç”Ÿæˆè¿˜å¯å‚è€ƒ[RiverMeshé“¾æ¥](https://schism-dev.github.io/schism/master/mesh-generation/overview.html)
 
-[SMSÈí¼şÉú³ÉÍø¸ñÁ´½Ó](https://schism-dev.github.io/schism/master/mesh-generation/meshing-for-compound-floods/meshing-in-SMS.html)
+[SMSè½¯ä»¶ç”Ÿæˆç½‘æ ¼é“¾æ¥](https://schism-dev.github.io/schism/master/mesh-generation/meshing-for-compound-floods/meshing-in-SMS.html)
 
-## ²Î¿¼ÎÄÏ×
+## æœ¬ä»“åº“æ–‡æ¡£
+
+- [install](./install/)ï¼šOCSMesh å®‰è£…
+- [doc](./doc/)ï¼šä»‹ç»ææ–™
+
+## å‚è€ƒæ–‡çŒ®
 
 OCSMesh: a data-driven automated unstructured mesh generation software for coastal ocean modeling. NOAA Technical Memorandum NOS CS 47, 2021
+
+## ç›¸å…³æ–‡æ¡£
+
+- [Meshing](../)ï¼šå­¦ç§‘å…¥å£
+- [SurfaceWater/SCHISM](../../SurfaceWater/SCHISM/)ï¼šç›®æ ‡æ°´åŠ¨åŠ›æ¨¡å¼
+- [OceanMesh2D](../OceanMesh2D/)ï¼šè¿‘æµ·ä¸‰è§’ç½‘æ ¼ç”Ÿæˆå¯¹ç…§
+- [Gmsh](../Gmsh/)ï¼šé€šç”¨éç»“æ„ç½‘æ ¼å·¥å…·
+- [hpc-base](../../hpc-base/)ï¼šç¼–è¯‘ä¸è¿è¡Œç¯å¢ƒ

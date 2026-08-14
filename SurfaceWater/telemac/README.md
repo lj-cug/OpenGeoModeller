@@ -1,14 +1,25 @@
 # Open-TELEMAC-v7.x
 
-·¨¹úµçÁ¦¹«Ë¾(EDF)¿ª·¢µÄµØ±íË®Ä£ÄâÏµÍ³
+æ³•å›½ç”µåŠ›å…¬å¸(EDF)å¼€å‘çš„åœ°è¡¨æ°´æ¨¡æ‹Ÿç³»ç»Ÿ
 
-FORTRANÓïÑÔ
+FORTRANè¯­è¨€
 
-µÍ½×Á¬ĞøÓĞÏŞµ¥Ôª·¨ + ÓĞÏŞÌå»ı·¨
+ä½é˜¶è¿ç»­æœ‰é™å•å…ƒæ³• + æœ‰é™ä½“ç§¯æ³•
 
-[EDF-TelemacÖ÷Ò³](http://www.opentelemac.org/)
+[EDF-Telemacä¸»é¡µ](http://www.opentelemac.org/)
 
-[¹úÄÚ´úÀí-Õã½­Ô¶Ëã¿Æ¼¼ÓĞÏŞ¹«Ë¾](https://cae.yuansuan.cn/)
+[å›½å†…ä»£ç†-æµ™æ±Ÿè¿œç®—ç§‘æŠ€æœ‰é™å…¬å¸](https://cae.yuansuan.cn/)
 
-telemacµÄ´úÂëÒÑ¾­ÔÚ[gitlabÉÏ](https://gitlab.pam-retd.fr/otm/telemac-mascaret/-/tree/main)
+telemacçš„ä»£ç å·²ç»åœ¨[gitlabä¸Š](https://gitlab.pam-retd.fr/otm/telemac-mascaret/-/tree/main)
 
+## æœ¬ä»“åº“æ–‡æ¡£
+
+- [install](./install/)ï¼šWindows / Linux å®‰è£…è¯´æ˜
+- [doc](./doc/)ï¼šåŸç†ã€æ–‡ä»¶æ ¼å¼ä¸æ“ä½œè¯´æ˜
+
+## ç›¸å…³æ–‡æ¡£
+
+- [SurfaceWater](../)ï¼šå­¦ç§‘å…¥å£
+- [SCHISM](../SCHISM/)ï¼šåŒä¸ºéç»“æ„ç½‘æ ¼åœ°è¡¨æ°´æ¨¡å¼
+- [Meshing](../../Meshing/)ï¼šç½‘æ ¼å‰å¤„ç†
+- [hpc-base](../../hpc-base/)ï¼šç¼–è¯‘å™¨ã€MPI ç­‰

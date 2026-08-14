@@ -1,6 +1,6 @@
 # OceanMesh2D网格生成软件
 
-# 1简介
+## 1简介
 
 OceanMesh2D是MATLAB程序，用于生成和编辑2D三角形网格，主要是针对近海区域的有限单元模型。基于用户定义的(网格单元)边长函数(edgelength
 function)控制模拟区域的网格分辨率，生成网格规模可达10-20百万节点数量级。
@@ -42,7 +42,7 @@ suggest the utilities directory.
 \(4\)
 添加OceanMesh2D/utilities以及OceanMesh2D/datasets路径到MATLAT路径，例如：addpath(genpath(\'datasets\'/))
 
-# 2、网格属性
+## 2、网格属性
 
 有效网格需满足下面4个属性：
 
@@ -68,7 +68,7 @@ m = msh(\'fname\',\'type\'), type为13, 14,
 15或24，代表不同的ADCIRC输入文件(fort.13, fort.14, fort.15, fort.24,
 etc.)。fort.14即为SCHISM模型的hgrid.gr3文件。
 
-# 3、划分区域
+## 3、划分区域
 
 使用矩形盒子(bbox)定义区域和网格间距*h~0~*（平面，米）划分网格，*h~0~*表示最小网格间距或网格单元变长。
 
@@ -80,7 +80,7 @@ etc.)。fort.14即为SCHISM模型的hgrid.gr3文件。
 *x,
 y*为矩形框左上角和右下角的经纬度坐标(WGS1984)，圈定盒子可以是嵌套任意次数。基于球坐标系统生成的网格时高度各向同性的，在投影平面坐标系下可能出现扭曲。
 
-# 4、DEM
+## 4、DEM
 
 DEM为结构网格数据，包含*x,y,z*数据，高于MSL为陆地地形，低于MSL为海洋地形（基于平均潮汐平面或大地水准面）。
 
@@ -94,7 +94,7 @@ DEM传给相同的geodata，用于处理shapefiles：
 
 ![](./media/image9.png)
 
-# 5、网格边界
+## 5、网格边界
 
 使用polygon或polyline，定义海岸线、岛屿和近海岸地貌。
 
@@ -106,11 +106,11 @@ DEM传给相同的geodata，用于处理shapefiles：
 
 ![](./media/image11.png)
 
-# 6、Edgelength functions
+## 6、Edgelength functions
 
 所有的edgelength functions封装在edgefx类中。
 
-## 6.1 网格尺寸边界
+### 6.1 网格尺寸边界
 
 最小和最大网格尺寸边界设置：
 
@@ -126,9 +126,9 @@ DEM传给相同的geodata，用于处理shapefiles：
 
 其中，陆地以上最大网格尺寸为250m，0\~-10m以内设置为50m。
 
-## 6.2 网格限制条件
+### 6.2 网格限制条件
 
-## 6.3 Distance mesh size function
+### 6.3 Distance mesh size function
 
 该功能用于分配网格分辨率，按距某一边界（如海岸线）的距离按比例分配。例如：海洋模拟中，离海岸线越近的网格分辨率越高。另外，一些受风暴潮影响的人工建筑附近也要加密网格。因此，OceanMesh2D提供了2种功能：
 
@@ -136,7 +136,7 @@ DEM传给相同的geodata，用于处理shapefiles：
 
 2\. Feature Size (fs):
 
-## 6.4 Wavelength mesh size function
+### 6.4 Wavelength mesh size function
 
 尽可能减少网格单元数的情况下，精确地模拟主要潮汐成分(M2, K1,
 etc.)，以避免空间上的潮汐波混淆误差 (Westerink et al.,
@@ -146,7 +146,7 @@ etc.)，以避免空间上的潮汐波混淆误差 (Westerink et al.,
 
 ![](./media/image16.png)
 
-## 6.5 Slope mesh size function
+### 6.5 Slope mesh size function
 
 大陆架边缘、海底隆起和海沟等坡度较大的区域需要加密网格。这些地貌特征对近海模型捕捉耗散（由于深海内波）和反射效应（由于大陆架断裂）对潮汐、涌浪和trapped
 shelf waves很重要。坡度比尺参数（或称之为地形长度尺度）可采用下式计算：
@@ -157,7 +157,7 @@ shelf waves很重要。坡度比尺参数（或称之为地形长度尺度）可
 
 ![](./media/image18.png)
 
-## 6.6 Polyline mesh size function
+### 6.6 Polyline mesh size function
 
 在近海区域和大陆架区域，经常存在挖掘的航道、水下河流流域和其他的近海岸地貌形态，需要加密网格来捕捉。沿着航道，由于相对周围区域的水深增大，局部的底部摩擦减小，这将增大沿着航道中心线的流速，稀疏的网格分辨率会混淆(alias)这些过程。当风暴潮发生时，河口区域是洪水发生的第一站，因此也需要增加网格分辨率来求解这些局部过程，以正确捕捉洪水淹没形态。
 
@@ -175,9 +175,9 @@ array：
 
 ![](./media/image22.png)
 
-# 7、网格的稳定性和有效性
+## 7、网格的稳定性和有效性
 
-## 7.1 网格坡度缓和(Grading)
+### 7.1 网格坡度缓和(Grading)
 
 保证网格尺寸的光滑过度，两点之间的网格尺寸增加由下式约束：
 
@@ -193,7 +193,7 @@ element)导致的数值计算误差。（SCHISM模型却不忌讳歪斜单元）
 
 一般设置![](./media/image25.png)就能生成好的结果。
 
-## 7.2 CFL limiting
+### 7.2 CFL limiting
 
 在近海岸条件下，可自动选择一个合适的计算时间步长*Δt*满足CFL限制条件，即*Δt*满足式(12)来限制*f~h~*。这一算法由下式计算：
 
@@ -207,15 +207,24 @@ element)导致的数值计算误差。（SCHISM模型却不忌讳歪斜单元）
 
 ![](./media/image28.png)
 
-## 7.3 Ensuring Mesh Validity
+### 7.3 Ensuring Mesh Validity
 
 使用msh.build检查生成网格的有效性。
 
-# 参考文献
-`
+## 参考文献
+
+```text
 [1] - Roberts, K. J., Pringle, W. J., and Westerink, J. J., 2019. OceanMesh2D 1.0: MATLAB-based software for two-dimensional unstructured mesh generation in coastal ocean modeling, Geoscientific Model Development, 12, 1847-1868. https://doi.org/10.5194/gmd-12-1847-2019.
 [2] - Roberts, K. J., Pringle, W. J, 2018. OceanMesh2D: User guide - Precise distance-based two-dimensional automated mesh generation toolbox intended for coastal cean/shallow water. https://doi.org/10.13140/RG.2.2.21840.61446/2.
 [3] - Roberts, Keith J. Unstructured Mesh Generation and Dynamic Load Balancing for Coastal Ocean Hydrodynamic Simulation, 2019. PhD Thesis, University of Notre Dame. https://curate.nd.edu/show/4q77fr0022c.
 [4] - Roberts, Keith J., Pringle W.J., Westerink J. J. Contreras, M.T., Wirasaet, D., 2019. On the automatic and a priori design of unstructured mesh resolution for coastal ocean circulation models, Ocean Modelling, 144, 101509. https://doi.org/10.1016/j.ocemod.2019.101509.
 [5] - Pringle, W. J., Wirasaet, D., Roberts, K. J., and Westerink, J. J., 2021. Global Storm Tide Modeling with ADCIRC v55: Unstructured Mesh Design and Performance, Geoscientific Model Development, 14(2), 1125-1145. https://doi.org/10.5194/gmd-14-1125-2021.
-`
+```
+
+## 相关文档
+
+- [Meshing](../)：学科入口
+- [OCSMesh](../OCSMesh/)：SCHISM 非结构网格生成
+- [SurfaceWater/SCHISM](../../SurfaceWater/SCHISM/)：hgrid.gr3 目标模式
+- [SurfaceWater/ADCIRC](../../SurfaceWater/ADCIRC/)：fort.14 等输出
+- [hpc-base](../../hpc-base/)：编译与运行环境

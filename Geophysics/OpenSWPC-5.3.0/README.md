@@ -2,19 +2,24 @@
 
 A Seismic Wave Propagation Code by Parallel Finite Difference Method
 
-���𲨴�������ģ��
+地震波传播正演模型
 
-�����ṹ���� + ���޲�ַ� (FDTD)
+交错结构网格 + 有限差分法 (FDTD)
 
-������ԣ� FORTRAN
+编程语言： FORTRAN
 
-# �ο�����
+## 本仓库文档
 
-## Accompanying Paper
+- [install](./install/)：OpenSWPC 5.3.0 安装
+- [doc](./doc/)：模型介绍与发布说明
+
+## 参考文献
+
+### Accompanying Paper
 
 Maeda, T., S. Takemura, and T. Furumura (2017), OpenSWPC: An open-source integrated parallel simulation code for modeling seismic wave propagation in 3D heterogeneous viscoelastic media, Earth Planets Space, 69, 102. doi:10.1186/s40623-017-0687-2
 
-## Related Papers
+### Related Papers
 
 Furumura, T. and L. Chen (2004), Large scale parallel simulation and visualization of 3D seismic wavefield using the Earth Simulator, Comp. Model. Eng. Sci., 6, 153-168. doi:10.3970/cmes.2004.006.153
 
@@ -28,7 +33,7 @@ Noguchi, S., T. Maeda, and T. Furumura (2013), FDM simulation of an anomalous la
 
 Maeda, T., and T. Furumura (2013), FDM simulation of seismic waves, ocean acoustic waves, and tsunamis based on tsunami-coupled equations of motion, Pure Appl. Geophys., 170, 109-127. doi:10.1007/s00024-011-0430-z
 
-Maeda, T., T. Furumura, S. Noguchi, S. Takemura, S. Sakai, M. Shinohara, K. Iwai, S. J. Lee (2013), Seismic and tsunami wave propagation of the 2011 Off the Pacific Coast of Tohoku Earthquake as inferred from the tsunami-coupled finite difference simulation, Bull. Seism. Soc. Am., 103, 1456-1472. doi:10.1785/0120120118
+Maeda, T., T. Furumura, S. Noguchi, S. Takemura, S. Sakai, M. Shinohara, M. Iwai, S. J. Lee (2013), Seismic and tsunami wave propagation of the 2011 Off the Pacific Coast of Tohoku Earthquake as inferred from the tsunami-coupled finite difference simulation, Bull. Seism. Soc. Am., 103, 1456-1472. doi:10.1785/0120120118
 
 Maeda, T., T. Furumura, and K. Obara (2014), Scattering of teleseismic P-waves by the Japan Trench: A significant effect of reverberation in the seawater column, Earth Planet. Sci. Lett., 397, 101-110. doi:10.1016/j.epsl.2014.04.037
 
@@ -46,7 +51,13 @@ Toya, M., A. Kato, T. Maeda, K. Obara, T. Takeda, and K. Yamaoka (2017), Down-di
 
 Morioka, H., H. Kumagai, and T. Maeda (2017), Theoretical basis of the amplitude source location method for volcano-seismic signals, J. Geophys. Res., 122, 6538-6551. doi:10.1002/2017JB013997
 
-Furumura, T., & Kennett, B. L. N. (2018). Regional distance PL phase in the crustal waveguide��An analog to the teleseismic W phase in the upper�\mantle waveguide. J. Geophys. Res., 123, 4007�C 4024. doi:10.1029/2018JB015717
+Furumura, T., & Kennett, B. L. N. (2018). Regional distance PL phase in the crustal waveguide—An analog to the teleseismic W phase in the upper‐mantle waveguide. J. Geophys. Res., 123, 4007– 4024. doi:10.1029/2018JB015717
 
-Furumura, T., & Kennett, B. L. N. (2019). The significance of long�\period ground motion at regional to teleseismic distances from the 610 km deep Mw8.3 Sea of Okhotsk earthquake of 24 May 2013. J. Geophys. Res., 124. doi:10.1029/2019JB018147
+Furumura, T., & Kennett, B. L. N. (2019). The significance of long‐period ground motion at regional to teleseismic distances from the 610 km deep Mw8.3 Sea of Okhotsk earthquake of 24 May 2013. J. Geophys. Res., 124. doi:10.1029/2019JB018147
 
+## 相关文档
+
+- [Geophysics](../)：学科入口
+- [defmod-OpenSWPC](../defmod-OpenSWPC/)：相关正演材料
+- [Seissol](../Seissol/)：地震波传播对照
+- [hpc-base](../../hpc-base/)：MPI、编译环境

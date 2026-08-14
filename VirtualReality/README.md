@@ -1,40 +1,35 @@
-#  VirtualReality(VR)
+# VirtualReality
 
-## ParaView ºÍ Tecplot
+å¯è§†åŒ–ã€åŸä½å¯è§†åŒ–ä¸ VR / AR ç›¸å…³æ–‡æ¡£ã€‚
 
-CFDºó´¦Àí³£ÓÃµÄ¿ªÔ´ºÍÉÌÒµµÄ¿ÉÊÓ»¯Èí¼ş
+## å­ç›®å½•
 
-## In-situ-Visualization
-ÔÚÏß¿ÉÊÓ»¯ÏµÍ³£¬°üÀ¨£º
-```
+- [ParaView](./ParaView/)ï¼šå¸¸ç”¨å¼€æº CFD åå¤„ç†
+- [Tecplot](./Tecplot/)ï¼šå•†ä¸šå¯è§†åŒ–è½¯ä»¶ç›¸å…³ç¬”è®°
+- [visit-3.14.0](./visit-3.14.0/)ï¼šVisIt å¯è§†åŒ–
+- [In-situ-Visualization](./In-situ-Visualization/)ï¼šåœ¨çº¿ / åŸä½å¯è§†åŒ–ï¼ˆCatalystã€SENSEIã€Ascentã€ADIOSã€VisIt ç­‰ï¼‰
+- [AR-Sandbox](./AR-Sandbox/)ï¼šå¢å¼ºç°å®æ²™ç›˜ï¼Œç”¨äºåœ°çƒç§‘å­¦æ•™å­¦
+- [High-Order-Viz](./High-Order-Viz/)ï¼šé«˜é˜¶æ•°å€¼æ ¼å¼ï¼ˆå¦‚ DGï¼‰ç»“æœå¯è§†åŒ–
+- [Oculus-Quest](./Oculus-Quest/)ï¼šVR è®¾å¤‡ä¸ ParaView è¿æ¥
+- [Computer_Graphics](./Computer_Graphics/)ï¼šOpenGLã€VTKã€ç¦»å±æ¸²æŸ“ç­‰è®¡ç®—æœºå›¾å½¢å­¦åŸºç¡€
+
+### In-situ-Visualization ç»„ä»¶æ¦‚è§ˆ
+
+```text
 1. ParaView-Catalyst
 2. SENSEI
 3. ADIOS
 4. Ascent
-5. visit
+5. VisIt
 ```
 
-## AR-Sandbox
+### AR-Sandbox å­é¡¹ç›®
 
-ÔöÇ¿ÏÖÊµÏµÍ³£¬ÓÃÓÚµØÇò¿ÆÑ§µÄ½ÌÑ§
+è§ [AR-Sandbox](./AR-Sandbox/)ï¼šå« UCDaviesã€open-AR-Sandbox ç­‰å®ç°ï¼ˆC++ / Pythonï¼‰ã€‚
 
-### AR_Sandbox-FM
+## ç›¸å…³æ–‡æ¡£
 
-Delft3D Flexible Mesh Ä£ĞÍµÄARÑİÊ¾ÏµÍ³£¬Python±à³Ì
-
-### AR-Sandbox-UCDavies
-
-UC Davies´óÑ§¿ª·¢µÄÇ³Ë®·½³ÌÇó½âµÄARÑİÊ¾ÏµÍ³£¬C++±à³Ì
-
-### open-AR-Sandbox
-
-µÂ¹úÈË¿ª·¢µÄµØÇò¿ÆÑ§ARÑİÊ¾ÏµÍ³£¬Python±à³Ì£¬°üÀ¨£ºµØÕğ²¨´«²¥¡¢µØÖÊ¹¹ÔìÄ£ĞÍ¡¢µØÇòÎïÀíµÈÄ£¿é£¬¹¦ÄÜ×îÈ«
-
-## High-Order-Viz
-
-¸ß½×ÊıÖµ¸ñÊ½¼ÆËã½á¹û£¬ÈçDG·¨£¬µÄ¿ÉÊÓ»¯
-
-## Oculus-Quest
-
-VRÉè±¸ÓëParaViewµÄÁ¬½ÓÉèÖÃ
-
+- [SurfaceWater](../SurfaceWater/)ï¼šå¸¸è§åå¤„ç†å¯¹è±¡ï¼ˆSCHISMã€telemac ç­‰ï¼‰
+- [ESM-Coupler](../ESM-Coupler/)ï¼šRegESM + Catalyst ç­‰åœ¨çº¿å¯è§†åŒ–
+- [Turbulence](../Turbulence/)ï¼šOpenFOAM ç­‰ CFD ç»“æœå¯è§†åŒ–
+- [hpc-base](../hpc-base/)ï¼šé›†ç¾¤æ¸²æŸ“ä¸ä¾èµ–ç¯å¢ƒ

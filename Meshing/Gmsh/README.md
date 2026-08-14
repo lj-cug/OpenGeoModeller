@@ -1,13 +1,27 @@
 # GMSH
 
-GmshÊÇ¿ªÔ´µÄ·Ç½á¹¹Íø¸ñ»®·ÖµÄÓÅĞã¹¤¾ß£¬ÔÚº½¿Õº½ÌìºÍµØÇò¿ÆÑ§µÄÍø¸ñ»®·ÖÖĞÕ¼ÓĞÖØÒªµØÎ»¡£
+Gmshæ˜¯å¼€æºçš„éç»“æ„ç½‘æ ¼åˆ’åˆ†çš„ä¼˜ç§€å·¥å…·ï¼Œåœ¨èˆªç©ºèˆªå¤©å’Œåœ°çƒç§‘å­¦çš„ç½‘æ ¼åˆ’åˆ†ä¸­å æœ‰é‡è¦åœ°ä½ã€‚
 
-ÏÂÃæÂŞÁĞÒ»Ğ©µØÇòÎïÀíÁìÓò£¬Ê¹ÓÃGmsh»®·ÖÍø¸ñµÄ¹¤¾ßºÍ²Ù×÷£º
+ä¸‹é¢ç½—åˆ—ä¸€äº›åœ°çƒç‰©ç†é¢†åŸŸï¼Œä½¿ç”¨Gmshåˆ’åˆ†ç½‘æ ¼çš„å·¥å…·å’Œæ“ä½œï¼š
 
-[CAD-to-Mesh](https://www.pygimli.org/_examples_auto/1_meshing/plot_cad_tutorial.html#sphx-glr-examples-auto-1-meshing-plot-cad-tutorial-py)-Æ÷ĞµÁã¼şµÈµÄÍø¸ñ»®·Ö
+[CAD-to-Mesh](https://www.pygimli.org/_examples_auto/1_meshing/plot_cad_tutorial.html#sphx-glr-examples-auto-1-meshing-plot-cad-tutorial-py)-å™¨æ¢°é›¶ä»¶ç­‰çš„ç½‘æ ¼åˆ’åˆ†
 
 [Meshing terrain from a .STL file with Gmsh](https://gitlab.onelab.info/gmsh/gmsh/-/blob/master/demos/api/terrain_stl.py)
 
-[QGIS-Gmsh](https://github.com/jonathanlambrechts/qgis-gmsh/wiki)--°Ä´óÀûÑÇ´ó±¤½¸½üº£°¶µÄÍø¸ñ»®·ÖÊ¾Àı
+[QGIS-Gmsh](https://github.com/jonathanlambrechts/qgis-gmsh/wiki)--æ¾³å¤§åˆ©äºšå¤§å ¡ç¤è¿‘æµ·å²¸çš„ç½‘æ ¼åˆ’åˆ†ç¤ºä¾‹
 
 [GPS, LiDAR and GIS data to be imported to FreeCAD](https://forum.freecad.org/viewtopic.php?f=8&t=37178&hilit=geodata#p316040)
+
+## æœ¬ä»“åº“æ–‡æ¡£
+
+- [Gmshæç®€å…¥é—¨](./Gmshæç®€å…¥é—¨.md)
+- [pygmsh-README](./pygmsh-README.md)
+- [QGIS-Gmsh](./QGIS-Gmsh.md)
+- [Ubuntu-compiler-freecad](./Ubuntu-compiler-freecad.md)
+
+## ç›¸å…³æ–‡æ¡£
+
+- [Meshing](../)ï¼šå­¦ç§‘å…¥å£
+- [OCSMesh](../OCSMesh/)ï¼šè¿‘æµ·éç»“æ„ç½‘æ ¼
+- [Geophysics/pyGIMLi](../../Geophysics/pyGIMLi/)ï¼šGmsh / CAD-to-Mesh ç›¸å…³
+- [hpc-base](../../hpc-base/)ï¼šç¼–è¯‘ç¯å¢ƒ

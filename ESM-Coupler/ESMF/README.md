@@ -1,25 +1,38 @@
 # ESMF
 
-ÃÀ¹úÑĞ·¢µÄµØÇòñîºÏÄ£Äâ¿ò¼ÜESMF
+ç¾å›½ç ”å‘çš„åœ°çƒè€¦åˆæ¨¡æ‹Ÿæ¡†æ¶ESMF
 
-±à³ÌÓïÑÔ£º FORTRAN
+ç¼–ç¨‹è¯­è¨€ï¼š FORTRAN
 
-±àÒë°æ±¾£º 7.1.0, 8.1.1
+ç¼–è¯‘ç‰ˆæœ¬ï¼š 7.1.0, 8.1.1
 
-## Ê¾Àı´úÂë
+## æœ¬ä»“åº“æ–‡æ¡£
+
+- [install](./install/)ï¼šESMF / pyESMF å®‰è£…ä¸ç¯å¢ƒå˜é‡
+- [doc](./doc/)ï¼šåŸºäº ESMF çš„ ESM è¯´æ˜
+- [esmx-app-prototypes](./esmx-app-prototypes/)ï¼šESMX ç¤ºä¾‹
+
+## ç¤ºä¾‹ä»£ç 
 ### esmf-training
 
 ### esmx-app-prototypes
-Ê¹ÓÃESMX_Builder apps/basicApp.yaml -g -t·½±ãµØ¹¹½¨esmf-app
+ä½¿ç”¨ESMX_Builder apps/basicApp.yaml -g -tæ–¹ä¾¿åœ°æ„å»ºesmf-appï¼Œè§ [esmx-app-prototypes](./esmx-app-prototypes/)
 
-## Ó¦ÓÃ
+## åº”ç”¨
 
-RegESM
+[RegESM](../RegESM/)
 
-## ²Î¿¼ÎÄÏ×
+## å‚è€ƒæ–‡çŒ®
 
 Arlindo da Silva, et al. The Earth System Modeling Framework.
 
 ### ESMF Joint Specification Team
 
 Email: esmf_tech@ucar.edu
+
+## ç›¸å…³æ–‡æ¡£
+
+- [ESM-Coupler](../)ï¼šå­¦ç§‘å…¥å£
+- [RegESM](../RegESM/)ï¼šESMF è€¦åˆåº”ç”¨
+- [Meteorology/WRFV4](../../Meteorology/WRFV4/)ï¼šå¸¸è¢«è€¦åˆçš„å¤§æ°”åˆ†é‡
+- [hpc-base](../../hpc-base/)ï¼šç¼–è¯‘å™¨ã€MPI ç­‰

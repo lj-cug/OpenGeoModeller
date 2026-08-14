@@ -1,31 +1,43 @@
 # Dumux-3.6
 
-»ùÓÚDUNE¿âµÄ¶à¿×½éÖÊÁ÷ÌåÄ£Äâ³ÌĞò£¬MPI²¢ĞĞ¡£
+åŸºäºDUNEåº“çš„å¤šå­”ä»‹è´¨æµä½“æ¨¡æ‹Ÿç¨‹åºï¼ŒMPIå¹¶è¡Œã€‚
 
-## Ó¦ÓÃ
+## æœ¬ä»“åº“æ–‡æ¡£
 
-ºÚÓÍÄ£ĞÍ
+- [install](./install/)ï¼šå®‰è£…è¯´æ˜
+- [doc](./doc/)ï¼šè¯´æ˜ææ–™
 
-¸ùÏµË®·ÖÎüÊÕÄ£Äâ
+## åº”ç”¨
 
-ºÓµÀË®Á÷
+é»‘æ²¹æ¨¡å‹
 
-CO2·â´æ
+æ ¹ç³»æ°´åˆ†å¸æ”¶æ¨¡æ‹Ÿ
 
-# ÑĞ·¢(L. Bilke, et al., 2019)
+æ²³é“æ°´æµ
 
-DumuxÏîÄ¿Óë[OPMÏîÄ¿](https://opm-project.org/)¶¼ÊÇ»ùÓÚDUNE¿ò¼Ü£¬Òò´ËÒ»Ö±ÊÇÏà»¥½è¼ø
+CO2å°å­˜
+
+## ç ”å‘(L. Bilke, et al., 2019)
+
+Dumuxé¡¹ç›®ä¸[OPMé¡¹ç›®](https://opm-project.org/)éƒ½æ˜¯åŸºäºDUNEæ¡†æ¶ï¼Œå› æ­¤ä¸€ç›´æ˜¯ç›¸äº’å€Ÿé‰´
 
 Dumux-material --> opm-material
 
 eWoms --> opm-simulators
 
-DumuxÒ²½è¼øÁËopm-gridµÄ½ÇµãÍø¸ñ(Ê¯ÓÍ¹¤³ÌµÄ¹¤Òµ±ê×¼)
+Dumuxä¹Ÿå€Ÿé‰´äº†opm-gridçš„è§’ç‚¹ç½‘æ ¼(çŸ³æ²¹å·¥ç¨‹çš„å·¥ä¸šæ ‡å‡†)
 
-## ²Î¿¼ÎÄÏ×
+## å‚è€ƒæ–‡çŒ®
 
-Timo Koch, et al. DuMux 3¨Can open-source simulator for solving flow and transport problems in porous media with a focus on model coupling. Computers and Mathematics with Applications 81 (2021) 423-443.
+Timo Koch, et al. DuMux 3â€“an open-source simulator for solving flow and transport problems in porous media with a focus on model coupling. Computers and Mathematics with Applications 81 (2021) 423-443.
 
-B. Flemisch, M. Darcis, K. Erbertseder, B. Faigle, A. Lauser, K. Mosthaf, S. M¨¹thing, P. Nuske, A. Tatomir, M. Wolff, R. Helmig, DuMux: DUNE for multi-{phase, component, scale, physics, . . . } flow and transport in porous media, Adv. Water Resour. 34 (9) (2011) 1102¨C1112
+B. Flemisch, M. Darcis, K. Erbertseder, B. Faigle, A. Lauser, K. Mosthaf, S. MÃ¼thing, P. Nuske, A. Tatomir, M. Wolff, R. Helmig, DuMux: DUNE for multi-{phase, component, scale, physics, . . . } flow and transport in porous media, Adv. Water Resour. 34 (9) (2011) 1102â€“1112
 
 L. Bilke, B. Flemisch, T. Kalbacher, O. Kolditz, R. Helmig, T. Nagel, Development of open-source porous media simulators: Principles and experiences, Transp. Porous Media (2019) http://dx.doi.org/10.1007/s11242-019-01310-1.
+
+## ç›¸å…³æ–‡æ¡£
+
+- [Underground](../)ï¼šå­¦ç§‘å…¥å£
+- [OPM](../OPM/)ï¼šåŒåŸºäº DUNE çš„å¤šå­”ä»‹è´¨ / é»‘æ²¹æ¨¡æ‹Ÿ
+- [hpc-base](../../hpc-base/)ï¼šMPIã€çº¿æ€§æ±‚è§£å™¨
+- [Meshing](../../Meshing/)ï¼šç½‘æ ¼å‰å¤„ç†

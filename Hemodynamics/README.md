@@ -1,16 +1,21 @@
 # Hemodynamics
-ѪҺ����ѧCFD
 
-![��Ѫ��](./SimVascular/doc/media/��Ѫ��ѭ��ϵͳ.jpg)
-��Ѫ��ѭ��ϵͳ
+血液动力学 CFD。
 
-## SimVascular
-��Ѫ��ѪҺ������ȫ����CFDģ��, ������ SimVascular (ǰ����), svFSI (FORTRAN), svFSIplus (C++), svSolver(0D, 1D, 3D)
+![心血管](./SimVascular/doc/media/心血管循环系统.jpg)
 
-## lifex-CFD
-����deal.II�⿪����ѪҺ����ѧCFDģ��
+心血管循环系统示意。
 
-## OasisMove
-����FEniCS��ܿ�����ѪҺ����ѧCFDģ��
+## 子目录
 
-## bloodFlow
+- [SimVascular](./SimVascular/)：全流程心血管血液流动 CFD（前处理 SimVascular；svFSI / svFSIplus / svSolver 等）
+- [lifex-cfd](./lifex-cfd/)：基于 deal.II 的血液动力学 CFD
+- [OasisMove](./OasisMove/)：基于 FEniCS 的血液动力学 CFD
+- [BloodFlow](./BloodFlow/)：血液流动相关文档与笔记
+
+## 相关文档
+
+- [Turbulence](../Turbulence/)：通用 CFD / OpenFOAM 对照
+- [Meshing](../Meshing/)：血管网格前处理思路
+- [VirtualReality](../VirtualReality/)：结果可视化
+- [hpc-base](../hpc-base/)：PETSc、Trilinos、MPI 等依赖

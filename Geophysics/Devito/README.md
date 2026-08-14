@@ -1,15 +1,29 @@
 # Devito
 
-ÓĞÏŞ²î·Ö·¨µÄÌØ¶¨ÓòÓïÑÔ¿â£¬Ö÷ÒªÊÇÀëÉ¢µØÕğ²¨´«²¥µÄÉù²¨·½³Ì£¬ÊµÏÖÈ«²¨ĞÎ·´Ñİ(Full Waveform Inversion, FWI)¡£
+æœ‰é™å·®åˆ†æ³•çš„ç‰¹å®šåŸŸè¯­è¨€åº“ï¼Œä¸»è¦æ˜¯ç¦»æ•£åœ°éœ‡æ³¢ä¼ æ’­çš„å£°æ³¢æ–¹ç¨‹ï¼Œå®ç°å…¨æ³¢å½¢åæ¼”(Full Waveform Inversion, FWI)ã€‚
 
-±à³ÌÓïÑÔ£º C, Python
+ç¼–ç¨‹è¯­è¨€ï¼š C, Python
 
-## ÌØÉ«
+## æœ¬ä»“åº“æ–‡æ¡£
 
-¿ìËÙÊµÊ©ÓĞÏŞ²î·¨(FDM)ÀëÉ¢Éù²¨·½³Ì
+- [install](./install/)ï¼šDevito å®‰è£…
+- [doc](./doc/)ï¼šåŸºäº Devito ä¸ JUDI çš„ FWI æ“ä½œ
+- [FWI-HPCè½¯ä»¶è°ƒç ”20230512.md](./FWI-HPCè½¯ä»¶è°ƒç ”20230512.md)
 
-ÓĞÏŞµ¥Ôª·¨(FEM)ÀëÉ¢PDEµÄDSL¿â¿ÉÊ¹ÓÃfiredrake
+## ç‰¹è‰²
 
-## ²Î¿¼ÎÄÏ×
+å¿«é€Ÿå®æ–½æœ‰é™å·®æ³•(FDM)ç¦»æ•£å£°æ³¢æ–¹ç¨‹
+
+æœ‰é™å•å…ƒæ³•(FEM)ç¦»æ•£PDEçš„DSLåº“å¯ä½¿ç”¨firedrake
+
+## å‚è€ƒæ–‡çŒ®
 
 Mathias Louboutin, et al. Devito (v3.1.0): an embedded domain-specific language for finite differences and geophysical exploration.  Geosci. Model Dev., 12, 1165-1187, 2019
+
+## ç›¸å…³æ–‡æ¡£
+
+- [Geophysics](../)ï¼šå­¦ç§‘å…¥å£
+- [JUDI](../JUDI/)ï¼šJulia å°è£…çš„ FWI / RTM
+- [spyro](../spyro/)ï¼šFiredrake è·¯çº¿çš„ FWI
+- [SurfaceWater/Firedrake](../../SurfaceWater/Firedrake/)ï¼šæœ‰é™å…ƒ DSL
+- [hpc-base/DSL](../../hpc-base/DSL/)ï¼šDevito å¯¼è¯»

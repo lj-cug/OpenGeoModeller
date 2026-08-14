@@ -1,28 +1,35 @@
 # firedrake
-PythonÓïÑÔ¿ª·¢µÄDSL¿â, »ùÓÚfiredrake¿â¿ª·¢ÁËºÜ¶àµØÇò¿ÆÑ§ÁìÓòµÄCFDÓ¦ÓÃ³ÌĞò
+Pythonè¯­è¨€å¼€å‘çš„DSLåº“, åŸºäºfiredrakeåº“å¼€å‘äº†å¾ˆå¤šåœ°çƒç§‘å­¦é¢†åŸŸçš„CFDåº”ç”¨ç¨‹åº
+
+## æœ¬ä»“åº“æ–‡æ¡£
+
+- [install](./install/)ï¼šFiredrake / Thetis å®‰è£…è¯´æ˜
+- [doc](./doc/)ï¼šè½¯ä»¶æ ˆç­‰è¯´æ˜
 
 ## Thetis
-½üº£°¶»·¾³µÄË®Á÷¼°ÄàÉ³ÊäÒÆÄ£Äâ
-¿ìËÙÊµÏÖAMR+DG+·Ç½á¹¹Íø¸ñµÄË®Á÷¼°ºÓ´²Ñİ±äÄ£Äâ
+è¿‘æµ·å²¸ç¯å¢ƒçš„æ°´æµåŠæ³¥æ²™è¾“ç§»æ¨¡æ‹Ÿ
+å¿«é€Ÿå®ç°AMR+DG+éç»“æ„ç½‘æ ¼çš„æ°´æµåŠæ²³åºŠæ¼”å˜æ¨¡æ‹Ÿ
+
+å®‰è£…è§ [quick-install-thetis.md](./install/quick-install-thetis.md)
 
 ## slate
-½â¾ö£¨ÒşÊ½?)DG·¨µÄÍÖÔ²ĞÍ·½³Ì×éµÄÇó½âÎÊÌâ(°°µãÎÊÌâ£©, ÒÔ¼°²¢ĞĞ»¯Çó½â£¨»ùÓÚPETSc)
+è§£å†³ï¼ˆéšå¼?)DGæ³•çš„æ¤­åœ†å‹æ–¹ç¨‹ç»„çš„æ±‚è§£é—®é¢˜(éç‚¹é—®é¢˜ï¼‰, ä»¥åŠå¹¶è¡ŒåŒ–æ±‚è§£ï¼ˆåŸºäºPETSc)
 
-½¨Á¢ÁËhybridizedÇó½â·½Ê½
+å»ºç«‹äº†hybridizedæ±‚è§£æ–¹å¼
 
 ## spyro
-»ùÓÚfiredrakeµÄÈ«²¨ĞÎ·´Ñİ(FWI)µÄÓ¦ÓÃ
+åŸºäºfiredrakeçš„å…¨æ³¢å½¢åæ¼”(FWI)çš„åº”ç”¨ï¼Œè§ [Geophysics/spyro](../../Geophysics/spyro/)
 
 ## geodynamics via Firedrake
-µØá£¶¯Á¦Ñ§Ä£Äâ
+åœ°å¹”åŠ¨åŠ›å­¦æ¨¡æ‹Ÿ
 
 ## OpenTidalFarm
-º£Ñó³±Ï«ÄÜÓÅ»¯²¿ÊğµÄÓ¦ÓÃ³ÌĞò
+æµ·æ´‹æ½®æ±èƒ½ä¼˜åŒ–éƒ¨ç½²çš„åº”ç”¨ç¨‹åº
 
-## Ñ§Ï°Â·Ïß
-```
-1. °²×°firedrake¿â
-2. ÈëÃÅtutorial
+## å­¦ä¹ è·¯çº¿
+```text
+1. å®‰è£…firedrakeåº“
+2. å…¥é—¨tutorial
 Firedrake User Manual PDF, 2023
 
 3. Introductory Jupyter notebooks
@@ -32,18 +39,26 @@ https://www.firedrakeproject.org/notebooks.html
 
 5 Advanced tutorials
 
-6 ThetisÏîÄ¿
+6 Thetisé¡¹ç›®
 ```
 
-## ²Î¿¼ÎÄÏ×
-```
-Tuomas Karna, et al. 2018. Thetis coastal ocean model: discontinuous Galerkin discretization for the three-dimensional hydrostatic equations. Geosci. Model Dev., 11, 4359¨C4382. 
+## å‚è€ƒæ–‡çŒ®
+```text
+Tuomas Karna, et al. 2018. Thetis coastal ocean model: discontinuous Galerkin discretization for the three-dimensional hydrostatic equations. Geosci. Model Dev., 11, 4359â€“4382. 
 
-Keith J. Roberts, et al. 2022. spyro: a Firedrake-based wave propagation and full-waveform-inversion finite-element solver. Geosci. Model Dev., 15: 8639¨C8667. https://doi.org/10.5194/gmd-15-8639-2022
+Keith J. Roberts, et al. 2022. spyro: a Firedrake-based wave propagation and full-waveform-inversion finite-element solver. Geosci. Model Dev., 15: 8639â€“8667. https://doi.org/10.5194/gmd-15-8639-2022
 
-Thomas H. Gibson, et al. 2019. Slate: extending Firedrake¡¯s domain-specific abstraction to hybridized solvers for geoscience and beyond. Geosci. Model Dev. Discuss., https://doi.org/10.5194/gmd-2019-86
+Thomas H. Gibson, et al. 2019. Slate: extending Firedrakeâ€™s domain-specific abstraction to hybridized solvers for geoscience and beyond. Geosci. Model Dev. Discuss., https://doi.org/10.5194/gmd-2019-86
 
-D. Rhodri Davies, et al. 2022. Towards automatic finite-element methods for geodynamics via Firedrake. Geosci. Model Dev., 15: 5127¨C5166.
+D. Rhodri Davies, et al. 2022. Towards automatic finite-element methods for geodynamics via Firedrake. Geosci. Model Dev., 15: 5127â€“5166.
 
 Thomas H. Gibson, Andrew T. T. McRae, Colin J. Cotter, Lawrence Mitchell, David A. Ham. Compatible Finite Element Methods for Geophysical Flows Automation and Implementation Using Firedrake. SpringerBriefs in Mathematics of Planet Earth  Weather, Climate, Oceans
 ```
+
+## ç›¸å…³æ–‡æ¡£
+
+- [SurfaceWater](../)ï¼šå­¦ç§‘å…¥å£
+- [spyro](../../Geophysics/spyro/)ï¼šåŸºäº Firedrake çš„ FWI
+- [Devito](../../Geophysics/Devito/)ï¼šæœ‰é™å·®åˆ† DSLï¼ˆFWI å¯¹ç…§ï¼‰
+- [hpc-base/DSL](../../hpc-base/DSL/)ï¼šFiredrake / Devito å¯¼è¯»
+- [hpc-base](../../hpc-base/)ï¼šPETScã€ç¼–è¯‘ä¸å¹¶è¡Œç¯å¢ƒ

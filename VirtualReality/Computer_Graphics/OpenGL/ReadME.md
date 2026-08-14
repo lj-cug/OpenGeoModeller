@@ -1,18 +1,18 @@
 # OpenGL
-OpenGL��ͼ�ο��ӻ��Ĺ�ҵ��׼, ��·��������OpenGL�Ļ���ʹ�÷������ر��עOpenGL��CUDA��OpenCL���칹�������ԵĽ�������.
+OpenGL是图形可视化的工业标准, 本路径介绍了OpenGL的基本使用方法，特别关注OpenGL与CUDA和OpenCL等异构并行语言的交互操作.
 
-���濪�����ߣ� glut, freeGLUT, glfw3, ImGUI
+界面开发工具： glut, freeGLUT, glfw3, ImGUI
 
-ͼ��������ݿ⣺GLM
+图像操作数据库：GLM
 
 ## OpenGL-CUDA-interpo
-OpenGL��CUDA�Ľ���
+OpenGL与CUDA的交互
 
 ## stero
-����OpenGL���������
+基于OpenGL的立体成像
 
 ## install
-Ubuntu OS�°�װOpenGL��ؿ�
+Ubuntu OS下安装OpenGL相关库
 
 ## doc
-����OpenGL��֪ʶ�ĵ�
+关于OpenGL的知识文档

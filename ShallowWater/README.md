@@ -1,14 +1,20 @@
 # ShallowWater
 
-## 仓库内容
-   
-   浅水方程(Shallow Water Equation)的求解框架及模型，包括：
-   
-   1. Triton - CPU和GPU集群并行的结构网格下的洪水模拟
-   2. Volna-OP2 - 基于特定域语言(DSL) OP2库的非结构网格海啸波传播模拟
-   3. Titan2d - 基于MPI并行的滑坡模拟
-   4. LISFLOOD-FP-8.0 - OpenMP与CUDA并行的间断Galerkin法的2D洪水模型
-   5. BASEMENT - 瑞士洛桑联邦理工学院开发的非结构网格浅水方程求解器, 基于DSL-OP2, 有界面, 免费软件但不开源
+浅水方程 (Shallow Water Equation) 的求解框架及模型。
 
-   
+## 子目录
 
+- [TRITON](./TRITON/)：CPU / GPU 集群并行的结构网格洪水模拟
+- [Volna-OP2](./Volna-OP2/)：基于 DSL OP2 的非结构网格海啸波传播
+- [Titan2d](./Titan2d/)：基于 MPI 的滑坡模拟
+- [BASEMENT](./BASEMENT/)：洛桑联邦理工学院非结构网格浅水求解器；基于 DSL-OP2，有界面；免费但不开源
+- [amatos](./amatos/)：自适应浅水相关（含 StormFlash2d / TsunaFlash2d 等笔记）
+- [sam(oa)2](./sam(oa)2/)：自适应网格浅水求解框架
+- [GLM](./GLM/)：湖泊模型及相关 R / GUI 工具安装
+
+## 相关文档
+
+- [SurfaceWater](../SurfaceWater/)：河口 / 海洋浅水相关模式（ADCIRC、SCHISM 等）
+- [Meshing](../Meshing/)：非结构网格前处理
+- [hpc-base](../hpc-base/)：CUDA、MPI、OP2 / DSL 相关基座
+- [Turbulence](../Turbulence/)：OpenFOAM 浅水求解器对照

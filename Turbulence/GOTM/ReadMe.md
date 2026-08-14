@@ -1,8 +1,8 @@
 # GOTM-lake branch
 
-ÓÃÓÚºş²´Ä£ÄâµÄ1D LakeÄ£ĞÍ, ºóÆÚÒÑ¾­ºÏ²¢µ½GOTM´úÂë¿â
+ç”¨äºæ¹–æ³Šæ¨¡æ‹Ÿçš„1D Lakeæ¨¡å‹, åæœŸå·²ç»åˆå¹¶åˆ°GOTMä»£ç åº“
 
-±¾ÏîÄ¿Ê¹ÓÃµÄÊÇGOTMµÄlake·ÖÖ§
+æœ¬é¡¹ç›®ä½¿ç”¨çš„æ˜¯GOTMçš„lakeåˆ†æ”¯
 
 git clone --branch lake --recursive https://hub.fgit.cf/gotm-model/code
 
@@ -10,4 +10,4 @@ git submodule update --init --recursive
 
 ## GOTM-lake-R
 
-R½Å±¾¹¤¾ß, Èç£ºGOTMr, gotmtools
+Rè„šæœ¬å·¥å…·, å¦‚ï¼šGOTMr, gotmtools
