@@ -13,11 +13,11 @@
 
 数学模型开发与发表的规范化操作流程：
 
-![可重复研究](./Reproducible.jpg)
+![可重复研究](./docs/Reproducible.jpg)
 
 目的是将地球科学模拟统一在一个框架下，包含**前处理、编译运行和后处理可视化**的全工作流程：
 
-![仓库架构](./Architecture.jpg)
+![仓库架构](./docs/Architecture.jpg)
 
 ## Geosciences for the Future
 
@@ -28,7 +28,7 @@
 [地球科学的 Awesome 项目](https://gitee.com/lijian-cug/awesome-geosciences) →
 [海洋模拟](https://gitee.com/lijian-cug/ocean-modeling-course-cug)
 
-![Geosciences-for-the-Future](./Geoscience-for-the-Future.jpg)
+![Geosciences-for-the-Future](./docs/Geoscience-for-the-Future.jpg)
 
 ## 仓库建设内容
 
