@@ -1,0 +1,508 @@
+{
+  "nodes": [
+    {
+      "id": "L-atm",
+      "type": "text",
+      "text": "## 大气",
+      "x": 100,
+      "y": -80,
+      "width": 160,
+      "height": 50,
+      "color": "4"
+    },
+    {
+      "id": "L-water",
+      "type": "text",
+      "text": "## 水圈",
+      "x": 500,
+      "y": -80,
+      "width": 160,
+      "height": 50,
+      "color": "5"
+    },
+    {
+      "id": "L-earth",
+      "type": "text",
+      "text": "## 固体地球",
+      "x": 1100,
+      "y": -80,
+      "width": 180,
+      "height": 50,
+      "color": "3"
+    },
+    {
+      "id": "L-hub",
+      "type": "text",
+      "text": "## 枢纽 / 基座",
+      "x": 400,
+      "y": 720,
+      "width": 220,
+      "height": 50,
+      "color": "1"
+    },
+    {
+      "id": "met",
+      "type": "file",
+      "file": "01-学科/Meteorology.md",
+      "x": 80,
+      "y": 40,
+      "width": 260,
+      "height": 80,
+      "color": "4"
+    },
+    {
+      "id": "hyd",
+      "type": "file",
+      "file": "01-学科/Hydrology.md",
+      "x": 380,
+      "y": 40,
+      "width": 260,
+      "height": 80,
+      "color": "5"
+    },
+    {
+      "id": "sw",
+      "type": "file",
+      "file": "01-学科/SurfaceWater.md",
+      "x": 660,
+      "y": 40,
+      "width": 260,
+      "height": 80,
+      "color": "5"
+    },
+    {
+      "id": "sh",
+      "type": "file",
+      "file": "01-学科/ShallowWater.md",
+      "x": 660,
+      "y": 200,
+      "width": 260,
+      "height": 80,
+      "color": "5"
+    },
+    {
+      "id": "ug",
+      "type": "file",
+      "file": "01-学科/Underground.md",
+      "x": 380,
+      "y": 200,
+      "width": 260,
+      "height": 80,
+      "color": "5"
+    },
+    {
+      "id": "gw",
+      "type": "file",
+      "file": "01-学科/GroundWater.md",
+      "x": 380,
+      "y": 360,
+      "width": 260,
+      "height": 80,
+      "color": "5"
+    },
+    {
+      "id": "geo",
+      "type": "file",
+      "file": "01-学科/Geophysics.md",
+      "x": 1000,
+      "y": 40,
+      "width": 260,
+      "height": 80,
+      "color": "3"
+    },
+    {
+      "id": "gm",
+      "type": "file",
+      "file": "01-学科/Geological-Modelling.md",
+      "x": 1000,
+      "y": 200,
+      "width": 260,
+      "height": 80,
+      "color": "3"
+    },
+    {
+      "id": "tur",
+      "type": "file",
+      "file": "01-学科/Turbulence.md",
+      "x": 1280,
+      "y": 200,
+      "width": 260,
+      "height": 80,
+      "color": "6"
+    },
+    {
+      "id": "hem",
+      "type": "file",
+      "file": "01-学科/Hemodynamics.md",
+      "x": 1280,
+      "y": 360,
+      "width": 260,
+      "height": 80,
+      "color": "6"
+    },
+    {
+      "id": "hpc",
+      "type": "file",
+      "file": "02-枢纽/hpc-base.md",
+      "x": 80,
+      "y": 820,
+      "width": 260,
+      "height": 80,
+      "color": "1"
+    },
+    {
+      "id": "mesh",
+      "type": "file",
+      "file": "02-枢纽/Meshing.md",
+      "x": 380,
+      "y": 820,
+      "width": 260,
+      "height": 80,
+      "color": "1"
+    },
+    {
+      "id": "esm",
+      "type": "file",
+      "file": "02-枢纽/ESM-Coupler.md",
+      "x": 660,
+      "y": 820,
+      "width": 260,
+      "height": 80,
+      "color": "1"
+    },
+    {
+      "id": "viz",
+      "type": "file",
+      "file": "02-枢纽/VirtualReality.md",
+      "x": 940,
+      "y": 820,
+      "width": 260,
+      "height": 80,
+      "color": "1"
+    },
+    {
+      "id": "moc",
+      "type": "file",
+      "file": "00-索引/MOC-OpenGeoModeller.md",
+      "x": 1280,
+      "y": 820,
+      "width": 300,
+      "height": 100,
+      "color": "2"
+    },
+    {
+      "id": "hpc-label",
+      "type": "text",
+      "text": "## hpc-base 展开",
+      "x": 1600,
+      "y": 700,
+      "width": 200,
+      "height": 48,
+      "color": "1"
+    },
+    {
+      "id": "hpc-moc",
+      "type": "file",
+      "file": "04-hpc-base/MOC-hpc-base.md",
+      "x": 1600,
+      "y": 780,
+      "width": 280,
+      "height": 90,
+      "color": "1"
+    },
+    {
+      "id": "hpc-rel",
+      "type": "file",
+      "file": "04-hpc-base/hpc-base模块关系.md",
+      "x": 1600,
+      "y": 900,
+      "width": 280,
+      "height": 80,
+      "color": "1"
+    },
+    {
+      "id": "hpc-cuda",
+      "type": "file",
+      "file": "04-hpc-base/CUDA.md",
+      "x": 1920,
+      "y": 780,
+      "width": 200,
+      "height": 70,
+      "color": "3"
+    },
+    {
+      "id": "hpc-mpi",
+      "type": "file",
+      "file": "04-hpc-base/MPI.md",
+      "x": 1920,
+      "y": 870,
+      "width": 200,
+      "height": 70,
+      "color": "3"
+    },
+    {
+      "id": "hpc-solver",
+      "type": "file",
+      "file": "04-hpc-base/Linear_Solver.md",
+      "x": 1920,
+      "y": 960,
+      "width": 220,
+      "height": 70,
+      "color": "6"
+    },
+    {
+      "id": "hpc-dsl",
+      "type": "file",
+      "file": "04-hpc-base/DSL.md",
+      "x": 2160,
+      "y": 870,
+      "width": 200,
+      "height": 70,
+      "color": "1"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "fromNode": "met",
+      "toNode": "hyd",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "强迫"
+    },
+    {
+      "id": "e1",
+      "fromNode": "met",
+      "toNode": "sw",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "强迫"
+    },
+    {
+      "id": "e2",
+      "fromNode": "met",
+      "toNode": "esm",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "耦合"
+    },
+    {
+      "id": "e3",
+      "fromNode": "hyd",
+      "toNode": "ug",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "地下水"
+    },
+    {
+      "id": "e4",
+      "fromNode": "ug",
+      "toNode": "gw",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e5",
+      "fromNode": "sw",
+      "toNode": "esm",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "海洋组件"
+    },
+    {
+      "id": "e6",
+      "fromNode": "sw",
+      "toNode": "sh",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e7",
+      "fromNode": "sw",
+      "toNode": "viz",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "后处理"
+    },
+    {
+      "id": "e8",
+      "fromNode": "mesh",
+      "toNode": "sw",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "网格"
+    },
+    {
+      "id": "e9",
+      "fromNode": "mesh",
+      "toNode": "hyd",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "网格"
+    },
+    {
+      "id": "e10",
+      "fromNode": "mesh",
+      "toNode": "ug",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "网格"
+    },
+    {
+      "id": "e11",
+      "fromNode": "mesh",
+      "toNode": "geo",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "网格"
+    },
+    {
+      "id": "e12",
+      "fromNode": "mesh",
+      "toNode": "gm",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "网格"
+    },
+    {
+      "id": "e13",
+      "fromNode": "geo",
+      "toNode": "gm",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "解释→建模"
+    },
+    {
+      "id": "e14",
+      "fromNode": "gm",
+      "toNode": "ug",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "前处理"
+    },
+    {
+      "id": "e15",
+      "fromNode": "sw",
+      "toNode": "geo",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "Firedrake"
+    },
+    {
+      "id": "e16",
+      "fromNode": "tur",
+      "toNode": "ug",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "OpenFOAM"
+    },
+    {
+      "id": "e17",
+      "fromNode": "tur",
+      "toNode": "hem",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e18",
+      "fromNode": "tur",
+      "toNode": "viz",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e19",
+      "fromNode": "hem",
+      "toNode": "viz",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e20",
+      "fromNode": "esm",
+      "toNode": "viz",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "Catalyst"
+    },
+    {
+      "id": "e21",
+      "fromNode": "hpc",
+      "toNode": "met",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e22",
+      "fromNode": "hpc",
+      "toNode": "sw",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e23",
+      "fromNode": "hpc",
+      "toNode": "ug",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e24",
+      "fromNode": "hpc",
+      "toNode": "esm",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e25",
+      "fromNode": "hpc",
+      "toNode": "tur",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "eh0",
+      "fromNode": "hpc",
+      "toNode": "hpc-moc",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "eh1",
+      "fromNode": "hpc-moc",
+      "toNode": "hpc-cuda",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "eh2",
+      "fromNode": "hpc-moc",
+      "toNode": "hpc-mpi",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "eh3",
+      "fromNode": "hpc-moc",
+      "toNode": "hpc-solver",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "eh4",
+      "fromNode": "hpc-solver",
+      "toNode": "hpc-dsl",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "抽象"
+    },
+    {
+      "id": "eh5",
+      "fromNode": "hpc-dsl",
+      "toNode": "sw",
+      "fromSide": "top",
+      "toSide": "right",
+      "label": "Firedrake"
+    }
+  ]
+}

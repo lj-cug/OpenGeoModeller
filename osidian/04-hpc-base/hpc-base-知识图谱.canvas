@@ -1,0 +1,480 @@
+{
+  "nodes": [
+    {
+      "id": "L0",
+      "type": "text",
+      "text": "## 运行环境",
+      "x": 80,
+      "y": -60,
+      "width": 180,
+      "height": 48,
+      "color": "4"
+    },
+    {
+      "id": "L1",
+      "type": "text",
+      "text": "## 构建 / 语言",
+      "x": 80,
+      "y": 140,
+      "width": 180,
+      "height": 48,
+      "color": "5"
+    },
+    {
+      "id": "L2",
+      "type": "text",
+      "text": "## 并行加速",
+      "x": 80,
+      "y": 360,
+      "width": 180,
+      "height": 48,
+      "color": "3"
+    },
+    {
+      "id": "L3",
+      "type": "text",
+      "text": "## 求解 / IO",
+      "x": 80,
+      "y": 560,
+      "width": 180,
+      "height": 48,
+      "color": "6"
+    },
+    {
+      "id": "L4",
+      "type": "text",
+      "text": "## 高层抽象",
+      "x": 80,
+      "y": 760,
+      "width": 180,
+      "height": 48,
+      "color": "1"
+    },
+    {
+      "id": "L5",
+      "type": "text",
+      "text": "## 父仓库桥接",
+      "x": 900,
+      "y": 140,
+      "width": 180,
+      "height": 48,
+      "color": "2"
+    },
+    {
+      "id": "cluster",
+      "type": "file",
+      "file": "04-hpc-base/Cluster-DIY.md",
+      "x": 300,
+      "y": 0,
+      "width": 240,
+      "height": 72,
+      "color": "4"
+    },
+    {
+      "id": "build",
+      "type": "file",
+      "file": "04-hpc-base/Build.md",
+      "x": 160,
+      "y": 200,
+      "width": 240,
+      "height": 72,
+      "color": "5"
+    },
+    {
+      "id": "lang",
+      "type": "file",
+      "file": "04-hpc-base/Language.md",
+      "x": 440,
+      "y": 200,
+      "width": 240,
+      "height": 72,
+      "color": "5"
+    },
+    {
+      "id": "garbage",
+      "type": "file",
+      "file": "04-hpc-base/garbage.md",
+      "x": 720,
+      "y": 200,
+      "width": 240,
+      "height": 72,
+      "color": "5"
+    },
+    {
+      "id": "cuda",
+      "type": "file",
+      "file": "04-hpc-base/CUDA.md",
+      "x": 80,
+      "y": 420,
+      "width": 240,
+      "height": 72,
+      "color": "3"
+    },
+    {
+      "id": "opencl",
+      "type": "file",
+      "file": "04-hpc-base/OpenCL.md",
+      "x": 340,
+      "y": 420,
+      "width": 240,
+      "height": 72,
+      "color": "3"
+    },
+    {
+      "id": "mpi",
+      "type": "file",
+      "file": "04-hpc-base/MPI.md",
+      "x": 600,
+      "y": 420,
+      "width": 240,
+      "height": 72,
+      "color": "3"
+    },
+    {
+      "id": "solver",
+      "type": "file",
+      "file": "04-hpc-base/Linear_Solver.md",
+      "x": 200,
+      "y": 620,
+      "width": 240,
+      "height": 72,
+      "color": "6"
+    },
+    {
+      "id": "io",
+      "type": "file",
+      "file": "04-hpc-base/HPC-IO.md",
+      "x": 520,
+      "y": 620,
+      "width": 240,
+      "height": 72,
+      "color": "6"
+    },
+    {
+      "id": "dsl",
+      "type": "file",
+      "file": "04-hpc-base/DSL.md",
+      "x": 200,
+      "y": 820,
+      "width": 240,
+      "height": 72,
+      "color": "1"
+    },
+    {
+      "id": "hpx",
+      "type": "file",
+      "file": "04-hpc-base/HPX.md",
+      "x": 520,
+      "y": 820,
+      "width": 240,
+      "height": 72,
+      "color": "1"
+    },
+    {
+      "id": "hub",
+      "type": "file",
+      "file": "02-枢纽/hpc-base.md",
+      "x": 900,
+      "y": 0,
+      "width": 260,
+      "height": 90,
+      "color": "1"
+    },
+    {
+      "id": "moc",
+      "type": "file",
+      "file": "04-hpc-base/MOC-hpc-base.md",
+      "x": 900,
+      "y": 820,
+      "width": 280,
+      "height": 90,
+      "color": "2"
+    },
+    {
+      "id": "sw",
+      "type": "file",
+      "file": "01-学科/SurfaceWater.md",
+      "x": 900,
+      "y": 220,
+      "width": 240,
+      "height": 72,
+      "color": "2"
+    },
+    {
+      "id": "geo",
+      "type": "file",
+      "file": "01-学科/Geophysics.md",
+      "x": 1180,
+      "y": 220,
+      "width": 240,
+      "height": 72,
+      "color": "2"
+    },
+    {
+      "id": "sh",
+      "type": "file",
+      "file": "01-学科/ShallowWater.md",
+      "x": 900,
+      "y": 360,
+      "width": 240,
+      "height": 72,
+      "color": "2"
+    },
+    {
+      "id": "ug",
+      "type": "file",
+      "file": "01-学科/Underground.md",
+      "x": 1180,
+      "y": 360,
+      "width": 240,
+      "height": 72,
+      "color": "2"
+    },
+    {
+      "id": "tur",
+      "type": "file",
+      "file": "01-学科/Turbulence.md",
+      "x": 900,
+      "y": 500,
+      "width": 240,
+      "height": 72,
+      "color": "2"
+    },
+    {
+      "id": "viz",
+      "type": "file",
+      "file": "02-枢纽/VirtualReality.md",
+      "x": 1180,
+      "y": 500,
+      "width": 240,
+      "height": 72,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "fromNode": "cluster",
+      "toNode": "build",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e1",
+      "fromNode": "cluster",
+      "toNode": "lang",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e2",
+      "fromNode": "cluster",
+      "toNode": "garbage",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "归档"
+    },
+    {
+      "id": "e3",
+      "fromNode": "cluster",
+      "toNode": "mpi",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "通信测试"
+    },
+    {
+      "id": "e4",
+      "fromNode": "build",
+      "toNode": "cuda",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e5",
+      "fromNode": "build",
+      "toNode": "lang",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e6",
+      "fromNode": "lang",
+      "toNode": "mpi",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "mpi4py"
+    },
+    {
+      "id": "e7",
+      "fromNode": "lang",
+      "toNode": "dsl",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e8",
+      "fromNode": "cuda",
+      "toNode": "mpi",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "GPUDirect"
+    },
+    {
+      "id": "e9",
+      "fromNode": "cuda",
+      "toNode": "opencl",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "对照"
+    },
+    {
+      "id": "e10",
+      "fromNode": "cuda",
+      "toNode": "solver",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "AmgX"
+    },
+    {
+      "id": "e11",
+      "fromNode": "cuda",
+      "toNode": "io",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "GDS"
+    },
+    {
+      "id": "e12",
+      "fromNode": "opencl",
+      "toNode": "solver",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "AmgCL"
+    },
+    {
+      "id": "e13",
+      "fromNode": "mpi",
+      "toNode": "solver",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "PETSc"
+    },
+    {
+      "id": "e14",
+      "fromNode": "mpi",
+      "toNode": "io",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e15",
+      "fromNode": "build",
+      "toNode": "solver",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e16",
+      "fromNode": "solver",
+      "toNode": "dsl",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e17",
+      "fromNode": "io",
+      "toNode": "dsl",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e18",
+      "fromNode": "build",
+      "toNode": "hpx",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e19",
+      "fromNode": "lang",
+      "toNode": "hpx",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e20",
+      "fromNode": "hub",
+      "toNode": "cluster",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e21",
+      "fromNode": "hub",
+      "toNode": "build",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e22",
+      "fromNode": "hub",
+      "toNode": "cuda",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e23",
+      "fromNode": "dsl",
+      "toNode": "sw",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "Firedrake"
+    },
+    {
+      "id": "e24",
+      "fromNode": "dsl",
+      "toNode": "geo",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "Devito"
+    },
+    {
+      "id": "e25",
+      "fromNode": "dsl",
+      "toNode": "sh",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "OP2"
+    },
+    {
+      "id": "e26",
+      "fromNode": "solver",
+      "toNode": "ug",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "PETSc"
+    },
+    {
+      "id": "e27",
+      "fromNode": "cuda",
+      "toNode": "tur",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e28",
+      "fromNode": "cuda",
+      "toNode": "viz",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e29",
+      "fromNode": "io",
+      "toNode": "viz",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "VTK"
+    }
+  ]
+}
