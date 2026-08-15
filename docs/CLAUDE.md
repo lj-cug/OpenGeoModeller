@@ -170,6 +170,29 @@ obsidian search query="tag:#hpc-base模块" total
 
 Windows 上若直接敲 `obsidian` 报「无法识别」，需确保 Obsidian CLI 已在 PATH（或先打开 Obsidian 应用后再用 CLI）。
 
+### 5.4 交互式 HTML 图谱（brain-map skill）
+
+来源：[vladignatyev/brain-map-skill](https://github.com/vladignatyev/brain-map-skill)（MIT）。
+
+- **作用**：把含 YAML frontmatter + `[[wikilinks]]` 的 Markdown 目录打成**单文件**交互 HTML（Cytoscape 力导向图 + 时间轴 + 筛选/搜索 + 节点详情）。
+- **主题色**：按 vault **一级子目录**着色（本库即 `00-索引` / `01-学科` / `02-枢纽` / `03-主题` / `04-hpc-base`）。
+- **边**：解析并解析成功的 `[[wikilink]]`；节点大小随度数变化。
+- **Skill 安装路径**（本机）：`C:\Users\lijian\.agents\skills\brain-map\`（因 GitHub git clone 超时，曾用 jsDelivr 拉取 `SKILL.md` + `scripts/build_map.py`）。
+- **对本库生成命令**：
+
+```powershell
+python C:\Users\lijian\.agents\skills\brain-map\scripts\build_map.py `
+  E:\open-geo-modeller\osidian `
+  E:\open-geo-modeller\docs\OpenGeoModeller-brain-map.html `
+  --title "OpenGeoModeller Knowledge Map"
+start E:\open-geo-modeller\docs\OpenGeoModeller-brain-map.html
+```
+
+- **产出**：[`docs/OpenGeoModeller-brain-map.html`](./OpenGeoModeller-brain-map.html)（只读 vault，不写回笔记）。
+- 可选依赖：`pip install networkx numpy scipy` 可预计算布局；无依赖时浏览器内 `cose` 布局。
+
+与 Obsidian Graph/Canvas 的关系：Obsidian 适合日常编辑与双向链接；brain-map HTML 适合演示、分享、时间轴回放，无需打开 Obsidian。
+
 ---
 
 ## 6. 编码注意（Windows）

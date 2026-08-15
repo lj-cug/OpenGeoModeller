@@ -75,6 +75,7 @@
 ## 相关文档
 
 - [学科关系图](./docs/学科关系图.md)
+- [交互式知识图谱 HTML](./docs/OpenGeoModeller-brain-map.html)
 - [文档整理备忘 (CLAUDE.md)](./docs/CLAUDE.md)
 - [hpc-base Markdown 规范](./docs/superpowers/specs/2026-08-14-hpc-base-markdown-design.md)
 - [非 hpc-base Markdown 规范](./docs/superpowers/specs/2026-08-14-non-hpc-base-markdown-design.md)

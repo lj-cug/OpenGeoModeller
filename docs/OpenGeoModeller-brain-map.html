@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knowledge Map</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
+<style>
+  :root{
+    --bg:#070b16; --panel:rgba(17,24,42,.82); --line:rgba(148,163,184,.14);
+    --ink:#e6edf6; --muted:#8aa0bd; --work:#38bdf8; --study:#a78bfa; --life:#fb923c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:
+     radial-gradient(1200px 800px at 20% -10%, rgba(56,189,248,.10), transparent 60%),
+     radial-gradient(1100px 700px at 100% 110%, rgba(167,139,250,.10), transparent 55%),
+     var(--bg); color:var(--ink);
+     font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,sans-serif;
+     overflow:hidden}
+  #cy{position:fixed;inset:0}
+  .glass{background:var(--panel);backdrop-filter:blur(12px);
+     border:1px solid var(--line);border-radius:16px;
+     box-shadow:0 10px 40px rgba(0,0,0,.45)}
+  /* header */
+  #top{position:fixed;left:18px;top:18px;display:flex;gap:16px;align-items:center;
+     padding:12px 16px;z-index:7;max-width:calc(100vw - 36px)}
+  #top .grp{display:flex;flex-direction:column;gap:2px;min-width:0}
+  #top h1{font-size:15px;margin:0;letter-spacing:.3px;font-weight:650;white-space:nowrap}
+  #top .sub{color:var(--muted);font-size:12px;white-space:nowrap}
+  #top #src{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11.5px;
+     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;max-width:46vw;overflow:hidden;
+     text-overflow:ellipsis;white-space:nowrap}
+  #top .vsep{width:1px;height:30px;background:var(--line)}
+  #top #counts{white-space:nowrap}
+  .chip{display:inline-flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+  .dot{width:9px;height:9px;border-radius:50%}
+  /* left controls */
+  #side{position:fixed;left:18px;top:86px;width:248px;padding:16px;z-index:6;
+     max-height:calc(100vh - 240px);display:flex;flex-direction:column;overflow:hidden}
+  .side-head{flex:0 0 auto}
+  .side-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+     margin:2px -6px 0 0;padding-right:6px}
+  #side h2{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);
+     margin:2px 0 10px}
+  #search{width:100%;padding:9px 12px;border-radius:10px;border:1px solid var(--line);
+     background:rgba(2,6,18,.6);color:var(--ink);outline:none;font-size:13px}
+  #search:focus{border-color:rgba(56,189,248,.55)}
+  .filter{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:9px;cursor:pointer;
+     user-select:none}
+  .filter:hover{background:rgba(148,163,184,.08)}
+  .filter .box{width:15px;height:15px;border-radius:4px;border:1px solid rgba(148,163,184,.5);
+     display:flex;align-items:center;justify-content:center;font-size:11px;color:#0b1020;
+     background:#cfe0f5;line-height:1}
+  .filter.off .box{background:transparent;color:transparent}
+  .filter.off{opacity:.5}
+  .filter .sw{width:11px;height:11px;border-radius:50%}
+  .filter .ct{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+  .sec{margin-top:18px}
+  .btn{display:block;width:100%;margin-top:8px;padding:9px;border-radius:10px;border:1px solid var(--line);
+     background:rgba(2,6,18,.5);color:var(--ink);cursor:pointer;font-size:13px}
+  .btn:hover{border-color:rgba(167,139,250,.5)}
+  .btnrow{display:flex;gap:8px;margin-top:8px}
+  .btnrow .btn{flex:1;margin-top:0}
+  .iconbtn{flex:0 0 38px;width:38px;margin-top:0;padding:0;display:flex;align-items:center;justify-content:center;
+     border-radius:10px;border:1px solid var(--line);background:rgba(2,6,18,.5);color:var(--ink);cursor:pointer}
+  .iconbtn:hover{border-color:rgba(167,139,250,.5)}
+  .iconbtn.off{opacity:.4}
+  .iconbtn svg{width:16px;height:16px;display:block}
+  /* detail */
+  #detail{position:fixed;right:18px;top:86px;width:330px;padding:16px;z-index:6;display:none;
+     max-height:calc(100vh - 240px);overflow-y:auto;overscroll-behavior:contain}
+  .side-scroll::-webkit-scrollbar,#detail::-webkit-scrollbar{width:8px}
+  .side-scroll::-webkit-scrollbar-thumb,#detail::-webkit-scrollbar-thumb{
+     background:rgba(148,163,184,.28);border-radius:8px}
+  .side-scroll::-webkit-scrollbar-track,#detail::-webkit-scrollbar-track{background:transparent}
+  #detail .t{font-size:16px;font-weight:650;margin:0 0 4px;line-height:1.3}
+  #detail .meta{color:var(--muted);font-size:12px;margin-bottom:12px}
+  #detail .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+  #detail .tag{font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(148,163,184,.12);
+     color:#cbd6e6}
+  #detail .sum{font-size:13px;color:#d4deec}
+  #detail .nb{margin-top:14px}
+  #detail .nb a{display:block;color:#9fc7ff;text-decoration:none;font-size:12.5px;
+     padding:4px 0;cursor:pointer}
+  #detail .nb a:hover{color:#cfe6ff}
+  #detail .close{position:absolute;right:14px;top:12px;color:var(--muted);cursor:pointer;font-size:18px}
+  /* timeline — full-width strip along the bottom; panels reserve room above it */
+  #tl{position:fixed;left:18px;right:18px;bottom:18px;height:120px;padding:12px 16px 4px;z-index:4}
+  #tl .head{display:flex;align-items:center;gap:14px;margin-bottom:0}
+  #tl .head .lab{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+  #tl .play{cursor:pointer;border:1px solid var(--line);background:rgba(2,6,18,.5);color:var(--ink);
+     border-radius:8px;padding:5px 14px;font-size:12px}
+  #tl .play:hover{border-color:rgba(167,139,250,.6)}
+  #tl .read{margin-left:auto;display:flex;gap:14px;align-items:baseline}
+  #tl .read .now{color:var(--ink);font-size:13px;font-variant-numeric:tabular-nums}
+  #tl .read .tot{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+  #tlchart{position:relative;width:100%;height:84px;cursor:ew-resize}
+  #tlsvg{width:100%;height:100%;display:block;touch-action:none}
+  #tltip{position:absolute;top:-2px;transform:translateX(-50%);pointer-events:none;display:none;
+     background:rgba(2,6,18,.94);border:1px solid var(--line);border-radius:8px;padding:6px 9px;
+     font-size:11px;white-space:nowrap;z-index:6;color:var(--ink)}
+  .hint{position:fixed;left:50%;bottom:150px;transform:translateX(-50%);color:var(--muted);
+     font-size:12px;z-index:4;pointer-events:none;opacity:.0;transition:opacity .4s}
+
+  /* ── mobile / narrow ─────────────────────────────────────────────── */
+  @media (max-width: 860px){
+    #top{left:10px;right:10px;top:10px;padding:10px 12px;gap:12px}
+    #top h1{font-size:14px}
+    #top #src{max-width:42vw;font-size:10.5px}
+    #top .vsep,#top #counts{display:none}
+    #side{left:10px;top:66px;width:min(240px,56vw);padding:12px;max-height:40vh}
+    #detail{left:10px;right:10px;top:66px;width:auto;padding:12px;max-height:calc(100vh - 204px)}
+    #tl{left:10px;right:10px;bottom:10px;height:104px;padding:10px 12px 2px}
+    #tlchart{height:72px}
+    .hint{display:none}
+  }
+  @media (max-width: 520px){
+    #top #src{display:none}
+    #side{width:64vw}
+    #tl .head .lab{display:none}
+  }
+</style></head>
+<body>
+<div id="cy"></div>
+
+<div id="top" class="glass">
+  <div class="grp">
+    <h1 id="ttl">Knowledge Map</h1>
+    <div id="src"></div>
+  </div>
+  <span class="vsep"></span>
+  <span class="sub" id="counts"></span>
+</div>
+
+<div id="side" class="glass">
+  <div class="side-head">
+    <h2>Search</h2>
+    <input id="search" placeholder="Filter nodes…" autocomplete="off">
+    <div class="btnrow">
+      <button class="btn" id="fit">Reset view</button>
+      <button class="iconbtn" id="toggleEdges" title="Toggle links" aria-label="Toggle links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><line x1="8.2" y1="10.9" x2="15.8" y2="7.1"/><line x1="8.2" y1="13.1" x2="15.8" y2="16.9"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="side-scroll">
+    <div class="sec"><h2>Themes</h2><div id="themeFilters"></div></div>
+    <div class="sec"><h2>Types</h2><div id="typeFilters"></div></div>
+  </div>
+</div>
+
+<div id="detail" class="glass">
+  <span class="close" id="dClose">×</span>
+  <p class="t" id="dT"></p>
+  <div class="meta" id="dM"></div>
+  <div class="tags" id="dTags"></div>
+  <div class="sum" id="dS"></div>
+  <div class="nb" id="dNb"></div>
+</div>
+
+<div id="tl" class="glass">
+  <div class="head">
+    <span class="lab">Timeline — cumulative</span>
+    <button class="play" id="play">▶ Play growth</button>
+    <span class="read"><span class="now" id="now"></span><span class="tot" id="tot"></span></span>
+  </div>
+  <div id="tlchart"><svg id="tlsvg"></svg><div id="tltip"></div></div>
+</div>
+<div class="hint" id="hint">drag the timeline to travel through time · ▶ Play to watch it grow</div>
+
+<script>
+const DATA = {"title": "OpenGeoModeller Knowledge Map", "nodes": [{"data": {"id": "2026-08-15", "title": "2026-08-15", "theme": "Other", "type": "note", "tags": [], "created": "2026-08-15T09:48:32", "summary": "已根据仓库 README「相关文档」与 `docs/学科关系图.md` 生成 Obsidian 笔记与 Canvas。 - 入口：MOC-OpenGeoModeller - Canvas：00-索引/OpenGeoModeller-知识图谱.canvas - 用法：知识图谱使用说明 已分析 `hpc-base/` Markdown 相互关系，并入 Obsidian： - MOC-hpc-base · hpc-base模块关系 - Canvas：04-hpc-base/hpc-base-知识图谱.canvas - 总 MOC 已更新：MOC-OpenGeo…", "path": "2026-08-15.md", "source": "", "deg": 1, "size": 16.4}, "position": {"x": -845.2, "y": 1500.0}}, {"data": {"id": "欢迎 · OpenGeoModeller Vault", "title": "欢迎 · OpenGeoModeller Vault", "theme": "Other", "type": "note", "tags": ["首页", "OpenGeoModeller"], "created": "2026-08-15T09:44:37", "summary": "本库（`osidian/`）镜像仓库 Markdown 学科关系，用于 **Obsidian 笔记 + 知识图谱可视化**。 → 从这里开始：MOC-OpenGeoModeller - 图谱总览：学科关系总览 - Canvas：00-索引/OpenGeoModeller-知识图谱.canvas - 用法：知识图谱使用说明", "path": "欢迎.md", "source": "", "deg": 2, "size": 18.8}, "position": {"x": -1730.9, "y": 737.5}}, {"data": {"id": "MOC · OpenGeoModeller", "title": "MOC · OpenGeoModeller", "theme": "00-索引", "type": "index", "tags": ["MOC", "索引", "OpenGeoModeller"], "created": "2026-08-15T09:48:49", "summary": "基于仓库根 `README.md`（仓库） 与 `docs/学科关系图.md`（仓库） 建立的 Obsidian 知识图谱入口。 1. 打开本笔记后，用左侧 **关系图谱**（Graph view）查看全局双向链接。 2. 打开 00-索引/OpenGeoModeller-知识图谱.canvas Canvas，查看分层布局的知识图谱。 3. 图谱按标签着色：枢纽 / 学科 / 主题簇 / hpc-base模块。 4. hpc-base 分层 Canvas：04-hpc-base/hpc-base-知识图谱.canvas。 - hpc-base — 算力基…", "path": "00-索引\\MOC-OpenGeoModeller.md", "source": "", "deg": 33, "size": 93.2}, "position": {"x": 93.7, "y": -661.8}}, {"data": {"id": "学科关系总览", "title": "学科关系总览", "theme": "00-索引", "type": "note", "tags": ["说明", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "数据来源：`docs/学科关系图.md` + 各学科 README「相关文档」链接。 | 层次 | 含义 | |------|------| | 工作流依赖 | 前处理 → 模拟 → 耦合 → 后处理；hpc-base 贯穿 | | 显式超链接 | README 相对路径；本库用 `wikilink` 镜像 | | 内容主题耦合 | 正文点名；见 `主题-*` 笔记 | ```mermaid flowchart TB subgraph infra [基础设施] HPC[hpc-base] MESH[Meshing] VIZ[VirtualReality]…", "path": "00-索引\\学科关系总览.md", "source": "", "deg": 36, "size": 100.39999999999999}, "position": {"x": -566.3, "y": -213.9}}, {"data": {"id": "知识图谱使用说明", "title": "知识图谱使用说明", "theme": "00-索引", "type": "note", "tags": ["说明", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "1. `Ctrl/Cmd + G` 或点击左侧「关系图谱」。 2. 过滤可试：`tag:#枢纽` 或 `tag:#学科` 或 `tag:#主题簇`。 3. 开启「箭头」更易看依赖方向（设置里 Display → Arrows）。 打开 00-索引/OpenGeoModeller-知识图谱.canvas：按大气 / 水圈 / 固体地球 / 枢纽分层摆放，边对应 README 相关文档关系。 | Obsidian | 仓库 | |----------|------| | 本库笔记 `学科名` | `学科名/README.md` | | 学科关系总览 | `d…", "path": "00-索引\\知识图谱使用说明.md", "source": "", "deg": 4, "size": 23.6}, "position": {"x": -596.2, "y": 566.1}}, {"data": {"id": "Geological-Modelling", "title": "Geological-Modelling", "theme": "01-学科", "type": "note", "tags": ["学科", "地质建模", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "地震解释与隐式地质建模：OpendTect、GemPy、LoopStructural 等。 Geophysics · Meshing Underground - hpc-base OpendTect, GemPy, LoopStructural, JTK - Meshing · VirtualReality · ESM-Coupler - `Geological-Modelling/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\Geological-Modelling.md", "source": "", "deg": 13, "size": 45.2}, "position": {"x": 15.9, "y": -133.5}}, {"data": {"id": "Geophysics", "title": "Geophysics", "theme": "01-学科", "type": "note", "tags": ["学科", "地球物理", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "正演/反演/FWI：OpenSWPC、Seissol、Devito、JUDI、spyro 等。 Meshing Geological-Modelling · SurfaceWater（Firedrake） - hpc-base OpenSWPC, Devito, JUDI, spyro, Seissol - Meshing · VirtualReality · ESM-Coupler - `Geophysics/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\Geophysics.md", "source": "", "deg": 18, "size": 57.199999999999996}, "position": {"x": -776.0, "y": -861.8}}, {"data": {"id": "GroundWater", "title": "GroundWater", "theme": "01-学科", "type": "note", "tags": ["学科", "地下水", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "地下水专题薄入口；实体文档主要在 Underground / Hydrology。 — Underground · Hydrology - hpc-base （入口说明） - Meshing · VirtualReality · ESM-Coupler - `GroundWater/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\GroundWater.md", "source": "", "deg": 13, "size": 45.2}, "position": {"x": -1304.0, "y": -321.6}}, {"data": {"id": "Hemodynamics", "title": "Hemodynamics", "theme": "01-学科", "type": "note", "tags": ["学科", "血液动力学", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "心血管血液动力学 CFD：SimVascular、lifex-cfd、OasisMove。 Meshing · Turbulence VirtualReality - hpc-base SimVascular, lifex-cfd, OasisMove - Meshing · VirtualReality · ESM-Coupler - `Hemodynamics/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\Hemodynamics.md", "source": "", "deg": 14, "size": 47.6}, "position": {"x": 1018.0, "y": -339.6}}, {"data": {"id": "Hydrology", "title": "Hydrology", "theme": "01-学科", "type": "note", "tags": ["学科", "水文", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "分布式水文及耦合：PIHM、ParFLOW、GSFLOW、CHM、WRF-Hydro 等。 Meteorology · Meshing Underground · GroundWater - hpc-base PIHM, SHUD, ParFLOW, GSFLOW, WRF-Hydro - Meshing · VirtualReality · ESM-Coupler - `Hydrology/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\Hydrology.md", "source": "", "deg": 18, "size": 57.199999999999996}, "position": {"x": -895.8, "y": -621.4}}, {"data": {"id": "Meteorology", "title": "Meteorology", "theme": "01-学科", "type": "note", "tags": ["学科", "大气", "NWP", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "数值气象预报：WRF、RegCM、MPAS、HWRF、NCL、GEE。 — Hydrology · SurfaceWater · ESM-Coupler - hpc-base WRFV4, RegCM4, MPAS, HWRF4 - Meshing · VirtualReality · ESM-Coupler - `Meteorology/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\Meteorology.md", "source": "", "deg": 17, "size": 54.8}, "position": {"x": -1344.3, "y": -661.5}}, {"data": {"id": "ShallowWater", "title": "ShallowWater", "theme": "01-学科", "type": "note", "tags": ["学科", "浅水", "洪水", "OpenGeoModeller"], "created": "2026-08-15T09:44:30", "summary": "浅水方程：Triton、Volna-OP2、Titan2d、BASEMENT 等。 Meshing · SurfaceWater Turbulence（对照） - hpc-base TRITON, Volna-OP2, Titan2d, BASEMENT - Meshing · VirtualReality · ESM-Coupler - `ShallowWater/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\ShallowWater.md", "source": "", "deg": 16, "size": 52.4}, "position": {"x": 881.0, "y": -657.4}}, {"data": {"id": "SurfaceWater", "title": "SurfaceWater", "theme": "01-学科", "type": "note", "tags": ["学科", "地表水", "海洋", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "河流/海洋模式：SCHISM、telemac、ROMS、CROCO、Firedrake 等。 Meshing · Meteorology ESM-Coupler · ShallowWater · VirtualReality；Firedrake ↔ Geophysics - hpc-base SCHISM, ROMS, CROCO, telemac, Firedrake, ADCIRC - Meshing · VirtualReality · ESM-Coupler - `SurfaceWater/`（仓库） - `README.md`（仓库） - MO…", "path": "01-学科\\SurfaceWater.md", "source": "", "deg": 26, "size": 76.4}, "position": {"x": -315.4, "y": -783.7}}, {"data": {"id": "Turbulence", "title": "Turbulence", "theme": "01-学科", "type": "note", "tags": ["学科", "湍流", "CFD", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "高精度湍流与 CFD：OpenFOAM、GOTM、SU2、DAFOAM 等。 hpc-base Underground · Hemodynamics · ShallowWater · VirtualReality - hpc-base OpenFOAM, GOTM, SU2, DAFOAM - Meshing · VirtualReality · ESM-Coupler - `Turbulence/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "01-学科\\Turbulence.md", "source": "", "deg": 19, "size": 59.6}, "position": {"x": 1234.9, "y": -499.2}}, {"data": {"id": "Underground", "title": "Underground", "theme": "01-学科", "type": "note", "tags": ["学科", "地下", "多孔介质", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "多孔介质/地下水/油藏：MODFLOW6、OPM、DuMux、GEOSX、waiwera 等。 Meshing · Hydrology · Geological-Modelling GroundWater · Turbulence（OpenFOAM） - hpc-base MODFLOW6, OPM, DuMux, GEOSX, OpenGeoSys - Meshing · VirtualReality · ESM-Coupler - `Underground/`（仓库） - `README.md`（仓库） - MOC-OpenGeoModeller ·…", "path": "01-学科\\Underground.md", "source": "", "deg": 24, "size": 71.6}, "position": {"x": 436.8, "y": -452.0}}, {"data": {"id": "ESM-Coupler", "title": "ESM-Coupler", "theme": "02-枢纽", "type": "note", "tags": ["枢纽", "耦合", "学科", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "区域地球系统模式与耦合器（ESMF、BMI、OASIS、RegESM、COAWST 等）。 - Meteorology（WRF / RegCM / HWRF） - SurfaceWater（ROMS / CROCO / WW3 / MITGcm） - VirtualReality（Catalyst 原位可视化） - 主题-ESM大气海洋 - hpc-base - `ESM-Coupler/`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "02-枢纽\\ESM-Coupler.md", "source": "", "deg": 22, "size": 66.8}, "position": {"x": -673.7, "y": -415.8}}, {"data": {"id": "hpc-base", "title": "hpc-base", "theme": "02-枢纽", "type": "note", "tags": ["枢纽", "基座", "学科", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "算力与软件栈基座：编译器、MPI、PETSc、CUDA、容器、DSL。几乎所有学科入口的「相关文档」都链到本模块。 → MOC-hpc-base · hpc-base模块关系 · 04-hpc-base/hpc-base-知识图谱.canvas | 分层 | 模块 | |------|------| | 运行环境 | Cluster-DIY | | 构建 / 语言 | Build · Language · garbage | | 并行加速 | CUDA · OpenCL · MPI | | 求解 / IO | Linear_Solver · HPC-IO…", "path": "02-枢纽\\hpc-base.md", "source": "", "deg": 53, "size": 110.0}, "position": {"x": 229.7, "y": -849.3}}, {"data": {"id": "Meshing", "title": "Meshing", "theme": "02-枢纽", "type": "note", "tags": ["枢纽", "前处理", "学科", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "网格前处理枢纽：服务地表水 `.gr3`、水文三角网、地下 USG/角点、地球物理 SeismicMesh 等。 - SurfaceWater（SCHISM / ADCIRC / OCSMesh / ACE-tools） - Hydrology（PIHM / mesher） - Underground（MODFLOW-USG / Corner-Point） - Geophysics（SeismicMesh / spyro） - Geological-Modelling - hpc-base - 主题-网格与SCHISM族 - `Meshing/`（仓库）…", "path": "02-枢纽\\Meshing.md", "source": "", "deg": 23, "size": 69.19999999999999}, "position": {"x": -58.0, "y": -330.8}}, {"data": {"id": "VirtualReality", "title": "VirtualReality", "theme": "02-枢纽", "type": "note", "tags": ["枢纽", "后处理", "学科", "OpenGeoModeller"], "created": "2026-08-15T09:43:59", "summary": "后处理与原位可视化：ParaView、Catalyst、VisIt、AR-Sandbox、OpenGL 等。 - SurfaceWater Turbulence ESM-Coupler Underground Hemodynamics - ESM-Coupler（RegESM + Catalyst） - 主题-原位可视化 - hpc-base - `VirtualReality/`（仓库） - MOC-OpenGeoModeller · 学科关系总览", "path": "02-枢纽\\VirtualReality.md", "source": "", "deg": 29, "size": 83.6}, "position": {"x": -123.4, "y": -531.1}}, {"data": {"id": "主题-ESM大气海洋", "title": "主题-ESM大气海洋", "theme": "03-主题", "type": "note", "tags": ["主题簇", "OpenGeoModeller"], "created": "2026-08-15T09:43:19", "summary": "内容耦合最密区：WRF / ROMS / CROCO / RegCM 在 ESM-Coupler 正文中高频共现。 - Meteorology ↔ ESM-Coupler ↔ SurfaceWater - 可视化：VirtualReality（Catalyst） - ESM ↔ Meteorology/WRFV4、SurfaceWater/ROMS、CROCO、WaveWatch-III - MOC-OpenGeoModeller · 学科关系总览", "path": "03-主题\\主题-ESM大气海洋.md", "source": "", "deg": 7, "size": 30.8}, "position": {"x": -2100.0, "y": -500.1}}, {"data": {"id": "主题-Firedrake与FWI", "title": "主题-Firedrake与FWI", "theme": "03-主题", "type": "note", "tags": ["主题簇", "OpenGeoModeller"], "created": "2026-08-15T09:43:19", "summary": "DSL / 有限元共享：Firedrake（SurfaceWater）与 spyro / Devito / JUDI（Geophysics）。 - SurfaceWater ↔ Geophysics - hpc-base（DSL 相关） - MOC-OpenGeoModeller · 学科关系总览", "path": "03-主题\\主题-Firedrake与FWI.md", "source": "", "deg": 5, "size": 26.0}, "position": {"x": -1946.1, "y": -878.7}}, {"data": {"id": "主题-OpenFOAM族", "title": "主题-OpenFOAM族", "theme": "03-主题", "type": "note", "tags": ["主题簇", "OpenGeoModeller"], "created": "2026-08-15T09:43:19", "summary": "OpenFOAM 生态向多孔介质与专用求解器延伸。 - Turbulence ↔ Underground（porousMultiphaseFoam） - Hemodynamics · VirtualReality - MOC-OpenGeoModeller · 学科关系总览", "path": "03-主题\\主题-OpenFOAM族.md", "source": "", "deg": 6, "size": 28.4}, "position": {"x": 982.7, "y": 19.7}}, {"data": {"id": "主题-原位可视化", "title": "主题-原位可视化", "theme": "03-主题", "type": "note", "tags": ["主题簇", "OpenGeoModeller"], "created": "2026-08-15T09:43:19", "summary": "ParaView / Catalyst 广布；RegESM 等 ESM 在线可视化。 - VirtualReality ↔ ESM-Coupler - 各模拟学科输出 → 后处理 - MOC-OpenGeoModeller · 学科关系总览", "path": "03-主题\\主题-原位可视化.md", "source": "", "deg": 5, "size": 26.0}, "position": {"x": -2061.6, "y": -130.4}}, {"data": {"id": "主题-水文与地下水", "title": "主题-水文与地下水", "theme": "03-主题", "type": "note", "tags": ["主题簇", "OpenGeoModeller"], "created": "2026-08-15T09:43:19", "summary": "MODFLOW 族与水文耦合；WRF-Hydro 连接大气强迫。 - Hydrology ↔ Underground ↔ GroundWater - Meteorology → Hydrology（WRF-Hydro） - Meshing（MODFLOW-USG 网格） - MOC-OpenGeoModeller · 学科关系总览", "path": "03-主题\\主题-水文与地下水.md", "source": "", "deg": 7, "size": 30.8}, "position": {"x": -1260.8, "y": -85.4}}, {"data": {"id": "主题-网格与SCHISM族", "title": "主题-网格与SCHISM族", "theme": "03-主题", "type": "note", "tags": ["主题簇", "OpenGeoModeller"], "created": "2026-08-15T09:43:19", "summary": "SCHISM / ADCIRC 与 Meshing（`.gr3`、ACE-tools、OCSMesh、OceanMesh2D）强耦合。 - Meshing ↔ SurfaceWater - 对照：ShallowWater - MOC-OpenGeoModeller · 学科关系总览", "path": "03-主题\\主题-网格与SCHISM族.md", "source": "", "deg": 6, "size": 28.4}, "position": {"x": 1373.6, "y": -157.6}}, {"data": {"id": "Build", "title": "Build", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "构建与容器", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "Makefile/CMake/SCons/Meson、编译器、Docker/Singularity/Spack、OneAPI。 构建与容器（见 hpc-base模块关系） Language · CUDA · Cluster-DIY · Linear_Solver · HPX - hpc-base Turbulence · Underground · SurfaceWater Docker, CMake, Makefile, Spack, Singularity, Meson, Compiler, OneAPI `hpc-base/Build/` - MO…", "path": "04-hpc-base\\Build.md", "source": "", "deg": 22, "size": 66.8}, "position": {"x": 1080.6, "y": -1115.1}}, {"data": {"id": "Cluster-DIY", "title": "Cluster-DIY", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "运行环境", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "自建集群硬件与配置：SSH、NFS、Slurm、监控等。 运行环境（见 hpc-base模块关系） MPI · Build · garbage · CUDA - hpc-base 各学科集群部署 Cluster-Build, Cluster-Configuration `hpc-base/Cluster-DIY/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\Cluster-DIY.md", "source": "", "deg": 12, "size": 42.8}, "position": {"x": 1119.9, "y": -1500.0}}, {"data": {"id": "CUDA", "title": "CUDA", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "并行与加速", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "CUDA 基础、GPUDirect、代码样例、NVHPC、Ubuntu-GPU。 并行与加速（见 hpc-base模块关系） MPI · HPC-IO · Linear_Solver · OpenCL · Build - hpc-base ShallowWater · VirtualReality · Turbulence · Underground CUDA_Basics, GPUDirect, CUDA-code-samples, NVHPC, Ubuntu-GPU `hpc-base/CUDA/` - MOC-hpc-base · MOC-Open…", "path": "04-hpc-base\\CUDA.md", "source": "", "deg": 20, "size": 62.0}, "position": {"x": 1384.5, "y": -985.5}}, {"data": {"id": "DSL", "title": "DSL", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "高层抽象", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "OP2 / Devito / Firedrake 等特定域语言导读。 高层抽象（见 hpc-base模块关系） Language · Build · Linear_Solver - hpc-base SurfaceWater（Firedrake） · Geophysics（Devito/spyro） · ShallowWater（OP2/Volna） OP2 `hpc-base/DSL/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\DSL.md", "source": "", "deg": 13, "size": 45.2}, "position": {"x": 80.0, "y": -1206.0}}, {"data": {"id": "garbage", "title": "garbage", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "归档", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "Linux / git / markdown 等运维备忘；**非主线**，归档向。 归档（见 hpc-base模块关系） Cluster-DIY · Build - hpc-base — git, markdown, Ubuntu 备忘 `hpc-base/garbage/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\garbage.md", "source": "", "deg": 8, "size": 33.2}, "position": {"x": 2100.0, "y": -1268.6}}, {"data": {"id": "hpc-base 模块关系", "title": "hpc-base 模块关系", "theme": "04-hpc-base", "type": "note", "tags": ["说明", "hpc-base模块", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "依据 `hpc-base/README.md` 与 `docs/superpowers/specs/2026-08-14-hpc-base-markdown-design.md`，以及各一级模块 README「相关文档」。 ```mermaid flowchart TB cluster[Cluster-DIY] build[Build] lang[Language] garbage[garbage 非主线] parallel[CUDA / OpenCL / MPI] solver[Linear_Solver] io[HPC-IO] dsl[DSL / H…", "path": "04-hpc-base\\hpc-base模块关系.md", "source": "", "deg": 14, "size": 47.6}, "position": {"x": 839.6, "y": -1278.2}}, {"data": {"id": "HPC-IO", "title": "HPC-IO", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "IO", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "HDF5 / NetCDF / VTK；GDS 与 CUDA/GPUDirect Storage 相关。 IO（见 hpc-base模块关系） CUDA · MPI · Build - hpc-base Meteorology · SurfaceWater · VirtualReality HDF5, NetCDF4, VTK `hpc-base/HPC-IO/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\HPC-IO.md", "source": "", "deg": 13, "size": 45.2}, "position": {"x": -463.6, "y": -1146.5}}, {"data": {"id": "HPX", "title": "HPX", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "高层抽象", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "HPX 异步并行运行时：编译与应用导读。 高层抽象（见 hpc-base模块关系） Build · Language · MPI - hpc-base C++ 高性能应用（对照学科 CFD） — `hpc-base/HPX/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\HPX.md", "source": "", "deg": 10, "size": 38.0}, "position": {"x": 1433.8, "y": -1423.5}}, {"data": {"id": "Language", "title": "Language", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "构建与容器", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "R / Python / Julia / Java 与混编（Fortran-C/C++ 等）。 构建与容器（见 hpc-base模块关系） Build · MPI · DSL · HPX - hpc-base Geophysics（Julia/JUDI） · Hydrology（Python） Python, R, julia, Java, Mixed-Programming `hpc-base/Language/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\Language.md", "source": "", "deg": 15, "size": 50.0}, "position": {"x": -360.2, "y": -1348.7}}, {"data": {"id": "Linear_Solver", "title": "Linear_Solver", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "求解器", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "AmgX / AmgCL / PETSc / Trilinos / paralution；AmgX↔CUDA，AmgCL↔OpenCL，PETSc↔MPI。 求解器（见 hpc-base模块关系） CUDA · OpenCL · MPI · Build · DSL - hpc-base Underground · SurfaceWater · Hemodynamics · Hydrology PETSc, AmgX, AmgCL, Trilinos, paralution `hpc-base/Linear_Solver/` - MOC-hpc-base …", "path": "04-hpc-base\\Linear_Solver.md", "source": "", "deg": 19, "size": 59.6}, "position": {"x": 1052.4, "y": -876.9}}, {"data": {"id": "MOC · hpc-base", "title": "MOC · hpc-base", "theme": "04-hpc-base", "type": "index", "tags": ["MOC", "hpc-base模块", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "高性能计算基座文档图谱。上级枢纽：hpc-base。总库入口：MOC-OpenGeoModeller。 1. 关系图谱过滤：`tag:#hpc-base模块` 2. Canvas：04-hpc-base/hpc-base-知识图谱.canvas 3. 文字关系：hpc-base模块关系 - Cluster-DIY - Build · Language · garbage（非主线） - CUDA · OpenCL · MPI - Linear_Solver · HPC-IO - DSL · HPX - DSL → SurfaceWater · Geophy…", "path": "04-hpc-base\\MOC-hpc-base.md", "source": "", "deg": 20, "size": 62.0}, "position": {"x": 600.8, "y": -1003.2}}, {"data": {"id": "MPI", "title": "MPI", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "并行与加速", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "OpenMPI/MPICH、InfiniBand、CUDA-aware MPI（MPI-GPUDirect）。 并行与加速（见 hpc-base模块关系） CUDA · Cluster-DIY · Linear_Solver · Language · HPC-IO - hpc-base 几乎所有并行学科模式 MPI-GPUDirect, Infiniband-NIC `hpc-base/MPI/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\MPI.md", "source": "", "deg": 16, "size": 52.4}, "position": {"x": 423.5, "y": -1444.6}}, {"data": {"id": "OpenCL", "title": "OpenCL", "theme": "04-hpc-base", "type": "note", "tags": ["hpc-base模块", "并行与加速", "OpenGeoModeller"], "created": "2026-08-15T09:48:32", "summary": "跨厂商 GPGPU；与 AmgCL 等求解栈协作。 并行与加速（见 hpc-base模块关系） CUDA · Linear_Solver · Build - hpc-base VirtualReality（OpenCL–OpenGL） — `hpc-base/OpenCL/` - MOC-hpc-base · MOC-OpenGeoModeller · hpc-base模块关系", "path": "04-hpc-base\\OpenCL.md", "source": "", "deg": 11, "size": 40.4}, "position": {"x": 2023.2, "y": -885.3}}], "edges": [{"data": {"id": "e0", "source": "2026-08-15", "target": "知识图谱使用说明", "theme": "Other"}}, {"data": {"id": "e1", "source": "欢迎 · OpenGeoModeller Vault", "target": "学科关系总览", "theme": "Other"}}, {"data": {"id": "e2", "source": "欢迎 · OpenGeoModeller Vault", "target": "知识图谱使用说明", "theme": "Other"}}, {"data": {"id": "e3", "source": "MOC · OpenGeoModeller", "target": "hpc-base", "theme": "00-索引"}}, {"data": {"id": "e4", "source": "MOC · OpenGeoModeller", "target": "Meshing", "theme": "00-索引"}}, {"data": {"id": "e5", "source": "MOC · OpenGeoModeller", "target": "VirtualReality", "theme": "00-索引"}}, {"data": {"id": "e6", "source": "MOC · OpenGeoModeller", "target": "ESM-Coupler", "theme": "00-索引"}}, {"data": {"id": "e7", "source": "MOC · OpenGeoModeller", "target": "Meteorology", "theme": "00-索引"}}, {"data": {"id": "e8", "source": "MOC · OpenGeoModeller", "target": "Hydrology", "theme": "00-索引"}}, {"data": {"id": "e9", "source": "MOC · OpenGeoModeller", "target": "SurfaceWater", "theme": "00-索引"}}, {"data": {"id": "e10", "source": "MOC · OpenGeoModeller", "target": "ShallowWater", "theme": "00-索引"}}, {"data": {"id": "e11", "source": "MOC · OpenGeoModeller", "target": "Underground", "theme": "00-索引"}}, {"data": {"id": "e12", "source": "MOC · OpenGeoModeller", "target": "GroundWater", "theme": "00-索引"}}, {"data": {"id": "e13", "source": "MOC · OpenGeoModeller", "target": "Geophysics", "theme": "00-索引"}}, {"data": {"id": "e14", "source": "MOC · OpenGeoModeller", "target": "Geological-Modelling", "theme": "00-索引"}}, {"data": {"id": "e15", "source": "MOC · OpenGeoModeller", "target": "Turbulence", "theme": "00-索引"}}, {"data": {"id": "e16", "source": "MOC · OpenGeoModeller", "target": "Hemodynamics", "theme": "00-索引"}}, {"data": {"id": "e17", "source": "MOC · OpenGeoModeller", "target": "主题-ESM大气海洋", "theme": "00-索引"}}, {"data": {"id": "e18", "source": "MOC · OpenGeoModeller", "target": "主题-水文与地下水", "theme": "00-索引"}}, {"data": {"id": "e19", "source": "MOC · OpenGeoModeller", "target": "主题-网格与SCHISM族", "theme": "00-索引"}}, {"data": {"id": "e20", "source": "MOC · OpenGeoModeller", "target": "主题-Firedrake与FWI", "theme": "00-索引"}}, {"data": {"id": "e21", "source": "MOC · OpenGeoModeller", "target": "主题-OpenFOAM族", "theme": "00-索引"}}, {"data": {"id": "e22", "source": "MOC · OpenGeoModeller", "target": "主题-原位可视化", "theme": "00-索引"}}, {"data": {"id": "e23", "source": "MOC · OpenGeoModeller", "target": "Cluster-DIY", "theme": "00-索引"}}, {"data": {"id": "e24", "source": "MOC · OpenGeoModeller", "target": "Build", "theme": "00-索引"}}, {"data": {"id": "e25", "source": "MOC · OpenGeoModeller", "target": "Language", "theme": "00-索引"}}, {"data": {"id": "e26", "source": "MOC · OpenGeoModeller", "target": "CUDA", "theme": "00-索引"}}, {"data": {"id": "e27", "source": "MOC · OpenGeoModeller", "target": "OpenCL", "theme": "00-索引"}}, {"data": {"id": "e28", "source": "MOC · OpenGeoModeller", "target": "MPI", "theme": "00-索引"}}, {"data": {"id": "e29", "source": "MOC · OpenGeoModeller", "target": "Linear_Solver", "theme": "00-索引"}}, {"data": {"id": "e30", "source": "MOC · OpenGeoModeller", "target": "HPC-IO", "theme": "00-索引"}}, {"data": {"id": "e31", "source": "MOC · OpenGeoModeller", "target": "DSL", "theme": "00-索引"}}, {"data": {"id": "e32", "source": "MOC · OpenGeoModeller", "target": "HPX", "theme": "00-索引"}}, {"data": {"id": "e33", "source": "MOC · OpenGeoModeller", "target": "garbage", "theme": "00-索引"}}, {"data": {"id": "e34", "source": "MOC · OpenGeoModeller", "target": "学科关系总览", "theme": "00-索引"}}, {"data": {"id": "e35", "source": "MOC · OpenGeoModeller", "target": "知识图谱使用说明", "theme": "00-索引"}}, {"data": {"id": "e36", "source": "学科关系总览", "target": "hpc-base", "theme": "00-索引"}}, {"data": {"id": "e37", "source": "学科关系总览", "target": "Meteorology", "theme": "00-索引"}}, {"data": {"id": "e38", "source": "学科关系总览", "target": "ESM-Coupler", "theme": "00-索引"}}, {"data": {"id": "e39", "source": "学科关系总览", "target": "SurfaceWater", "theme": "00-索引"}}, {"data": {"id": "e40", "source": "学科关系总览", "target": "Hydrology", "theme": "00-索引"}}, {"data": {"id": "e41", "source": "学科关系总览", "target": "Underground", "theme": "00-索引"}}, {"data": {"id": "e42", "source": "学科关系总览", "target": "GroundWater", "theme": "00-索引"}}, {"data": {"id": "e43", "source": "学科关系总览", "target": "Meshing", "theme": "00-索引"}}, {"data": {"id": "e44", "source": "学科关系总览", "target": "Geophysics", "theme": "00-索引"}}, {"data": {"id": "e45", "source": "学科关系总览", "target": "Geological-Modelling", "theme": "00-索引"}}, {"data": {"id": "e46", "source": "学科关系总览", "target": "Turbulence", "theme": "00-索引"}}, {"data": {"id": "e47", "source": "学科关系总览", "target": "Hemodynamics", "theme": "00-索引"}}, {"data": {"id": "e48", "source": "学科关系总览", "target": "VirtualReality", "theme": "00-索引"}}, {"data": {"id": "e49", "source": "知识图谱使用说明", "target": "学科关系总览", "theme": "00-索引"}}, {"data": {"id": "e50", "source": "Geological-Modelling", "target": "Geophysics", "theme": "01-学科"}}, {"data": {"id": "e51", "source": "Geological-Modelling", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e52", "source": "Geological-Modelling", "target": "Underground", "theme": "01-学科"}}, {"data": {"id": "e53", "source": "Geological-Modelling", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e54", "source": "Geological-Modelling", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e55", "source": "Geological-Modelling", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e56", "source": "Geological-Modelling", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e57", "source": "Geophysics", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e58", "source": "Geophysics", "target": "Geological-Modelling", "theme": "01-学科"}}, {"data": {"id": "e59", "source": "Geophysics", "target": "SurfaceWater", "theme": "01-学科"}}, {"data": {"id": "e60", "source": "Geophysics", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e61", "source": "Geophysics", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e62", "source": "Geophysics", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e63", "source": "Geophysics", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e64", "source": "GroundWater", "target": "Underground", "theme": "01-学科"}}, {"data": {"id": "e65", "source": "GroundWater", "target": "Hydrology", "theme": "01-学科"}}, {"data": {"id": "e66", "source": "GroundWater", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e67", "source": "GroundWater", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e68", "source": "GroundWater", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e69", "source": "GroundWater", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e70", "source": "GroundWater", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e71", "source": "Hemodynamics", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e72", "source": "Hemodynamics", "target": "Turbulence", "theme": "01-学科"}}, {"data": {"id": "e73", "source": "Hemodynamics", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e74", "source": "Hemodynamics", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e75", "source": "Hemodynamics", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e76", "source": "Hemodynamics", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e77", "source": "Hydrology", "target": "Meteorology", "theme": "01-学科"}}, {"data": {"id": "e78", "source": "Hydrology", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e79", "source": "Hydrology", "target": "Underground", "theme": "01-学科"}}, {"data": {"id": "e80", "source": "Hydrology", "target": "GroundWater", "theme": "01-学科"}}, {"data": {"id": "e81", "source": "Hydrology", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e82", "source": "Hydrology", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e83", "source": "Hydrology", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e84", "source": "Hydrology", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e85", "source": "Meteorology", "target": "Hydrology", "theme": "01-学科"}}, {"data": {"id": "e86", "source": "Meteorology", "target": "SurfaceWater", "theme": "01-学科"}}, {"data": {"id": "e87", "source": "Meteorology", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e88", "source": "Meteorology", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e89", "source": "Meteorology", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e90", "source": "Meteorology", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e91", "source": "Meteorology", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e92", "source": "ShallowWater", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e93", "source": "ShallowWater", "target": "SurfaceWater", "theme": "01-学科"}}, {"data": {"id": "e94", "source": "ShallowWater", "target": "Turbulence", "theme": "01-学科"}}, {"data": {"id": "e95", "source": "ShallowWater", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e96", "source": "ShallowWater", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e97", "source": "ShallowWater", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e98", "source": "ShallowWater", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e99", "source": "SurfaceWater", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e100", "source": "SurfaceWater", "target": "Meteorology", "theme": "01-学科"}}, {"data": {"id": "e101", "source": "SurfaceWater", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e102", "source": "SurfaceWater", "target": "ShallowWater", "theme": "01-学科"}}, {"data": {"id": "e103", "source": "SurfaceWater", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e104", "source": "SurfaceWater", "target": "Geophysics", "theme": "01-学科"}}, {"data": {"id": "e105", "source": "SurfaceWater", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e106", "source": "SurfaceWater", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e107", "source": "Turbulence", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e108", "source": "Turbulence", "target": "Underground", "theme": "01-学科"}}, {"data": {"id": "e109", "source": "Turbulence", "target": "Hemodynamics", "theme": "01-学科"}}, {"data": {"id": "e110", "source": "Turbulence", "target": "ShallowWater", "theme": "01-学科"}}, {"data": {"id": "e111", "source": "Turbulence", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e112", "source": "Turbulence", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e113", "source": "Turbulence", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e114", "source": "Turbulence", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e115", "source": "Underground", "target": "Meshing", "theme": "01-学科"}}, {"data": {"id": "e116", "source": "Underground", "target": "Hydrology", "theme": "01-学科"}}, {"data": {"id": "e117", "source": "Underground", "target": "Geological-Modelling", "theme": "01-学科"}}, {"data": {"id": "e118", "source": "Underground", "target": "GroundWater", "theme": "01-学科"}}, {"data": {"id": "e119", "source": "Underground", "target": "Turbulence", "theme": "01-学科"}}, {"data": {"id": "e120", "source": "Underground", "target": "hpc-base", "theme": "01-学科"}}, {"data": {"id": "e121", "source": "Underground", "target": "VirtualReality", "theme": "01-学科"}}, {"data": {"id": "e122", "source": "Underground", "target": "ESM-Coupler", "theme": "01-学科"}}, {"data": {"id": "e123", "source": "Underground", "target": "学科关系总览", "theme": "01-学科"}}, {"data": {"id": "e124", "source": "ESM-Coupler", "target": "Meteorology", "theme": "02-枢纽"}}, {"data": {"id": "e125", "source": "ESM-Coupler", "target": "SurfaceWater", "theme": "02-枢纽"}}, {"data": {"id": "e126", "source": "ESM-Coupler", "target": "VirtualReality", "theme": "02-枢纽"}}, {"data": {"id": "e127", "source": "ESM-Coupler", "target": "主题-ESM大气海洋", "theme": "02-枢纽"}}, {"data": {"id": "e128", "source": "ESM-Coupler", "target": "hpc-base", "theme": "02-枢纽"}}, {"data": {"id": "e129", "source": "ESM-Coupler", "target": "学科关系总览", "theme": "02-枢纽"}}, {"data": {"id": "e130", "source": "hpc-base", "target": "Cluster-DIY", "theme": "02-枢纽"}}, {"data": {"id": "e131", "source": "hpc-base", "target": "Build", "theme": "02-枢纽"}}, {"data": {"id": "e132", "source": "hpc-base", "target": "Language", "theme": "02-枢纽"}}, {"data": {"id": "e133", "source": "hpc-base", "target": "garbage", "theme": "02-枢纽"}}, {"data": {"id": "e134", "source": "hpc-base", "target": "CUDA", "theme": "02-枢纽"}}, {"data": {"id": "e135", "source": "hpc-base", "target": "OpenCL", "theme": "02-枢纽"}}, {"data": {"id": "e136", "source": "hpc-base", "target": "MPI", "theme": "02-枢纽"}}, {"data": {"id": "e137", "source": "hpc-base", "target": "Linear_Solver", "theme": "02-枢纽"}}, {"data": {"id": "e138", "source": "hpc-base", "target": "HPC-IO", "theme": "02-枢纽"}}, {"data": {"id": "e139", "source": "hpc-base", "target": "DSL", "theme": "02-枢纽"}}, {"data": {"id": "e140", "source": "hpc-base", "target": "HPX", "theme": "02-枢纽"}}, {"data": {"id": "e141", "source": "hpc-base", "target": "Meteorology", "theme": "02-枢纽"}}, {"data": {"id": "e142", "source": "hpc-base", "target": "Hydrology", "theme": "02-枢纽"}}, {"data": {"id": "e143", "source": "hpc-base", "target": "SurfaceWater", "theme": "02-枢纽"}}, {"data": {"id": "e144", "source": "hpc-base", "target": "ShallowWater", "theme": "02-枢纽"}}, {"data": {"id": "e145", "source": "hpc-base", "target": "Underground", "theme": "02-枢纽"}}, {"data": {"id": "e146", "source": "hpc-base", "target": "Geophysics", "theme": "02-枢纽"}}, {"data": {"id": "e147", "source": "hpc-base", "target": "Geological-Modelling", "theme": "02-枢纽"}}, {"data": {"id": "e148", "source": "hpc-base", "target": "ESM-Coupler", "theme": "02-枢纽"}}, {"data": {"id": "e149", "source": "hpc-base", "target": "Turbulence", "theme": "02-枢纽"}}, {"data": {"id": "e150", "source": "hpc-base", "target": "Hemodynamics", "theme": "02-枢纽"}}, {"data": {"id": "e151", "source": "hpc-base", "target": "Meshing", "theme": "02-枢纽"}}, {"data": {"id": "e152", "source": "hpc-base", "target": "VirtualReality", "theme": "02-枢纽"}}, {"data": {"id": "e153", "source": "hpc-base", "target": "GroundWater", "theme": "02-枢纽"}}, {"data": {"id": "e154", "source": "hpc-base", "target": "学科关系总览", "theme": "02-枢纽"}}, {"data": {"id": "e155", "source": "Meshing", "target": "SurfaceWater", "theme": "02-枢纽"}}, {"data": {"id": "e156", "source": "Meshing", "target": "Hydrology", "theme": "02-枢纽"}}, {"data": {"id": "e157", "source": "Meshing", "target": "Underground", "theme": "02-枢纽"}}, {"data": {"id": "e158", "source": "Meshing", "target": "Geophysics", "theme": "02-枢纽"}}, {"data": {"id": "e159", "source": "Meshing", "target": "Geological-Modelling", "theme": "02-枢纽"}}, {"data": {"id": "e160", "source": "Meshing", "target": "hpc-base", "theme": "02-枢纽"}}, {"data": {"id": "e161", "source": "Meshing", "target": "主题-网格与SCHISM族", "theme": "02-枢纽"}}, {"data": {"id": "e162", "source": "Meshing", "target": "学科关系总览", "theme": "02-枢纽"}}, {"data": {"id": "e163", "source": "VirtualReality", "target": "SurfaceWater", "theme": "02-枢纽"}}, {"data": {"id": "e164", "source": "VirtualReality", "target": "Turbulence", "theme": "02-枢纽"}}, {"data": {"id": "e165", "source": "VirtualReality", "target": "ESM-Coupler", "theme": "02-枢纽"}}, {"data": {"id": "e166", "source": "VirtualReality", "target": "Underground", "theme": "02-枢纽"}}, {"data": {"id": "e167", "source": "VirtualReality", "target": "Hemodynamics", "theme": "02-枢纽"}}, {"data": {"id": "e168", "source": "VirtualReality", "target": "主题-原位可视化", "theme": "02-枢纽"}}, {"data": {"id": "e169", "source": "VirtualReality", "target": "hpc-base", "theme": "02-枢纽"}}, {"data": {"id": "e170", "source": "VirtualReality", "target": "学科关系总览", "theme": "02-枢纽"}}, {"data": {"id": "e171", "source": "主题-ESM大气海洋", "target": "ESM-Coupler", "theme": "03-主题"}}, {"data": {"id": "e172", "source": "主题-ESM大气海洋", "target": "Meteorology", "theme": "03-主题"}}, {"data": {"id": "e173", "source": "主题-ESM大气海洋", "target": "SurfaceWater", "theme": "03-主题"}}, {"data": {"id": "e174", "source": "主题-ESM大气海洋", "target": "VirtualReality", "theme": "03-主题"}}, {"data": {"id": "e175", "source": "主题-ESM大气海洋", "target": "学科关系总览", "theme": "03-主题"}}, {"data": {"id": "e176", "source": "主题-Firedrake与FWI", "target": "SurfaceWater", "theme": "03-主题"}}, {"data": {"id": "e177", "source": "主题-Firedrake与FWI", "target": "Geophysics", "theme": "03-主题"}}, {"data": {"id": "e178", "source": "主题-Firedrake与FWI", "target": "hpc-base", "theme": "03-主题"}}, {"data": {"id": "e179", "source": "主题-Firedrake与FWI", "target": "学科关系总览", "theme": "03-主题"}}, {"data": {"id": "e180", "source": "主题-OpenFOAM族", "target": "Turbulence", "theme": "03-主题"}}, {"data": {"id": "e181", "source": "主题-OpenFOAM族", "target": "Underground", "theme": "03-主题"}}, {"data": {"id": "e182", "source": "主题-OpenFOAM族", "target": "Hemodynamics", "theme": "03-主题"}}, {"data": {"id": "e183", "source": "主题-OpenFOAM族", "target": "VirtualReality", "theme": "03-主题"}}, {"data": {"id": "e184", "source": "主题-OpenFOAM族", "target": "学科关系总览", "theme": "03-主题"}}, {"data": {"id": "e185", "source": "主题-原位可视化", "target": "VirtualReality", "theme": "03-主题"}}, {"data": {"id": "e186", "source": "主题-原位可视化", "target": "ESM-Coupler", "theme": "03-主题"}}, {"data": {"id": "e187", "source": "主题-原位可视化", "target": "学科关系总览", "theme": "03-主题"}}, {"data": {"id": "e188", "source": "主题-水文与地下水", "target": "Hydrology", "theme": "03-主题"}}, {"data": {"id": "e189", "source": "主题-水文与地下水", "target": "Underground", "theme": "03-主题"}}, {"data": {"id": "e190", "source": "主题-水文与地下水", "target": "GroundWater", "theme": "03-主题"}}, {"data": {"id": "e191", "source": "主题-水文与地下水", "target": "Meteorology", "theme": "03-主题"}}, {"data": {"id": "e192", "source": "主题-水文与地下水", "target": "Meshing", "theme": "03-主题"}}, {"data": {"id": "e193", "source": "主题-水文与地下水", "target": "学科关系总览", "theme": "03-主题"}}, {"data": {"id": "e194", "source": "主题-网格与SCHISM族", "target": "Meshing", "theme": "03-主题"}}, {"data": {"id": "e195", "source": "主题-网格与SCHISM族", "target": "SurfaceWater", "theme": "03-主题"}}, {"data": {"id": "e196", "source": "主题-网格与SCHISM族", "target": "ShallowWater", "theme": "03-主题"}}, {"data": {"id": "e197", "source": "主题-网格与SCHISM族", "target": "学科关系总览", "theme": "03-主题"}}, {"data": {"id": "e198", "source": "Build", "target": "Language", "theme": "04-hpc-base"}}, {"data": {"id": "e199", "source": "Build", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e200", "source": "Build", "target": "Cluster-DIY", "theme": "04-hpc-base"}}, {"data": {"id": "e201", "source": "Build", "target": "Linear_Solver", "theme": "04-hpc-base"}}, {"data": {"id": "e202", "source": "Build", "target": "HPX", "theme": "04-hpc-base"}}, {"data": {"id": "e203", "source": "Build", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e204", "source": "Build", "target": "Turbulence", "theme": "04-hpc-base"}}, {"data": {"id": "e205", "source": "Build", "target": "Underground", "theme": "04-hpc-base"}}, {"data": {"id": "e206", "source": "Build", "target": "SurfaceWater", "theme": "04-hpc-base"}}, {"data": {"id": "e207", "source": "Cluster-DIY", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e208", "source": "Cluster-DIY", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e209", "source": "Cluster-DIY", "target": "garbage", "theme": "04-hpc-base"}}, {"data": {"id": "e210", "source": "Cluster-DIY", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e211", "source": "Cluster-DIY", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e212", "source": "CUDA", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e213", "source": "CUDA", "target": "HPC-IO", "theme": "04-hpc-base"}}, {"data": {"id": "e214", "source": "CUDA", "target": "Linear_Solver", "theme": "04-hpc-base"}}, {"data": {"id": "e215", "source": "CUDA", "target": "OpenCL", "theme": "04-hpc-base"}}, {"data": {"id": "e216", "source": "CUDA", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e217", "source": "CUDA", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e218", "source": "CUDA", "target": "ShallowWater", "theme": "04-hpc-base"}}, {"data": {"id": "e219", "source": "CUDA", "target": "VirtualReality", "theme": "04-hpc-base"}}, {"data": {"id": "e220", "source": "CUDA", "target": "Turbulence", "theme": "04-hpc-base"}}, {"data": {"id": "e221", "source": "CUDA", "target": "Underground", "theme": "04-hpc-base"}}, {"data": {"id": "e222", "source": "DSL", "target": "Language", "theme": "04-hpc-base"}}, {"data": {"id": "e223", "source": "DSL", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e224", "source": "DSL", "target": "Linear_Solver", "theme": "04-hpc-base"}}, {"data": {"id": "e225", "source": "DSL", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e226", "source": "DSL", "target": "SurfaceWater", "theme": "04-hpc-base"}}, {"data": {"id": "e227", "source": "DSL", "target": "Geophysics", "theme": "04-hpc-base"}}, {"data": {"id": "e228", "source": "DSL", "target": "ShallowWater", "theme": "04-hpc-base"}}, {"data": {"id": "e229", "source": "garbage", "target": "Cluster-DIY", "theme": "04-hpc-base"}}, {"data": {"id": "e230", "source": "garbage", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e231", "source": "garbage", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e232", "source": "hpc-base 模块关系", "target": "Cluster-DIY", "theme": "04-hpc-base"}}, {"data": {"id": "e233", "source": "hpc-base 模块关系", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e234", "source": "hpc-base 模块关系", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e235", "source": "hpc-base 模块关系", "target": "garbage", "theme": "04-hpc-base"}}, {"data": {"id": "e236", "source": "hpc-base 模块关系", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e237", "source": "hpc-base 模块关系", "target": "Language", "theme": "04-hpc-base"}}, {"data": {"id": "e238", "source": "hpc-base 模块关系", "target": "DSL", "theme": "04-hpc-base"}}, {"data": {"id": "e239", "source": "hpc-base 模块关系", "target": "HPC-IO", "theme": "04-hpc-base"}}, {"data": {"id": "e240", "source": "hpc-base 模块关系", "target": "Linear_Solver", "theme": "04-hpc-base"}}, {"data": {"id": "e241", "source": "hpc-base 模块关系", "target": "OpenCL", "theme": "04-hpc-base"}}, {"data": {"id": "e242", "source": "hpc-base 模块关系", "target": "SurfaceWater", "theme": "04-hpc-base"}}, {"data": {"id": "e243", "source": "hpc-base 模块关系", "target": "Geophysics", "theme": "04-hpc-base"}}, {"data": {"id": "e244", "source": "hpc-base 模块关系", "target": "HPX", "theme": "04-hpc-base"}}, {"data": {"id": "e245", "source": "hpc-base 模块关系", "target": "ShallowWater", "theme": "04-hpc-base"}}, {"data": {"id": "e246", "source": "HPC-IO", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e247", "source": "HPC-IO", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e248", "source": "HPC-IO", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e249", "source": "HPC-IO", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e250", "source": "HPC-IO", "target": "Meteorology", "theme": "04-hpc-base"}}, {"data": {"id": "e251", "source": "HPC-IO", "target": "SurfaceWater", "theme": "04-hpc-base"}}, {"data": {"id": "e252", "source": "HPC-IO", "target": "VirtualReality", "theme": "04-hpc-base"}}, {"data": {"id": "e253", "source": "HPX", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e254", "source": "HPX", "target": "Language", "theme": "04-hpc-base"}}, {"data": {"id": "e255", "source": "HPX", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e256", "source": "HPX", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e257", "source": "Language", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e258", "source": "Language", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e259", "source": "Language", "target": "DSL", "theme": "04-hpc-base"}}, {"data": {"id": "e260", "source": "Language", "target": "HPX", "theme": "04-hpc-base"}}, {"data": {"id": "e261", "source": "Language", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e262", "source": "Language", "target": "Geophysics", "theme": "04-hpc-base"}}, {"data": {"id": "e263", "source": "Language", "target": "Hydrology", "theme": "04-hpc-base"}}, {"data": {"id": "e264", "source": "Linear_Solver", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e265", "source": "Linear_Solver", "target": "OpenCL", "theme": "04-hpc-base"}}, {"data": {"id": "e266", "source": "Linear_Solver", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e267", "source": "Linear_Solver", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e268", "source": "Linear_Solver", "target": "DSL", "theme": "04-hpc-base"}}, {"data": {"id": "e269", "source": "Linear_Solver", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e270", "source": "Linear_Solver", "target": "Underground", "theme": "04-hpc-base"}}, {"data": {"id": "e271", "source": "Linear_Solver", "target": "SurfaceWater", "theme": "04-hpc-base"}}, {"data": {"id": "e272", "source": "Linear_Solver", "target": "Hemodynamics", "theme": "04-hpc-base"}}, {"data": {"id": "e273", "source": "Linear_Solver", "target": "Hydrology", "theme": "04-hpc-base"}}, {"data": {"id": "e274", "source": "MOC · hpc-base", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e275", "source": "MOC · hpc-base", "target": "Cluster-DIY", "theme": "04-hpc-base"}}, {"data": {"id": "e276", "source": "MOC · hpc-base", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e277", "source": "MOC · hpc-base", "target": "Language", "theme": "04-hpc-base"}}, {"data": {"id": "e278", "source": "MOC · hpc-base", "target": "garbage", "theme": "04-hpc-base"}}, {"data": {"id": "e279", "source": "MOC · hpc-base", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e280", "source": "MOC · hpc-base", "target": "OpenCL", "theme": "04-hpc-base"}}, {"data": {"id": "e281", "source": "MOC · hpc-base", "target": "MPI", "theme": "04-hpc-base"}}, {"data": {"id": "e282", "source": "MOC · hpc-base", "target": "Linear_Solver", "theme": "04-hpc-base"}}, {"data": {"id": "e283", "source": "MOC · hpc-base", "target": "HPC-IO", "theme": "04-hpc-base"}}, {"data": {"id": "e284", "source": "MOC · hpc-base", "target": "DSL", "theme": "04-hpc-base"}}, {"data": {"id": "e285", "source": "MOC · hpc-base", "target": "HPX", "theme": "04-hpc-base"}}, {"data": {"id": "e286", "source": "MOC · hpc-base", "target": "SurfaceWater", "theme": "04-hpc-base"}}, {"data": {"id": "e287", "source": "MOC · hpc-base", "target": "Geophysics", "theme": "04-hpc-base"}}, {"data": {"id": "e288", "source": "MOC · hpc-base", "target": "ShallowWater", "theme": "04-hpc-base"}}, {"data": {"id": "e289", "source": "MOC · hpc-base", "target": "Underground", "theme": "04-hpc-base"}}, {"data": {"id": "e290", "source": "MOC · hpc-base", "target": "Hemodynamics", "theme": "04-hpc-base"}}, {"data": {"id": "e291", "source": "MOC · hpc-base", "target": "VirtualReality", "theme": "04-hpc-base"}}, {"data": {"id": "e292", "source": "MOC · hpc-base", "target": "Turbulence", "theme": "04-hpc-base"}}, {"data": {"id": "e293", "source": "MOC · hpc-base", "target": "Meteorology", "theme": "04-hpc-base"}}, {"data": {"id": "e294", "source": "MPI", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e295", "source": "MPI", "target": "Cluster-DIY", "theme": "04-hpc-base"}}, {"data": {"id": "e296", "source": "MPI", "target": "Linear_Solver", "theme": "04-hpc-base"}}, {"data": {"id": "e297", "source": "MPI", "target": "Language", "theme": "04-hpc-base"}}, {"data": {"id": "e298", "source": "MPI", "target": "HPC-IO", "theme": "04-hpc-base"}}, {"data": {"id": "e299", "source": "MPI", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e300", "source": "OpenCL", "target": "CUDA", "theme": "04-hpc-base"}}, {"data": {"id": "e301", "source": "OpenCL", "target": "Linear_Solver", "theme": "04-hpc-base"}}, {"data": {"id": "e302", "source": "OpenCL", "target": "Build", "theme": "04-hpc-base"}}, {"data": {"id": "e303", "source": "OpenCL", "target": "hpc-base", "theme": "04-hpc-base"}}, {"data": {"id": "e304", "source": "OpenCL", "target": "VirtualReality", "theme": "04-hpc-base"}}], "source": "E:\\open-geo-modeller\\osidian", "sourceFull": "E:\\open-geo-modeller\\osidian", "layout": "preset", "timeline": [{"month": "2026-08", "00-索引": 3, "01-学科": 10, "02-枢纽": 4, "03-主题": 6, "04-hpc-base": 13, "Other": 2}], "themeColors": {"Other": "#94a3b8", "04-hpc-base": "#38bdf8", "01-学科": "#a78bfa", "03-主题": "#fb923c", "02-枢纽": "#34d399", "00-索引": "#f472b6"}, "themeOrder": ["04-hpc-base", "01-学科", "03-主题", "02-枢纽", "00-索引", "Other"], "typeShapes": {"person": "ellipse", "meeting": "round-diamond", "journal": "round-rectangle", "todo": "round-tag", "index": "star", "project": "hexagon", "lecture": "round-rectangle", "link": "round-pentagon", "note": "ellipse"}, "stats": {"nodes": 38, "edges": 305, "themes": {"Other": 2, "00-索引": 3, "01-学科": 10, "02-枢纽": 4, "03-主题": 6, "04-hpc-base": 13}, "types": {"note": 36, "index": 2}, "span": ["2026-08-15", "2026-08-15"]}};
+const TC = DATA.themeColors;
+document.getElementById('ttl').textContent = DATA.title;
+const srcEl = document.getElementById('src');
+srcEl.innerHTML = `<span style="opacity:.7">🗄</span> ${DATA.source}`;
+srcEl.title = DATA.sourceFull || DATA.source;
+document.getElementById('counts').innerHTML =
+  `<span class="sub">${DATA.stats.nodes} notes · ${DATA.stats.edges} links · ${DATA.stats.span[0]} → ${DATA.stats.span[1]}</span>`;
+
+// ---- Cytoscape ----
+function layoutOpts(){
+  if(DATA.layout === 'cose'){
+    return { name:'cose', animate:false, randomize:true, fit:true, padding:70,
+             nodeRepulsion:9000, idealEdgeLength:62, edgeElasticity:0.4,
+             gravity:0.35, numIter:1200, coolingFactor:0.95, nodeDimensionsIncludeLabels:false };
+  }
+  return { name:'preset' };
+}
+const cy = cytoscape({
+  container: document.getElementById('cy'),
+  elements: { nodes: DATA.nodes, edges: DATA.edges },
+  layout: layoutOpts(),
+  wheelSensitivity: 0.22,
+  pixelRatio: Math.min(window.devicePixelRatio||1, 2),
+  style: [
+    { selector:'node', style:{
+        'width':'data(size)','height':'data(size)',
+        'background-color': n => TC[n.data('theme')]||TC.Other,
+        'shape': n => DATA.typeShapes[n.data('type')] || 'ellipse',
+        'border-width':0, 'label':'', 'background-opacity':0.95,
+        'shadow-blur':14,'shadow-color': n => TC[n.data('theme')]||TC.Other,
+        'shadow-opacity':0.55,'shadow-offset-x':0,'shadow-offset-y':0,
+        'transition-property':'opacity,width,height','transition-duration':'140ms'
+    }},
+    { selector:'node.hub', style:{ 'label':'data(title)','color':'#dfe9f6','font-size':11,
+        'text-outline-width':2,'text-outline-color':'#070b16','text-max-width':120,
+        'text-wrap':'ellipsis' } },
+    { selector:'edge', style:{
+        'width':1,'curve-style':'straight','opacity':0.20,
+        'line-color': e => TC[e.data('theme')]||TC.Other }},
+    { selector:'.dim', style:{ 'opacity':0.05 }},
+    { selector:'.hl', style:{ 'opacity':1,'label':'data(title)','color':'#fff','font-size':12,
+        'text-outline-width':2,'text-outline-color':'#070b16','z-index':99 }},
+    { selector:'edge.hl', style:{ 'opacity':0.9,'width':2 }},
+    { selector:'.hidden', style:{ 'display':'none' }},
+    { selector:'node.search', style:{ 'border-width':3,'border-color':'#fff' }},
+  ]
+});
+
+// label only well-connected hubs
+cy.nodes().forEach(n => { if (n.data('deg') >= 7) n.addClass('hub'); });
+
+// ---- filters state ----
+const themeOn = {}, typeOn = {};
+Object.keys(DATA.stats.themes).forEach(t=>themeOn[t]=true);
+Object.keys(DATA.stats.types).forEach(t=>typeOn[t]=true);
+let cutoff = 1.0; // timeline fraction
+let edgesVisible = true;
+
+function buildFilters(el, counts, state, colorize){
+  const box = document.getElementById(el);
+  Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+    const row=document.createElement('div'); row.className='filter';
+    const bx=document.createElement('span'); bx.className='box';
+    const sw=document.createElement('span'); sw.className='sw';
+    sw.style.background = colorize? (TC[k]||TC.Other) : 'rgba(148,163,184,.55)';
+    const tx=document.createElement('span'); tx.className='nm'; tx.textContent=k;
+    const ct=document.createElement('span'); ct.className='ct'; ct.textContent=v;
+    row.append(bx,sw,tx,ct); box.append(row);
+    const sync=()=>{ row.classList.toggle('off',!state[k]); bx.textContent=state[k]?'✓':''; };
+    row.onclick=()=>{ state[k]=!state[k]; sync(); apply(); };
+    sync();
+  });
+}
+buildFilters('themeFilters', DATA.stats.themes, themeOn, true);
+buildFilters('typeFilters', DATA.stats.types, typeOn, false);
+
+// ---- timeline (cumulative growth, SVG) ----
+const months = DATA.timeline.map(m=>m.month);
+function cutoffMonth(){ const idx=Math.max(0,Math.ceil(cutoff*months.length)-1); return months[idx]||months[months.length-1]; }
+
+const TL_ORDER = DATA.themeOrder || Object.keys(DATA.themeColors);
+const MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const chart=document.getElementById('tlchart');
+const svg=document.getElementById('tlsvg');
+const tip=document.getElementById('tltip');
+let TLG=null;
+function shortMonth(ym){ const [y,m]=ym.split('-'); return (MN[(+m)-1]||m)+" '"+y.slice(2); }
+
+function buildTimeline(){
+  const PAD={l:14,r:14,t:14,b:20};
+  const w=chart.clientWidth||900, h=chart.clientHeight||98;
+  const iw=w-PAD.l-PAD.r, ih=h-PAD.t-PAD.b, n=DATA.timeline.length;
+  let cum={}; TL_ORDER.forEach(t=>cum[t]=0);
+  const pts=DATA.timeline.map(m=>{ TL_ORDER.forEach(t=>cum[t]+=m[t]||0); return Object.assign({},cum); });
+  const total=TL_ORDER.reduce((s,t)=>s+cum[t],0)||1;
+  const X=i=> PAD.l + (n>1? i/(n-1):0)*iw;
+  const Y=v=> PAD.t + ih - v/total*ih;
+  function areaPath(k){
+    const top=i=>{let s=0;for(let j=0;j<=k;j++)s+=pts[i][TL_ORDER[j]];return s;};
+    const bot=i=>{let s=0;for(let j=0;j<k;j++)s+=pts[i][TL_ORDER[j]];return s;};
+    let d='M'+X(0).toFixed(1)+','+Y(top(0)).toFixed(1);
+    for(let i=1;i<n;i++) d+=' L'+X(i).toFixed(1)+','+Y(top(i)).toFixed(1);
+    for(let i=n-1;i>=0;i--) d+=' L'+X(i).toFixed(1)+','+Y(bot(i)).toFixed(1);
+    return d+'Z';
+  }
+  let defs='<defs>';
+  TL_ORDER.forEach((t,k)=>{ const c=TC[t]||TC.Other;   // id by index — theme names may hold spaces/non-ASCII
+    defs+='<linearGradient id="g_'+k+'" x1="0" y1="0" x2="0" y2="1">'+
+      '<stop offset="0" stop-color="'+c+'" stop-opacity="0.95"/>'+
+      '<stop offset="1" stop-color="'+c+'" stop-opacity="0.30"/></linearGradient>';});
+  defs+='<clipPath id="past"><rect id="pastrect" x="'+PAD.l+'" y="0" width="0" height="'+h+'"/></clipPath></defs>';
+  let dim='', bright='';
+  TL_ORDER.forEach((t,k)=>{ if(!cum[t]) return; const p=areaPath(k);
+    dim+='<path d="'+p+'" fill="url(#g_'+k+')" opacity="0.15"/>';
+    bright+='<path d="'+p+'" fill="url(#g_'+k+')" opacity="0.92"/>';});
+  let axis='<line x1="'+PAD.l+'" y1="'+(PAD.t+ih)+'" x2="'+(w-PAD.r)+'" y2="'+(PAD.t+ih)+'" stroke="rgba(148,163,184,.22)"/>';
+  const step=Math.max(1,Math.ceil(n/Math.max(3,Math.floor(iw/66))));
+  for(let i=0;i<n;i+=step){ axis+='<text x="'+X(i).toFixed(1)+'" y="'+(h-5)+'" fill="#7f93b0" font-size="10" text-anchor="middle">'+shortMonth(months[i])+'</text>';
+    axis+='<line x1="'+X(i).toFixed(1)+'" y1="'+(PAD.t+ih)+'" x2="'+X(i).toFixed(1)+'" y2="'+(PAD.t+ih+3)+'" stroke="rgba(148,163,184,.3)"/>';}
+  const ph='<g id="phead"><line y1="'+(PAD.t-3)+'" y2="'+(PAD.t+ih+3)+'" stroke="#eef4fb" stroke-width="1.5" opacity="0.9"/>'+
+    '<circle cy="'+(PAD.t-3)+'" r="4" fill="#eef4fb"/></g>';
+  svg.setAttribute('viewBox','0 0 '+w+' '+h);
+  svg.innerHTML=defs+'<g>'+dim+'</g><g clip-path="url(#past)">'+bright+'</g>'+axis+ph;
+  TLG={PAD,iw,n,pts};
+  renderPlayhead();
+}
+function renderPlayhead(){
+  if(!TLG) return; const {PAD,iw,n,pts}=TLG;
+  const x=PAD.l+cutoff*iw;
+  const rect=document.getElementById('pastrect'); if(rect) rect.setAttribute('width',Math.max(0,x-PAD.l).toFixed(1));
+  const g=document.getElementById('phead'); if(g) g.setAttribute('transform','translate('+x.toFixed(1)+',0)');
+  const i=Math.max(0,Math.ceil(cutoff*n)-1);
+  const upto=TL_ORDER.reduce((s,t)=>s+pts[i][t],0);
+  document.getElementById('now').textContent=cutoffMonth();
+  document.getElementById('tot').textContent=upto+' notes';
+}
+function tlSet(ev){ if(!TLG) return; const r=svg.getBoundingClientRect(); const {PAD,iw}=TLG;
+  setCutoff(((ev.clientX-r.left)-PAD.l)/iw); }
+let tlDrag=false;
+svg.addEventListener('pointerdown',e=>{tlDrag=true; svg.setPointerCapture(e.pointerId); tlSet(e);});
+svg.addEventListener('pointermove',e=>{
+  if(tlDrag) tlSet(e);
+  if(!TLG) return; const r=svg.getBoundingClientRect(); const {PAD,iw,n}=TLG;
+  const i=Math.round(((e.clientX-r.left)-PAD.l)/iw*(n-1));
+  if(i>=0 && i<n){ const m=DATA.timeline[i];
+    tip.style.display='block'; tip.style.left=(e.clientX-r.left)+'px';
+    const tot=TL_ORDER.reduce((s,t)=>s+(m[t]||0),0);
+    tip.innerHTML='<b>'+shortMonth(months[i])+'</b> · +'+tot+' that month<br>'+
+      TL_ORDER.filter(t=>(m[t]||0)>0)
+              .map(t=>'<span style="color:'+(TC[t]||TC.Other)+'">'+t+' '+(m[t]||0)+'</span>')
+              .join(' · '); }
+});
+svg.addEventListener('pointerup',()=>{tlDrag=false;});
+svg.addEventListener('pointerleave',()=>{tip.style.display='none';});
+window.addEventListener('resize',buildTimeline);
+
+function withinTime(n){
+  const c=(n.data('created')||'').slice(0,7);
+  if(!c) return true;
+  return c <= cutoffMonth();
+}
+function apply(){
+  const q=(document.getElementById('search').value||'').toLowerCase().trim();
+  cy.batch(()=>{
+    cy.nodes().forEach(n=>{
+      const ok = themeOn[n.data('theme')] && typeOn[n.data('type')] && withinTime(n);
+      n.toggleClass('hidden', !ok);
+      if(q){
+        const hit = ok && (n.data('title').toLowerCase().includes(q) ||
+                           (n.data('tags')||[]).join(' ').toLowerCase().includes(q));
+        n.toggleClass('search', hit);
+      } else n.removeClass('search');
+    });
+    cy.edges().forEach(e=>{
+      const vis = edgesVisible && !e.source().hasClass('hidden') && !e.target().hasClass('hidden');
+      e.toggleClass('hidden', !vis);
+    });
+  });
+  document.getElementById('now').textContent = cutoffMonth();
+  const shown = cy.nodes().filter(n=>!n.hasClass('hidden')).length;
+  document.getElementById('counts').innerHTML =
+    `<span class="sub">${shown} / ${DATA.stats.nodes} notes · ${DATA.stats.edges} links</span>`;
+}
+function setCutoff(f){ cutoff=Math.min(1,Math.max(0,f)); renderPlayhead(); apply(); }
+
+document.getElementById('search').oninput=apply;
+
+// play growth
+let playing=false, raf=null;
+document.getElementById('play').onclick=function(){
+  playing=!playing; this.textContent=playing?'❚❚ Pause':'▶ Play growth';
+  if(playing){ if(cutoff>=1) setCutoff(0.02);
+    const step=()=>{ if(!playing) return;
+      setCutoff(cutoff+0.010);
+      if(cutoff>=1){ playing=false; document.getElementById('play').textContent='▶ Play growth'; return;}
+      raf=requestAnimationFrame(step); };
+    step();
+  } else cancelAnimationFrame(raf);
+};
+
+// ---- interaction ----
+function focus(n){
+  cy.elements().addClass('dim');
+  const nb=n.closedNeighborhood();
+  nb.removeClass('dim').addClass('hl');
+  document.getElementById('detail').style.display='block';
+  document.getElementById('dT').textContent=n.data('title');
+  const created=(n.data('created')||'').replace('T',' ').slice(0,16);
+  document.getElementById('dM').innerHTML=
+     `<span class="chip"><span class="dot" style="background:${TC[n.data('theme')]||TC.Other}"></span>${n.data('theme')}</span>
+      &nbsp;·&nbsp; ${n.data('type')} &nbsp;·&nbsp; ${created} &nbsp;·&nbsp; ${n.data('deg')} links`;
+  const tg=document.getElementById('dTags'); tg.innerHTML='';
+  (n.data('tags')||[]).forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;tg.append(s);});
+  document.getElementById('dS').textContent=n.data('summary')||'—';
+  const nbBox=document.getElementById('dNb'); nbBox.innerHTML='';
+  const others=nb.nodes().filter(x=>x.id()!==n.id());
+  if(others.length){
+    const h=document.createElement('div'); h.style.cssText='color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px';
+    h.textContent='Connected ('+others.length+')'; nbBox.append(h);
+    others.slice(0,18).forEach(x=>{const a=document.createElement('a');a.textContent='› '+x.data('title');
+      a.onclick=()=>{cy.animate({center:{eles:x},zoom:1.1},{duration:300}); focus(x);}; nbBox.append(a);});
+  }
+}
+cy.on('tap','node',e=>{ cy.animate({center:{eles:e.target},zoom:Math.max(cy.zoom(),0.9)},{duration:300}); focus(e.target); });
+cy.on('tap',e=>{ if(e.target===cy){ cy.elements().removeClass('dim hl'); document.getElementById('detail').style.display='none'; }});
+cy.on('mouseover','node',e=>{ if(document.getElementById('detail').style.display!=='block'){ e.target.addClass('hl'); }});
+cy.on('mouseout','node',e=>{ if(document.getElementById('detail').style.display!=='block'){ e.target.removeClass('hl'); }});
+
+document.getElementById('dClose').onclick=()=>{cy.elements().removeClass('dim hl');document.getElementById('detail').style.display='none';};
+document.getElementById('fit').onclick=()=>cy.animate({fit:{padding:60}},{duration:400});
+document.getElementById('toggleEdges').onclick=function(){edgesVisible=!edgesVisible;this.classList.toggle('off',!edgesVisible);apply();};
+
+cy.ready(()=>{ cy.fit(undefined,70); buildTimeline(); apply();
+  const h=document.getElementById('hint'); h.style.opacity=1; setTimeout(()=>h.style.opacity=0,4200); });
+</script>
+</body></html>
