@@ -49,7 +49,10 @@
 
 各学科目录之间的工作流依赖、交叉链接与主题耦合，见 [学科关系图](./docs/学科关系图.md)。
 
-[obsidian的MOC笔记知识图谱可视化](./obsidian)，可以导入本地的obsidian库
+**交互式知识图谱**（浏览器打开：可拖拽力导向图、筛选主题、搜索、点击节点查看关联）：  
+[打开 Brain Map](./docs/OpenGeoModeller-brain-map.html) · [短链 brain-map.html](./docs/brain-map.html)
+
+Obsidian 双向链接笔记库：[osidian/](./osidian/)（可导入本地 Obsidian；含学科与 hpc-base 模块 MOC / Canvas）。
 
 ## 仓库建设目标
 
@@ -75,7 +78,7 @@
 ## 相关文档
 
 - [学科关系图](./docs/学科关系图.md)
-- [交互式知识图谱 HTML](./docs/OpenGeoModeller-brain-map.html)
+- [交互式知识图谱 Brain Map](./docs/OpenGeoModeller-brain-map.html)（[短链](./docs/brain-map.html)）
 - [文档整理备忘 (CLAUDE.md)](./docs/CLAUDE.md)
 - [hpc-base Markdown 规范](./docs/superpowers/specs/2026-08-14-hpc-base-markdown-design.md)
 - [非 hpc-base Markdown 规范](./docs/superpowers/specs/2026-08-14-non-hpc-base-markdown-design.md)
