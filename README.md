@@ -37,7 +37,6 @@
 - [Underground](./Underground/)：地下流动，包括 MODFLOW6、MPLBM-UT、OPM、GEOSX、waiwera、OpenGeoSys 等
 - [Geological-Modelling](./Geological-Modelling/)：地质建模，地震数据处理与解释 (OpendTect)、隐式地质建模 (GemPy、LoopStructural)
 - [VirtualReality](./VirtualReality/)：可视化后处理，包括 VR、原位可视化、集群图形渲染等
-- [hpc-base](./hpc-base/)：高性能计算基座（子模块）；完整检出：`git clone --recursive https://gitee.com/lijian-cug/open-geo-modeller`
 - [ESM-Coupler](./ESM-Coupler/)：地球系统模式与耦合器，包括 RegESM、ESMF、BMI 等
 - [Geophysics](./Geophysics/)：地球物理正反演，OpenSWPC、Seissol、Devito/JUDI、spyro 等
 - [ShallowWater](./ShallowWater/)：浅水方程求解，Triton、Volna-OP2、Titan2d、BASEMENT 等
@@ -46,6 +45,8 @@
 - [Turbulence](./Turbulence/)：高精度湍流模型，如 DNS、LES、RANS 等
 - [Hemodynamics](./Hemodynamics/)：心血管血液动力学 CFD 模型
 - [GroundWater](./GroundWater/)：地下水相关说明（与 Underground 互补）
+- [hpc-base](./hpc-base/)：高性能计算基座（子模块）；完整检出：`git clone --recursive https://gitee.com/lijian-cug/open-geo-modeller`
+- [agent-dev](./agent-dev/)：智能体研发代码的记录；完整检出：`git clone --recursive https://gitee.com/lijian-cug/open-geo-modeller`
 
 各学科目录之间的工作流依赖、交叉链接与主题耦合，见 [学科关系图](./docs/学科关系图.md)。
 
