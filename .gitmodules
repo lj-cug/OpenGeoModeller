@@ -1,3 +1,7 @@
 [submodule "hpc-base"]
 	path = hpc-base
 	url = https://gitee.com/lijian-cug/hpc-base.git
+
+[submodule "agent-dev"]
+	path = agent-dev
+	url = https://gitee.com/lijian-cug/agent-dev.git
