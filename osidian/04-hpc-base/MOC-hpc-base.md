@@ -88,6 +88,10 @@ aliases: [hpc-base知识图谱入口]
 
 
 
+## Agent 开发桥接
+
+- [[agent-dev]] · [[MOC-agent-dev]] · [[主题-PETSc-AmgX-Agent]] · [[主题-Fortran-Agent]]
+
 ## 仓库对照
 
 

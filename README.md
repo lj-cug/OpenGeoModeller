@@ -46,14 +46,16 @@
 - [Hemodynamics](./Hemodynamics/)：心血管血液动力学 CFD 模型
 - [GroundWater](./GroundWater/)：地下水相关说明（与 Underground 互补）
 - [hpc-base](./hpc-base/)：高性能计算基座（子模块）；完整检出：`git clone --recursive https://gitee.com/lijian-cug/open-geo-modeller`
-- [agent-dev](./agent-dev/)：智能体研发代码的记录；完整检出：`git clone --recursive https://gitee.com/lijian-cug/open-geo-modeller`
+- [agent-dev](./agent-dev/)：Agent Coding 备忘（Claude / Cursor / MCP / RAG / Skills）；子目录索引见该目录 README
 
 各学科目录之间的工作流依赖、交叉链接与主题耦合，见 [学科关系图](./docs/学科关系图.md)。
+
+Agent 开发备忘的模块分层与科学栈桥接，见 [agent-dev 模块关系](./osidian/05-agent-dev/agent-dev模块关系.md)。
 
 **交互式知识图谱**（浏览器打开：可拖拽力导向图、筛选主题、搜索、点击节点查看关联）：  
 [打开 Brain Map](./docs/OpenGeoModeller-brain-map.html) · [短链 brain-map.html](./docs/brain-map.html)
 
-Obsidian 双向链接笔记库：[osidian/](./osidian/)（可导入本地 Obsidian；含学科与 hpc-base 模块 MOC / Canvas）。
+Obsidian 双向链接笔记库：[osidian/](./osidian/)（可导入本地 Obsidian；含学科、hpc-base 与 agent-dev 模块 MOC / Canvas）。
 
 ## 仓库建设目标
 
@@ -79,6 +81,8 @@ Obsidian 双向链接笔记库：[osidian/](./osidian/)（可导入本地 Obsidi
 ## 相关文档
 
 - [学科关系图](./docs/学科关系图.md)
+- [agent-dev 模块关系](./osidian/05-agent-dev/agent-dev模块关系.md)
+- [agent-dev 入口](./agent-dev/)
 - [交互式知识图谱 Brain Map](./docs/OpenGeoModeller-brain-map.html)（[短链](./docs/brain-map.html)）
 - [文档整理备忘 (CLAUDE.md)](./docs/CLAUDE.md)
 - [hpc-base Markdown 规范](./docs/superpowers/specs/2026-08-14-hpc-base-markdown-design.md)

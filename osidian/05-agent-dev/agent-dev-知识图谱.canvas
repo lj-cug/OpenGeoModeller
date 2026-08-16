@@ -1,0 +1,488 @@
+{
+  "nodes": [
+    {
+      "id": "L0",
+      "type": "text",
+      "text": "## 编辑器 / 运行时",
+      "x": 40,
+      "y": -60,
+      "width": 200,
+      "height": 48,
+      "color": "4"
+    },
+    {
+      "id": "L2",
+      "type": "text",
+      "text": "## 项目记忆",
+      "x": 40,
+      "y": 160,
+      "width": 180,
+      "height": 48,
+      "color": "5"
+    },
+    {
+      "id": "L3",
+      "type": "text",
+      "text": "## Skills / 循环",
+      "x": 40,
+      "y": 360,
+      "width": 180,
+      "height": 48,
+      "color": "3"
+    },
+    {
+      "id": "L4",
+      "type": "text",
+      "text": "## MCP 工具",
+      "x": 40,
+      "y": 560,
+      "width": 180,
+      "height": 48,
+      "color": "6"
+    },
+    {
+      "id": "L5",
+      "type": "text",
+      "text": "## 知识管线",
+      "x": 40,
+      "y": 760,
+      "width": 180,
+      "height": 48,
+      "color": "1"
+    },
+    {
+      "id": "L6",
+      "type": "text",
+      "text": "## 知识库",
+      "x": 40,
+      "y": 960,
+      "width": 180,
+      "height": 48,
+      "color": "2"
+    },
+    {
+      "id": "L7",
+      "type": "text",
+      "text": "## 主题 / 科学栈",
+      "x": 1180,
+      "y": -60,
+      "width": 200,
+      "height": 48,
+      "color": "2"
+    },
+    {
+      "id": "cu",
+      "type": "file",
+      "file": "05-agent-dev/Claude_Usage.md",
+      "x": 280,
+      "y": 0,
+      "width": 240,
+      "height": 72,
+      "color": "4"
+    },
+    {
+      "id": "cx",
+      "type": "file",
+      "file": "05-agent-dev/CodeX_Cursor.md",
+      "x": 560,
+      "y": 0,
+      "width": 240,
+      "height": 72,
+      "color": "4"
+    },
+    {
+      "id": "lsp",
+      "type": "file",
+      "file": "05-agent-dev/LSP.md",
+      "x": 840,
+      "y": 0,
+      "width": 240,
+      "height": 72,
+      "color": "4"
+    },
+    {
+      "id": "cmd",
+      "type": "file",
+      "file": "05-agent-dev/CLAUDE-md.md",
+      "x": 560,
+      "y": 220,
+      "width": 240,
+      "height": 72,
+      "color": "5"
+    },
+    {
+      "id": "sk",
+      "type": "file",
+      "file": "05-agent-dev/Skills.md",
+      "x": 280,
+      "y": 420,
+      "width": 240,
+      "height": 72,
+      "color": "3"
+    },
+    {
+      "id": "lp",
+      "type": "file",
+      "file": "05-agent-dev/Loop.md",
+      "x": 560,
+      "y": 420,
+      "width": 240,
+      "height": 72,
+      "color": "3"
+    },
+    {
+      "id": "mcp",
+      "type": "file",
+      "file": "05-agent-dev/MCP.md",
+      "x": 420,
+      "y": 620,
+      "width": 240,
+      "height": 72,
+      "color": "6"
+    },
+    {
+      "id": "rag",
+      "type": "file",
+      "file": "05-agent-dev/RAG.md",
+      "x": 280,
+      "y": 820,
+      "width": 240,
+      "height": 72,
+      "color": "1"
+    },
+    {
+      "id": "lc",
+      "type": "file",
+      "file": "05-agent-dev/LangChain.md",
+      "x": 560,
+      "y": 820,
+      "width": 240,
+      "height": 72,
+      "color": "1"
+    },
+    {
+      "id": "ob",
+      "type": "file",
+      "file": "05-agent-dev/Osidian.md",
+      "x": 420,
+      "y": 1020,
+      "width": 240,
+      "height": 72,
+      "color": "2"
+    },
+    {
+      "id": "t-llm",
+      "type": "file",
+      "file": "05-agent-dev/主题-LLM路由.md",
+      "x": 1180,
+      "y": 0,
+      "width": 260,
+      "height": 72,
+      "color": "4"
+    },
+    {
+      "id": "t-f90",
+      "type": "file",
+      "file": "05-agent-dev/主题-Fortran-Agent.md",
+      "x": 1180,
+      "y": 220,
+      "width": 260,
+      "height": 72,
+      "color": "5"
+    },
+    {
+      "id": "t-petsc",
+      "type": "file",
+      "file": "05-agent-dev/主题-PETSc-AmgX-Agent.md",
+      "x": 1180,
+      "y": 620,
+      "width": 280,
+      "height": 72,
+      "color": "6"
+    },
+    {
+      "id": "hub",
+      "type": "file",
+      "file": "05-agent-dev/agent-dev.md",
+      "x": 1180,
+      "y": 1020,
+      "width": 260,
+      "height": 80,
+      "color": "1"
+    },
+    {
+      "id": "moc",
+      "type": "file",
+      "file": "05-agent-dev/MOC-agent-dev.md",
+      "x": 420,
+      "y": 1180,
+      "width": 280,
+      "height": 80,
+      "color": "2"
+    },
+    {
+      "id": "hpc",
+      "type": "file",
+      "file": "02-枢纽/hpc-base.md",
+      "x": 1520,
+      "y": 0,
+      "width": 240,
+      "height": 72,
+      "color": "1"
+    },
+    {
+      "id": "lang",
+      "type": "file",
+      "file": "04-hpc-base/Language.md",
+      "x": 1520,
+      "y": 220,
+      "width": 240,
+      "height": 72,
+      "color": "5"
+    },
+    {
+      "id": "solver",
+      "type": "file",
+      "file": "04-hpc-base/Linear_Solver.md",
+      "x": 1520,
+      "y": 540,
+      "width": 240,
+      "height": 72,
+      "color": "6"
+    },
+    {
+      "id": "cuda",
+      "type": "file",
+      "file": "04-hpc-base/CUDA.md",
+      "x": 1520,
+      "y": 700,
+      "width": 240,
+      "height": 72,
+      "color": "3"
+    },
+    {
+      "id": "mesh",
+      "type": "file",
+      "file": "02-枢纽/Meshing.md",
+      "x": 1520,
+      "y": 860,
+      "width": 240,
+      "height": 72,
+      "color": "1"
+    },
+    {
+      "id": "viz",
+      "type": "file",
+      "file": "02-枢纽/VirtualReality.md",
+      "x": 1800,
+      "y": 860,
+      "width": 240,
+      "height": 72,
+      "color": "1"
+    },
+    {
+      "id": "tur",
+      "type": "file",
+      "file": "01-学科/Turbulence.md",
+      "x": 1800,
+      "y": 700,
+      "width": 240,
+      "height": 72,
+      "color": "6"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "fromNode": "cu",
+      "toNode": "cmd",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e1",
+      "fromNode": "cx",
+      "toNode": "cmd",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e2",
+      "fromNode": "lsp",
+      "toNode": "cmd",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e3",
+      "fromNode": "cmd",
+      "toNode": "sk",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e4",
+      "fromNode": "sk",
+      "toNode": "lp",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "e5",
+      "fromNode": "sk",
+      "toNode": "mcp",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e6",
+      "fromNode": "mcp",
+      "toNode": "rag",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e7",
+      "fromNode": "lc",
+      "toNode": "rag",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "e8",
+      "fromNode": "rag",
+      "toNode": "ob",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e9",
+      "fromNode": "lp",
+      "toNode": "cmd",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "label": "循环"
+    },
+    {
+      "id": "e10",
+      "fromNode": "cu",
+      "toNode": "t-llm",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "路由"
+    },
+    {
+      "id": "e11",
+      "fromNode": "cx",
+      "toNode": "t-llm",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "e12",
+      "fromNode": "lsp",
+      "toNode": "t-f90",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "fortls"
+    },
+    {
+      "id": "e13",
+      "fromNode": "cmd",
+      "toNode": "t-f90",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "e14",
+      "fromNode": "mcp",
+      "toNode": "t-petsc",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "PETSc MCP"
+    },
+    {
+      "id": "e15",
+      "fromNode": "rag",
+      "toNode": "t-petsc",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "e16",
+      "fromNode": "lc",
+      "toNode": "t-petsc",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "e17",
+      "fromNode": "t-petsc",
+      "toNode": "solver",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "PETSc/AmgX"
+    },
+    {
+      "id": "e18",
+      "fromNode": "t-petsc",
+      "toNode": "cuda",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "e19",
+      "fromNode": "t-f90",
+      "toNode": "lang",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "Fortran"
+    },
+    {
+      "id": "e20",
+      "fromNode": "mcp",
+      "toNode": "mesh",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "Gmsh"
+    },
+    {
+      "id": "e21",
+      "fromNode": "mcp",
+      "toNode": "viz",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "ParaView"
+    },
+    {
+      "id": "e22",
+      "fromNode": "mcp",
+      "toNode": "tur",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "OpenFOAM"
+    },
+    {
+      "id": "e23",
+      "fromNode": "sk",
+      "toNode": "hpc",
+      "fromSide": "right",
+      "toSide": "left",
+      "label": "HPC Skills"
+    },
+    {
+      "id": "e24",
+      "fromNode": "hub",
+      "toNode": "moc",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "e25",
+      "fromNode": "ob",
+      "toNode": "moc",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ]
+}

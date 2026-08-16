@@ -104,10 +104,11 @@ Vault 路径：`E:\open-geo-modeller\osidian`（Obsidian CLI 库名 `osidian`）
 | `01-学科/*.md` | 各学科笔记（上游/下游 wikilink） |
 | `02-枢纽/` | `hpc-base`、`Meshing`、`VirtualReality`、`ESM-Coupler` |
 | `03-主题/` | ESM、水文–地下水、SCHISM 网格、Firedrake–FWI、OpenFOAM、原位可视化 |
+| `05-agent-dev/` | Agent Coding 备忘图谱（2026-08-16） |
 
 约定：
 
-- 标签：`#学科` `#枢纽` `#主题簇` `#MOC` `#OpenGeoModeller`
+- 标签：`#学科` `#枢纽` `#主题簇` `#MOC` `#OpenGeoModeller` `#hpc-base模块` `#agent-dev模块`
 - Graph 着色见 `osidian/.obsidian/graph.json`
 - 指向仓库外路径用纯文本/`code`，避免 unresolved 噪声；Canvas 用 `[[path/file.canvas|显示名]]`
 
@@ -163,6 +164,8 @@ obsidian reload
 obsidian open path="00-索引/MOC-OpenGeoModeller.md"
 obsidian open path="04-hpc-base/MOC-hpc-base.md"
 obsidian open path="04-hpc-base/hpc-base-知识图谱.canvas" newtab
+obsidian open path="05-agent-dev/MOC-agent-dev.md"
+obsidian open path="05-agent-dev/agent-dev-知识图谱.canvas" newtab
 obsidian command id=graph:open
 obsidian unresolved total
 obsidian search query="tag:#hpc-base模块" total
@@ -175,7 +178,7 @@ Windows 上若直接敲 `obsidian` 报「无法识别」，需确保 Obsidian CL
 来源：[vladignatyev/brain-map-skill](https://github.com/vladignatyev/brain-map-skill)（MIT）。
 
 - **作用**：把含 YAML frontmatter + `[[wikilinks]]` 的 Markdown 目录打成**单文件**交互 HTML（Cytoscape 力导向图 + 时间轴 + 筛选/搜索 + 节点详情）。
-- **主题色**：按 vault **一级子目录**着色（本库即 `00-索引` / `01-学科` / `02-枢纽` / `03-主题` / `04-hpc-base`）。
+- **主题色**：按 vault **一级子目录**着色（本库即 `00-索引` / `01-学科` / `02-枢纽` / `03-主题` / `04-hpc-base` / `05-agent-dev`）。
 - **边**：解析并解析成功的 `[[wikilink]]`；节点大小随度数变化。
 - **Skill 安装路径**（本机）：`C:\Users\lijian\.agents\skills\brain-map\`（因 GitHub git clone 超时，曾用 jsDelivr 拉取 `SKILL.md` + `scripts/build_map.py`）。
 - **对本库生成命令**：
@@ -193,6 +196,49 @@ start E:\open-geo-modeller\docs\OpenGeoModeller-brain-map.html
 
 与 Obsidian Graph/Canvas 的关系：Obsidian 适合日常编辑与双向链接；brain-map HTML 适合演示、分享、时间轴回放，无需打开 Obsidian。
 
+### 5.5 agent-dev 模块关系分析 → 入图
+
+**分析依据**：`agent-dev/` 目录结构、各 `.md` 标题与正文关键词共现。根 README 仅一行；**跨文件夹相对链接为 0**。
+
+**分层结论**（上依赖下）：
+
+```text
+Claude_Usage / CodeX_Cursor / LSP
+    → CLAUDE-md
+        → Skills / Loop
+            → MCP
+                → RAG / LangChain
+                    → Osidian
+```
+
+**关键交叉点**：DeepSeek/Gemini/Grok/CCR（LLM 路由）；PETSc MCP + knowledge-rag + LangChain（AmgXWrapper）；fortran-mcp + fortls + `/build`/`/test`；Gmsh/Foam-Agent；ParaView/Blender MCP。
+
+**Obsidian 落盘**（`osidian/05-agent-dev/`）：
+
+| 文件 | 作用 |
+|------|------|
+| `MOC-agent-dev.md` | agent-dev 子图谱入口 |
+| `agent-dev.md` | 能力层总览 |
+| `agent-dev模块关系.md` | 分层 mermaid + 依赖速查 + 科学栈桥接 |
+| `agent-dev-知识图谱.canvas` | 按分层摆放的模块 Canvas |
+| `Claude_Usage.md` … `Osidian.md`（10 个） | 一级模块笔记 |
+| `主题-LLM路由.md` · `主题-PETSc-AmgX-Agent.md` · `主题-Fortran-Agent.md` | 内容耦合主题 |
+
+同步更新：总 MOC、欢迎页、学科关系总览、知识图谱使用说明、主 Canvas 下方展开、Graph 颜色组 `tag:#agent-dev模块`、日笔记 `2026-08-16.md`。
+
+**科学栈桥接（笔记层）**：
+
+- MCP / RAG / LangChain → Linear_Solver / CUDA
+- MCP → Meshing / VirtualReality / Turbulence
+- Skills / CLAUDE-md / LSP → Language / hpc-base
+- Osidian → 本库 MOC / brain-map HTML
+
+```powershell
+obsidian open path="05-agent-dev/MOC-agent-dev.md"
+obsidian open path="05-agent-dev/agent-dev-知识图谱.canvas" newtab
+obsidian search query="tag:#agent-dev模块" total
+```
+
 ---
 
 ## 6. 编码注意（Windows）
@@ -209,7 +255,7 @@ start E:\open-geo-modeller\docs\OpenGeoModeller-brain-map.html
 2. **失效相对链接**：约数十条历史路径需按现存树校验。
 3. **更多二级 README**：统一 `## 相关文档` 与单 H1；仍避免批量改 `.md` 转换稿正文。
 4. **`hpc-base` 内** 正文/`*.docx.md` 美化：在子模块内单独处理；Obsidian 一级模块图谱已建，二级（如 PETSc/AmgX/GPUDirect）可按需再拆笔记。
-5. **Obsidian**：可将更多模型级 README 链入 vault；保持 unresolved=0。
+5. **Obsidian**：可将更多模型级 README 链入 vault；保持 unresolved=0。`agent-dev` 一级模块已入图，二级（单个 MCP server / 单篇 RAG 文）可按需再拆。
 6. **提交**：用户要求时再整理 commit（注意 `hpc-base` 子模块与父仓库分开提交；`osidian/` 是否入库由用户决定）。
 
 ---

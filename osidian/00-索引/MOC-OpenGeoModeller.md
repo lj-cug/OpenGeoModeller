@@ -34,9 +34,11 @@ aliases: [OpenGeoModeller知识图谱, 学科图谱入口]
 
 
 
-3. 图谱按标签着色：枢纽 / 学科 / 主题簇 / hpc-base模块。
+3. 图谱按标签着色：枢纽 / 学科 / 主题簇 / hpc-base模块 / agent-dev模块。
 
 4. hpc-base 分层 Canvas：[[04-hpc-base/hpc-base-知识图谱.canvas|hpc-base-知识图谱]]。
+
+5. agent-dev 分层 Canvas：[[05-agent-dev/agent-dev-知识图谱.canvas|agent-dev-知识图谱]]。
 
 
 
@@ -125,6 +127,28 @@ aliases: [OpenGeoModeller知识图谱, 学科图谱入口]
 
 
 图谱过滤可用：`tag:#hpc-base模块`
+
+
+
+## agent-dev 模块图谱
+
+
+
+- 入口：[[MOC-agent-dev]]
+
+- 总览：[[agent-dev]]
+
+- 关系说明：[[agent-dev模块关系]]
+
+- Canvas：[[05-agent-dev/agent-dev-知识图谱.canvas|agent-dev-知识图谱]]
+
+- 模块：[[Claude_Usage]] · [[CodeX_Cursor]] · [[LSP]] · [[CLAUDE-md]] · [[Skills]] · [[Loop]] · [[MCP]] · [[RAG]] · [[LangChain]] · [[Osidian]]
+
+- 主题：[[主题-LLM路由]] · [[主题-PETSc-AmgX-Agent]] · [[主题-Fortran-Agent]]
+
+
+
+图谱过滤可用：`tag:#agent-dev模块`
 
 
 
