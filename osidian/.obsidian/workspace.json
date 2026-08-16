@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -244,14 +244,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "4f93d212dc078267",
+  "active": "b7486f49210c9abd",
   "lastOpenFiles": [
+    "00-索引/OpenGeoModeller-知识图谱.canvas",
+    "04-hpc-base/MOC-hpc-base.md",
+    "04-hpc-base/hpc-base-知识图谱.canvas",
     "欢迎.md",
     "00-索引/MOC-OpenGeoModeller.md",
-    "04-hpc-base/hpc-base-知识图谱.canvas",
-    "04-hpc-base/MOC-hpc-base.md",
     "_gen_hpc_kg.py",
-    "00-索引/OpenGeoModeller-知识图谱.canvas",
     "2026-08-15.md",
     "01-学科/ShallowWater.md",
     "00-索引/知识图谱使用说明.md",
