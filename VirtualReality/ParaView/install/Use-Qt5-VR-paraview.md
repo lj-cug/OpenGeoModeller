@@ -9,8 +9,9 @@ apt-get install qtcreator qtbase5-private-dev qt5ct qtdeclarative5-dev qtdeclara
 ```
 
 或者, 下载Qt5-Linux.run安装：
-
+```
 export Qt5_DIR=/opt/Qt5.12.12/5.12.12/gcc_64/lib/cmake/Qt5  # 注意路径
+```
 
 ## 配置Qt5的环境变量
 ```
@@ -25,10 +26,11 @@ export LD_LIBRARY_PATH=/opt/Qt5.12.12/5.12.12/gcc_64/lib/:${LD_LIBRARY_PATH}
 
 # 安装VR插件
 CMAKE编译参数添加：
-
+```
 -DBUILD_SHARED_LIB -DPARAVIEW_BUILD_QT_GUI -DPARAVIEW_USE_MPI  -DPARAVIEW_BUILD_PLUGIN_VRPlugin
+```
 
-需要安装OpenVR：
+首先需要安装OpenVR：
 ``` 
 -- Installing: /usr/local/lib/libopenvr_api.a
 -- Installing: /usr/local/include/openvr/openvr_driver.h
@@ -38,4 +40,6 @@ CMAKE编译参数添加：
 ```
 
 ## 使用VRUI库 
--DPARAVIEW_USE_VRUI   
+```
+-DPARAVIEW_USE_VRUI
+```   
